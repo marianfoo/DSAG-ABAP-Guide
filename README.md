@@ -1,148 +1,148 @@
-# DSAG's ABAP-Leitfaden
+# DSAG's ABAP guide
 
 ![GitHub contributors](https://img.shields.io/github/contributors/1DSAG/ABAP-Leitfaden)
 ![GitHub](https://img.shields.io/github/license/1DSAG/ABAP-Leitfaden)
 ![GitHub stars](https://img.shields.io/github/stars/1DSAG/ABAP-Leitfaden?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/1DSAG/ABAP-Leitfaden?style=social)
 
-Dies ist nicht der Leitfaden selbst (dieser ist über <https://1dsag.github.io/ABAP-Leitfaden> erreichbar), sondern das zugehörige Repository mit Anweisungen wie man zum Leitfaden beitragen kann.
+This is not the guide itself (this can be accessed via <https://1dsag.github.io/ABAP-Leitfaden>), but the associated repository with instructions on how to contribute to the guide.
 
-Der DSAG ABAP Leitfaden ist ein lebendiges Dokument 👨‍💻 - es lebt von und mit seiner Community 🥳.
+The DSAG ABAP guide is a living document 👨‍💻 - it lives from and with its community 🥳.
 
-Der Leitfaden ist in `markdown` (Variante `kramdown`) geschrieben und wird mittels `jekyll` in `GitHub Pages` (<https://1dsag.github.io/ABAP-Leitfaden>) bereit gestellt.
+The guide is written in `markdown` (variant `kramdown`) and is provided in `GitHub Pages` (<https://1dsag.github.io/ABAP-Leitfaden>) using `jekyll`.
 
 ## Inhalte
 
-- [DSAG's ABAP-Leitfaden](#dsags-abap-leitfaden)
+- [DSAG's ABAP guide](#dsags-abap-leitfaden)
   - [Inhalte](#inhalte)
   - [Erste Schritte](#erste-schritte)
-    - [Schnellstart mit GitHub Web-Editor](#schnellstart-mit-github-web-editor)
-    - [Entwicklung mit Docker-Container](#entwicklung-mit-docker-container)
-      - [Installationsschritte für Docker Container](#installationsschritte-für-docker-container)
-    - [Lokale Installation](#lokale-installation)
-      - [Vorbedingungen für Windows](#vorbedingungen-für-windows)
-      - [Installationsschritte für Lokale Installation](#installationsschritte-für-lokale-installation)
+    - [Quick start with GitHub web editor](#schnellstart-mit-github-web-editor)
+    - [Development with Docker container](#entwicklung-mit-docker-container)
+      - [Installation steps for Docker container](#installationsschritte-für-docker-container)
+    - [Local installation](#lokale-installation)
+      - [Prerequisites for Windows](#vorbedingungen-für-windows)
+      - [Installation steps for local installation](#installationsschritte-für-lokale-installation)
   - [Mitwirken](#mitwirken)
   - [Lizenzierung](#lizenzierung)
 
 ## Erste Schritte
 
-### Schnellstart mit GitHub Web-Editor
+### Quick start with GitHub web editor
 
-:point_right: Keine Lokale Installation  
-:point_right: Alles im Browser  
-:point_right: Vorschau nach jedem Commit
+:point_right: No local installation  
+:point_right: Everything in the browser  
+:point_right: Preview after each commit
 
 ----
 
-Der [webbasierte Editor](https://docs.github.com/de/codespaces/the-githubdev-web-based-editor) ist eine IDE, die vollständig in Ihrem Browser ausgeführt wird. Mit dem webbasierten Editor können Sie durch Dateien und Quellcode-Repositories von GitHub navigieren und Codeänderungen vornehmen und übertragen. Sie können jedes Repository, jeden Fork und jede Pull-Anfrage mit dem Editor öffnen.
-Außerdem können Sie Markdown-Dateien während der Bearbeitung in der Vorschau anzeigen.
-Dies macht den Einstieg sehr einfach, da keine lokale Installation erforderlich ist.
-Sie können das Endergebnis nicht sofort sehen, aber auch das kann GitHub für Sie generieren.
+The [web-based editor](https://docs.github.com/de/codespaces/the-githubdev-web-based-editor) is an IDE that runs entirely in your browser. The web-based editor allows you to navigate through GitHub files and source code repositories and make and commit code changes. You can open any repository, fork, and pull request using the editor.
+You can also preview Markdown files while editing.
+This makes it very easy to get started as no local installation is required.
+You may not see the end result immediately, but GitHub can generate that for you too.
 
 1. Fork erstellen  
    ![Fork erstellen](img/00-fork.png)
-2. Navigieren Sie zu dem erstellten Fork  
-   ![Zu Fork springen](img/01-jump-to-fork.png)
-3. Drücken sie `.` auf Ihrer Tastatur um in die IDE zu wechseln
+2. Navigate to the created fork  
+   ![Jump to Fork](img/01-jump-to-fork.png)
+3. Press `.` on your keyboard to switch to the IDE
 4. Erstellen Sie einen neuen Branch  
    ![Branch erzeugen](img/02-create-new-branch.png)
-5. Vergeben Sie einen Namen für den Branch  
+5. Give the branch a name  
    ![Branch Namen vergeben](img/03-branch-name.png)
-6. Fangen sie an zu schreiben  
-   Im Ordner `/docs` ist der Inhalt des Leitfadens abgespeichert. Ändern Sie einfach den Inhalt einer bestehenden Markdown-Seite (`.md`-Datei) oder erstellen Sie ein neues Unterkapitel.
-7. Vorschau der Seite  
-   Sie können sich die finale Seite auch auf GitHub ansehen.
+6. Start writing  
+   The contents of the guide are stored in the `/docs` folder. Simply change the content of an existing Markdown page (`.md` file) or create a new subchapter.
+7. Preview the page  
+   You can also view the final page on GitHub.
 
-   Wechseln Sie einfach in die Einstellungen Ihres Repositories und dann auf `Pages`.
-   Der Link dahin setzt sich wie folgt zusammen `https://github.com/YOURUSERNAME/ABAP-Leitfaden/settings/pages`.
-   Wählen Sie Ihren Branch aus auf dem Sie gerade arbeiten und wählen Sie den `docs` Ordner.
-   Nachdem Sie gespeichert haben, dauert es ein paar Minuten bis die Seite unter der angegeben URL erreichbar ist.
-   Von da an wird die Seite nach jedem Commit neu erzeugt.  
+   Simply go to your repository's settings and then `Pages`.
+   The link to it is as follows `https://github.com/YOURUSERNAME/ABAP-Leitfaden/settings/pages`.
+   Select your branch you are currently working on and select the `docs` folder.
+   After you have saved, it will take a few minutes until the page is accessible at the specified URL.
+   From then on, the page will be recreated after every commit.  
 
    ![fork a github project](img/04-publish-branch.png)
 
-### Entwicklung mit Docker-Container
+### Development with Docker container
 
-:point_right: Nur Visual Studio Code und Docker werden benötigt  
-:point_right: Sofortige Vorschau ihrer Änderungen
+:point_right: Only Visual Studio Code and Docker are required  
+:point_right: Instant preview of your changes
 
 ----
 
-Dies ist der einfachste Weg, um Ihre Entwicklungsumgebung in kürzester Zeit bereitzustellen.
-Sie erhalten einen gebrauchsfertig konfigurierten Debian-Container, der von Visual Studio Code transparent verwendet wird.
+This is the easiest way to deploy your development environment in the shortest amount of time.
+You receive a ready-to-use Debian container that is transparently used by Visual Studio Code.
 
-#### Installationsschritte für Docker Container
+#### Installation steps for Docker container
 
-Installieren Sie die Folgenden Programme
+Install the following programs
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (frühe Remote Containers Extension)
+- [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (early Remote Containers Extension)
 - [Docker](https://code.visualstudio.com/docs/remote/containers)
 
 <details>
-<summary>Docker unter Windows in Linux (WSL) installieren</summary>
+<summary>Install Docker on Windows in Linux (WSL)</summary>
 
-##### Docker in WSL nutzen statt Docker Desktop
+##### Use Docker in WSL instead of Docker Desktop
 
-Unter Windows kann Docker auch im Windows Subsystem für Linux (WSL) installiert werden, um u.A. die Lizenzthematik von Docker Desktop zu umgehen.
+Under Windows, Docker can also be installed in the Windows Subsystem for Linux (WSL) to, among other things: to circumvent the licensing issue of Docker Desktop.
 
-Dazu muss in VS Code die [WSL Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) installiert werden. Eine
-Anleitung zur Installation der WSL findet sich bei [Microsoft: Installieren von Linux unter Windows mit WSL](https://learn.microsoft.com/de-de/windows/wsl/install).
-Anschließend kann Docker [anhand dieser Anleitung](https://docs.docker.com/engine/install/ubuntu/) installiert werden.
+To do this, the [WSL Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) must be installed in VS Code. One
+Instructions for installing the WSL can be found at [Microsoft: Installing Linux on Windows with WSL](https://learn.microsoft.com/de-de/windows/wsl/install).
+Docker [using these instructions](https://docs.docker.com/engine/install/ubuntu/) can then be installed.
 
-Bitte beachten Sie auch den Schritt zur Zuweisung der Docker-Nutzergruppe in der [Post-Installations-Anleitung](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+Please also note the step for assigning the Docker user group in the [Post-Installations-Anleitung](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
-Danach suchen Sie in den Einstellungen von VS Code nach der Einstellung *Dev Containers > Execute in WSL* für das Dev Containers Plugin und aktivieren diese:
+Then look in the VS Code settings for the *Dev Containers > Execute in WSL* setting for the Dev Containers plugin and activate it:
 ![Setting: Dev Containers > Execute in WSL](img/01-dev-containers-wsl-setting.png)
 
-Anschließend können Sie entsprechend der normalen Anleitung mit dem Klonen des Repositories weitermachen.
+You can then continue cloning the repository according to the normal instructions.
 </details>
 
-Klonen Sie das Repository mit dem Befehl command *[Dev Containers: Clone Repository in Container Volume...](https://code.visualstudio.com/docs/remote/containers-advanced#_use-clone-repository-in-container-volume)*
+Clone the repository using the command *[Dev Containers: Clone Repository in Container Volume...](https://code.visualstudio.com/docs/remote/containers-advanced#_use-clone-repository-in-container-volume)*
 
-Dadurch werden die folgenden Aufgaben ausgeführt:
+This performs the following tasks:
 
-- Klonen des Repositories in einem Container-Volume
-- Erzeugung des Docker Abbilds
-- Starten des Docker Containers und Zuweisung der die erforderlichen Ports
-- Mounten des erstellten Container Laufwerks
-- Installation der benötigten `npm` Pakete
-- Installation der benötigten `ruby` gems
+- Cloning the repository in a container volume
+- Creation of the Docker image
+- Starting the Docker container and assigning the required ports
+- Mounting the created container drive
+- Installation of the required `npm` packages
+- Installation of the required `ruby` according to
 
-Jetzt müssen Sie nur noch die Konsole in Visual Studio Code öffnen (sie ist mit dem laufenden Entwicklungscontainer verbunden), in den Ordner `docs` navigieren und den Entwicklungsserver starten:
+Now all you have to do is open the console in Visual Studio Code (it is connected to the running development container), navigate to the `docs` folder and start the development server:
 
 ```shell
 cd docs
 bundle exec jekyll serve --livereload
 ```
 
-### Lokale Installation
+### Local installation
 
 :point_right: Genau wie Docker Container  
-:point_right: Vollständige Kontrolle über Entwicklungsumgebung
+:point_right: Complete control over development environment
 
 ----
 
-#### Vorbedingungen für Windows
+#### Prerequisites for Windows
 
 - <https://chocolatey.org/> installieren
-- MSYS2 mit Chocaletey installieren  
+- Install MSYS2 with Chocaletey  
   `choco install msys2` <https://chocolatey.org/packages/msys2>
 - Ruby installieren  
   `choco install ruby` <https://chocolatey.org/packages/ruby>
 - Build Toolchain aktualisieren:  
   `ridk install 3`
-- Siehe auch [GitHub Pages-Website lokal mit Jekyll testen](https://docs.github.com/de/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+- See also [Test GitHub Pages website locally with Jekyll](https://docs.github.com/de/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
 
-#### Installationsschritte für Lokale Installation
+#### Installation steps for Local Installation
 
-- Stellen Sie sicher dass `ruby` 2.7 auf Ihrem System installiert ist
-- Klonen Sie das Repository
-- Wechseln Sie in den Root-Ordner der Seite  
+- Make sure `ruby` 2.7 is installed on your system
+- Clone the repository
+- Go to the root folder of the site  
   `$ cd docs`
-- Führen Sie den Befehl `bundle install` im Terminal aus, um alle notwendigen Pakete für Jekyll und GitHub Pages zu installieren
-- Starten Sie die lokale `gh-pages` Instanz, einschließlich des Live-Reloads des Webbrowsers
+- Run the `bundle install` command in the terminal to install all necessary packages for Jekyll and GitHub Pages
+- Start the local `gh-pages` instance, including web browser live reload
 
   ```shell
     bundle exec jekyll serve --livereload
@@ -159,12 +159,12 @@ bundle exec jekyll serve --livereload
       Server running... press ctrl-c to stop.
   ```
 
-- Öffnen Sie die URL <http://localhost:4000> in Ihrem bevorzugten Webbrowser
+- Open the URL <http://localhost:4000> in your favorite web browser
 
 ## Mitwirken
 
-Alle Informationen über den Entwicklungsprozess und bewährte Verfahren für die Erstellung von Inhalten finden Sie unter [Mitwirken](contributing.md)
+All information about the development process and best practices for content creation can be found at [Mitwirken](contributing.md)
 
 ## Lizenzierung
 
-Dieses Projekt verwendet die CC BY 4.0 [Lizenz](LICENSE).
+This project uses CC BY 4.0 [Lizenz](LICENSE).

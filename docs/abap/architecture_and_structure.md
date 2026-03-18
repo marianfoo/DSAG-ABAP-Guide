@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Architektur und Strukturierung in der ABAP Entwicklung
+title: Architecture and structuring in the ABAP development
 permalink: /abap/architecture_and_design/
 has_children: true
 parent: Moderne ABAP Entwicklung
@@ -8,140 +8,140 @@ nav_order: 1
 ---
 
 {: .no_toc}
-# Architektur und Strukturierung in der ABAP Entwicklung
+# Architecture and structuring in ABAP development
 
 1. Toc
 {:toc}
 
-## Strukturelle Herausforderungen in SAP-Anwendungen
+## Structural challenges in SAP applications
 
-In vielen SAP ERP Systemen finden sich zahlreiche und umfangreiche Eigenentwicklungen, die im Laufe der Lebenszeit des Systems entstanden sind und kontinuierlich erweitert wurden. Je komplexer ein System ist, desto wichtiger ist es, dass die darin enthaltenen Applikationen und Komponenten in einer wohldefinierten Struktur geordnet sind, die gängigen Softwarearchitekturprinzipien folgen.
-In SAP ERP Systemen ist dies im Bereich der Eigenentwicklungen nicht immer gegeben. Dies hat unter anderem folgende Ursachen:
+Many SAP ERP systems contain numerous and extensive in-house developments that were created and continually expanded over the life of the system. The more complex a system is, the more important it is that the applications and components it contains are organized in a well-defined structure that follows common software architecture principles.
+In SAP ERP systems, this is not always the case in the area of ​​in-house developments. This has, among other things, the following reasons:
 
 - **Entwicklungsklassen**  
-Die Entwicklungen wurden begonnen, als das SAP-Paketkonzept noch nicht vorhanden war und dessen Vorgänger, die Entwicklungsklassen, verwendet wurden. Diese ermöglichten nur eine flache Strukturierung und somit folgte auch die Struktur sehr groben Kriterien, z.B. pro Entwicklungsteam oder Modul. Dieses Prinzip wurde nach Einführung des Paketkonzepts beibehalten und weitergeführt.
+The developments were started when the SAP package concept did not yet exist and its predecessors, the development classes, were used. These only enabled a flat structure and therefore the structure followed very rough criteria, e.g. per development team or module. This principle was retained and continued after the introduction of the package concept.
 
 - **Wissen**  
-Das Wissen über das Paketkonzept und die Anwendung von Softwarearchitekturprinzipien ist im ABAP-Umfeld oftmals nicht hinreichend vorhanden.
+The knowledge about the package concept and the application of software architecture principles is often not sufficiently available in the ABAP environment.
 
-- **Änderung und Erweiterung an bestehender Software**
-Viele Entwicklungen betreffen die Weiterentwicklung bestehender Funktionalitäten. Ein Redesign und eine damit verbundene Paketstrukturierung wird selten eingeplant und vorgenommen.
+- **Changes and extensions to existing software**
+Many developments concern the further development of existing functionalities. A redesign and the associated package structuring is rarely planned and carried out.
 
-- **Zeit- und Termindruck**  
-Letztlich finden die meisten Entwicklungen unter Zeitdruck statt. Die Frage, wie eine Anwendung sinnvoll in Paketen strukturiert werden kann, wird oft nicht gestellt oder vernachlässigt, da die Lieferung der Funktionalität im Vordergrund steht.  
+- **Time and deadline pressure**  
+Ultimately, most developments take place under time pressure. The question of how an application can be meaningfully structured in packages is often not asked or neglected because the focus is on delivering the functionality.  
 
-Als Folge der sich aus den genannten Gründen ergebenden strukturellen Defizite in Eigenentwicklungen können sich folgende Probleme ergeben:
+As a result of the structural deficits in in-house developments resulting from the reasons mentioned, the following problems can arise:
 
-- **Mangelnde Transparenz und Verständlichkeit:**  
-Sowohl die Aufgaben und deren Verantwortlichkeiten einzelner Artefakte als auch deren Abhängigkeiten zueinander sind nicht aus der Struktur der Pakete ersichtlich.
+- **Lack of transparency and comprehensibility:**  
+The tasks and their responsibilities of individual artifacts as well as their dependencies on each other are not clear from the structure of the packages.
 
-- **Hohe Anpassungsaufwände**  
-Änderungen an bestehender Software erfordern hohe Aufwände verursacht durch aufwändige Analyse, die zu ändernden Artefakte zu finden und die Änderung korrekt umzusetzen. Da die Korrektheit von Änderungen schwer vorhergesagt werden kann, entstehen hohe Test- und Fehlerkorrekturaufwände.
+- **High adjustment effort**  
+Changes to existing software require a lot of effort caused by complex analysis, finding the artifacts that need to be changed and implementing the change correctly. Since the correctness of changes is difficult to predict, high testing and error correction costs arise.
 
-- **Seiteneffekte und Fehler bei Änderungen bestehender Anwendungen:**
-Änderungen können zu nicht vorhersehbaren Seiteneffekten in der Produktion führen und damit zu erhöhten Entwicklungs- und Fehlerbereinigungsaufwänden.
+- **Side effects and errors when changing existing applications:**
+Changes can lead to unforeseeable side effects in production and thus to increased development and error correction efforts.
 
-- **Probleme bei Verteilung und Import von Änderungen**
-Es kann zu Problemen bei Transporten kommen, wenn nicht alle notwendigen Objekte korrekt transportiert wurden oder nicht alle Abhängigkeiten berücksichtigt wurden (z.B. RC8).
+- **Problems with distribution and import of changes**
+Problems can arise with transports if not all necessary objects were transported correctly or not all dependencies were taken into account (e.g. RC8).
 
-## Architektur und Struktur als Fundament und Rahmen einer guten SAP Anwendung
+## Architecture and structure as the foundation and framework of a good SAP application
 
-Die Komplexität von Software wird oftmals unterschätzt und nur, wer sich von Anfang an Gedanken über eine gute Softwarearchitektur macht und die Anwendung kontinuierlich technisch und strukturell verbessert, wird mit der oben beschriebenen Problematik weniger konfrontiert sein.  
-Gute und moderne Softwareentwicklung beginnt zuallererst mit der Überlegung, welche Funktionen und Zuständigkeiten eine zu erstellende Anwendung haben soll, wie die Verantwortlichkeiten geregelt sind und wie sich dies letztendlich in der Paketstruktur widerspiegelt.  
-Mit dem SAP Paketkonzept haben Sie das Werkzeug, um diese Überlegungen in sichtbare Strukturen zu überführen und damit die Grundlagen für eine saubere und zukunftsfähige Anwendungsarchitektur zu legen.
+The complexity of software is often underestimated and only those who think about good software architecture right from the start and continuously improve the application technically and structurally will be less confronted with the problems described above.  
+Good and modern software development begins first and foremost with consideration of what functions and responsibilities an application to be created should have, how the responsibilities are regulated and how this is ultimately reflected in the package structure.  
+With the SAP package concept you have the tool to translate these considerations into visible structures and thus lay the foundations for a clean and future-proof application architecture.
 
-## Strukturierung von Software in Paketen
+## Structuring software in packages
 
-### Das SAP Paketkonzept und die Aufgabe von Paketen
+### The SAP package concept and the posting of packages
 
-Die SAP hat, wie in anderen Programmiersprachen wie z.B. Java üblich, auch in ABAP ein Paketkonzept implementiert, mit dem es möglich ist, die Software auf verschiedenen Ebenen zu strukturieren. Vor der Verfügbarkeit des Paketkonzepts waren Entwicklungsobjekte in Entwicklungsklassen als flache Struktur organisiert.  
-Durch die Anwendung des Paketkonzepts bei Eigenentwicklungen ergeben sich deutlich erweiterte Möglichkeiten der Softwarestrukturierung, die zwar vordergründig nicht direkt auf die Funktionalität an sich wirken, aber spätestens bei der Wartung, Pflege und Erweiterung der Eigenentwicklung deutliche Vorteile mit sich bringen. Da es seitens SAP eine ausführliche und gut verständliche Dokumentation des Paketkonzeptes gibt, werden wir hier nicht auf das Paketkonzept im Detail eingehen, sondern einen praxisnahen Überblick und Empfehlungen geben, wie bei Erstellung von Eigenentwicklungen, im Weiteren "Software" genannt, vorgegangen werden kann, um Pakete in ABAP sinnvoll und nutzbringend einzusetzen.  
-[SAP Dokumentation ABAP Workbench - Package Builder](https://help.sap.com/docs/ABAP_PLATFORM_NEW/bd833c8355f34e96a6e83096b38bf192/af40bd38652c8c42e10000009b38f8cf.html?locale=de-DE).  
+As is common in other programming languages ​​such as Java, the SAP has also implemented a package concept in the ABAP, with which it is possible to structure the software at different levels. Before the availability of the package concept, development objects were organized into development classes as a flat structure.  
+The use of the package concept in in-house developments results in significantly expanded possibilities for software structuring, which, although on the face of it do not have a direct effect on the functionality itself, bring significant advantages with them at the latest when it comes to servicing, maintaining and expanding the in-house development. Since SAP provides detailed and easy-to-understand documentation of the package concept, we will not go into the package concept in detail here, but rather give a practical overview and recommendations on how to proceed when creating in-house developments, after referred to as "software", in order to use packages in ABAP sensibly and beneficially.  
+[SAP Documentation ABAP Workbench - Package Builder](https://help.sap.com/docs/ABAP_PLATFORM_NEW/bd833c8355f34e96a6e83096b38bf192/af40bd38652c8c42e10000009b38f8cf.html?locale=de-DE).
 
 
 {: .recommendation}
->- ***Nutzen Sie das Paketkonzept:***
->- Schalten Sie auf Ihren SAP-Systemen die Paketprüfung ein.
->- Erstellen Sie für Ihre Eigenentwicklungen Hauptpakete, die sich an architektonischen Erfordernissen (Single Responsibility) orientieren.
->- Schalten Sie pro Paket die Paketkapselung ein.
->- Gruppieren und strukturieren Sie das Paket mit Unterpaketen anhand der Zuständigkeiten und nicht nach Objekttyp.
->- Machen Sie während des Entwicklungsprozesses regelmäßig Paketchecks, um Abhängigkeiten zu erkennen.
->- Prüfen Sie bei nicht sichtbaren Objekten Alternativen (z.B. vergleichbares Objekt mit Sichtbarkeit aus anderem Paket, Eigendefinition im Paket, ...).
->- Nehmen Sie gewünschte Abhängigkeiten in die Verwendungserklärung auf.
->- Vermeiden Sie die Erstellung sehr großer Pakete oder "Sammelpakete" die zahlreichen unabhängigen Funktionen bündeln.
->- Schulen Sie Ihre Entwickler bzgl. der Paketdefinition, der Strukturierung von Software und Pflege von Paketschnittstellen und Verwendungserklärungen  
+>- ***Use the package concept:***
+>- Turn on packet checking on your SAP systems.
+>- Create main packages for your own developments that are based on architectural requirements (single responsibility).
+>- Enable packet encapsulation per packet.
+>- Group and structure the package with sub-packages based on responsibilities rather than object type.
+>- Do regular package checks during the development process to identify dependencies.
+>- For non-visible objects, check alternatives (e.g. comparable object with visibility from another package, own definition in the package, ...).
+>- Include desired dependencies in the declaration of use.
+>- Avoid creating very large packages or "bundle packages" that bundle numerous independent functions.
+>- Train your developers on package definition, software structuring and maintenance of package interfaces and usage declarations  
 
-## Paketstrukturen und Hierarchien  
+## Package structures and hierarchies  
 
-Wir empfehlen die Pakete nach funktionalen Aspekten zu gestalten. Eigenständige Lösungen, die auch selbstständig transportierbar sein sollen, bilden Sie über Hauptpakete ab. Die verschiedenen funktionalen Belange dieser Lösung wie z.B. Geschäftslogik, verwendbare Schnittstellen, User-Interfaces und zentrale Elemente der Lösung, die innerhalb des Hauptpaketes von den anderen Komponenten gemeinsam verwendet werden, strukturieren Sie in Unterpaketen (Entwicklungspakete). Im klassischen Umfeld ist das Hauptpaket die transportierbare Einheit.  
-Im ABAP-Cloud Kontext kann dann über dieses Hauptpaket ein technisch erforderliches Strukturpaket angelegt werden, dass dann für die Softwarekomponente verwendet wird. Im Cloud Kontext wird die transportierbare Einheit durch die Softwarekomponente repräsentiert.  
-Eine Strukturierung anhand von Organisations-, Verantwortungs- oder Projektstrukturen wird nicht empfohlen, da diese Attribute sich im Zeitverlauf ändern und nur bedingt von der Funktionalität abhängig sind. In einer dem Hauptpaket zugehöriger Dokumentation sind diese Attribute besser aufgehoben.  
+We recommend designing the packages according to functional aspects. You create independent solutions that should also be able to be transported independently using main packages. The various functional aspects of this solution, such as business logic, usable interfaces, user interfaces and central elements of the solution that are shared by the other components within the main package, are structured in sub-packages (development packages). In the classic environment, the main package is the transportable unit.  
+In the ABAP-Cloud context, a technically required structure package can then be created via this main package, which is then used for the software component. In the Cloud context, the transportable unit is represented by the software component.  
+Structuring based on organizational, responsibility or project structures is not recommended, as these attributes change over time and are only partially dependent on functionality. These attributes are better contained in documentation that is part of the main package.  
 
-## Kontrolle der Abhängigkeiten
+## Dependency control
 
-Mit der Aktivierung der Paketkapselung wird die Kontrolle über die Abhängigkeiten in Paketen ermöglicht.  
-In den Paketschnittstellen definieren Sie die Sichtbarkeit von Objekten bei eingeschalteter Paketkapselung und über die Verwendungserklärung dokumentieren Sie Abhängigkeiten zu anderen Paketen über deren Paketschnittstellen.
-Die Paketprüfung ist das Werkzeug, um die Verwendung unsichtbarer Objekte oder fehlende Verwendungserklärung sichtbar zu machen und zu überwachen.  
-Wie Sie diese Elemente konkret einsetzen wird im [Detailabschnitt](/ABAP-Leitfaden/abap/package_details/#paketpr%C3%BCfung) zum Paketkonzept erläutert. Informationen hierzu finden Sie aber auch in der SAP Dokumentation.
+Enabling package encapsulation enables control over dependencies in packages.  
+In the package interfaces you define the visibility of objects when package encapsulation is switched on and you use the usage declaration to document dependencies on other packages via their package interfaces.
+Package inspection is the tool to make visible and monitor the use of invisible objects or missing usage declarations.  
+How you specifically use these elements is explained in the [detailed section](/ABAP-Leitfaden/abap/package_details/#paketpr%C3%BCfung) on the package concept. You can also find information about this in the SAP documentation.
 
-## Vorteile und Mehrwert durch die Anwendung des Paketkonzepts
+## Advantages and added value by using the package concept
 
-### Eindeutig deklarierte Abhängigkeiten
+### Clearly declared dependencies
 
-Durch die Anwendung des Paketkonzepts werden Abhängigkeiten von Funktionalitäten transparent. Entweder ist eine Abhängigkeit in der Verwendungserklärung aufgeführt, damit handelt es sich um bewusst definierte Abhängigkeit, oder die Abhängigkeit wird durch eine Fehlermeldung in der Paketprüfung ersichtlich, im Falle von nicht sichtbaren Objekten oder bei fehlender Verwendungserklärung. Die hieraus gewonnenen Informationen können für die Dokumentation und Beschreibung verwendet werden. Bevor ein Paket in ein System importiert wird, kann somit geprüft werden, ob im System die Voraussetzungen gegeben sind, das Paket fehlerfrei zu importieren, oder ob andere Pakete benötigt werden.
+By using the package concept, dependencies on functionalities become transparent. Either a dependency is listed in the usage declaration, which means it is a deliberately defined dependency, or the dependency is visible through an error message in the package check, in the case of invisible objects or if a usage declaration is missing. The information obtained from this can be used for documentation and description. Before a package is imported into a system, it can be checked whether the system meets the requirements to import the package without errors or whether other packages are required.
 
-### Bessere Übersicht und Erklärbarkeit
+### Better overview and explainability
 
-Bei komplexen und umfangreichen Entwicklungen hilft die Strukturierung schneller relevante Objekte zu finden. Die Struktur kann bereits als Teil der Dokumentation betrachtet werden. Stehen Korrekturen, Erweiterungen oder Ergänzungen einer Eigenentwicklung an, helfen eine gute Paketstruktur dem Entwickler sich leichter in der Anwendung zurechtzufinden und Erweiterungen schneller umzusetzen.  
+In complex and extensive developments, structuring helps to find relevant objects more quickly. The structure can already be considered part of the documentation. If corrections, extensions or additions to an in-house development are required, a good package structure helps the developer to find his way around the application more easily and to implement extensions more quickly.  
 
-Soll Software systemübergreifend transportiert werden, empfehlen wir das Erstellen der Transporte auf Hauptpaketebene. Das Hauptpaket repräsentiert eine in sich funktionierende Geschäftsfunktion oder eine Erweiterung einer Standardfunktion bzw. eines abgegrenzten Bereiches.  
-Werden alle Objekte eines Hauptpaketes (strukturiert in Unterpaketen) in einen Transport aufgenommen und sind die deklarierten Voraussetzungen/Abhängigkeiten im Zielsystem erfüllt, ist der Transport über Systemlinien hinweg transportier- und importierbar. Importfehler (RC8) sollten dann i.d.R. nicht mehr auftreten.
+If software is to be transported across systems, we recommend creating the transports at the main package level. The main package represents a functioning business function or an extension of a standard function or a defined area.  
+If all objects of a main package (structured in sub-packages) are included in a transport and the declared requirements/dependencies are met in the target system, the transport can be transported and imported across system lines. Import errors (RC8) should then generally no longer occur.
 
-### Flexibilität
+### Flexibility
 
-Ist eine Softwarekomponente gut strukturiert, lassen sich Ergänzungen, Änderungen, Erweiterungen und Korrekturen besser durchführen als in dem Fall, wenn eine Anwendung sich aus lose zusammengestellten und in einem großen ungeordneten Paket befindlichen Objekten besteht, in dem andere Objekte für andere Funktionen enthalten sind. Somit ergibt sich bei guter Strukturierung auch eine erhöhte Flexibilität. Insbesondere wenn Funktionalitäten im Laufe des Lebenszyklus wachsen und der Umfang wächst, kann es erforderlich sein, die Struktur anzupassen und ggf. Funktionalitäten in zentrale bzw. allgemein verfügbare Pakete auszulagern, um eine Wiederverwendbarkeit hierfür zu erlangen oder im umgekehrten Fall, mehrere kleinere Anwendungen in ein Hauptpaket zusammenzufassen.
+When a software component is well structured, additions, changes, extensions, and corrections can be made more easily than when an application consists of loosely assembled objects in a large, unorganized package that contains other objects for other functions. This means that good structuring also results in increased flexibility. In particular, if functionalities grow over the course of the life cycle and the scope increases, it may be necessary to adapt the structure and, if necessary, to outsource functionalities into central or generally available packages in order to achieve reusability or, in the opposite case, to combine several smaller applications into a main package.
 
-### Zukunftsfähigkeit
+### Future viability
 
-Die Erstellung von Software in gut strukturierten Paketen beinhaltet neben den offensichtlichen Vorteilen auch weitere Vorteile, die nicht sofort wirksam werden, im Rahmen des Softwarelebenszyklus aber durchaus relevant werden können.  
-Sind die Eigenentwicklungen im System bereits in Paketen geordnet, sind schon wichtige Voraussetzungen erfüllt, um moderne Versionsverwaltungssysteme wie abapGit oder gCTS zu nutzen, die Pakete bedingen. Somit sind dann Transporte mittels Git-basierter Methoden in andere Systeme über oder gar in die Cloud möglich s. Kapitel [Versionsverwaltung](/ABAP-Leitfaden/application-lifecycle-management/version-management/).  
-Wurde das Paketkonzept mit Erklärung der Verwendungsbeziehungen im Unternehmen bereits eingeübt und ist somit bereits eine Awareness bzgl. nutzbarer Objekte gegeben, sind gute Voraussetzungen geschaffen, die Konzepte in ABAP Cloud mit den Softwarekomponenten zu verstehen und anzuwenden.
+In addition to the obvious advantages, creating software in well-structured packages also includes other advantages that do not take effect immediately, but can become relevant as part of the software life cycle.  
+If the in-house developments in the system are already organized into packages, important requirements have already been met in order to use modern version management systems such as abapGit or gCTS, which require packages. This means that transports using Git-based methods into other systems or even into the Cloud are possible, see chapter [Version Management](/ABAP-Leitfaden/application-lifecycle-management/version-management/).
+If the package concept with an explanation of the usage relationships has already been practiced in the company and there is already awareness of usable objects, good conditions are created for understanding and applying the concepts in ABAP Cloud with the software components.
 
-## Maßnahmen zur Umsetzung des Paketkonzepts in der Entwicklung
+## Measures to implement the package concept in development
 
-### Definition und Umsetzung der Paketstrategie
+### Definition and implementation of the package strategy
 
-Die o.g. Vorteile ergeben sich nur, wenn das Paketkonzept in Form einer Paketstrategie umfassend und konsistent im Unternehmen umgesetzt wird. Daher ist wichtig, dass Sie Ihre Paketstrategie klar definieren und festlegen wie Pakete angelegt und dokumentiert werden.  
-Stellen Sie sicher, dass die mit der Entwicklung betrauten Personen die Vorgaben zum Paketkonzept verstehen und umsetzen können. Daher ist es wichtig die Entwickler auch hinreichend bezüglich des umzusetzenden Paketkonzepts zu schulen und die Einhaltung und ordnungsgemäße Umsetzung zu prüfen. Insbesondere wenn externe Entwickler eingesetzt werden, ist darauf zu achten, dass hier ein entsprechendes Onboarding erfolgt. Die Aufgabe der Definition der Pakete und deren Strukturierung, sowie die Einordnung in die Paketlandschaft sollte durch den Softwarearchitekt bzw. Softwareentwicklungsverantwortlichen wie z.B. den SAP Lead Developer erfolgen, um eine Konsistenz über Pakete hinweg sicherzustellen.
+The above-mentioned advantages only arise if the package concept is implemented comprehensively and consistently within the company in the form of a package strategy. It is therefore important that you clearly define your package strategy and determine how packages are created and documented.  
+Make sure that the people responsible for development understand and can implement the specifications for the package concept. It is therefore important to adequately train the developers regarding the package concept to be implemented and to check compliance and proper implementation. Particularly when external developers are used, it is important to ensure that appropriate onboarding takes place. The task of defining the packages and their structuring, as well as their classification in the package landscape, should be carried out by the software architect or software development manager such as the SAP Lead Developer in order to ensure consistency across packages.
 
-### Vermeidung großer / unspezifischer Sammlerpakete
+### Avoiding large/unspecific collector packs
 
-Wir empfehlen die Erstellung großer Sammlerpakete (z.B. auf Basis Modulebene) nicht zu erlauben, da dies zu Problemen mit der Übersichtlichkeit und zu ungewünschten Abhängigkeiten führen kann und das Prinzip der Single Responsibility verletzt.  
-Das Risiko ist groß, dass aus diversen Gründen zahlreich verschiedenartige Klassen und Funktionen in solchen Paketen landen, anstatt solide architektonische Überlegungen vorzunehmen, was die Anstrengung eine geordnete Systemarchitektur einzuhalten, konterkarieren kann.  
+We recommend not allowing the creation of large collector packages (e.g. based on module level), as this can lead to problems with clarity and unwanted dependencies and violates the principle of single responsibility.  
+There is a great risk that, for various reasons, numerous different classes and functions end up in such packages instead of solid architectural considerations, which can counteract the effort to maintain an orderly system architecture.  
 
-Es kann aber durchaus Sinn machen, kleine, wohldefinierte und Domänenspezifische Hilfspakete zu erstellen, die grundlegende und oft benötigte Hilfsfunktionen zentral bereitstellen.
+However, it can definitely make sense to create small, well-defined and domain-specific help packages that provide basic and often needed help functions centrally.
 
-## Weiterführende Fragestellungen bei der Umsetzung des Paketkonzepts
+## Further questions when implementing the package concept
 
-Es gibt neben den hier beschriebenen Empfehlungen zum Paketkonzept weitere Fragestellungen auf, die hier nicht weiter eingegangen werden können, da eine detaillierte Behandlung den Umfang des Leitfadens übersteigen würde. Diese sollten aber in den Richtlinien und Handbüchern berücksichtigt und definiert werden. Hierbei handelt es sich um folgende Aspekte:  
+In addition to the recommendations for the package concept described here, there are further questions that cannot be discussed further here, as a detailed treatment would exceed the scope of the guide. However, these should be taken into account and defined in the guidelines and manuals. These are the following aspects:  
 
-- Vermeidung statischer Abhängigkeiten - Pakete sollen so definiert werden, dass diese unabhängig von anderen Paketen sind
-- Definition der Vorgehensweise, wenn Abhängigkeiten unvermeidbar oder gewünscht sind. Hier bieten sich verschiedene Lösungsansätze an wie z.B.:
-  - über Definition von BAdIs - die dann lokal implementiert werden und darüber die Paketverbindung herstellen
-  - Aufrufe einer Funktion eines anderen Paketes über dynamischen Funktionsbausteinaufruf
-- Größe von Paketen - Architektonische Grenzen - Abgrenzung - Kosten (Clean Architecture)
-- Paket Refactoring - Splitting - Kombination einzelner Pakete - Kontinuierliche Paketpflege bei Änderungen und Erweiterungen
+- Avoiding static dependencies - Packages should be defined in such a way that they are independent of other packages
+- Definition of the procedure when dependencies are unavoidable or desirable. There are various possible solutions here, such as:
+  - by defining BAdIs - which are then implemented locally and used to establish the package connection
+  - Calling a function from another package via dynamic function module calls
+- Size of packages - Architectural boundaries - Boundaries - Costs (Clean Architecture)
+- Package refactoring - Splitting - Combination of individual packages - Continuous package maintenance for changes and extensions
 
-## Das Paketkonzept in ABAP Cloud - Softwarekomponenten
+## The package concept in ABAP Cloud - software components
 
-Im Kontext von ABAP Cloud, ist das hier beschriebene Paketkonzept nicht mehr 1:1 anwendbar, da Paketschnittstellen in der Cloud nicht mehr unterstützt werden.  
-Mit der Einführung des ABAP Environments für die Entwicklung auf der Cloud und mit ABAP Cloud bekommt die schon lange vorhandene, aber in der Regel nicht für die Strukturierung benutzte Eigenschaft "Softwarekomponente" (SWC) eine tragende Bedeutung in der Strukturierung von ABAP-Software. Die Softwarekomponente wird bei Entwicklung mit ABAP Cloud ein zentraler Bestandteil der Softwarestruktur und ergänzt das Paketkonzept.
-Die Pakete unterhalb der Softwarekomponente dienen zur Strukturierung der verschiedenen Bestandteile einer Anwendung.
-Die Paketschnittstellen entfallen hierbei, da die Verwendungsbeziehungen nicht mehr auf der Ebene der Pakete gepflegt werden. Die Prinzipien sind aber vergleichbar. Bei den Softwarekomponenten wird die Verwendung über die Release Contracts (C1) gesteuert. Damit sind Objekte in Softwarekomponenten systemweit verwendbar, sofern diese mit einem Release Contract versehen sind.  
-Soll die Verwendung nur durch Objekte definierter Softwarekomponenten erfolgen, kann dies in sog. Softwarekomponentenbeziehungen (SWC) erfolgen. Die hier deklarierten Softwarekomponenten erhalten die Erlaubnis alle Objekte der SWC zu verwenden. Eine Einschränkung auf spezifische Objekte der eigenen SWC ist nicht möglich. Detaillierte Informationen finden Sie in der [SAP Dokumentation zu SWC](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/software-component?locale=en-US)  
+In the context of ABAP Cloud, the package concept described here is no longer applicable 1:1, as package interfaces are no longer supported in the Cloud.  
+With the introduction of the ABAP environment for development on the Cloud and with ABAP Cloud, the “software component” (SWC) property, which has been around for a long time but is generally not used for structuring, is becoming increasingly important in the structuring of ABAP software. When developed with ABAP Cloud, the software component becomes a central part of the software structure and complements the package concept.
+The packages below the software component are used to structure the various components of an application.
+The package interfaces are no longer required because the usage relationships are no longer maintained at the package level. But the principles are comparable. The use of the software components is controlled via the release contracts (C1). This means that objects in software components can be used system-wide as long as they are provided with a release contract.  
+If only software components defined by objects are to be used, this can be done in so-called software component relationships (SWC). The software components declared here receive permission to use all SWC objects. A restriction to specific objects of your own SWC is not possible. Detailed information can be found in the [SAP Documentation for SWC](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/software-component?locale=en-US)  
 
-Auch wenn sich einige Elemente des Paketkonzepts in der Cloud nicht mehr wiederfinden, ist die Umsetzung und Anwendung der oben beschriebenen Konzepte dennoch in aktuellen On-Premise und private Cloud SAP Systemen sinnvoll, das es Entwicklungen strukturiert, Abhängigkeiten und Sichtbarkeiten deklariert und damit hilft, gut strukturierte Anwendungen zu erstellen.  
+Even if some elements of the package concept are no longer found in the Cloud, the implementation and application of the concepts described above still makes sense in current on-premise and private Cloud SAP systems because it structures developments, declares dependencies and visibility and thus helps to create well-structured applications.  
 
-## Von der Architektur zum Design
+## From architecture to design
 
-Nachdem mit den hier genannten Ausführungen die Voraussetzung für eine gute Architektur geschaffen wurden, die sich in der Paketstruktur wiederfindet, muss nun anschließend in den einzelnen Unterpaketen die Anwendungsarchitektur in konkreter Form von Klassen definiert/designed werden. Die Ausführungen hierzu finden Sie im Abschnitt: [Entwurf und Gestaltung moderner SAP-Anwendungen](/ABAP-Leitfaden//abap/oo-design/).
+After the statements mentioned here have created the prerequisites for a good architecture, which is reflected in the package structure, the application architecture must now be defined/designed in the specific form of classes in the individual sub-packages. You can find the information on this in section: [Design and design of modern SAP applications](/ABAP-Leitfaden//abap/oo-design/).

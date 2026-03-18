@@ -12,23 +12,23 @@ nav_order: 1
 1. TOC
 {:toc}
 
-Im Laufe der Jahre hat SAP verschiedene Formulartechnologien herausgebracht. Inzwischen gibt es drei verschiedene Technologien, welche in S/4HANA verfügbar sind. Dadurch herrscht bei vielen Unternehmen z.T. eine große Mischung, was die Verwendung der verschiedenen Formulartechnologien angeht. Dementsprechend müssen die zuständigen Entwickler das entsprechende Knowhow für die verwendeten Formulartechnologien vorhalten.
+Over the years, SAP has released various form technologies. There are now three different technologies available in S/4HANA. As a result, many companies sometimes have a large mix when it comes to the use of different form technologies. Accordingly, the responsible developers must have the appropriate know-how for the form technologies used.
 
 {: .note }
-> Allgemein ist noch auf das Ende der Unterstützungsdauer für die Formulartechnologien SAPscript und SmartForms hinzuweisen, welche im Jahr 2040 liegt (siehe auch die Hinweise 2791338 und 2900377).
+> In general, it should be noted that the end of the support period for the form technologies SAPscript and SmartForms is in 2040 (see also notes 2791338 and 2900377).
 
 ## SAPscript (1992 R/3)  
 
-Auch im Jahr 2025 haben sehr viele Unternehmen weiterhin SAPscript Formulare im Einsatz. Häufig sind dies seit Jahren oder z.T. Jahrzehnten bestehende Formulare. Deshalb müssen ABAP Entwickler sich auch weiterhin mit dieser Technologie auskennen, um ggf. Anpassungen an den Formularen vornehmen zu können.
+Many companies will continue to use SAPscript forms in 2025. These are often forms that have existed for years or sometimes decades. Therefore, ABAP developers must continue to be familiar with this technology in order to be able to make adjustments to the forms if necessary.
 
-Die Übertragung der Daten vom Druckprogramm an das Formular erfolgt per globaler Variablen. Die Variablen müssen exakt gleich im Druckprogramm und im Formular benannt werden, um eine automatische Datenübertragung zu gewährleisten.
+The data is transferred from the print program to the form using global variables. The variables must be named exactly the same in the print program and in the form to ensure automatic data transfer.
 
-Wird ein Formular in anderen Sprachen benötigt, so muss das Formular mit demselben Namen, aber in der entsprechend anderen Sprache, in der Transaktion SE71 angelegt/gespeichert werden, um die Übersetzung durchführen zu können.
+If a form is required in other languages, the form with the same name but in the corresponding different language must be created/saved in transaction SE71 in order to be able to carry out the translation.
 
-Während der Laufzeit können SAPscript Formulare gedebugged werden. Dafür muss der Debugger in Transaktion SE71 im Menü unter „Hilfsmittel“ als erstes eingeschalten werden. Anschließend wird das Druckprogramm / die Transaktion zum Prozessieren des Formulars ausgeführt.  
-Das Debuggen ist relativ unkomfortabel und eigentlich nicht mehr zeitgemäß. Es wird jedes Textelement angesprungen, was z.T. zeitaufwändig ist. Werte von Variablen kann man sich anzeigen lassen in dem der Variablenname ohne „&“ im Debugger eingegeben und mit ENTER bestätigt wird.  
+SAPscript forms can be debugged during runtime. To do this, the debugger must first be switched on in transaction SE71 in the menu under “Utilities”. The print program/transaction to process the form is then executed.  
+Debugging is relatively inconvenient and actually no longer up to date. Every text element is jumped to, which is sometimes time-consuming. Values ​​of variables can be displayed by entering the variable name without “&” in the debugger and confirming with ENTER.  
 
-Mittels Funktionsbaustein OPEN_FORM wird das SAPscript Formular aufgerufen.
+The SAPscript form is called using the OPEN_FORM function module.
 
 | Transaktion | Beschreibung |
 | --- | --- |
@@ -40,22 +40,22 @@ Mittels Funktionsbaustein OPEN_FORM wird das SAPscript Formular aufgerufen.
 
 ## SmartForms (2001) 
 
-Im Vergleich zu SAPscript hat SmartForms eine modernere SAP GUI Oberfläche, zur Gestaltung von Formularen. Ab dieser Technologie wurde auch mit einer Schnittstelle zur Datenübertragung zwischen Druckprogramm und Formular gearbeitet. Somit ist jedoch auch eine Möglichkeit mehr da, wo sich evtl. Coding für eine Datenbeschaffung bzw. –steuerung verbergen kann.  
+Compared to SAPscript, SmartForms has a more modern SAP GUI interface for designing forms. From this technology onwards, an interface was also used for data transfer between the print program and the form. However, this also means there is another possibility where coding for data acquisition or control may be hidden.  
 
-Bei dieser Technologie wurde die Mehrsprachigkeit von SAP besser umgesetzt als im SAPscript. Hier kann mittels Transaktion SE63 übersetzt werden und es muss nicht das komplette Formular in einer neuen Sprache angelegt werden. Des Weiteren wurde eine Anbindung an das SAP Transportwesen integriert. Leider fehlt genauso wie bei SAPscript eine Versionierung der Formularanpassungen im Standard. Dies macht es erforderlich einen manuellen Prozess zu gestalten, mit dem gewährleistet wird auch kurzfristig auf einen älteren Formularstand zurückgehen zu können. Ein Beispiel hierfür wäre, dass anzupassende Formular unter einem neuen Namen (ggf. mit Datumsangabe im Namen) im Entwicklungssystem vor der Änderung in ein lokales Paket zu kopieren und somit diesen letzten im Produktivsystem funktionierenden Stand zu sichern. 
+With this technology, the multilingualism of SAP was implemented better than in SAPscript. Translating can be done here using transaction SE63 and the entire form does not have to be created in a new language. Furthermore, a connection to the SAP transport system was integrated. Unfortunately, as with SAPscript, versioning of the form adjustments is missing in the standard. This makes it necessary to design a manual process that ensures that you can go back to an older form version at short notice. An example of this would be to copy the form to be adapted under a new name (possibly with a date in the name) in the development system into a local package before making the change and thus save the last version that works in the production system. 
 
 {: .recommendation }
-> Stimmen Sie sich bezüglich Vorgehen und Namenskonvention unbedingt in Ihrem Entwicklungsteam ab!  
+> Be sure to coordinate the procedure and naming convention with your development team!  
 
-Der Name des Schnittstellenbausteins wird vom System generiert und unterscheidet sich von SAP System zu SAP System (Entwicklung, Qualitätssicherung, Produktion). Daher ist es nötig den Funktionsbaustein „SSF_FUNCTION_MODULE_NAME“ im Druckprogramm aufzurufen um den tatsächlichen Namen (Importing-Parameter FM_NAME) des generierten Funktionsbausteins zur Laufzeit im jeweiligen SAP System zu ermitteln.  
+The name of the interface block is generated by the system and differs from SAP system to SAP system (development, quality assurance, production). It is therefore necessary to call the function block “SSF_FUNCTION_MODULE_NAME” in the print program in order to determine the actual name (importing parameter FM_NAME) of the generated function block at runtime in the respective SAP system.  
 
-Möchte man ein SmartForms Formular debuggen setzt man am besten einen Breakpoint im generierten Schnittstellenfunktionsbaustein. Den Namen des Funktionsbausteins kann man sich über die Transaktion SMARTFORMS im Menü „Umfeld“ anzeigen lassen. Diesen Funktionsbaustein dann z.B. mittels Transaktion SE37 oder SE80 anzeigen und an entsprechender Stelle einen Breakpoint setzen.
+If you want to debug a SmartForms form, it is best to set a breakpoint in the generated interface function module. The name of the function module can be displayed using the transaction SMARTFORMS in the “Environment” menu. Then display this function module using transaction SE37 or SE80, for example, and set a breakpoint at the appropriate point.
 
-Der SAP Standard liefert diverse Testprogramme und Testformulare aus. Diese beginnen mit „SF_\*“.
+The SAP standard delivers various test programs and test forms. These start with “SF_\*”.
 
 | Transaktion | Beschreibung |
 | --- | --- |
-| SMARTFORMS | SmartForms Editor für Formulare und Stile |
+| SMARTFORMS | SmartForms editor for forms and styles |
 
 ## Adobe Forms
 
@@ -63,52 +63,52 @@ Der SAP Standard liefert diverse Testprogramme und Testformulare aus. Diese begi
 ### SAP Interactive Forms by Adobe (2005)  
 
 
-Lassen Sie sich von dem Teil „Interactive“ im Namen nicht täuschen – hierbei handelt es sich sehr wohl um „Druckformulare“ und nicht ausschließlich um interaktive Formulare.  
+Don’t let the “Interactive” part of the name fool you – these are actually “print forms” and not just interactive forms.  
 
-Das Formularlayout wird mittels LiveCycle Designer (LCD von Adobe) in der Transaktion SFP gestaltet. Der LCD muss dafür im SAP GUI installiert sein. Ebenfalls in der Transaktion SFP wird die Schnittstelle und der Kontext des Formulars angelegt und bearbeitet.
+The form layout is designed using LiveCycle Designer (LCD from Adobe) in transaction SFP. The LCD must be installed in the SAP GUI. The interface and context of the form are also created and edited in the SFP transaction.
 
-Folgende Funktionalitäten werden bei der Formulargestaltung mit SAP Interactive Forms by Adobe im Vergleich zu SAPscript und SmartForms unterstützt:  
+The following functionalities are supported when designing forms with SAP Interactive Forms by Adobe compared to SAPscript and SmartForms:  
 
-- Grafiken können direkt eingebettet werden  
-- Objekte können gedreht werden  
-- verschiedene Seitenausrichtungen in einem Formular möglich  
-- Grafische Elemente (Falzmarken) möglich  
+- Graphics can be embedded directly  
+- Objects can be rotated  
+- different page orientations possible in one form  
+- Graphic elements (fold marks) possible  
 - Wiederverwendung komplexer Layoutelemente  
-- Verwendung von TrueType-Schriftarten möglich  
-- Barcodes können auf vielen Druckern gedruckt werden (Postscript, PCL, PDF und Zebra)  
-- Barrierefreiheit möglich  
-- Drag&Drop Funktion zum Positionieren von Objekten
+- Use of TrueType fonts possible  
+- Barcodes can be printed on many printers (Postscript, PCL, PDF and Zebra)  
+- Accessibility possible  
+- Drag&Drop function for positioning objects
 
 Adobe Formulare bestehen bzgl. Layout aus verschiedenen Objekten:
 
 - Masterseite:  
-    ein oder mehrere Masterseiten sind pro Formular möglich und sind die oberste Ebene eines Formulars, um das Formular zu strukturieren. Hier werden Informationen, welche sich auf jeder Ausgabeseite wiederholen sollen platziert, ebenso wie die Größe und der Platz des Inhaltsbereichs definiert.  
+    One or more master pages are possible per form and are the top level of a form to structure the form. Information that should be repeated on every output page is placed here, as well as the size and space of the content area.  
 
 - Inhaltsbereich:  
-    Bereich zur Ausgabe der dynamischen oder statischen Inhalte.  
+    Area for outputting dynamic or static content.  
 
 - Inhaltsseite:  
-    enthält die Inhalte, die einem Inhaltsbereich einer Masterseite zugeordnet werden.
+    contains the content that is assigned to a content area of ​​a master page.
 
-Um diese Objekte zu pflegen und zu bearbeiten, muss im Layoutbereich der Transaktion SFP zwischen den Tabreitern „Designansicht“ und „Masterseiten“ gewechselt werden.  
-Der Tabreiter „PDF-Vorschau“ ermöglicht eine Vorschau auf das Formularlayout.
+In order to maintain and edit these objects, you must switch between the “Design View” and “Master Pages” tabs in the layout area of ​​the SFP transaction.  
+The “PDF Preview” tab allows you to preview the form layout.
 
 {: .note } 
-> Wird bei Bearbeiten > Formulareigenschaften > Vorschau eine XFD.xml Datei mit Beispieldaten (welche z.B. aus einem Test- oder Produktivsystem generiert und heruntergeladen wurde) hinterlegt, so werden diese Formularinhalte dann auch in einem Entwicklungssystem unter “PDF-Vorschau” angezeigt. Dies ist äußerst hilfreich, um z.B. inhaltsabhängige Formatierungen zu testen o.ä.
+> If an XFD.xml file with sample data (which was generated and downloaded from a test or production system, for example) is stored in Edit > Form Properties > Preview, this form content will then also be displayed in a development system under “PDF preview”. This is extremely helpful, for example, to test content-dependent formatting or similar.
 
 <br/>
 
-![Vorschau](./img/image-01.png)
+![preview](./img/image-01.png)
 
-Vorschau
+preview
 {: .img-caption}
 
 
 {: .note } 
-> Der LCD lässt Anpassungen im Anzeigenmodus zu. Diese können NICHT gespeichert werden!  
-> Vergewissern Sie sich also vor der Arbeit an einem Adobe Formular, dass Sie sich im „Ändern-Modus“ der Transaktion SFP befinden.  
+> The LCD allows adjustments in display mode. These CANNOT be saved!  
+> So before working on an Adobe form, make sure that you are in “change mode” of the SFP transaction.  
 
-Die Schnittstelle ist ein eigenständiges Objekt mit einem eindeutigen Namen. Sie kann mehrfach verwendet werden und stellt die Zuordnung der Anwendungsdaten, z.B. aus einem Druckprogramm, zum Formular dar.
+The interface is a standalone object with a unique name. It can be used multiple times and represents the assignment of application data, e.g. from a printing program, to the form.
 
 ![Aufbau](./img/image-02.png)
 
@@ -116,74 +116,74 @@ Aufbau
 {: .img-caption}
 
 
-Folgende Schnittstellentypen stehen zur Verfügung:
+The following interface types are available:
 
 - ABAP Dictionary basierte Schnittstelle
 - XML Schema basierte Schnittstelle
 - Smart Forms kompatible Schnittstelle
 
-Der am häufigsten verwendete Schnittstellentyp ist die „ABAP Dictionary basierte“ Schnittstelle.  
-Die Schnittstelle besteht aus drei konkreten Bereichen:
+The most commonly used interface type is the “ABAP Dictionary based” interface.  
+The interface consists of three specific areas:
 
 - Formularschnittstelle  
-    mit den Unterbereichen: Import, Export, Ausnahmen  
+    with the sub-areas: import, export, exceptions  
 
 - Globale Definitionen  
-    Zur Definition von Variablen, um zusätzlich zu Daten der Formularschnittstelle auch andere Daten speichern zu können.  
+    To define variables in order to be able to store other data in addition to data from the form interface.  
 
 - Initialisierung  
-    Möglichkeit zusätzliche Daten im Formular nachzulesen. Das Coding sollte kurz und knapp gehalten werden. Der Editor hat an dieser Stelle einige Einschränkungen wie z.B. keine Vorwärtsnavigation und kein Pretty-Printer.  
+    Possibility to read additional data in the form. The coding should be kept short and concise. The editor has some limitations at this point such as no forward navigation and no pretty printer.  
     
 {: .recommendation }
-> Die Business Logik in eine Klasse auslagern, welche hier aufgerufen wird.  
+> Outsource the business logic to a class, which is called here.  
 
 {: .note }
-> Um die Übersichtlichkeit nicht zu verlieren und die Logik des Formulardrucks nicht zu komplex zu machen, sollte vor jeder Implementierung überlegt werden, ob das nötige Coding im aufrufenden Druckprogramm hinterlegt wird oder in der Formularschnittstelle. Die Entscheidung hängt natürlich auch davon ab, ob ein SAP Standarddruckprogramm 
-> verwendet wird, oder ein kundeneigenes Druckprogramm.
+> In order not to lose clarity and not to make the logic of form printing too complex, you should consider before each implementation whether the necessary coding is stored in the calling print program or in the form interface. Of course, the decision also depends on whether a SAP standard print program 
+> is used, or a customer-specific printing program.
 
-Wie bei SmartForms wird auch bei Adobe Forms Formularen ein vom SAP System generierter Funktionsbaustein benötigt, um das Formular auszugeben. Da dieser Funktionsbausteinname ebenfalls, wie bei SmartForms von System zu System unterschiedlich ist, muss der Funktionsbaustein FP_FUNCTION_MODULE_NAME verwendet werden, um zur Laufzeit den richtigen Namen des Funktionsbausteins zu ermitteln.  
-Grundsätzlich hat der generierte Funktionsbaustein die gleichen Import- und Exportparameter wie die Formularschnittstelle (SFP), außerdem sind die Kontextobjekte ebenfalls enthalten.
+As with SmartForms, Adobe Forms forms require a function module generated by the SAP system to output the form. Since this function module name also varies from system to system, as with SmartForms, the function module FP_FUNCTION_MODULE_NAME must be used to determine the correct name of the function module at runtime.  
+Basically, the generated function module has the same import and export parameters as the form interface (SFP), and the context objects are also included.
 
-In das Debugging eines Adobe Formulars kann ebenfalls mittels Breakpoint im generierten Funktionsbaustein eingestiegen werden.  
+You can also start debugging an Adobe form using a breakpoint in the generated function module.  
 
-Adobe Forms Formulare können mittels der Transaktion SFP versioniert werden. Dies kann manuell erfolgen oder wird automatisch durchgeführt, sobald ein Transport vom Entwicklungssystem in ein anderes SAP System erzeugt wird.
+Adobe Forms forms can be versioned using transaction SFP. This can be done manually or is done automatically as soon as a transport is created from the development system to another SAP system.
 
-Die Übersetzung eines Adobe Formulars kann direkt in der Transaktion SFP durchgeführt werden (Menü: Springen > Übersetzung) oder mittels Transaktion SE63 (Menü: ABAP Objekte > Andere Langtexte > FS Formulare und Stile > PDFB PDF- basierte Formulare).
+The translation of an Adobe form can be carried out directly in transaction SFP (menu: Goto > Translation) or using transaction SE63 (menu: ABAP Objects > Other long texts > FS forms and styles > PDFB PDF-based forms).
 
-Der SAP Standard liefert diverse Testprogramme und Testformulare aus. Diese beginnen mit „FP_TEST\*“.
+The SAP standard delivers various test programs and test forms. These begin with “FP_TEST\*”.
 
 | Transaktion | Beschreibung |
 | --- | --- |
-| SFP | Adobe Form Builder für Formulare und Formularschnittstellen |
+| SFP | Adobe Form Builder for forms and form interfaces |
 
 <br/>
 
 ### SAP S/4HANA Forms (2015 S/4HANA)  
 
 
-Grundlage sind Adobe Formulare mit Gateway-Schnittstellen, deren Datenbeschaffung mittels Gateway-Services (also keine klassischen Druckprogramme) erfolgt. Die Pflege erfolgt mit Fiori Apps und somit sind “SAP S/4HANA Forms” public-cloud-fähig.
+The basis is Adobe forms with gateway interfaces, the data of which is obtained using gateway services (i.e. no classic printing programs). Maintenance is carried out with Fiori apps and therefore “SAP S/4HANA Forms” are public cloud-capable.
 
-Das Layout wird ebenfalls mit dem LiveCycle Designer, jedoch als standalone, designed. Hierbei ist zu beachten, dass die bearbeiteten Objekte manuell in Transportaufträge aufgenommen werden müssen (mittels Fiori-App ID F1589) und es keine automatische Objektsperre gibt.  
+The layout is also designed with the LiveCycle Designer, but as a standalone. It should be noted that the processed objects must be included in transport orders manually (using Fiori app ID F1589) and there is no automatic object lock.  
 
-Ebenso wie die “SAP Interactive Forms by Adobe” benötigen die SAP S/4HANA Forms einen Adobe Document Service (ADS -> SAP Forms Service by Adobe).
+Just like the “SAP Interactive Forms by Adobe”, the SAP S/4HANA Forms require an Adobe Document Service (ADS -> SAP Forms Service by Adobe).
 
-Zu nennen ist an dieser Stelle, dass kundenindividuelle Bedingungen nur sehr beschränkt abgebildet werden können.
+It should be mentioned at this point that customer-specific conditions can only be represented to a very limited extent.
 
-Diese Formulartechnologie ist nur zusammen mit der Ausgabelösung S/4HANA Output Control (siehe Abschnitt XYZ) möglich.
+This form technology is only possible together with the S/4HANA Output Control output solution (see section XYZ).
 
 {: .note }   
-> - lokale Bearbeitung des Layouts / Formulars -> daher muss sich im Team abgestimmt werden!  
-> - keine automatische Transportanbindung -> Bedenken Sie das Sie alle Objekte manuell zusammensuchen und in einen Transport aufnehmen müssen.  
+> - local editing of the layout / form -> therefore the team must coordinate!  
+> - no automatic transport connection -> Remember that you have to manually search for all objects and include them in a transport.  
 
 | App ID | Beschreibung |
 | --- | --- |
 | F1434 | Formularvorlagen pflegen |
 | F2894 | Texte verwalten |
 | F2761 | Logos verwalten |
-| F1589 | Objekte in Transporte aufnehmen |
+| F1589 | Include objects in transports |
 
 {: .note }
-> Um diese Fiori Apps finden zu können muss die Katalog-ID SAP_BASIS_TCR_T dem angemeldeten Benutzer über eine Rolle zugewiesen werden (Transaktion PFCG).
+> In order to be able to find these Fiori apps, the catalog ID SAP_BASIS_TCR_T must be assigned to the logged in user via a role (transaction PFCG).
 
 ![Transaktion PFCG](./img/image-03.png)
 
@@ -202,53 +202,53 @@ Zuordnung Benutzer
 
 Adobe Fragments
 
-Es handelt sich hierbei um die Wiederverwendung von Masterformularvorlagen. Dadurch lassen sich Ausgaben aus unterschiedlichen Teilen zusammensetzen. Es wird zwischen den folgenden zwei Teilen unterschieden:
+This involves reusing master form templates. This allows expenses to be composed of different parts. A distinction is made between the following two parts:
 
 - Masterformular  
-    Kopf- und Fußbereich  
-    Findung durch Customizing in Abhängigkeit von Organisationsebenen wie z.B. Buchungskreis  
+    Head and foot area  
+    Determination by Customizing depending on organizational levels such as company code  
 
 - Inhaltsformular  
-    z.B. Rechnung oder Bestellung  
-    Findung durch BRF+ in Abhängigkeit zur Ausgabeart (z.B. Bestellung)
+    e.g. invoice or order  
+    Determination by BRF+ depending on the output type (e.g. order)
 
-Wichtige Fragmente sind z.B:
+Important fragments include:
 
 - SOMU_FORM_MASTER_A4
 - SOMU_FORM_MASTER_LETTER
 
-![Darstellung im SAP-GUI](./img/image-06.png)
+![Display in the SAP GUI](./img/image-06.png)
 
-Darstellung im SAP-GUI
+Display in the SAP GUI
 {: .img-caption}
 
 
-![Darstellung in Fiori](./img/image-07.png)
+![Displayed in Fiori](./img/image-07.png)
 
-Darstellung in Fiori
+Displayed in Fiori
 {: .img-caption}
 
 
 ![Fragments](./img/image-08.png)
 
-Adobe Fragments sind nur im Zusammenhang mit Output Control nutzbar
+Adobe Fragments can only be used in conjunction with Output Control
 {: .img-caption}
 
 
 ## Fazit
 
-SAP empfiehlt für neue Formulare grundsätzlich SAP Interactive Forms by Adobe zu verwenden.
-Dies ist zukunftssicher, da SAPscript und SmartForms von SAP selbst nicht mehr weiterentwickelt werden.
+SAP generally recommends using SAP Interactive Forms by Adobe for new forms.
+This is future-proof because SAPscript and SmartForms are no longer being further developed by SAP itself.
 
-Unternehmen, welche bereits viele Smart Forms Formulare im Einsatz haben, wird empfohlen diese weiterzuverwenden, jedoch neue Entwicklungen mit SAP Interactive Forms by Adobe umzusetzen.
+Companies that already use many Smart Forms forms are recommended to continue using them, but to implement new developments with SAP Interactive Forms by Adobe.
 
-Die Entscheidung welche Technologie verwendet wird, um Neuentwicklungen im Bereich Formulare umzusetzen, sollte nicht davon abhängig gemacht werden welche die vorherrschende Techologie bei den Bestandsformularen ist. Allen voran ist es wichtig die Wartbarkeit und Zukunftssicherheit im Blick zu haben und wie sich Ihr Unternehmen zukünftig bzgl. Systemlandschaft und Technologie strategisch weiter ausrichten möchte.
+The decision as to which technology is used to implement new developments in the area of ​​​​forms should not be made dependent on which technology is predominant in the existing forms. Above all, it is important to keep an eye on maintainability and future security and how your company would like to further strategically align itself in terms of system landscape and technology in the future.
 
-Schaut man sich die bestehenden Systemlandschaften an, so ergibt sich folgende Empfehlung.
+If you look at the existing system landscapes, the following recommendation emerges.
 
 | Systemlandschaft | Empfohlene Technologie |
 | --- | --- |
 | SAP ECC / S/4HANA On-Premise | SAP Interactive Forms by Adobe |
 | S/4HANA Cloud (Public / Private Edition) | SAP Interactive Forms by Adobe / SAP S/4HANA Forms (Cloud-Integration) |
-| Legacy-System mit vielen Smart Forms | Smart Forms weiterverwenden, neue Entwicklungen mit SAP Interactive Forms by Adobe umsetzen |
-| Legacy-System mit vielen SAPscript | SAPscript weiterverwenden, neue Entwicklungen mit SAP Interactive Forms by Adobe umsetzen |
+| Legacy system with many Smart Forms | Continue to use Smart Forms, implement new developments with SAP Interactive Forms by Adobe |
+| Legacy system with lots of SAPscript | Continue to use SAPscript, implement new developments with SAP Interactive Forms by Adobe |

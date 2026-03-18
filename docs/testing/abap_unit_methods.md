@@ -1,163 +1,163 @@
 ---
 layout: page
-title: Grundlagen zu Unit Tests
+title: Basics of unit testing
 permalink: /testing/abap_unit_methods/
-parent: Softwaretest mit ABAP Unit 
+parent: Software test with ABAP unit 
 nav_order: 1
 ---
 
 {: .no_toc}
-# Grundlagen zu ABAP Unit Tests
+# Basics of ABAP Unit Tests
 
 1. TOC
 {:toc}
 
-## Voraussetzungen für ABAP Unit Tests
+## Requirements for ABAP unit tests
 
-Nachdem im vorigen Abschnitt Herausforderungen und Voraussetzungen vor allem organisatorischer Art angesprochen wurden, gehen wir Im Folgenden Abschnitt auf technische Aspekte und Belange ein, die zu berücksichtigen sind, um erfolgreich ABAP Unit Tests zum Einsatz zu bringen.
+After addressing challenges and requirements of a primarily organizational nature in the previous section, in the following section we will address technical aspects and concerns that must be taken into account in order to successfully use ABAP unit tests.
 
-### Trennung von Datenmodell, Geschäftslogik und Präsentationsschicht
+### Separation of data model, business logic and presentation layer
 
-Im SAP-Umfeld hat es sich leider etabliert, dass alles, was für den Programmablauf benötigt wird, dort passiert, wo es gerade passt. Die Daten werden mit zusätzlichen SELECTS angereichert, aufbereitet und ausgegeben. Bei einem Doppelklick werden weitere Daten gelesen und es wird ein Popup ausgegeben, das den Anwender über irgendetwas informiert. All dies passiert in einem Stück Software, welches als Business Funktion gemäß der beschriebenen Geschäftsanforderung erstellt wurde und diese mit all dem, was nötig ist umsetzt.  
-So entsteht Code, in der beispielsweise eine Methode ```create_sales_order``` einen BAPI aufruft, der Daten verbucht und damit eine Auftragsnummer erstellt. In dieser klassischen, am Geschäftsprozess orientierten Entwicklung, wie sie viele Jahre üblich war und auch heute noch im Einsatz ist, findet keine Trennung verschiedener Belange gemäß dem "Separation of Concerns"-Prinzips statt. 
+Unfortunately, in the SAP environment it has become established that everything that is needed for the program to run happens wherever it is convenient. The data is enriched, processed and output with additional SELECTS. When you double-click, more data is read and a popup is displayed informing the user about something. All of this happens in a piece of software that was created as a business function according to the described business requirement and implements it with everything that is necessary.  
+This creates code in which, for example, a method ```create_sales_order``` calls a BAPI that posts data and thus creates an order number. In this classic, business process-oriented development, which was common practice for many years and is still in use today, there is no separation of various concerns according to the “Separation of Concerns” principle. 
 
-Eine grundlegende Regel von fachkompetenter Arbeit ist, dass Datenbeschaffung, Geschäftslogik und Datenausgabe (Präsentationsschicht) in der Anwendung technisch getrennt sind und sich im Code nicht vermischen. In einem Unit Test gibt es keinen Anwender, der eine Info-Meldung wegklicken kann, was die automatisierte Testbarkeit von solchen All-in-one Programmteilen stark erschwert.  
+A fundamental rule of professional work is that data acquisition, business logic and data (presentation layer) are technically separate in the application and do not mix in the code. In a unit test, there is no user who can click away an information message, which makes the automated testability of such all-in-one program parts very difficult.  
 
-Es gibt Programmbereiche, die nicht mittels Unit Tests überprüft werden können. Dazu gehören alle Programmteile, die von einem Dialog oder anderen Präsentationsfunktionen, wie z.B. ALV-Grid, abhängig sind. Ebenso sollten SAP Funktionen nicht durch eigene Unit Tests getestet werden. 
-Eine Trennung von Datenbeschaffung, Geschäftslogik und Anzeige ist in jedem Fall eine Verbesserung für die Softwarequalität. Unit Tests können einfacher umgesetzt werden, wenn vorhandenen Programmen neu strukturiert (refactored) und nach den Regeln von Clean-ABAP geschrieben werden und den Designprinzipien der Objektorientierung (SOLID) folgen.
+There are program areas that cannot be checked using unit tests. This includes all program parts that depend on a dialog or other presentation functions, such as ALV Grid. Likewise, SAP functions should not be tested using your own unit tests. 
+Separating data acquisition, business logic and display is definitely an improvement for software quality. Unit tests can be implemented more easily if existing programs are restructured (refactored) and written according to the rules of Clean-ABAP and follow the design principles of object orientation (SOLID).
 
-Um ein umfangreiches Überarbeiten erstellter Software zu vermeiden, ist daher ein gutes Design der Anwendung essentiell für die Umsetzung von Unit-Tests. Erläuterungen finden Sie hierzu im Kapitel [Moderne ABAP Entwicklung](/ABAP-Leitfaden/abap/oo-design/#design-und-erstellung-von-sap-anwendungen) und Abschnitt [Testbarkeit durch gutes Design](/ABAP-Leitfaden/abap/oo-design/#testbarkeit-durch-gutes-design).
+In order to avoid extensive revision of created software, a good design of the application is essential for the implementation of unit tests. You can find explanations in chapter [Modern ABAP Development](/ABAP-Leitfaden/abap/oo-design/#design-und-erstellung-von-sap-anwendungen) and section [Testability through good design](/ABAP-Leitfaden/abap/oo-design/#testbarkeit-durch-gutes-design).
 
-### Unit Tests sind nicht optional - Unit Tests als Teil der Definition of Done
+### Unit tests are not optional - unit tests as part of the definition of done
 
-> "Erst die Funktion implementieren - dann machen wir die Unit Tests (wenn dann noch Zeit ist)."
+> "First implement the function - then we'll do the unit tests (if there's still time)."
 
-Leider ist dieser Satz noch sehr häufig in ABAP Entwicklungsprojekten im Alltag zu finden. Im Vordergrund steht bei Zeitdruck eben die Lieferung der Funktionalität. 
-Erweitern sie Ihre "Definition of Done" und nehmen sie Unit Tests darin auf.  
-Es wird langfristig äußerst hilfreich sein das frühzeitige Erstellen von Unit Test in den Entwicklungsprozess zu integrieren. Das spätere Erstellen von Tests wird aufgrund von (Projekt-)Zeitdruck kaum funktionieren.
-Jeder Softwareentwickler sollte stets die Möglichkeit haben, qualitativ hochwertige Software zu erstellen. Hiervon sind automatische Tests ein wichtiger Bestandteil, auch wenn diese Tests länger und umfassender als das eigentliche Programm sein können. Dies ist ein Ausdruck der geschäftlichen Anforderung und Komplexität der Funktion.
+Unfortunately, this sentence is still very often found in ABAP development projects in everyday life. When there is time pressure, the focus is on delivering the functionality. 
+Expand your “Definition of Done” and include unit tests.  
+In the long term, it will be extremely helpful to integrate the creation of unit tests early into the development process. Creating tests later will hardly work due to (project) time pressure.
+Every software developer should always have the opportunity to create high-quality software. Automatic tests are an important part of this, even if these tests can be longer and more comprehensive than the actual program. This is an expression of the business requirement and complexity of the function.
 
 ### TDD (Test-Driven-Development)
 
-Wenn das Stichwort "Unit Tests" fällt, kommt es fast unweigerlich auch zu dem Thema _Test Driven Development_, kurz _TDD_. TDD ist ein Programmiervorgehen, bei dem - vereinfacht - zuerst definiert wird, welche Eingaben einer Funktion zu welchen Ergebnissen führen soll. Erst danach wird die Implementierung der Funktion realisiert. Durch das zuvor definierte Verhalten kann überprüft werden, ob die gewünschte Funktionalität gegeben ist.
+When the keyword “Unit Tests” is mentioned, the topic of _Test Driven Development_, or _TDD_ for short, almost inevitably comes up. TDD is a programming procedure in which - in simple terms - it is first defined which inputs of a function should lead to which results. Only then is the function implemented. The previously defined behavior can be used to check whether the desired functionality is present.
 
-Es geht an dieser Stelle explizit nicht um die Methode des Test Driven Development. Unit Tests können auch dann sinnvoll eingesetzt werden, wenn nicht nach dieser Methode vorgegangen wurde. Das Wichtigste ist aus unserer Sicht das Verständnis, wie Unit Tests funktionieren und welche Wichtigkeit sie haben.
+This point is explicitly not about the Test Driven Development method. Unit tests can be used sensibly even if this method was not used. From our perspective, the most important thing is to understand how unit tests work and what importance they have.
 
-Als wichtigste Eckpfeiler des TDD sind folgende Fragen vorab zu klären, bevor die Umsetzung der Funktionalität erfolgt:
+As the most important cornerstones of TDD, the following questions must be clarified in advance before the functionality is implemented:
 
-* in welche Funktionen wird die Gesamtfunktion aufgeteilt
-* welche Schnittstellen haben diese Funktionen
-* welche Daten werden benötigt um die Tests durchzuführen
-* welche Funktionen werden nicht mitgetestet und benötigen entsprechenden Testersatz (Mocks, Stubs ...)
+* Which functions is the overall function divided into?
+* which interfaces have these functions
+* what data is needed to carry out the tests
+* which functions are not tested and require appropriate test replacement (mocks, stubs...)
 
-Der Einsatz von TDD nach reiner Lehre ist nicht einfach und erfordert einige Erfahrung. Aber zumindest die Vorgehensweise sich als Entwickler über die o.g. Punkte Gedanken zu machen führt dazu, dass sich viele Fragestellungen bereits in einer frühen Phase der Entwicklung ergeben und somit später aufwändige (Konzept-)Änderungen und Nacharbeiten mit Nachtests ausbleiben.
+Using TDD based on pure teaching is not easy and requires some experience. But at least the approach of thinking about the above-mentioned points as a developer means that many questions arise in an early phase of development and therefore there are no later complex (concept) changes and rework with re-tests.
 
-## Allgemeines zu Unit Tests - Begriffsdefinitionen und Erläuterungen
+## General information about unit tests - definitions and explanations
 
 ### Einstieg
 
-Unit Tests sind wichtig. Das Erstellen, Verwalten und Entwickeln von Unit Tests erfordert umfangreiche Kenntnisse, die über das reine Schreiben von ABAP hinaus gehen. Das widerspricht der Aussage, dass sich dieses Kapitel an alle Programmierende richtet, unabhängig vom Wissensstand. Das ist jedoch nur auf den ersten Blick widersprüchlich, denn wir wollen mit diesem Kapitel alle erreichen. Wenn jemand noch nicht gut oder gar nicht objektorientiert programmieren kann, sich nicht mit Entwurfsmustern und anderen Programmierparadigmen auskennt, dann sollte das gelernt werden. Unit Test können eine gute Umgebung darstellen Techniken zu erlernen und diese anschließend auf den produktiven Code zu übertragen.
-Wir wollen Anregungen und Hilfestellungen dazu geben. Gleichwohl können wir an dieser Stelle nur begrenzt Informationen zu diesem Thema bereitstellen.
+Unit tests are important. Creating, managing, and developing unit tests requires extensive knowledge beyond just writing ABAP. This contradicts the statement that this chapter is aimed at all programmers, regardless of their level of knowledge. However, this is only contradictory at first glance, because we want to reach everyone with this chapter. If someone doesn't know how to program object-oriented well or at all, or isn't familiar with design patterns and other programming paradigms, then this should be learned. Unit tests can provide a good environment to learn techniques and then transfer them to productive code.
+We want to provide suggestions and assistance. However, we can only provide limited information on this topic at this point.
 
 {: .recommendation }
 > - Wir empfehlen Unit Tests
 
-#### Skills, die beim Arbeiten mit Unit Tests trainiert werden
+#### Skills that are trained when working with unit tests
 
 * Objektorientiertes Design z.B. lose Kopplung
-* Erstellen von testbaren Designs (Inversion of Control & Dependency Injection)
-* Agile Prinzipien und Methoden der Software Entwicklung z.B. ( S.O.L.I.D )
+* Creating testable designs (Inversion of Control & Dependency Injection)
+* Agile principles and methods of software development e.g. (S.O.L.I.D)
 * Test Prinzipien ( F.I.R.S.T )
-* Erstellen von kleinen Einheiten
+* Creating small units
 
-### Was sind Unit Tests genau?
+### What exactly are unit tests?
 
-Unit Tests sind Funktionen, die modularisierte Einheiten (Methoden, Funktionsbausteine) oder ganze Prozesse mit vorgegebenen Funktionen aufrufen und das Ergebnis mit den erwarteten Vorgaben abgleichen. 
+Unit tests are functions that call modularized units (methods, function blocks) or entire processes with specified functions and compare the result with the expected specifications. 
 
-Folgendes Beispiel demonstriert die Vorgehensweise: Es gibt eine Klasse mit einer Methode, die aus einem Text die Straße und die Hausnummer ermitteln soll. Es werden nun Unit Tests erstellt, die aus bereits bekannten Fehlern testen, ob das erwartete Ergebnis ermittelt wird.
+The following example demonstrates the procedure: There is a class with a method that is supposed to determine the street and house number from a text. Unit tests are now created that use known errors to test whether the expected result is determined.
 
-Rufe die Methode ```ZCL_ADDRESS->SEPARATE_HOUSENO_FROM_STREET``` mit der Eingabe ```ABC-Straße 13``` auf und prüfe, ob das Ergebnis ```13``` ist. Sollte das Ergebnis vom erwarteten Wert abweichen, dann schlägt der Unit Test fehlt und erzeugt eine Fehlermeldung in der Testumgebung.
+Call the method ```ZCL_ADDRESS->SEPARATE_HOUSENO_FROM_STREET``` with the input ```ABC-Straße 13``` and check if the result is ```13```. If the result deviates from the expected value, the unit test fails and generates an error message in the test environment.
 
-Für die Prüfung des Ergebnisses gibt es eine Reihe von Methoden der Klasse ```CL_ABAP_UNIT_ASSERT```. Die bekannteste Methode ist ```EQUALS```. Sie prüft, ob der vorgegebene Wert gleich dem erwarteten Wert ist. Es gibt noch andere Methoden, auf die wir im weiteren Kapitel eingehen.
+There are a number of methods of class ```CL_ABAP_UNIT_ASSERT``` for checking the result. The most popular method is ```EQUALS```. It checks whether the specified value is equal to the expected value. There are other methods, which we will discuss in the following chapter.
 
-Unit Tests werden in der Regel als lokale Testklassen zu einer globalen Klasse definiert. Die Unit Tests werden nur im Entwicklungssystem durchgeführt. 
+Unit tests are usually defined as local test classes to a global class. The unit tests are only carried out in the development system. 
 
-### Wann sind Unit Tests sinnvoll?
+### When do unit tests make sense?
 
-Beim Thema Unit Tests gibt es in der Regel zwei Lager: Die einen sagen, dass jegliches Coding mit Unit Tests geprüft werden muss (100% Code-Abdeckung). Die anderen sind der Meinung, dass Unit Tests überbewertet werden.
-Wir sind der Meinung, dass Unit Tests zum Programmieralltag dazugehören und dort eingesetzt werden sollten, wo sie sinnvoll sind. 
+When it comes to unit testing, there are usually two camps: Some say that all coding must be checked with unit tests (100% code coverage). The others are of the opinion that unit tests are overrated.
+We believe that unit tests are part of everyday programming and should be used where they make sense. 
 
-Was unter "sinnvoll" zu verstehen ist, sollte jedes Team für sich selbst herausfinden. Ebenso sollte bewertet werden, ob eine Funktionalität als "kritisch" eingestuft werden kann. Wenn es eine kritische Geschäftsfunktion gibt, dann sollte die Funktionalität auf jeden Fall über Unit Tests abgedeckt werden.
+Each team should find out for themselves what is meant by “useful”. It should also be assessed whether a functionality can be classified as “critical”. If there is a critical business function, then the functionality should definitely be covered via unit tests.
 
-Besonders prädestiniert für Unit Tests sind Methoden, die eine komplexe Logik haben und/ oder geschäftskritisch sind. 
+Methods that have complex logic and/or are business-critical are particularly ideal for unit tests. 
 
 ### Mocking
 
-Ein sehr wichtiger und hier oft erwähnter Begriff ist das sogenannte Mocking. Generell versteht man unter Mocking, dass Objekte wie z.B: Funktionsbausteine oder Klassen von SAP, die nicht Teil des Unit-Tests sind, durch Stellvertreterobjekte ersetzt werden. Wie ein Mocking erreicht wird, wird in einschlägigen Kursen zu ABAP oder auch Fachbüchern vermittelt, daher gehen wir wegen der technischen Detailtiefe hier nicht weiter darauf ein.  
-Es gibt auch verschiedene Formen des Mockings was im Abschnitt Testtechniken kurz erläutert wird.
+A very important term that is often mentioned here is so-called mocking. In general, mocking means that objects such as function blocks or classes from SAP, which are not part of the unit test, are replaced by substitute objects. How mocking is achieved is taught in relevant courses on ABAP or specialist books, so we will not go into it further here due to the level of technical detail.  
+There are also different forms of mocking, which are briefly explained in the testing techniques section.
 
 ### Testlevel
 
 #### Methoden Tests
 
-Tests einzelner Methoden mit dem Fokus die korrekte Arbeitsweise der Methoden sicher zu stellen. Die Tests sollten unbedingt unabhängig von der Datenbank ausgeführt werden.  
-Aus dieser Definition ergeben sich bereits oft die ersten Grundlagen für ein Refactoring, da viele Methoden mehrere Aufgaben ausführen.
-Eine große Anzahl oder sehr umfangreiche Unit Tests deuten oft darauf hin, dass Sie eine Methode zerlegen sollten.
+Tests of individual methods with the focus on ensuring that the methods work correctly. The tests should definitely be run independently of the database.  
+This definition often provides the initial basis for refactoring, as many methods carry out multiple tasks.
+A large number or very extensive unit tests often indicate that you should decompose a method.
 
 #### Komponententests
 
-Tests ganzer Klassen oder zusammenhängender Komponenten wie eine Klasse und ein BAPI zur Verbuchung.
-Diese Tests sind häufig von der Datenbank abhängig. Hier sollte mit entsprechenden Techniken gearbeitet werden um einen konsistenten Datenbankzustand für jeden Test herzustellen.  
-Hierzu eignen sich die entsprechenden Frameworks der SAP:
+Tests of entire classes or related components such as a class and a BAPI for updating.
+These tests are often database dependent. Appropriate techniques should be used here to create a consistent database state for each test.  
+The corresponding frameworks from SAP are suitable for this:
 
 * CDS Test Double Framework (Read Access)
 * ABAP SQL Test Double Framework (Read and Write Access)    
-  siehe [Managing Dependencies with ABAP Unit](https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/04a2d0fc9cd940db8aedf3fa29e5f07e.html?locale=en-US)
+See [Managing Dependencies with ABAP Unit](https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/04a2d0fc9cd940db8aedf3fa29e5f07e.html?locale=en-US)
 
 #### Integrationstests
 
-Bei Integrationstests werden Teile von oder ganze Prozesse getestet, um das Zusammenspiel der Komponenten abzusichern. 
-Diese Tests sind oft davon gekennzeichnet, dass die Vorbereitung der Ausgangslage an Daten aufwändig ist. Es wird benötigt: Kunde mit Liefersperre, Material ohne bestand, aber mit eingehender Bestellung usw.  Hier wird man einen Großteil der Tests auf eine effiziente Bereitstellung dieser Testdaten verwenden müssen. 
+During integration tests, parts of or entire processes are tested to ensure the interaction of the components. 
+These tests are often characterized by the fact that the preparation of the initial data is laborious. It is required: customer with a delivery block, material without stock but with an incoming order, etc. Here, a large part of the tests will have to be spent on the efficient provision of this test data. 
 
-## Vorgehen und Methodiken
+## Approach and methodologies
 
 ### Clean Islands
 
-Um zu vermitteln, wie eine gute Umsetzung von Unit Tests aussehen kann, können so genannte _Clean Islands_ helfen.
-Es handelt sich dabei um Pakete oder Klassen die in Bezug auf die Softwarequalität - und auch Unit-Tests - einen Vorzeigestatus haben.
-Somit dienen sie als Referenz für Teams, Externe und neue Kollegen, um analog neue Software zu erstellen.
+So-called _Clean Islands_ can help to convey what a good implementation of unit tests can look like.
+These are packages or classes that have exemplary status in terms of software quality - and also unit tests.
+They therefore serve as a reference for teams, external parties and new colleagues in order to create new software.
 
 ### Unit Tests modularisieren
 
-Unit Tests bestehen aus Code, der ebenso wie Produktcode, modularisiert, gewartet und erweitert werden muss. Es ist fast immer ratsam, einen Unit Test in kleine Methoden zu modularisieren, da es in der Natur der Tests liegt, dass mehrere Fälle identische Ausgangsdaten oder Absicherungen verwenden. Das Ziel muss sein, die Unit Tests übersichtlicher und besser wartbar zu machen.
+Unit tests consist of code that, like product code, needs to be modularized, maintained and extended. It is almost always advisable to modularize a unit test into small methods, since the nature of the tests means that multiple cases use identical starting data or validations. The goal must be to make the unit tests clearer and easier to maintain.
 
-*Vorgehen und Empfehlungen zur Modularisierung von Testcode:*
+*Procedure and recommendations for modularizing test code:*
 
-* Erstellen Sie für jede Methode ihrer Klasse eine eigene neue Testmethode.
-* Gibt es verschiedene Testfälle für eine Methode, erstellen Sie pro Fall eine eigene Testmethode (z.B. Erfolgsfall und Fehlerfall)
-* Kopieren Sie keine Methode. Wenn sie Code benötigen, den Sie bereits geschrieben haben, extrahieren Sie diesen in eine neue Testmethode, um diesen wiederverwenden zu können.
-* Überprüfen Sie dabei immer wieder die bisherigen Tests. Eine Engine die in der Lage ist, Testdaten in verschiedenen benötigten fachlichen Konstellationen zu erstellen, wird Ihnen beim Erstellen von Tests gute Dienste leisten.
+* Create a separate new test method for each method of your class.
+* If there are different test cases for a method, create your own test method for each case (e.g. success case and error case)
+* Do not copy any method. If you need code you've already written, extract it into a new test method so you can reuse it.
+* Always check the previous tests. An engine that is able to create test data in the various required technical constellations will serve you well when creating tests.
 
-Es gibt folgende zusätzliche Möglichkeiten, nach denen ebenfalls modularisiert werden kann:
+There are the following additional options that can also be used for modularization:
 
-* Methoden zur Zusammenstellung von abhängigen Klassen
-* Methoden zum Aufbau von Testdaten
-* Methoden zur Modularisierung von Tests
+* Methods for composing dependent classes
+* Methods for building test data
+* Methods for modularizing tests
 
 ### Code-Abdeckung (coverage)
 
-In den Entwicklungstools kann nachvollzogen werden, welche Code-Strecken beim Ausführen der Unit Tests durchlaufen wurden. Eine 100%-ige Codeabdeckung sollte dabei das Ziel sein.
+The development tools can be used to track which code sections were run through when executing the unit tests. The goal should be 100% code coverage.
 
-Bei vorhandenen Klassen, bei denen nicht auf die Trennung geachtet wurde, ist eine 100%-ige Testabdeckung kaum zu erreichen. Man muss den Aufwand eines Refactorings dem Nutzen entgegenstellen. Wenn eine Klasse keine 100%-ige Testabdeckung hat, ist es sicherlich nicht schlimm, aber es erleichtert die Bewertung, wie vertrauenswürdig Unit Tests zu einem Modul einzustufen sind. Wenn es eine Klasse gibt, die zu 100% Geschäftslogik enthält, dann können Sie bei einer Testabdeckung von 100% relativ sicher sein, dass diese Klasse so funktioniert, wie sie funktionieren soll. Wenn eine Klasse jedoch aus einem Mix von Geschäftslogik und Datenpräsentation besteht, dann ist es schwer festzustellen, ob Code-Teile nicht gut per Unit Test getestet werden konnten oder ob sie einfach vergessen wurden.
+For existing classes where separation was not taken into account, 100% test coverage is hardly achievable. You have to balance the effort of refactoring with the benefits. If a class doesn't have 100% test coverage, it's certainly not a bad thing, but it makes it easier to assess how trustworthy unit tests are for a module. If there is a class that contains 100% business logic, then with 100% test coverage you can be relatively confident that that class works the way it is supposed to work. However, if a class consists of a mix of business logic and data presentation, then it is difficult to determine whether pieces of code could not be unit tested well or whether they were simply forgotten.
 
 
 {: .note }
-> * [Unit Tests in ABAP](https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/08c60b52cb85444ea3069779274b43db.html?locale=en-US)
+> * [Unit tests in ABAP](https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/08c60b52cb85444ea3069779274b43db.html?locale=en-US)
 > * [Leseprobe "ABAP To The Future" (Paul Hardy): ABAP Unit and Test Driven Development](https://tinyurl.com/tddph2)
 > * [SAP Help "ABAP Unit in Test-Driven Development"](<https://help.sap.com/doc/saphelp_nw75/7.5.5/en-US/4e/c2efe26e391014adc9fffe4e204223/content.htm?no_cache=true>)
 > * [SAP-Community Blogs: Unit Testing ](https://community.sap.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=false&filter=location&location=blog-board:application-developmentblog-board&q=abap%20unit%20tests)
 > * [GIVEN - WHEN - THEN (Martin Fowler)](https://martinfowler.com/bliki/GivenWhenThen.html)
 > * [CACAMBER (Dominik Panzer)](https://github.com/dominikpanzer/cacamber-BDD-for-ABAP)
-> * [Agile ABAP-Entwicklung von Winfried Schwarzmann - Reinwerk](https://www.rheinwerk-verlag.de/agile-abap-entwicklung)
-> * [ABAPKoans von Damir Majer](https://github.com/damir-majer/ABAPKoans)
+> * [Agile ABAP development by Winfried Schwarzmann - Reinwerk](https://www.rheinwerk-verlag.de/agile-abap-entwicklung)
+> * [ABAPKoans by Damir Majer](https://github.com/damir-majer/ABAPKoans)
 > * [ABAP Unit Tests - SAP Learning Hub](https://learning.sap.com/learning-journeys/acquire-core-abap-skills/implementing-code-tests-with-abap-unit_b23c7a00-c2e8-406d-8969-b00db3f1fd87)

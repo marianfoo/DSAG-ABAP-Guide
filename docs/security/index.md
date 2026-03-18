@@ -1,18 +1,18 @@
 ---
 layout: page
-title: Sicherheit
+title: Security
 permalink: /security/
 nav_order: 13
 has_children: true
 ---
 
 {: .no_toc}
-# Sicherheit
+# Security
 
 1. TOC
 {:toc}
 
-Dieses Kapitel beschreibt ein paar Themengebiete rund um ABAP Entwicklung und es werden ein paar Konzepte erläutert. Der Fokus liegt hier auf Applikationssicherheit, die SAP-Basis und System-Sicherheitsthemen werden nicht näher betrachtet. Wir empfehlen Ihnen einen Threat-Modelling-Workshop für SAP-System-Angriffszenarien und ihre Abdeckung durchzuführen.
+This chapter describes a few topics related to ABAP development and explains a few concepts. The focus here is on application security, the SAP basis and system security topics are not examined in detail. We recommend that you conduct a threat modeling workshop for SAP system attack scenarios and their coverage.
 
-Das Themengebiet Sicherheit in der ABAP Entwicklung ist komplex und die hier aufgeführten Sicherheitsthemen sind ein guter Start. Bei weiteren Fragen weist der Leitfaden auf Referenzen und weitergehende Literatur hin.
+The topic of security in ABAP development is complex and the security topics listed here are a good start. If you have any further questions, the guide points to references and further literature.
 

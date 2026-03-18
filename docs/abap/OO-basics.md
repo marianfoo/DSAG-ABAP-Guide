@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Ergänzungen zu Objektorientierung
+title: Additions to object orientation
 permalink: /abap/oo-basics/
-parent: Entwurf und Gestaltung moderner SAP-Anwendungen
+parent: Design and design of modern SAP applications
 grand_parent: Moderne ABAP Entwicklung
 nav_order: 1
 ---
@@ -11,57 +11,57 @@ nav_order: 1
 {:toc}
 
 {: .no_toc}
-# Ergänzungen und Details zu Themen der Objektorientierung
+# Additions and details on object orientation topics
 
-Hier finden Sie ergänzende Informationen zu den Themen der Objektorientierung:
+Here you will find additional information on the topics of object orientation:
 
-## Grundprinzipien der Objektorientierung (SOLID) - Ergänzung
+## Basic principles of object orientation (SOLID) - addition
 
 <dl>
   <dt>Single Responsibility Principle</dt>
   <dd>
-    Eine Codeeinheit (Klasse, Methode, ...) sollte immer einen Zweck und damit einen Grund für Anpassungen haben. Eine Methode, die etwa
-    Customizing-Einträge liest, anhand derer Daten aufbereitet, und anschließend ein Formular ausgibt, hat drei Zwecke und auch mögliche Gründe für
-    Anpassungen (nämlich immer, wenn sich etwas an Customizing/Daten/Formular) ändern soll. Diese Methode sollte also aufgeteilt werden.
+    A code unit (class, method, ...) should always have a purpose and therefore a reason for adjustments. A method that...
+    Reading Customizing entries, using them to prepare data, and then outputting a form has three purposes and also possible reasons for
+    Adjustments (namely whenever something needs to change in Customizing/data/form). So this method should be split.
   </dd>
 
   <dt>Open/Closed Principle</dt>
   <dd>
-    Ein Modul sollte offen für Erweiterungen und geschlossen für Veränderungen sein. Das heißt, das Anpassungen vorgenommen werden können, ohne
-    dazu z.B. die ursprünglich genutzte Klasse zu bearbeiten. Eine Klasse `Drucker`, die etwa im Konstruktor die zu druckenden Daten beschafft, kann
-    ohne Anpassung des ursprünglichen Codes nichts anderes drucken. Bekommt diese Klasse hingegen eine Instanz des Interfaces `Datenbeschaffung` im
-    Konstruktor übergeben und ruft passende Methoden dieser auf, kann zur Anpassung einfach eine zweite Datenbeschaffungsklasse entwickelt werden.
+    A module should be open to extensions and closed to changes. This means that adjustments can be made without
+    For example, to edit the class originally used. A class `Drucker`, which obtains the data to be printed in the constructor, can
+    will not print anything else without adapting the original code. However, this class gets an instance of the interface `Datenbeschaffung` in
+    Constructor passed and calls appropriate methods of this, a second data retrieval class can easily be developed for customization.
   </dd>
 
   <dt>Liskov Substitution Principle</dt>
   <dd>
-    Code, der mit einer Klasse oder einem Interface arbeitet, sollte immer mit implementierenden oder erbenden Klassen funktionieren. Eine erbende Klasse
-    sollte also beispielsweise nicht in einer der implementierten Methoden eine unerwartete Exception werfen und somit einen Dump auslösen.
+    Code that works with a class or interface should always work with implementing or inheriting classes. An inheriting class
+    For example, it should not throw an unexpected exception in one of the implemented methods and thus trigger a dump.
   </dd>
 
   <dt>Interface Segregation Principle</dt>
   <dd>
-    Interfaces sollten so aufgeteilt sein, dass Nutzer nur notwendige Abhängigkeiten erhalten. Eine Datenbankzugriffsklasse, die in einer Anwendung
-    verwendete Daten lesen und schreiben kann, könnte etwa ein Interface `Datenleser` und ein Interface `Datenschreiber` implementieren, so dass
-    nur lesende Nutzer keine Abhängigkeit zu schreibenden Methoden haben.
+    Interfaces should be divided in such a way that users only receive necessary dependencies. A database access class that is used in an application
+    can read and write data used, could implement an interface `Datenleser` and an interface `Datenschreiber`, so that
+    Read-only users have no dependency on writing methods.
   </dd>
 
   <dt>Dependency Inversion Principle</dt>
   <dd>
-    Abhängigkeiten wie z.B. die Instanz einer Klasse, die das Interface `Datenbeschaffung` implementiert, sollten nicht durch eine verwendende Klasse `Anzeiger`
-    erzeugt werden, sondern dieser stattdessen im Konstruktor oder einer Methode übergeben werden. So kann für den Test von `Anzeiger` einfach eine andere
-    Implementierung für die Datenbeschaffung übergeben werden.
+    Dependencies such as the instance of a class that implements the interface `Datenbeschaffung` should not be replaced by a class using `Anzeiger`
+    be created, but instead passed to the constructor or a method. So to test `Anzeiger` you can simply use another one
+    Implementation for data collection will be handed over.
   </dd>
 </dl>
 
-## Entwurfsmuster
+## Design patterns
 
-Hier finden Sie ergänzende Erläuterungen zu den wichtigsten Entwurfsmustern:
+Here you will find additional explanations of the most important design patterns:
 
 ### Singleton-Pattern
 
-Das Singleton-Pattern zielt darauf ab, dass zu einer Klasse nur eine einzige Objektinstanz zur Laufzeit existiert bzw. existieren kann. Dazu wird die erste durch den Konstruktor erzeugte Instanz in eine Klassenvariable (CLASS-DATA) geschrieben und bei den folgenden Aufrufen des Klassenkonstruktors zur Erzeugung eines neuen Objektes wird ebendiese gespeicherte Instanz aus der Klassenvariable gelesen und zurückgegeben. So kann man kontrollieren, dass zu jeder Zeit nur eine Instanz einer Klasse existiert.
-Hier ein Beispiel, wie dies umgesetzt werden könnte:
+The singleton pattern aims to ensure that only a single object instance exists or can exist for a class at runtime. To do this, the first instance created by the constructor is written into a class variable (CLASS-DATA) and in subsequent calls to the class constructor to create a new object, this saved instance is read from the class variable and returned. This way you can control that only one instance of a class exists at any time.
+Here is an example of how this could be implemented:
 
 ```
 CLASS zcl_singleton DEFINITION.
@@ -99,8 +99,8 @@ singleton->do_something( ).
 
 ### Factory-Pattern
 
-Das Factory-Pattern ist ein Entwurfsmuster, das die Erstellung von Objekten kapselt. In ABAP wird es häufig verwendet, um die Instanziierung von Objekten zu zentralisieren und zu vereinfachen – besonders bei polymorphen Objekten oder wenn die Erzeugung komplex ist. Das Pattern bietet mehrere Vorteile: Änderungen an der Erzeugungslogik müssen nur an einer Stelle erfolgen, die Rückgabe eines Interfaces oder einer abstrakten Klasse (Polymorphismus) ist möglich und neue Typen können leicht ergänzt werden.
-Dies könnte beispielhaft folgendermaßen umgesetzt werden:
+The factory pattern is a design pattern that encapsulates the creation of objects. In ABAP it is often used to centralize and simplify the instantiation of objects - especially for polymorphic objects or when creation is complex. The pattern offers several advantages: changes to the creation logic only have to be made in one place, the return of an interface or an abstract class (polymorphism) is possible and new types can be easily added.
+This could be implemented as follows:
 
 ```
 * Abstrakte Basisklasse oder Interface
@@ -162,8 +162,8 @@ ENDIF.
 
 ### Facade-Pattern
 
-Das Facade-Pattern wird in ABAP verwendet, um eine vereinfachte Schnittstelle zu einem komplexen Subsystem bereitzustellen. Es kapselt die Komplexität mehrerer Klassen oder Prozesse hinter einer einzigen, leicht zu verwendenden Klasse – der „Fassade“. Dies bietet folgende Vorteile: Der Aufrufer muss sich nicht mit Details der Subsysteme beschäftigen, Änderungen in den Subsystemen wirken ich nicht direkt auf den Aufrufe aus und die Fassade kann in verschiedenen Kontexten wiederverwendet werden.
-Dies könnte beispielhaft folgendermaßen umgesetzt werden:
+The Facade pattern is used in ABAP to provide a simplified interface to a complex subsystem. It encapsulates the complexity of multiple classes or processes behind a single, easy-to-use class - the “facade”. This offers the following advantages: The caller does not have to deal with details of the subsystems, changes in the subsystems do not directly affect the calls and the facade can be reused in different contexts.
+This could be implemented as follows:
 
 ```
 * Subsystem-Klassen
@@ -225,11 +225,11 @@ facade->complete_order_process( ).
 
 ### MVC-Pattern
 
-Das MVC-Pattern wird verwendet, um die Programmierlogik in die 3 Bereiche Model (Datenmodell), View (Präsentationslogik) und Controller (Businesslogik) zu unterteilen.
-Das Model-View-Controller (MVC) Pattern ist ein bewährtes Architekturmodell, das auch in ABAP – insbesondere im Kontext von SAP eingesetzt werden kann. Es trennt die Anwendung in die drei Hauptkomponenten "Model" (Geschäftslogik und Datenzugriff), "View" (Darstellung der Daten / UI) und "Controller" (Vermittlung zwischen Model und View).
-Der Einsatz von MVC bietet folgende Vorteile: Bessere Wartbarkeit und Testbarkeit aufgrund der Trennung von Anliegen ("Separation of concerns"), Wiederverwendbarkeit von Views und Models, Skalierbarkeit für komplexe Anwendungen.
+The MVC pattern is used to divide the programming logic into three areas: Model (data model), View (presentation logic) and Controller (business logic).
+The Model-View-Controller (MVC) pattern is a proven architectural model that can also be used in ABAP - especially in the context of SAP. It separates the application into three main components: "Model" (business logic and data access), "View" (representation of data / UI) and "Controller" (intermediation between Model and View).
+The use of MVC offers the following advantages: Better maintainability and testability due to the separation of concerns, reusability of views and models, scalability for complex applications.
 
-Das Restful Application Programming Model bildet das MVC Pattern ab, da hier durch das technische Framework bereits eine strikte Trennung der Belange in Form von Model = CDS, Control = Behavior Definition und View = Fiori vorgegeben ist.
+The Restful Application Programming Model represents the MVC pattern, as the technical framework already specifies a strict separation of concerns in the form of Model = CDS, Control = Behavior Definition and View = Fiori.
 
 ```
 * Model Klasse
@@ -284,4 +284,4 @@ CLASS zcl_controller IMPLEMENTATION.
 ENDCLASS.
 ```
 
-Auch hier können wir leider nicht im Detail auf alle Entwurfsmuster eingehen, im Internet und der Fachliteratur finden sie zahlreiche Möglichkeiten, sich dem Thema anzunähern und in die Organisation zu bringen. Ein guter Startpunkt für die eigene Recherche ist z.B. [ABAP-OO Design Patterns m. Beispielen](https://zevolving.com/category/abapobjects/oo-design-patterns/).
+Here, too, we unfortunately cannot go into all the design patterns in detail; on the Internet and in specialist literature you will find numerous opportunities to approach the topic and bring it into the organization. A good starting point for your own research is, for example, [ABAP-OO Design Patterns m. Beispielen](https://zevolving.com/category/abapobjects/oo-design-patterns/).

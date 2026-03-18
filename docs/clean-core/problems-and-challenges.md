@@ -1,50 +1,50 @@
 ---
 layout: page
-title: Problemfelder und Herausforderungen
+title: Problem areas and challenges
 permalink: /clean-core/problems-and-challenges/
 parent: Clean Core
 nav_order: 3
 ---
 
 {: .no_toc}
-# Problemfelder und Herausforderungen
+# Problem areas and challenges
 
 1. TOC
 {:toc}
 
 
-Für etablierte Brownfield-Kunden oder SAP-AddOn Hersteller (Partner), die auf Legacy-Technologien basieren, ist die konsequente Umsetzung eines Clean Core-Konzeptes ohne ein Redesign der Prozesse nicht realisierbar. 
+For established brownfield customers or SAP add-on manufacturers (partners) who are based on legacy technologies, the consistent implementation of a Clean Core concept is not possible without a redesign of the processes. 
 
 ## Kundencode
 
-Der Großteil des über Jahrzehnte gewachsenen Kundencodes muss überarbeitet werden. Grund dafür ist, das bestehende Entwicklungen häufig auf nicht freigegebenen APIs oder Entwicklungskomponenten aus dem SAP-Standard basieren. Dabei sollten Sie im ersten Schritt analysieren, ob sie ihr System Cloud-Ready machen wollen. Dabei sollten sie auch prüfen, welche Lösungen vielleicht bereits veraltete Technologien verwenden, wie zum Beispiel BOPF, die komplexe Variantenkonfiguration-Einstellungen oder den klassischen Report.
+Most of the customer code that has grown over decades needs to be reworked. The reason for this is that existing developments are often based on unreleased APIs or development components from the SAP standard. The first step should be to analyze whether you want to make your system Cloud-Ready. You should also check which solutions may already use outdated technologies, such as BOPF, the complex variant configuration settings or the classic report.
 
-Neben den Kundenerweiterungen im SAP Standard, gibt es in jedem SAP-System die Thematik der Custom SAP Applications, das sind Eigenentwicklungen, welche neben dem SAP Standard parallel laufen. Die Ablösung solcher Anwendungen bedarf eigener Großprojekte und muss weiterhin von Prozessexperten betreut werden. 
+In addition to the customer extensions in the SAP standard, there is the issue of custom SAP applications in every SAP system, which are in-house developments that run parallel to the SAP standard. Replacing such applications requires major projects of its own and must continue to be supported by process experts. 
  
-Die Dissonanz zwischen der Sichtweise von SAP zum Clean Core und dem langjährigen Kundenstamm ist die Anwendung der Clean Core Prinzipien/Konzepte. 
+The dissonance between the SAP view of the Clean Core and the long-standing customer base is the application of the Clean Core principles/concepts. 
 
-Die Standardtransaktionen, Standard BADIs und Standard Fiori Apps reichen oftmals nicht mehr aus, um die Geschäftsprozessanforderungen abzudecken. Die klassischen Erweiterungen / RICEFW Objekte haben Mehrwerte geschaffen, welche erst in S/4HANA - dem Clean Core – wiedergefunden werden müssen. Um die neuen Technologien, beispielsweise SAP Build, vor allem auf der BTP zu benutzen, erfordert es an Investitionen in Organisation, Technologien und Prozessen.
+The standard transactions, standard BADIs and standard Fiori apps are often no longer sufficient to cover the business process requirements. The classic extensions / RICEFW objects have created added value that first has to be found in S/4HANA - the Clean Core. In order to use the new technologies, for example SAP Build, especially on the BTP, it requires investments in organization, technologies and processes.
  
 ## Technologien
 
-Von der Verhandlung der Lizenzen, Aufbau der Infrastruktur, Schulung der SAP Basis und Schulung der Entwickler der neuen Technologien bis zum Einkauf von Consulting Services, Betrachtung und Bewertung der Alternativen muss alles in der Evaluierung der Entwicklungslandschaft definiert werden.
+From negotiating the licenses, setting up the infrastructure, training the SAP base and training the developers of the new technologies to purchasing consulting services, considering and evaluating alternatives, everything must be defined in the evaluation of the development landscape.
 
-Vor allem alternative Technologien, welche mit vorhandenen ABAP-Entwicklern nutzbar sind, werden gebraucht, da existierende Kundenerweiterungen/ RICEFW Objekte weiterhin gepflegt werden müssen.
+Above all, alternative technologies that can be used with existing ABAP developers are needed, as existing customer extensions/RICEFW objects still need to be maintained.
  
-## Organisation
+## Organization
 
-Der klassische Berater und Entwickler entwickelt sich durch die neuen Technologien zu einem Vollzeit-Entwickler mit breiten Entwicklungskenntnissen, hier ist massives Change Management angesagt. Mehr dazu erfahren Sie im [Kapitel Organisation](/ABAP-Leitfaden/organization/).
+The classic consultant and developer develops through the new technologies into a full-time developer with broad development knowledge; massive change management is required here. You can find out more about this in [Organization chapter](/ABAP-Leitfaden/organization/).
 
-Durch die No-Code und Low-Code Optionen, vor allem bei SAP Build, aber auch Key-User Extensibility können nicht-Entwickler in Fusion Teams mitarbeiten. Das erfordert auch eine moderne Arbeitsweise, welche agiler Natur sein sollte.
+Thanks to the no-code and low-code options, especially with SAP Build, but also key-user extensibility, non-developers can work in Fusion teams. This also requires a modern way of working, which should be agile in nature.
  
-## (Geschäfts-)Prozesse
+## (Business) processes
  
-Organisatorische Prozesse können bspw. im Reporting enorm verschlankt werden. Wenn Standard CDS Views und Standard APIs genommen werden, dann ziehen die Berechtigungsprüfungen in der CDS View. So können Sie Datenprodukte anbieten und die Fachbereichskollegen können ohne die IT Reporting betreiben. Ein mögliches Problem: Das bringt die Gefahr das un-performante CDS Views (Stichwort: Compatibility-Views) die Systemlast enorm beeinträchtigen.
+Organizational processes can be enormously streamlined, for example in reporting. If standard CDS views and standard APIs are taken, then the authorization checks in the CDS view. This means you can offer data products and your department colleagues can do reporting without IT. A possible problem: This brings the risk that un-performing CDS views (keyword: compatibility views) will have an enormous impact on the system load.
 
-Standardprozesse werden von der SAP unterstützt und Standard Fiori Apps kann auch ein Nicht-Entwickler recht simpel im UI anpassen. Kunden mit langer SAP Historie haben oftmals Geschäftsprozessanforderungen, welche weit über die Standard Apps hinausgehen. Auch ein mögliches Thema sind die SAP SEGW Projekt-basierten Apps: wenn die Standard Fiori App erstmal auf den SAP SEGW-Projekte aufgebaut wird und dann nach einem Systemupgrade diese App auf das RAP-Model im Backend umzieht, so ist die Eigenentwicklung erstmal nachzubauen im neuen RAP-Modell.
+Standard processes are supported by the SAP and standard Fiori apps can also be easily adapted in the UI by a non-developer. Customers with a long SAP history often have business process requirements that go far beyond the standard apps. The SAP SEGW project-based apps are also a possible topic: if the standard Fiori app is first built on the SAP SEGW projects and then, after a system upgrade, this app moves to the RAP model in the backend, the in-house development must first be recreated in the new RAP model.
 
 ## Add-Ons
 
-Clean Core hat weiterhin Auswirkungen auf Add-Ons, die im ABAP System eingesetzt werden können. Damit ein Partner zukünftig die Clean Core Strategie Ihrer Kunden unterstützen kann, hat SAP die Bedingungen, eine Zertifizierung von Add-Ons zu erhalten, geändert. Somit ist es nicht mehr möglich eine Zertifizierung eines Add-Ons zu erhalten, wenn die Implementierung der Erweiterung nicht den Vorgaben von Clean Core (erstellt in ABAP Cloud oder der BTP) entspricht.
+Clean Core continues to impact add-ons that can be used in the ABAP system. So that a partner can support your customers' Clean Core strategy in the future, SAP has changed the conditions for obtaining certification of add-ons. It is therefore no longer possible to obtain certification of an add-on if the implementation of the extension does not comply with the specifications of Clean Core (created in ABAP Cloud or the BTP).
 
-Bei Add-Ons ohne SAP Zertifizierung in SAP S/4HANA (on premise) oder SAP S/4HANA Cloud, private edition empfehlen wir daher, rechtzeitig mit dem Add-On Partner zu prüfen, ob dieser sein Produkt nach Clean Core entwickelt hat, bzw. dass rechtzeitig ein kompatibles Add-On für einen bevorstehenden Upgrade geliefert werden.
+For add-ons without SAP certification in SAP S/4HANA (on premise) or SAP S/4HANA Cloud, private edition, we therefore recommend checking with the add-on partner in good time whether they have developed their product according to Clean Core, or that a compatible add-on is available in time for an upcoming upgrade be delivered.

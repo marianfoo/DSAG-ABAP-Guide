@@ -1,228 +1,228 @@
 ---
 layout: page
-title: Entwurf und Gestaltung moderner SAP-Anwendungen
+title: Design and design of modern SAP applications
 permalink: /abap/oo-design/
 parent: Moderne ABAP Entwicklung
 nav_order: 2
 ---
 
 {: .no_toc}
-# Entwurf und Gestaltung moderner SAP-Anwendungen
+# Design and design modern SAP applications
 
 1. TOC
 {:toc}
 
-## Moderne Geschäftsanwendungen erfordern zeitgemäße Softwareentwicklungsmethoden
+## Modern business applications require contemporary software development methods
 
-Geschäftsanwendungen in der klassischen prozeduralen ABAP Entwicklung werden in Form von Programmen erstellt, die durch komplexe, prozedurale, tief verschachtelte Kontrollstrukturen geprägt sind. Modularisierung erfolgte mittels Form-Routinen oder für die Wiederverwendung in Funktionsbausteinen. Bei guter Planung und Anwendung von Methoden der Softwareentwicklung waren Funktionsgruppen nicht überladen, sondern bestehen aus zusammengehörigen spezifischen Funktionen. Vielleicht kennen Sie aber auch die eine oder andere Funktionsgruppe, die zahlreiche Funktionsbausteine mit unterschiedlichen Aufgaben enthält und beim einen oder anderen Transport auch mal das eine oder andere Problem verursacht hat. Mit der Anzahl der vorgenommenen Änderungen wurden diese Anwendung immer komplexer, fehleranfälliger und immer schwerer zu warten.  
+Business applications in classic procedural ABAP development are created in the form of programs characterized by complex, procedural, deeply nested control structures. Modularization was carried out using form routines or for reuse in functional modules. With good planning and application of software development methods, function groups were not overloaded, but instead consist of specific functions that belong together. Maybe you also know one or another function group that contains numerous function modules with different tasks and that has sometimes caused one or another problem during one or another transport. As the number of changes made, this application became more and more complex, more error-prone, and more and more difficult to maintain.  
 
-An moderne Anwendungen werden heute hohe Anforderungen gestellt:
+High demands are placed on modern applications today:
 
-- Anwendungen müssen die funktionalen Anforderungen bestens erfüllen.
-- Anwendungen müssen fehlerfrei, robust, performant und fehlertolerant betrieben werden können.
-- Änderungen sollen schnell, effizient, fehlerfrei und mit wenig Testaufwand durchführbar sein und keine neuen Fehler erzeugen.  
+- Applications must perfectly meet the functional requirements.
+- Applications must be able to be operated error-free, robust, performant and fault-tolerant.
+- Changes should be able to be carried out quickly, efficiently, without errors and with little testing effort and should not create new errors.  
 
-Somit müssen auch Anforderungen an den ABAP-Code gestellt werden:
+Requirements must therefore also be made for the ABAP code:
 
-- ABAP-Code muss die funktionalen Anforderungen korrekt erfüllen und hat keine negativen Auswirkungen auf Sicherheitsthemen oder andere Entwicklungen.
-- ABAP-Code soll fachlich präzise strukturiert sein. Er wird in kleinen, semantisch zusammenpassenden und modularen Einheiten entwickelt. 
-- ABAP-Code soll gut lesbar und verständlich geschrieben sein und Kommentare helfen beim Verständnis der implementierten Funktionalität.
-- ABAP-Code soll dem [Clean-Core Level Modell](/ABAP-Leitfaden/clean-core/solution-approach/#level-concept) entsprechen.
+- ABAP code must correctly meet the functional requirements and have no negative impact on security issues or other developments.
+- ABAP code should be structured in a technically precise manner. It is developed in small, semantically matching and modular units. 
+- ABAP code should be written in a readable and understandable manner, and comments help in understanding the implemented functionality.
+- ABAP code should correspond to the [Clean Core level model](/ABAP-Leitfaden/clean-core/solution-approach/#level-concept).
 
-Mit der klassischen, prozeduralen ABAP-Programmierung sind diese Anforderungen nur schwer zu erfüllen, da diese eine hohe Abwärtskompatibilität aufweisen, veraltete Möglichkeiten bieten und die Wartbarkeit erschweren. Dieser klassische, prozedurale Ansatz ist nicht mehr zeitgemäß und sollte nicht mehr Anwendung finden.  
+These requirements are difficult to meet with classic, procedural ABAP programming, as it has a high level of backward compatibility, offers outdated options and makes maintainability difficult. This classic, procedural approach is no longer relevant and should no longer be used.  
 
-Die Softwareentwicklungsmethoden und Techniken, die heute dem ABAP-Entwickler zur Verfügung stehen, bieten für o.g. Problemfelder und für die Herausforderungen, die Anforderungen moderner Geschäftsanwendungen mit sich bringen, gute Lösungsansätze.  
+The software development methods and techniques that are available to ABAP developers today offer good solutions for the above-mentioned problem areas and the challenges that arise from the requirements of modern business applications.  
 
-Schon seit vielen Jahren gibt es in ABAP die Möglichkeit objektorientiert zu programmieren. Auch wenn dies anfangs noch nicht erforderlich war, ist es heute einerseits technisch notwendig, wenn neue Möglichkeiten genutzt werden sollen. Andererseits bietet die Methodik der Objektorientierung sehr viele gute Ansätze Geschäftsanwendung so zu entwickeln, dass sie flexibel, wartbar, erweiterbar und robust umgesetzt werden können. Durch die Nutzung von ABAP Unit und eines guten Designs, können zahlreiche Funktionen über Unit Tests geprüft werden. Damit kann das Testen durch den Endanwender auf das Testen des Prozesses und damit der Testaufwand in der Fachabteilung reduziert werden, da die innere Struktur der Software über ABAP Unit Tests abgesichert wird.
+The possibility of object-oriented programming has been available in ABAP for many years. Even if this was not necessary at the beginning, it is now technically necessary if new possibilities are to be used. On the other hand, the object orientation methodology offers many good approaches to developing business applications in such a way that they can be implemented in a flexible, maintainable, expandable and robust manner. By using the ABAP unit and a good design, numerous functions can be tested via unit tests. This means that testing by the end user can be reduced to testing the process and thus the testing effort in the specialist department, as the internal structure of the software is secured via ABAP unit tests.
 
-Obwohl die oben genannten Nachteile der prozeduralen und Vorteile der Objektorientierten Programmierung bekannt sind, werden auch in aktuellen Projekten weiterhin Funktionalitäten nicht objektorientiert umgesetzt bzw. nicht das volle Potenzial moderner Entwicklungsmethoden genutzt. Dies können z.B. Programme sein, die prozedural implementiert werden, Klassen die objektorientierte Prinzipien nicht umsetzen oder Implementierung von Funktionsbausteinen oder direkte Implementierung von komplexen Code in BAdI-Implementierung ohne weitergehende Strukturierung in eigenen Klassen. All dies ist zu vermeiden und durch entsprechende Prinzipien der Objektorientierung zu lösen.
+Although the above-mentioned disadvantages of procedural programming and advantages of object-oriented programming are known, functionalities are still not implemented in an object-oriented manner in current projects or the full potential of modern development methods is not used. These can be, for example, programs that are implemented procedurally, classes that do not implement object-oriented principles or implementation of function modules or direct implementation of complex code in BAdI implementation without further structuring in their own classes. All of this must be avoided and solved through appropriate principles of object orientation.
 
 {: .recommendation}
->- Fordern Sie bei allen Entwicklungen die Umsetzung in ABAP Objects unter Einsatz objektorientierter Methoden ein.
->- Achten Sie auf die Anwendung der SOLID Prinzipien der Objektorientierung.
->- Wenden Sie beim Anwendungsdesign die gängigen objektorientierten Designpatterns an.
->- Trennen Sie die unterschiedlichen Belange der Geschäftsanwendungen in Klassen auf (z.B. Controller Klasse, Datenzugriff, Geschäftslogiken, Prüfungen etc.).
->- Halten Sie die Schnittstellen klein und nutzen Sie die Factory für Übergabe wichtiger Daten an das Objekt.
->- Verschalen und konzentrieren Sie Aufrufe von SAP-Code bzw. Paketfremden Code in eigenen privaten Methoden.
->- Verwenden Sie klassenbasierte Ausnahmen für das komplette Fehlerhandling inklusive Nachrichtenabwicklung in der Anwendung.
->- Propagieren Sie nur Interfaces oder spezielle Fassadenklassen in den Paketschnittstellen.
+>- Demand that all developments be implemented in ABAP Objects using object-oriented methods.
+>- Pay attention to the application of the SOLID principles of object orientation.
+>- Apply common object-oriented design patterns when designing applications.
+>- Separate the different concerns of the business applications into classes (e.g. controller class, data access, business logic, tests, etc.).
+>- Keep the interfaces small and use the factory to transfer important data to the object.
+>- Wrap and concentrate calls to SAP code or non-package code in their own private methods.
+>- Use class-based exceptions for complete error handling including message handling in the application.
+>- Only propagate interfaces or special facade classes in the package interfaces.
 
-Die detaillierte Erläuterung der Objektorientierung und die zahlreichen Möglichkeiten des modernen ABAP können wir in diesem Leitfaden nicht umfänglich abhandeln, möchten Ihnen aber bezüglich des Vorgehens Empfehlungen, Hinweise und Hilfen geben, die den Einstieg erleichtern und einen Überblick über Handlungsfelder geben, die schnell zu Verbesserungen führen können.
+We cannot cover the detailed explanation of object orientation and the numerous possibilities of the modern ABAP in this guide, but we would like to give you recommendations, tips and help regarding the procedure that make it easier to get started and provide an overview of areas of action that can quickly lead to improvements.
 
-## Grundlagen und einfache Anwendung von Objektorientierung im ABAP Kontext
+## Basics and simple application of object orientation in the ABAP context
 
-Das Thema Objektorientierung ist komplex und viele existierende Funktionalitäten in SAP folgen nicht den Designprinzipien der Objektorientierung, auch dann nicht wenn diese in ABAP-Klassen implementiert sind. Für dieses Kapitel sollten die Grundprinzipien der Objektorientierung bereits bekannt sein.  
-Die Hinweise und Tipps erfolgen hier in sehr vereinfachter Form. Es soll ein Vorgehen aufzeigen um die Objektorientierung nutzbringend anzuwenden und unsere Empfehlungen praxisorientiert untermauern.  
-Dies ist ein Anfang und kann helfen das Verständnis für ABAP-OO in den Entwicklerteams zu schaffen, erste Erfolgserlebnisse zu erzielen und mittels weiterer Unterstützung durch Trainings und Coachings, Dokumentationen, Blogs und Online Events und durch Fachliteratur das Thema nachhaltig in der Organisation gewinnbringend zu nutzen.
+The topic of object orientation is complex and many existing functionalities in SAP do not follow the design principles of object orientation, even when implemented in ABAP classes. For this chapter, the basic principles of object orientation should already be known.  
+The hints and tips are presented here in a very simplified form. It is intended to show a procedure for using object orientation usefully and to support our recommendations in a practical way.  
+This is a start and can help to create an understanding of ABAP-OO in the development teams, to achieve initial success experiences and to use the topic sustainably and profitably in the organization with further support through training and coaching, documentation, blogs and online events and through specialist literature.
 
-## Merkmale objektorientierter Entwicklung in ABAP-Klassen
+## Features of object-oriented development in ABAP classes
 
-Eine Klasse bildet eine spezielle Aufgabe ab, die in überschaubaren Methoden implementiert wird. Eine ABAP-Klasse besteht aus Attributen, die Werte speichern können oder Konstanten sein können. Oft werden ABAP-Klassen als eine moderne Form von Funktionsbausteinen betrachtet, dieser Vergleich wird den Möglichkeiten einer Klasse nicht gerecht. Der entscheidende Unterschied ist die Instanziierbarkeit, d.h. es können für Klassen mehrere Objekte im gleichen Programmkontext erzeugt werden.
+A class represents a special task that is implemented in manageable methods. A ABAP class consists of attributes that can store values ​​or can be constants. ABAP classes are often viewed as a modern form of function blocks; this comparison does not do justice to the possibilities of a class. The crucial difference is instantiability, i.e. multiple objects can be created for classes in the same program context.
 
-Bei einer Klasse, die nur statische Methoden beinhaltet und in der Verwendung nicht instanziiert wird, handelt es sich somit nicht um eine Klasse die objektorientierten Prinzipien folgt.
+A class that only contains static methods and is not instantiated during use is therefore not a class that follows object-oriented principles.
 
 {: .note }
-> Erkennungsmerkmale einer Klasse, die **nicht** objektorientierten Prinzipien folgt sind:
+> Identifying characteristics of a class that **doesn't** follow object-oriented principles are:
 > 
-> - Größe der Klasse - eine Klasse mit vielen (öffentlichen) Methoden zeigt vermutlich auf dass das Single Responsibility Prinzip verletzt wurde  
-> - Größe der Methoden - umfangreiche Methoden weisen auf Strukturdefizite, redundanten Code und Verletzung des Separation of Concerns Prinzips hin.  
-> - Umfangreiche Parameterschnittstellen - Objekte arbeiten mit Objekten und nicht mit Parametern. Dies geht meistens mit zu großen Methoden einher. Daher besitzen objektorientierte Methoden oftmals sehr schmale Schnittstellen, die Objekte als Übergabeparameter, bei funktionalen Methoden Return Parameter, enthalten.  
+> - Size of the class - a class with many (public) methods probably shows that the single responsibility principle has been violated  
+> - Size of the methods - extensive methods indicate structural deficiencies, redundant code and violation of the separation of concerns principle.  
+> - Extensive parameter interfaces - Objects work with objects and not with parameters. This is usually associated with methods that are too large. Therefore, object-oriented methods often have very narrow interfaces that contain objects as transfer parameters, or return parameters in functional methods.  
 
-Klassen, die die diese Erkennungsmerkmale besitzen, widersprechen den o.g. Anforderungen an modernen ABAP-Code.
-Weitere Indikatoren finden z.B. im [Clean-ABAP Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md).
+Classes that have these identifying features contradict the above requirements for modern ABAP code.
+Further indicators can be found, for example, in [Clean-ABAP Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md).
 
-Klassen sollen übersichtlich gestaltet werden und entsprechend dem Single-Responsibility Prinzip nur eine Aufgabe erfüllen. Methoden so kurz wie möglich und dabei auch nur eine Aufgabe erfüllen. Diese Beschränkung zwingt dazu, Aufgaben in verschiedene Klassen zu delegieren. Damit sind die einzelnen Klassen weniger Komplex, die Komplexität verschiebt sich damit je nach Anwendung in das Klassengeflecht und dem Zusammenspiel der einzelnen Klassen. Dieses Zusammenspiel und die übergeordnete Logik wird in einem **Controller** gebündelt.  
-Um hier einer Komplexitätsverschiebung zu reduzieren und Strukturdefizite zu vermeiden, bedarf es guter Planung und Gestaltung der Struktur der Anwendung.  
-Dass während der Entwicklung Methoden und Attribute verschoben und umbenannt werden und Objekte umstrukturiert [Refactoring](/ABAP-Leitfaden/abap/oo-design/#die-bedeutung-des-refactorings-von-bestehenden-anwendungen) werden, gehört zum Softwareentwicklungsprozess dazu und ist dank moderner Softwareentwicklungswerkzeuge in den ABAP-Development Tools in Eclipse und zusätzlichen AddOns einfach und sicher durchzuführen.
+Classes should be designed clearly and, in accordance with the single-responsibility principle, only fulfill one task. Methods as short as possible and only accomplish one task. This restriction forces tasks to be delegated to different classes. This means that the individual classes are less complex, and the complexity shifts depending on the application in the class network and the interaction of the individual classes. This interaction and the higher-level logic is bundled in a **Controller**.  
+In order to reduce a shift in complexity and avoid structural deficits, good planning and design of the structure of the application is required.  
+The fact that methods and attributes are moved and renamed and objects are [refactored](/ABAP-Leitfaden/abap/oo-design/#die-bedeutung-des-refactorings-von-bestehenden-anwendungen) during development is part of the software development process and can be carried out easily and safely thanks to modern software development tools in the ABAP development tools in Eclipse and additional add-ons.
 
-## Grundprinzipien der Objektorientierung (SOLID)
+## Basic principles of object orientation (SOLID)
 
-Beim Einstieg in ABAP Objects geschieht es schnell, dass aus einer Funktionsgruppe mit mehreren Funktionsbausteinen einfach eine Klasse mit mehreren statischen Methoden wird. So können jedoch die Vorteile der Objektorientierung nicht genutzt werden. Die Nutzung von statischen Methoden verhindert etwa, dass Abhängigkeiten in Unit-Tests durch Mocks ersetzt werden können. Mehr Informationen finden Sie hierzu im [Clean ABAP-Guide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-objects-to-static-classes).
+When you get started with ABAP Objects, it quickly happens that a function group with several function modules simply becomes a class with several static methods. However, the advantages of object orientation cannot be used this way. The use of static methods prevents dependencies in unit tests from being replaced by mocks. You can find more information about this in [Clean ABAP-Guide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-objects-to-static-classes).
 
-Ein Hilfsmittel für objektorientierte Entwürfe sind die SOLID-Prinzipien. Jeder Buchstabe gibt ein Prinzip für objektorientierte Entwicklung vor. Es gibt folgende Prinzipien:
+A tool for object-oriented designs are the SOLID principles. Each letter provides a principle for object-oriented development. There are the following principles:
 
 - **S**ingle Responsibility Principle
 - **O**pen/Closed Principle
 - **L**iskov Substitution Principle
-- **I**nterface Segregation Principle und das
+- **I**interface Segregation Principle and that
 - **D**ependency Inversion Principle
 
-Eine kurze Beschreibung der Prinzipien finden Sie im [Unterabschnitt](/ABAP-Leitfaden/abap/oo-basics/), eine ausführliche Erklärung findet sich z.B. [im Blog von Uncle Bob](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html), dem Autor von Clean Code.
+A short description of the principles can be found in the [subsection](/ABAP-Leitfaden/abap/oo-basics/), a detailed explanation can be found e.g. [on Uncle Bob's blog](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html), the author of Clean Code.
 
-Insbesondere die beiden ersten Prinzipien sind ohne allzu tiefes OO Verständnis in ABAP umzusetzen und der Mehrwert wird schnell ersichtlich, wenn die Wartung und Änderung von Code besser durchgeführt werden kann und weniger Seiteneffekte auftreten. Detailliertes Wissen und die Anwendung im ABAP-Kontext finden sich in Fachliteratur zum Thema Agile Softwareentwicklung in ABAP bzw. Testdriven Design in ABAP.  
+In particular, the first two principles can be implemented in ABAP without a very deep understanding of OO and the added value quickly becomes apparent when maintenance and changes to code can be carried out better and fewer side effects occur. Detailed knowledge and application in the ABAP context can be found in specialist literature on the subject of agile software development in ABAP or test-driven design in ABAP.  
 
-## Entwurfsmuster
+## Design patterns
 
-In der Objektorientierung gibt es zahlreiche Entwurfsmuster (Design Pattern), die für verschiedene Problemstellungen und Anwendungsfälle bereits vorgefertigte und erprobte softwaretechnische Mechanismen bieten. Diese können auch in ABAP angewendet werden. So sind in ABAP folgende Pattern direkt und sinnvoll anwendbar:  
+In object orientation, there are numerous design patterns that offer ready-made and tried-and-tested software mechanisms for various problems and use cases. These can also be applied in ABAP. The following patterns can be used directly and sensibly in ABAP:  
 
-- **Factory** - Erzeugung von Instanzen einer Klasse
-- **Singleton** - Erzeugung einer zentralen Instanz einer Klasse
-- **Facade** - Verschalung von Komplexität einer Funktion  
-   Fassaden eignen sich für die Propagierung in Paketschnittstellen zur Verwendung durch andere Pakete
-- **MVC** (Model-View-Controller) - Trennung der Belange einer Anwendung
+- **Factory** - Creation of instances of a class
+- **Singleton** - Creation of a central instance of a class
+- **Facade** - Enclosing the complexity of a function  
+   Facades are suitable for propagation in package interfaces for use by other packages
+- **MVC** (Model-View-Controller) - Separation of the interests of an application
 
-Detaillierte Erläuterungen und Code Beispiele finden Sie im [Unterabschnitt](/ABAP-Leitfaden/abap/oo-basics/)
+Detailed explanations and code examples can be found in the [subsection](/ABAP-Leitfaden/abap/oo-basics/)
 
-Auch hier können wir leider nicht im Detail auf alle Entwurfsmuster eingehen, im Internet und der Fachliteratur finden sie zahlreiche Möglichkeiten, sich dem Thema anzunähern und in die Organisation zu bringen. Ein guter Startpunkt für die eigene Recherche ist z.B. [ABAP-OO Design Patterns m. Beispielen](https://zevolving.com/category/abapobjects/oo-design-patterns/).
+Here, too, we unfortunately cannot go into all the design patterns in detail; on the Internet and in specialist literature you will find numerous opportunities to approach the topic and bring it into the organization. A good starting point for your own research is, for example, [ABAP-OO Design Patterns m. Beispielen](https://zevolving.com/category/abapobjects/oo-design-patterns/).
 
-## Vergleich Vorgehen prozedurale vs. objektorientierter Entwicklung
+## Comparison of procedural vs. object-oriented development
 
-### Ablauf Prozedurale Entwicklung
+### Process procedural development
 
-Beim Umsetzen einer Anforderung z.B. in einem Report oder eines Funktionbausteins würde das Design gemäß der Spezifikation klassischerweise wie folgt sich gestalten:
+When implementing a requirement, for example in a report or a function module, the design according to the specification would typically be as follows:
 
-- Übernahme der Eingangsdaten aus Import Parametern 
-- Lesen des Customizing aus der Datenbank (z.B. Z-Tabelle)
-- Lesen der Daten aus den Datenbanktabellen
-- Verarbeiten der Daten mit Loops, Read Tables und diversen IF-Endif Kontrollstrukturen:  z.B. Prüfen, Berechnen, sortieren, abmischen ...
-- Übergabe des Ergebnisses and Export Parameter
-Damit wird die Anforderung in imperativer Form in Programmcode dargestellt, ggf. werden Teilfunktionen modularisiert.
+- Transfer of input data from import parameters 
+- Reading the Customizing from the database (e.g. Z table)
+- Reading data from the database tables
+- Processing the data with loops, read tables and various IF-Endif control structures: e.g. checking, calculating, sorting, mixing...
+- Transfer of the result and export parameters
+This means that the requirement is represented in imperative form in program code and, if necessary, partial functions are modularized.
 
-### Ablauf bei Objektorientiertem Ansatz
+### Process with object-oriented approach
 
-Wenn die Anforderungen bekannt sind und analysiert wurden, sind zuerst die unterschiedlichen Aufgaben zu definieren und zu gruppieren. Anhand der Aufgaben können die Klassen und abgeleiteten sinnvollen Klassennamen definiert werden. Basierend auf diesem Vorgehen kann die objektorientierte Implementierung wie folgt aussehen:
+Once the requirements are known and analyzed, the different tasks must first be defined and grouped. The classes and derived meaningful class names can be defined based on the tasks. Based on this approach, the object-oriented implementation can look like this:
 
-- Definition Objekt zum Lesen und Auswerten des Customizing auf Basis Organisationsdaten = **Customizing Objekt**
-- Definition Objekt zum Lesen der Datenbank, ggf. je nach Komplexität Aufteilung nach Geschäftsobjekt = **Datenobjekt(e)**.
-- Definition Objekt welches die Datenprüfungen und Validierungen durchführt = **Check Objekt**
-- Definition Objekt, welches die Datenprozessierung durchführt und für die Erstellung des Ergebnisses zuständig ist **Geschäftslogik**.
-- Definition Objekt, welches die Geschäftsfunktionalität abbildet und das Zusammenwirken der einzelnen Objekte orchestriert und verwaltet = **Controller**.
-- Erstellung einer Factory Klasse, die die einzelnen Objektinstanzen erzeugt.
-- Definition einer Injektorklasse, mittels der das Mocking einzelner Funktionen ermöglicht wird.
+- Definition object for reading and evaluating the Customizing based on organizational data = **Customizing object**
+- Definition of object for reading the database, if necessary split by business object depending on complexity = **data object(s)**.
+- Definition object which carries out the data checks and validations = **Check object**
+- Definition object that carries out the data processing and is responsible for creating the result **business logic**.
+- Definition object that maps the business functionality and orchestrates and manages the interaction of the individual objects = **Controller**.
+- Creation of a factory class that creates the individual object instances.
+- Definition of an injector class that enables mocking of individual functions.
 
-Die Details zum ABAP Unit und wie man Unit-Tests erstellt finden Sie im Kapitel [**Testing**](/ABAP-Leitfaden/testing/index))
+The details about the ABAP unit and how to create unit tests can be found in the chapter [**Testing**](/ABAP-Leitfaden/testing/index))
 
-## Konzepte in der Objektorientierung
+## Concepts in object orientation
 
-Neben den Grundlagen gibt es weitere Konzepte und Techniken, durch deren Einsatz erst der volle Mehrwert der Objektorientierung zum Einsatz kommt und auch komplexe Problemstellungen elegant gelöst werden können, was mit klassischen Technologien deutlich aufwändiger oder gar nicht möglich war. Auch hier können wir in der ersten Version des neuen Leitfadens nur in sehr kurzer Form hinweisen. In der ABAP Dokumentation und in Trainings und Büchern finden Sie weitere Informationen.
+In addition to the basics, there are other concepts and techniques through which the full added value of object orientation can be achieved and even complex problems can be solved elegantly, which was much more complex or not possible at all with classic technologies. Here, too, we can only provide very brief information in the first version of the new guidelines. You can find further information in the ABAP documentation and in training courses and books.
 
-### Erstellung von Factories
+### Creation of factories
 
-Jedes Objekt sollte eine Factory Methode haben, die Übergabe erforderlicher Parameter an die Klasse erfolgt über den Konstruktor der Klasse. Erfolgt die Instanziierung der Klassen einer Anwendung über eine zentrale Factory, wird die Factory Methode der Klasse in der Factory Klasse gerufen. Durch Anwendung des Factory Patterns, bleibt die Kontrolle der Objektinstanziierung bei den Klassen bzw. der zentralen Factory Klasse.
+Every object should have a factory method, passing required parameters to the class is done via the class's constructor. If the classes of an application are instantiated via a central factory, the factory method of the class is called in the factory class. By using the factory pattern, control of object instantiation remains with the classes or the central factory class.
 
 {: .note }
-Vermeiden Sie, dass Klassen von außerhalb über den Befehl *New* bzw. *Create Object* instanziiert werden.
+Avoid instantiating classes from outside using the *New* or *Create Object* command.
 
-### Beispiel: Verschalung des Customizing in der Factory-Methode
+### Example: Formwork of the Customizing in the factory method
 
-Eine Klasse, die für die Auswertung des Customizing verantwortlich ist, kann derart gestaltet werden, dass in der Factory Methode die Customizing Tabelle geprüft wird, in der die Steuerung der Funktion hinterlegt ist.  
-Nur wenn sich ein Eintrag in dieser Tabelle zu den Parametern der Factory-Methode (z.B. Werk oder Buchungskreis etc.) befindet, wird eine Instanz an den Aufrufer übergeben.  
-Einzelne Parameter des Customizing können in Attributen der Customizing Klasse vorgehalten werden und mittels sog. Getter-Methoden bei Bedarf in anderen zugehörigen Klassen abgefragt werden.  
-Falls kein Eintrag hierfür oder ein Problem vorliegt, sollte eine Ausnahme ausgelöst werden, die vom Aufrufer abgefangen wird. Somit muss der Aufrufer nicht mehr die Prüfung der Tabelle übernehmen, sondern bekommt nur dann eine Instanz zurück, wenn die Funktion im betreffenden Fall aktiv ist. Im Positivfall können dann über die zurückgegebene Instanz die entsprechenden Methoden aufgerufen werden.  
+A class that is responsible for evaluating the Customizing can be designed in such a way that the Customizing table in which the control of the function is stored is checked in the factory method.  
+Only if there is an entry in this table for the parameters of the factory method (e.g. plant or company code, etc.) will an instance be passed to the caller.  
+Individual parameters of the Customizing can be stored in attributes of the Customizing class and, if necessary, queried in other associated classes using so-called getter methods.  
+If there is no entry for this or a problem, an exception should be thrown that is caught by the caller. This means that the caller no longer has to check the table, but only gets an instance back if the function is active in the relevant case. If positive, the corresponding methods can then be called via the returned instance.  
 
-Alternativ bietet sich hier auch die Verwendung des Nullobjekt Entwurfsmusters an, bei dem im Falle einer negativen Customizingprüfung anstatt der Klasse mit der Implementierung, eine Klasse mit leerer Implementierung zurückgegeben wird. Beim Aufruf der Methoden des Nullobjekts passiert dann einfach nichts. Dies hat den Vorteil, dass der Aufrufer nicht mit Ausnahmen umgehen muss.  
+Alternatively, it is also possible to use the null object design pattern, in which, in the event of a negative customizing check, a class with an empty implementation is returned instead of the class with the implementation. When the methods of the null object are called, nothing simply happens. This has the advantage that the caller does not have to deal with exceptions.  
 
-Da dem Objektkonstrukt mittels der Factory die Customizinginstanz bekannt ist, ist der Zugriff auf das Customizing im gesamten Konstrukt standardisiert und ohne redundanten Code möglich.  
-Dieses Verfahren folgt dem Prinzip der Steuerungsumkehr und trägt zur Separation of Concerns bei. Damit vereinfacht sich der Code der Geschäftslogik und die Komplexität des Customizing wird verschalt bzw. automatisiert.
+Since the customizing instance is known to the object construct via the factory, access to the Customizing is standardized throughout the entire construct and possible without redundant code.  
+This procedure follows the principle of control reversal and contributes to the separation of concerns. This simplifies the business logic code and the complexity of the Customizing is interconnected or automated.
 
-Die Erstellung technischer Objekte erscheint anfangs aufwändiger als der Top-Down Ansatz beim prozeduralen Vorgehen. 
-Mittels Autovervollständigung, Nutzung von Code Templates und Quickfixes in den ABAP Development Tools in Eclipse (ADT) wird der ABAP-Code für die technischen Klassen sehr schnell und einfach erstellt, wodurch sich der Mehraufwand im Coding sehr in Grenzen hält.  
-Ist dieses Muster erst einmal eingeübt, übertreffen die Vorteile dieses Verfahrens den Nachteil des vermeintlich erhöhten initialen Aufwands bei weitem.  
-Natürlich muss dass Vorgehen auch eingeübt werden, um eine gewisse Entwicklungsperformanz und -effizienz zu entwickeln.  
-Bitte beachten Sie hierzu den **[ADT-Leitfaden](https://1dsag.github.io/ADT-Leitfaden/)** der DSAG, der Sie unterstützt, ADT effizient und flächendeckend im Unternehmen einzusetzen.
+The creation of technical objects initially appears more complex than the top-down procedural approach. 
+By means of autocompletion, use of code templates and quick fixes in the ABAP development tools in Eclipse (ADT), the ABAP code for the technical classes is created very quickly and easily, which means that the additional effort in coding is very limited.  
+Once this pattern has been practiced, the advantages of this procedure far outweigh the disadvantage of the supposedly increased initial effort.  
+Of course, the procedure must also be practiced in order to develop a certain development performance and efficiency.  
+Please note the **[ADT Guide](https://1dsag.github.io/ADT-Leitfaden/)** from DSAG, which supports you in using ADT efficiently and across the board in the company.
 
-### Vollständiger Einsatz von klassenbasierten Ausnahmen zur Fehlerbehandlung
+### Full use of class-based exceptions for error handling
 
-Verwenden Sie für die Behandlung von Fehlern ausschließlich klassenbasierte Ausnahmen. Diese sollen auch nur für den Fall von Fehlern eingesetzt werden und nicht für Erfolgs- oder Statusmeldungen aus der Anwendung missbraucht werden. Lediglich technische Einschränkungen von Seiten SAP zwingen Sie an einigen wenigen Stellen dazu klassische Exceptions einzusetzen.  
-Von der Verwendung von Returncodes raten wir Ihnen ebenso ab wie von der alleinigen Rückgabe von Message Tabellen wie z.B. BAPIRET2, wie Sie dies z.B. in BAPI-Funktionsbausteinen oft vorfinden. Diese Konzepte erzeugen das Problem, dass im aufrufenden Programm innerhalb des Ablaufs der Geschäftslogik geprüft werden muss, ob ein Fehlerfall vorliegt und somit eine saubere Trennung von technischen Belangen und Geschäftslogik nicht gegeben ist.
-Der Einsatz von Ausnahmeklassen ermöglicht hier eine deutlich bessere Trennung, des Weiteren können Sie die Fehlerbehandlung aufgrund der Propagierung von Ausnahmen an zentralen Stellen bündeln. Bitte beachten Sie hierzu auch die Empfehlungen des 
+Use only class-based exceptions to handle errors. These should only be used in the event of errors and should not be misused for success or status messages from the application. Only technical restrictions from SAP force you to use classic exceptions in a few places.  
+We advise you against using return codes as well as solely returning message tables such as BAPIRET2, as you often find in BAPI function modules. These concepts create the problem that the calling program has to check within the business logic process whether there is an error and therefore there is no clear separation of technical issues and business logic.
+The use of exception classes enables significantly better separation here, and you can also bundle error handling in central locations due to the propagation of exceptions. Please also note the recommendations of the 
 [Clean-ABAP Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/sub-sections/Exceptions.md)
 
-Ein in ABAP-OO geübter Entwickler definiert in der Konzeptionsphase die auftretenden Fehlersituationen, die in einem (Unter)Paket auftreten können und erstellt darauf basierend die entsprechenden Ausnahmeklassen mit den Fehlermeldungen (als Text-ID oder Nachrichtenbasiert).
-Wenn der Code der Geschäftslogik implementiert wird und die Fehler behandelt werden müssen, wird an der betreffenden Stelle die Exception aufgerufen. Die Behandlung muss nun nicht wie bei Funktionsbausteinen in jeweils jeder Aufrufschicht erfolgen, sondern kann zentral an einer Stelle erfolgen.
-Dies gewährleistet eine konsistente Behandlung und vermindert den Aufwand, wenn Fehler an mehreren Stellen auftreten können.
+A developer trained in ABAP-OO defines in the conception phase the error situations that can occur in a (sub)package and, based on this, creates the corresponding exception classes with the error messages (as text ID or message-based).
+When the business logic code is implemented and the errors need to be handled, the exception is raised at that point. The handling does not have to take place in each call layer as with function blocks, but can be done centrally in one place.
+This ensures consistent handling and reduces effort when errors can occur in multiple places.
 
 ### Interfaces
 
-Durch den Einsatz von Interfaces wird die Definition von Methoden und deren Implementierung voneinander entkoppelt. Wird ein Interface verwendet, kann die Implementierung der Klasse geändert, bzw. flexibilisiert werden. Das Interface definiert sozusagen den Vertrag zwischen Verwender und implementierender Klasse und "versteckt" somit die Implementierung (Software-Hiding-Prinzip).  
-Für öffentliche Methoden die Funktionen für andere Klassen bereitstellen sollten Sie grundsätzlich Interfaces definieren und damit dafür sorgen, dass die Verwender nur mit diesen Interfaces arbeiten. Das Erzeugen von konkreten Objekten übernimmt eine separate Factory Klasse oder in besonders einfachen Fällen eine Factorymethode der Klasse, z.B.: ```ZCL_BUSINESS_LOGIC=>GET_INSTANCE( CompanyCode )``` [Siehe SAP-Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-multiple-static-creation-methods-to-optional-parameters)
+By using interfaces, the definition of methods and their implementation are decoupled from each other. If an interface is used, the implementation of the class can be changed or made more flexible. The interface defines, so to speak, the contract between the user and the implementing class and thus "hides" the implementation (software hiding principle).  
+For public methods that provide functions for other classes, you should always define interfaces and thus ensure that users only work with these interfaces. The creation of concrete objects is handled by a separate factory class or, in particularly simple cases, a factory method of the class, e.g.: ```ZCL_BUSINESS_LOGIC=>GET_INSTANCE( CompanyCode )``` [see SAP style guide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-multiple-static-creation-methods-to-optional-parameters)
 
-Interfaces werden auch für Unit-Tests benötigt, da z.B. Datenbankzugriffe in Unit-Tests durch programmierte Testdaten ersetzt werden müssen. Die Datenbankklasse implementiert ein Interface, das im Produktcode aufgerufen wird. Wird der Unit-Test ausgeführt, wird statt der Datenbankklasse, eine sog. Mockingklasse aufgerufen, die statisch hinterlegten Daten beinhaltet, Methoden zur lokalen Testdatenerzeugung bereitstellt und diese zurückliefert. Die Ausführungen dazu finden Sie im Kapitel [Testing](/ABAP-Leitfaden/testing/index).
+Interfaces are also required for unit tests, since, for example, database accesses in unit tests have to be replaced by programmed test data. The database class implements an interface that is called in the product code. When the unit test is executed, instead of the database class, a so-called mocking class is called, which contains statically stored data, provides methods for local test data generation and returns it. The information on this can be found in chapter [Testing](/ABAP-Leitfaden/testing/index).
 
 ### Vererbung
 
-Ein wichtiges Konzept in der Objektorientierung ist die Vererbung. Dabei kann eine Klasse von einer anderen Klasse abgeleitet werden und somit die Eigenschaften der übergeordneten Klasse erben. So hat eine erbende Klasse die Attribute und Methoden der übergeordneten Klasse, kann aber weitere spezifische Methoden ergänzen oder ererbte Methoden redefinieren, d.h. eine Ergänzung der vererbten Implementierung oder gar eine eigene Implementierung der Methode erhalten.  
-Bei der Vererbung ist das Liskovsche Substitutionsprinzip zu beachten und genau zu prüfen, ob im vorgesehenen Kontext Vererbung Sinn macht. Oft ist es besser, statt Vererbung Interfaces zu verwenden oder die Methode der Delegation zu verwenden und verschiedene Aspekte einer Klasse auf verschiedene Klassen zu verteilen und das Zusammenspiel über einen Controller und die Instanzen über eine Factory zu regeln.  
+An important concept in object orientation is inheritance. A class can be derived from another class and thus inherit the properties of the parent class. An inheriting class has the attributes and methods of the parent class, but can add further specific methods or redefine inherited methods, i.e. receive an addition to the inherited implementation or even its own implementation of the method.  
+When it comes to inheritance, the Liskov substitution principle must be observed and it must be carefully examined whether inheritance makes sense in the intended context. It is often better to use interfaces instead of inheritance or to use the delegation method and distribute different aspects of a class to different classes and regulate the interaction via a controller and the instances via a factory.  
 
-## Objektorientierung in Funktionsbausteinen und Form-Routinen
+## Object orientation in function blocks and form routines
 
-Manchmal ist es erforderlich, dass Funktionalitäten in vorgegebenen Artefakten umgesetzt werden müssen. Z.B. Funktionsbausteine in AIF, Remote Funktionsbausteine, Form Interface Routinen bei Adobe Forms usw.
-In diesem Fall dienen diese Entwicklungsobjekte als Verschalung und rufen die eigentliche Funktionalität nur auf, die dann in ABAP-Klassen und deren Methoden implementiert ist. Der Code in diesen Entwicklungsobjekten sollte sich nur auf technisches Coding beschränken wie z.B. Datenzuordnungen, Objektinstanziierung oder minimale Prüfungen.
-Dies bietet wiederum den Vorteil der möglichen Wiederverwendung und Implementierung von Unit-Tests.
+Sometimes it is necessary that functionalities have to be implemented in given artifacts. E.g. function blocks in AIF, remote function blocks, form interface routines in Adobe Forms, etc.
+In this case, these development objects serve as a wrapper and only call the actual functionality, which is then implemented in ABAP classes and their methods. The code in these development objects should be limited to technical coding only, such as data mapping, object instantiation, or minimal checks.
+This in turn offers the advantage of possible reuse and implementation of unit tests.
 
-## Verwendung von SAP Code - Gesetz von Demeter
+## How to use SAP Code - Law of Demeter
 
-Die Verwendung von SAP-Code (Klassen, Funktionsbausteinen, BAPIs, etc.) oder auch paketfremder Code, sollte immer in einer eigenen Zugriffsschicht liegen. Dies entspricht dann auch einer sauberen Trennung der Belange (S - Separation of Concerns).  
-Dies entspricht der Entwurfsrichtlinie der Objektorientierung ["Gesetz von Demeter"](https://de.wikipedia.org/wiki/Gesetz_von_Demeter), welches besagt, das Objekte nur mit Objekten in ihrer unmittelbaren Umgebung kommunizieren sollen.  
-Auch wenn es sich um freigegebene Elemente handelt, sollten diese stets mit einer Klasse gekapselt werden, damit es zu einer zentralen Stelle des Übergangs von Eigen- an Fremdcode gibt.  
+The use of SAP code (classes, function blocks, BAPIs, etc.) or code from outside the package should always be in its own access layer. This then corresponds to a clean separation of concerns (S - Separation of Concerns).  
+This corresponds to the object orientation design guideline ["Law of Demeter"](https://de.wikipedia.org/wiki/Gesetz_von_Demeter), which states that objects should only communicate with objects in their immediate surroundings.  
+Even if these are shared elements, they should always be encapsulated with a class so that there is a central point of transition from internal to third-party code.  
 
-Erstellen Sie Klassen, deren Aufgabe es ist, den Programmcode der Anwendung frei von jeglichen Abhängigkeiten zum SAP Code oder zu paketfremden Code zu halten. Dies wird auch die Wiederverwendung fördern.  
-Falls die Erstellung eigener Klassen überdimensioniert ist, kann in Sonderfällen die Trennung auch durch den Aufruf des fremden Codes in eigens dafür erstellten privaten Methoden erfolgen. Die Schnittstellendefinition sollte sich dabei eher an den Aufrufer und nicht am aufgerufenen Objekt orientieren. Somit ist später ein Austausch des verwendeten Fremdcodes einfacher. Je nach Komplexität kann das Mapping zwischen Eigen- und Fremdcodeschnittstellen in eigene Methoden ausgelagert werden.  
-Ziel ist es hier Kontrolle über Abhängigkeiten zu behalten und die Wartbarkeit der Software zu erhöhen.
+Create classes whose task is to keep the application's program code free of any dependencies on the SAP code or on non-package code. This will also encourage reuse.  
+If the creation of your own classes is oversized, in special cases the separation can also be done by calling the third-party code in private methods created specifically for this purpose. The interface definition should be based more on the caller and not on the called object. This makes it easier to replace the third-party code used later. Depending on the complexity, the mapping between internal and external code interfaces can be outsourced to separate methods.  
+The goal here is to maintain control over dependencies and increase the maintainability of the software.
 
-Datenzugriffe, z.B. CDS-Views oder SAP-Funktionsbausteine sollten aus Gründen der Testbarkeit in einer eigenen Datenbankzugriffsschicht implementiert werden, die eine Entkopplung des Datenzugriffs über Dependency Inversion für ABAP Unit Tests ermöglicht (s. Kapitel Testen).
+For reasons of testability, data access, e.g. CDS views or SAP function blocks, should be implemented in a separate database access layer, which enables decoupling of data access via dependency inversion for ABAP unit tests (see chapter Testing).
 
-Eine hilfreiche Erweiterung dieser Klassen ist die Transformation der klassischen Ausnahmen, oder Return Codes, die von SAP Code zur Fehlerbehandlung verwendet werden, hin zu Ausnahmeklassen.  
-Diese Trennung ist auch eine wichtige Voraussetzung für die Testbarkeit einer Anwendung.
+A helpful extension of these classes is the transformation of the classic exceptions, or return codes, used by SAP code for error handling, into exception classes.  
+This separation is also an important prerequisite for the testability of an application.
 
-## Testbarkeit durch gutes Design
+## Testability through good design
 
-Gute Strukturierung in den Paketen, als auch in den Objekten sind grundlegende Voraussetzungen, um die Testbarkeit der Software zu erhöhen. Sind die Verantwortlichkeiten der Komponenten im Rahmen einer guten Architektur geklärt und die Aufgaben auf verschiedene Objekte sinnvoll verteilt, erleichtert dies den Einsatz von ABAP Unit maßgeblich.
-Im Rahmen der vorgenannten Architektur- und Designentscheidungen müssen bereits testrelevante Aspekte miteinbezogen werden, um effizient ABAP-Unit umsetzen zu können, da die Struktur sich unmittelbar auf die Testbarkeit auswirkt.
+Good structuring in the packages as well as in the objects are fundamental requirements for increasing the testability of the software. If the responsibilities of the components are clarified within the framework of a good architecture and the tasks are sensibly distributed among different objects, this makes the use of the ABAP Unit much easier.
+As part of the aforementioned architecture and design decisions, test-relevant aspects must be included in order to be able to efficiently implement the ABAP unit, as the structure has a direct impact on testability.
 
-Sind Datenbankzugriffe und Zugriffe auf SAP Funktionsbausteine oder Klassen bereits in einer eigenen Softwareschicht gekapselt und werden die Instanzen über eine Factory erzeugt, die eine Injection vorsieht, ist es für einen erfahrenen Entwickler sehr unproblematisch, den eigenen Code über ABAP Unit Tests zu testen und Datenbankzugriffe sowie SAP-Funktionen über Test-Mocks-Objekte zu entkoppeln. Dies verringert den Aufwand für die Unit-Test Erstellung deutlich gegenüber einem Vorgehen, bei dem der Testentwickler im Code Techniken wie Test-seams anwenden muss oder den Code umbauen muss, um die Entkopplung der Eigenentwicklung von SAP-Bausteinen in Tests sicherzustellen.
+If database accesses and accesses to SAP function blocks or classes are already encapsulated in a separate software layer and the instances are created via a factory that provides injection, it is very unproblematic for an experienced developer to test their own code via ABAP unit tests and to decouple database accesses and SAP functions via test mocks objects. This significantly reduces the effort required for unit test creation compared to an approach in which the test developer has to use techniques such as test seams in the code or has to rebuild the code to ensure the decoupling of the in-house development of SAP components in tests.
 
-Das Vorgehen, Empfehlungen und Hinweise zu ABAP Unit finden Sie im Kapitel [Testen von SAP-Anwendungen](/ABAP-Leitfaden/testing/#testen).
+The procedure, recommendations and information for the ABAP Unit can be found in the [Testing SAP applications](/ABAP-Leitfaden/testing/#testen) chapter.
 
-## Die Bedeutung des Refactorings von bestehenden Anwendungen
+## The importance of refactoring existing applications
 
-Die in diesem Leitfaden beschriebenen Empfehlungen, technischen Methodiken und Programmiertechniken lassen sich sehr gut bei der Erstellung neuer Anwendungen einplanen und anwenden. Darüber hinaus können und sollten diese auch zur Verbesserung bestehender Entwicklungen angewendet werden. Man bezeichnet dies als Refactoring  
+The recommendations, technical methodologies and programming techniques described in this guide can be easily planned and applied when creating new applications. In addition, these can and should also be used to improve existing developments. This is called refactoring  
 
-Refactoring sollte immer dann vorgenommen werden, wenn bestehende Anwendungen geändert oder erweitert werden müssen. Dafür muss Zeit eingeplant werden. Gute Hinweise für ein sinnvolles Vorgehen zum Refactoring ist z.B. im [Clean-ABAP Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md) beschrieben.
+Refactoring should always be carried out when existing applications need to be changed or expanded. Time must be planned for this. Good tips for a sensitive approach to refactoring are described, for example, in [Clean-ABAP Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md).
 
-Refactoring beschreibt aber nicht nur die Verbesserung des Codes im Einzelnen, sondern kann im übertragenen Sinne auch auf die Struktur in Form der Pakete angewendet werden. Objekte können sinnvoll in neue Unterpakete verteilt werden. Falls bisher Ihre Anwendungen nicht auf einer Struktur basieren, die durch Hauptpakete geordnet sind, empfehlen wir, Hauptpakete zu erstellen, die Ihre Hauptfunktionalitäten abbilden und bisherige Pakete können dann diesen Paketen entsprechend ihrer Zugehörigkeit zugeordnet werden. Eine Aufteilung zu großer Pakete in kleinere Pakete ist möglich, allerdings sind hier die Abhängigkeiten zu prüfen, zu klären und ggf. zu eliminieren. Dabei hilft aber die Paketkapselung und die Paketprüfung. Diese Funktionalitäten sind im optionalen Abschnitt [Grundlagen des Paketkonzepts](/ABAP-Leitfaden/abap/package_extended.md) detailliert erläutert.
-Die Verbesserung an bestehender Software sollte kontinuierlich und in kleinen Schritten erfolgen und durch Tests abgesichert werden. Wenn dies im Entwicklungsprozess integriert ist und zum Tagesgeschäft der Entwicklung gehört, wird sich das mit besser wartbarer und weniger Fehleranfälligen Software auszahlen.
+Refactoring not only describes the improvement of the code in detail, but can also be applied figuratively to the structure in the form of packages. Objects can be usefully distributed into new sub-packages. If your applications are not currently based on a structure organized by main packages, we recommend creating main packages that represent your main functionalities and previous packages can then be assigned to these packages according to their affiliation. It is possible to split packages that are too large into smaller packages, but the dependencies must be checked, clarified and, if necessary, eliminated. However, packet encapsulation and packet inspection help with this. These functionalities are explained in detail in the optional section [Basics of the package concept](/ABAP-Leitfaden/abap/package_extended.md).
+Improvements to existing software should occur continuously and in small steps and be backed up by tests. If this is integrated into the development process and part of the day-to-day development business, it will pay off with more maintainable and less error-prone software.
 
-## Eine gute Architektur braucht auch sauberen Code
+## A good architecture also needs clean code
 
-Nachdem Sie einiges über die Architektur und Struktur moderner Anwendungsentwicklung und Methoden zur Gestaltung der Software erfahren haben, lesen Sie im nächsten Abschnitt welche Eigenschaften Clean Code besitzt und erhalten unsere Empfehlungen und Hinweise wie moderner und sauberer Code (Clean Code) bei der Anwendungsentwicklung erreicht werden kann. Denn eine Anwendung sollte nicht nur eine gute Architektur und Strukturierung besitzen. Ebenso wichtig ist sauberen Code zu erstellen und den Clean-Code Prinzipien zu folgen. Denn dies unterstützt das Ziel moderner und wartungsfreundlicher Software.  
+After you have learned a lot about the architecture and structure of modern application development and methods for designing the software, read in the next section what properties Clean code has and receive our recommendations and tips on how modern and clean code (Clean code) can be achieved in application development. An application should not only have good architecture and structuring. It is equally important to create clean code and follow the Clean code principles. Because this supports the goal of modern and maintenance-friendly software.  

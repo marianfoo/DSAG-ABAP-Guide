@@ -1,201 +1,201 @@
 ---
 layout: page
-title: Versionsverwaltung
+title: Version Management
 permalink: /application-lifecycle-management/version-management/
 parent: ALM
 nav_order: 3
 ---
 
 {: .no_toc}
-# Versionsverwaltung in SAP
+# Version management in SAP
 
 1. TOC
 {:toc}
 
-Zu den aufbewahrungspflichtigen Dokumenten gemäß HGB, AO und GoBS gehören auch die Repository-Objekten in ABAP. Dies wurde lange Zeit durch die integrierte Versionsverwaltung innerhalb der ABAP-Workbench (SE80) erreicht. In den letzten Jahren hat sich aber ABAP weiterentwickelt, sei es durch den Einsatz einer externen Entwicklungsumgebung (ABAP Development Tools), den Einsatz von Git-Versionsverwaltung oder die Entwicklung weiterer Repository-Objekte, die nicht in der ABAP-Workbench entwickelt werden können. Daher stellt sich für jeden ABAP-Entwickler die zentrale Frage:
+The documents that must be retained in accordance with HGB, AO and GoBS also include the repository objects in ABAP. For a long time, this was achieved through the integrated version management within the ABAP workbench (SE80). In recent years, however, ABAP has developed further, be it through the use of an external development environment (ABAP Development Tools), the use of Git version management or the development of additional repository objects that cannot be developed in the ABAP workbench. Therefore, the central question that arises for every ABAP developer is:
 
-* Welche Versionsverwaltung soll ich wann nehmen?
+* Which version management should I use and when?
 
-Dieses Kapitel soll daher einen Überblick und eine Gegenüberstellung von Versionsverwaltungs-Lösungen innerhalb des SAP-Universums für ABAP-Entwickler geben.
+This chapter is therefore intended to provide an overview and comparison of version management solutions within the SAP universe for ABAP developers.
 
-## Git-Grundlagen
+## Git Basics
 
-Git ist ein verteiltes Versionierungssystem, welches frei als Open-Source zur Verfügung gestellt wird. Es wurde 2005 vom Linux-Erfinder Linus Torvalds entwickelt. Im Programmierbereich dient es dazu:
+Git is a distributed versioning system that is available as open source. It was developed in 2005 by Linux inventor Linus Torvalds. In the programming area it is used to:
 
-* eigene Änderungen zu überwachen
-* Änderungen rückgängig zu machen
-* Änderungen anderen zur Verfügung zu stellen
-* Aktualisierungen von anderen einzuholen
+* monitor your own changes
+* Undo changes
+* Make changes available to others
+* Obtain updates from others
 
-Dadurch ergeben sich folgende Vorteile:
+This results in the following advantages:
 
-* es kann zeitgleich entwickelt werden, z. B. für verschiedene Features
-* Versionierung verhindert, dass bereits getätigte Arbeiten verloren gehen bzw. überschrieben werden
-* Bei Bedarf kann zu früheren Versionen zurückgekehrt werden oder simultan an verschiedenen Versionen gearbeitet werden
+* it can be developed at the same time, e.g. B. for various features
+* Versioning prevents work that has already been done from being lost or overwritten
+* If necessary, you can go back to previous versions or work on different versions simultaneously
 
-### Wichtige Begriffe
+### Key Terms
 
-* **Repository**: In einem Repository bzw. einem Repo befinden sich alle Dateien inklusive derer vorangegangenen Versionen. Dadurch stehen stets alle Änderungen zur Verfügung, die von einer Datei ins Repo gespielt wurden und es kann nachvollzogen werden, wer wann welche Änderungen durchgeführt hat.
-* **Branches**: Beim Einsatz von Git dienen Branches (engl.: to branch - sich verzweigen) dazu, einen separaten Arbeitszweig zu erstellen. Dieser kann dann auch als neuer Kontext gesehen werden, in dem gearbeitet wird. So kann z.B. die Programmierung eines Features in einem eigenen Branch erfolgen, der bei Fertigstellung und nach dem Testen zurück in den Main-Zweig eingearbeitet wird.
-* **Versionierung**: Bei der Versionierung werden im Git alle getätigten Änderungen protokolliert. Mittels "Commit" können die Änderungen zu dem Repository hinzugefügt werden, eine neue Version der Datei(en) befindet sich dann im Repo. Anschließend können verschiedene Versionen miteinander verglichen, Änderungen rückgängig oder zu einer früheren Version zurückgekehrt werden.
+* **Repository**: All files, including previous versions, are located in a repository or repo. This means that all changes that have been transferred from a file to the repo are always available and it can be traced who made which changes and when.
+* **Branches**: When using Git, branches are used to create a separate branch of work. This can then also be seen as a new context in which work takes place. For example, a feature can be programmed in its own branch, which is incorporated back into the main branch upon completion and after testing.
+* **Versioning**: During versioning, all changes made are logged in the Git. Using “Commit” the changes can be added to the repository, and a new version of the file(s) will then be in the repo. Different versions can then be compared, changes can be undone or a previous version can be reverted to.
 
-## Einsatz von Git-basierten Lösungen in der ABAP-Entwicklung
+## Use of Git based solutions in ABAP development
 
-In vielen Programmiersprachen ist eine Verwaltung von Programmcode in einem Git-Repository Standard. Durch den Einsatz von Lars Hvam Petersen, der es durch seine freie OpenSource Lösung abapGit ermöglicht hat, ABAP-Code in ein Git-Repository zu bringen, nehmen Git-basierte Lösungen in der ABAP-Welt eine immer wichtigere Rolle ein. Der Einsatz von Git-basierten Lösungen in der ABAP-Entwicklung hat folgende technologische Vorteile:
+In many programming languages, management of program code in a Git repository is standard. Through the efforts of Lars Hvam Petersen, who made it possible to bring ABAP code into a Git repository through his free open source solution abapGit, Git-based solutions are taking on an increasingly important role in the ABAP world. The use of Git-based solutions in ABAP development has the following technological advantages:
 
-* **Standardmäßige Funktionen für die Versionsverwaltung**: Durch den Einsatz von Git können standardmäßige Funktionen eingesetzt werden, wie das Rollback nicht nur für ein Objekt, sondern für alle Objekte gleichzeitig.
-* **Zusammenarbeit von mehreren Entwicklern gleichzeitig an unterschiedlichen Anforderungen**: Mit Hilfe von Git ist es möglich, dass mehrere Entwickler gleichzeitig mit Hilfe von Branches an unterschiedlichen Anforderungen arbeiten können.
-* **Ermöglichen von externen Tools**: Es ist nun möglich, nicht nur SAP-Produkte für den Entwicklungsworkflow zu verwenden, sondern man kann auch externe Tools verwenden, um seinen Code z.B. zu prüfen. Zudem können CI-Pipelines gebaut werden, was mit dem Standard-Transportmechanismus nicht möglich ist.
-* **Versionierung**: Bisher war es nur möglich, eine Version zu einem Objekt zu wissen. Nun ist es möglich mit Hilfe von Tags eine Reihe von Objekten zu versionieren. Dies hat den Vorteil, dass nun die Anwendung einen Releasecharakter besitzen kann.
-* **Code ist zentral**: Der Code befindet sich an einer zentralen Stelle, und alle Änderungen zu der Anwendung werden dorthin gebracht. Neben dem ABAP-Code können auch andere Bestandteile der Anwendung wie z.B. Fiori oder auch .NET Entwicklungen im Git-Repository gespeichert werden. Es kann auch die Dokumentation im Git gespeichert werden.
+* **Standard versioning features**: By using Git, standard features can be used, such as rollback not just for one object, but for all objects at the same time.
+* **Collaboration of multiple developers on different requirements at the same time**: With the help of Git it is possible for multiple developers to work on different requirements at the same time using branches.
+* **Enabling external tools**: It is now possible to not only use SAP products for the development workflow, but you can also use external tools to check your code for example. In addition, CI pipelines can be built, which is not possible with the standard transport mechanism.
+* **Versioning**: Previously it was only possible to know a version of an object. It is now possible to version a series of objects using tags. This has the advantage that the application can now have a release character.
+* **Code is central**: The code is in a central location and all changes to the application are brought there. In addition to the ABAP code, other components of the application such as Fiori or .NET developments can also be saved in the Git repository. The documentation can also be saved in the Git.
 
-Neben den technologischen Vorteilen gibt es auch organisatorische Vorteile
+In addition to the technological advantages, there are also organizational advantages
 
-* **Git ist Standardlösung**: Es ist einfacher, andere Menschen für die SAP-Entwicklung zu begeistern, wenn sie schon Tools oder Technologien aus anderen Programmiersprachen kennen. Git ist die Standardlösung für andere Programmiersprachen, und es muss kein neues Know-How aufgebaut werden. Besonders Studenten, die Git schon kennen, können sich dann für ABAP besser begeistern.
-* **Einheitliches Format für Programmiersprachen**: Im Git-Repository können nicht nur SAP-Entwicklungen gespeichert werden, sondern es können auch andere Entwicklerteams dort ihren Code zentral hinterlegen.
-* **Format**: Das Format kann von jedem gelesen werden. Es ist nicht verschlüsselt, und alle Änderungen können nachvollzogen werden. So kann auch ein Wirtschaftsprüfer alle Änderungen sehen, wann und von wem sie gemacht wurden.
+* **Git is standard solution**: It is easier to get other people excited about SAP development if they already know tools or technologies from other programming languages. Git is the standard solution for other programming languages ​​and no new know-how needs to be developed. Especially students who already know Git can then become more enthusiastic about ABAP.
+* **Uniform format for programming languages**: Not only SAP developments can be stored in the Git repository, but other development teams can also centrally deposit their code there.
+* **Format**: The format can be read by anyone. It is not encrypted and all changes can be traced. This means that an auditor can also see all changes, when they were made and by whom.
 
-## Versionskontrollsysteme im SAP-Umfeld
+## Version control systems in the SAP environment
 
-Folgende Versionskontrollsysteme gibt es im SAP-Umfeld:
+The following version control systems exist in the SAP environment:
 
-### Serverbasierte Versionsverwaltung
+### Server-based Version Management
 
-Die serverbasierte Versionsverwaltung ist für alle editierbaren Objekte der ABAP Workbench aktiv.
-Die Versionsverwaltung kann über
+Server-based version management is active for all editable objects in the ABAP Workbench.
+Version management can be done via
 
 * SE80 - Object Navigator
 * SE09 - Transport Organizer
-* die Anzeige- und Pflegetransaktionen für Repository Objekte
+* the display and maintenance transactions for repository objects
 
-aufgerufen werden.
+be called.
 
-Die entsprechenden Objekte werden bei jeder Transportfreigabe versioniert.
+The corresponding objects are versioned every time the transport is released.
 
-### Lokale Versionsverwaltung in ABAP Development Tools
+### Local version management in ABAP Development Tools
 
-Die auf der Eclipse IDE basierenden ABAP Development Tools bietet eine eingebaute Versionsverwaltungen für Entwicklungsressourcen an, die mittels des ABAP-Compare Editors ausgeführt werden können und umfangreiche Vergleichsmöglichkeiten bieten:
+The ABAP Development Tools, based on the Eclipse IDE, offers built-in version management for development resources, which can be executed using the ABAP Compare Editor and offers extensive comparison options:
 
-* **clientbasierte lokale Versionsverwaltung:** - Das Standardfeature unter Eclipse bietet eine Standardversionsverwaltung. Jedes Mal wenn ein Objekt, wie z.B. eine ABAP-Klasse bearbeitet und gespeichert wird, speichert Eclipse die Version nach den persönlichen eingestellten Präferenzen. Dies ist sinnvoll wenn Änderungen nachvollzogen werden sollen, die vor einer Transportfreigabe erfolgten.
+* **client-based local versioning:** - The standard feature under Eclipse provides standard versioning. Every time an object, such as a ABAP class, is edited and saved, Eclipse saves the version according to your personal preferences. This is useful if you want to track changes that occurred before a transport release.
 
-* **serverbasierte Revisionshistorie:** - Dies entspricht der lokalen Versionsverwaltung und zeigt Versionen basierend auf dem aktuellen Stand und den freigegebenen Transporten an. Gegenüber der GUI-basierten Variante, sind hier Änderungen, insbesondere bei Klassen deutlich übersichtlicher und besser nachzuvollziehen. Des Weiteren bietet sich hier die Möglichkeit auch andere Systeme, die als ABAP-Projekte in Eclipse eingebunden sind, zum Versionsvergleich heranzuziehen (z.B. zentrale Entwicklungssystemlinie und Q-System der Produktionslinie). Dafür sind keine RFC-Verbindungen zwischen den Systemen erforderlich, der Vergleich erfolgt lokal.
+* **Server-based revision history:** - This is equivalent to local version management and displays versions based on the current status and released transports. Compared to the GUI-based version, changes here, especially in classes, are much clearer and easier to understand. It is also possible to use other systems that are integrated into Eclipse as ABAP projects for version comparison (e.g. central development system line and Q system of the production line). No RFC connections between the systems are required; the comparison takes place locally.
 
-Details finden Sie hierzu im [ADT-Leitfaden der DSAG](https://1dsag.github.io/ADT-Leitfaden/working-with-adt/features/vcs-and-compare/#versionsverwaltung-und-vergleichen/)
+Details can be found in [ADT guidelines from DSAG](https://1dsag.github.io/ADT-Leitfaden/working-with-adt/features/vcs-and-compare/#versionsverwaltung-und-vergleichen/)
 
 ### abapGit
 
-abapGit ist ein in ABAP entwickelter Git-Client. Es wurde von Lars Hvam Petersen entwickelt und ist ein OpenSource Projekt. Mit abapGit haben Entwickler die Möglichkeit eine Git-Versionskontrolle mit dem SAP-Applikationsserver zu verbinden und ABAP-Entwicklungsobjekte in einem Git-Repository anzulegen.
+abapGit is a Git client developed in ABAP. It was developed by Lars Hvam Petersen and is an open source project. With abapGit, developers have the opportunity to connect a Git version control to the SAP application server and create ABAP development objects in a Git repository.
 
 ### gCTS
 
-Im Gegensatz zu abapGit ist gCTS (Git-enabled Change and Transport System) ein von SAP bereitgestellte Erweiterung zu CTS. Es unterstützt die Integration von Git in das bestehende CTS, um moderne Versionskontrollfunktionen zu ermöglichen.
+In contrast to abapGit, gCTS (Git-enabled Change and Transport System) is an extension to CTS provided by SAP. It supports the integration of Git into the existing CTS to enable modern version control functions.
 
-### Versionsverwaltung in SAP BAS
+### Version management in SAP BAS
 
-Mit SAP Business Application Studio steht Unternehmen ein Werkzeug für die Entwicklung ihrer Anwendungen und Erweiterungen mit Bezug zu SAP-Lösungen zur Verfügung. Die Entwicklungsumgebung stellt der Anbieter dabei in Form eines Cloud-basierten Services bereit. Für die einfachere Versionsverwaltung ist eine Integration mit Git vorgesehen. Die Versionierung ist aber auch mit anderen Systemen möglich.
+With SAP Business Application Studio, companies have a tool for developing their applications and extensions related to SAP solutions. The provider provides the development environment in the form of a Cloud-based service. Integration with Git is planned for easier version management. However, versioning is also possible with other systems.
 
-## Vergleich der unterschiedlichen Versionskontrollsysteme
+## Comparison of the different version control systems
 
-### SAP-System und Verfügbarkeit
+### SAP system and availability
 
-In den folgenden SAP-Systemen ist das Versionskontrollsystem verfügbar.
+In the following SAP systems, the version control system is available.
 
-| **Tool**                                         | **SAP-System**            | **Systemverfügbarkeit**   |
+| **Tool**                                         | **SAP-System**            | **System availability**   |
 |:-------------------------------------------------|:--------------------------|:--------------------------|
-| **SE80 (Lokale Versionsverwaltung)**             | SAP OnPrem                | Seit mindestens 2007      |
-| **ABAP Development Tools (Versionsverwaltung)**  | SAP OnPrem/SAP Cloud      | Seit 2012                 |
-| **abapGit in SAP GUI**                           | SAP OnPrem                | SAP BASIS version 702     |
-| **abapGit in ADT**                               | SAP Cloud/SAP OnPre       | Seit 2018                 |
-| **abapGit in der Cloud**                         | SAP Cloud                 | Seit 2018                 |
-| **gCTS in der Cloud**                            | SAP Cloud                 | S/4HANA EM 1909 FPS00     |
+| **SE80 (Local version management)**             | SAP OnPrem                | Since at least 2007       |
+| **ABAP Development Tools (Version Management)**  | SAP OnPrem/SAP Cloud      | Since 2012                |
+| **abapGit to SAP GUI**                           | SAP OnPrem                | SAP BASIS version 702     |
+| **abapGit to ADT**                               | SAP Cloud/SAP OnPre       | Since 2018                |
+| **abapGit in the Cloud**                         | SAP Cloud                 | Since 2018                |
+| **gCTS in the Cloud**                            | SAP Cloud                 | S/4HANA EM 1909 FPS00     |
 | **gCTS OnPrem**                                  | SAP OnPrem                | S/4HANA EM 1909 FPS00     |
-| **SAP BAS**                                      | SAP Cloud/SAP OnPrem      | Seit 2020                 |
+| **SAP BAS**                                      | SAP Cloud/SAP OnPrem      | Since 2020                |
 
-### Funktionsumfang
+### Functional Scope
 
-In den folgenden Dokumentationeb befindet sich der Funktionsumfang der jeweiligen Versionsverwaltung
+The scope of functions of the respective version management can be found in the following documentation
 
-| **Tool**                                         | **Funktionsumfang**           |
+| **Tool**                                         | **Functional Scope**          |
 |:-------------------------------------------------|:------------------------------|
-| **SE80 (Lokale Versionsverwaltung)**             | [SAP Versionsverwahltung](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/2b28ffa716c24348903f8ffbfeb81df8/e52a2c8d53f8400bb8a309cffe417275.html)|
-| **ABAP Development Tools (Versionsverwaltung)**  | [ADT User Guide ](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/comparing-source-code)              |
-| **abapGit in SAP GUI**                           | [abapGit User Guide](https://docs.abapgit.org/user-guide/)                                                                   |
-| **abapGit in ADT**                               | [BTP Working with abapgit](https://help.sap.com/docs/btp/sap-business-technology-platform/working-with-abapgit)              |
-| **abapGit in der Cloud**                         | [abapGit](https://help.sap.com/docs/btp/sap-business-technology-platform/working-with-abapgit)                               |
-| **gCTS in der Cloud**                            | [gCTS](https://help.sap.com/docs/ABAP_PLATFORM_NEW/4a368c163b08418890a406d413933ba7/f319b168e87e42149e25e13c08d002b9.html)   |
+| **SE80 (Local version management)**             | [SAP Version Management](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/2b28ffa716c24348903f8ffbfeb81df8/e52a2c8d53f8400bb8a309cffe417275.html)|
+| **ABAP Development Tools (Version Management)**  | [ADT User Guide ](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/comparing-source-code)              |
+| **abapGit to SAP GUI**                           | [abapGit User Guide](https://docs.abapgit.org/user-guide/)                                                                   |
+| **abapGit to ADT**                               | [BTP Working with abapgit](https://help.sap.com/docs/btp/sap-business-technology-platform/working-with-abapgit)              |
+| **abapGit in the Cloud**                         | [abapGit](https://help.sap.com/docs/btp/sap-business-technology-platform/working-with-abapgit)                               |
+| **gCTS in the Cloud**                            | [gCTS](https://help.sap.com/docs/ABAP_PLATFORM_NEW/4a368c163b08418890a406d413933ba7/f319b168e87e42149e25e13c08d002b9.html)   |
 | **gCTS OnPrem**                                  | [gCTS](https://help.sap.com/docs/ABAP_PLATFORM_NEW/4a368c163b08418890a406d413933ba7/f319b168e87e42149e25e13c08d002b9.html)   |
-| **SAP BAS**                                      | [DOKU fehlt noch]                                            |
+| **SAP BAS**                                      | [Documentation still missing]                                |
 
-### Versionsumfang
+### Version Scope
 
-Die Versionsverwaltung umfasst folgenden Versionsumfang
+Version management includes the following version scope
 
-| **Tool**                                          | **Versionsumfang**                         |
+| **Tool**                                          | **Version Scope**                          |
 |:--------------------------------------------------|:-------------------------------------------|
-| **SE80 (Lokale Versionsverwaltung)**              | Jedes einzelne Objekt                      |
-| **ABAP Development Tools (Versionsverwaltung)**   | Jedes einzelne Objekt                      |
-| **abapGit in SAP GUI**                            | Auf Paketebene                             |
-| **abapGit in ADT**                                | Auf Paketebene                             |
-| **abapGit in der Cloud**                          |                                            |
-| **gCTS in der Cloud**                             | Auf Transportschichtebene                  |
-| **gCTS OnPrem**                                   | Auf Transportschichtebene                  |
-| **SAP BAS**                                       |                                            |
+| **SE80 (Local version management)**              | Each individual object                     |
+| **ABAP Development Tools (Version Management)**   | Each individual object                     |
+| **abapGit to SAP GUI**                            | At the package level                             |
+| **abapGit to ADT**                                | At the package level                             |
+| **abapGit in the Cloud**                          |                                                                                                                                                                                |
+| **gCTS in the Cloud**                             | At the transport layer level                  |
+| **gCTS OnPrem**                                   | At the transport layer level                  |
+| **SAP BAS**                                       |                                                                                                                                                                                |
 
-### Triggerpunkt
+### Trigger Point
 
-Die Versionsverwaltung wird folgendermaßen angetriggert.
+Version management is triggered as follows.
 
-| **Tool**                                          | **Triggerpunkt**                           |
+| **Tool**                                          | **Trigger Point**                          |
 |:--------------------------------------------------|:-------------------------------------------|
-| **SE80 (Lokale Versionsverwaltung)**              | Bei jeder Transportfreigabe                |
-| **ABAP Development Tools (Versionsverwaltung)**   | Nach jedem Speichern/Aktivieren            |
-| **abapGit in SAP GUI**                            | Bei manuellem Antriggern oder automatisch im Hintergrund                  |
-| **abapGit in ADT**                                | Bei manuellem Antriggern                   |
-| **abapGit in der Cloud**                          | Bei manuellem Antriggern                   |
-| **gCTS in der Cloud**                             | Bei Transportfreigabe                      |
-| **gCTS OnPrem**                                   | Bei Transportfreigabe                      |
-| **SAP BAS**                                       | Bei manuellem Antriggern                   |
+| **SE80 (Local version management)**              | With every transport release                |
+| **ABAP Development Tools (Version Management)**   | After each save/activation                 |
+| **abapGit to SAP GUI**                            | When triggered manually or automatically in the background                  |
+| **abapGit to ADT**                                | When triggered manually                   |
+| **abapGit in the Cloud**                          | When triggered manually                   |
+| **gCTS in the Cloud**                             | Upon release for transport                      |
+| **gCTS OnPrem**                                   | Upon release for transport                      |
+| **SAP BAS**                                       | When triggered manually                   |
 
-### Anwendungen
+### Applications
 
-Folgende Anwendungen neben einem SAP-System werden benötigt, um die Versionsverwaltungen zu nutzen.
+The following applications in addition to a SAP system are required to use the version management.
 
-|                                                   | **Anwendungen**                                                |
+|                                                                                                                                                                                                            | **Applications**                                              |
 |---------------------------------------------------|---------------------------                                      |
-| **SE80 (Lokale Versionsverwaltung)**              | Kein weiteres System notwendig                                    |
-| **ABAP Development Tools (Versionsverwaltung)**   | ABAP Development Tools                                          |
-| **abapGit in SAP GUI**                            | Repository System sowie abapGit im SAP-System                   |
-| **abapGit in ADT**                                | Repository System sowie abapGit im SAP-System und Plugin in ADT |
-| **abapGit in der Cloud**                          | Repository System sowie abapGit im SAP-System und Plugin in ADT |
-| **gCTS in der Cloud**                             | Repository System sowie gCTS Konfiguration                      |
-| **gCTS OnPrem**                                   | Repository System sowie gCTS Konfiguration                      |
-| **SAP BAS**                                       | Repository System sowie Zugang zum SAP Bas (Lizenzen)           |
+| **SE80 (Local version management)**              | No additional system necessary                                    |
+| **ABAP Development Tools (Version Management)**   | ABAP Development Tools                                         |
+| **abapGit to SAP GUI**                            | Repository System as well as abapGit in the SAP system                   |
+| **abapGit to ADT**                                | Repository System as well as abapGit in the SAP system and plugin in ADT |
+| **abapGit in the Cloud**                          | Repository System as well as abapGit in the SAP system and plugin in ADT |
+| **gCTS in the Cloud**                             | Repository system and gCTS configuration                        |
+| **gCTS OnPrem**                                   | Repository system and gCTS configuration                        |
+| **SAP BAS**                                       | Repository system and access to SAP BAS (licenses)              |
 
-## Einsatzszenarien
+## Deployment Scenarios
 
-### Weit verbreitete 3-System-Landschaft
+### Widely Used 3-System Landscape
 
-Bei diesem Einsatzszenario geht es darum, dass der Code auf dem Entwicklungssystem in ein Git-Repository mit einem Git-Versionsverwaltungssystem übertragen wird.
+This deployment scenario involves pushing the code on the development system into a Git repository with a Git version control system.
 
-![Darstellung 3-System Landschaft](./img/dsagleitfaden-normal.drawio.png)
+![Illustration 3-system landscape](./img/dsagleitfaden-normal.drawio.png)
 
-### Softwarelieferant
+### Software Supplier
 
-Dieses Einsatzszenario dient zum Austausch zwischen Quellcode von einem Softwarelieferant an seinem Kunden über ein Git-Repository.
-![Darstellung Softwarelieferant](./img/dsagleitfaden-softwarelieferant.drawio.png)
+This deployment scenario is used to exchange source code from a software supplier to its customer via a Git repository.
+![Illustration software supplier](./img/dsagleitfaden-softwarelieferant.drawio.png)
 
-### Verteilung in verschiedene Systemlandschaften
+### Distribution in different system landscapes
 
-Hier geht es darum, dass man zwischen seinen verschiedenen Systemlandschaften Quellcode Austausch. So ist es möglich ohne Quertransporte den gleichen Quellcode zu nutzen und weiterzuarbeiten.  
+This is about exchanging source code between your different system landscapes. This makes it possible to use the same source code and continue working without cross-transports.  
 ![Alt text](./img/dsagleitfaden-verteilung.drawio.png)
 
 ### Recovery
 
-Dieses Szenario beschreibt die Möglichkeit, dass aus dem Git-Repository ein alter Stand zurückgewonnen werden kann.
-Dabei muss nicht jedes Repository-Objekt einzeln zurückgeholt werden, sondern ein alter Stand einer ganzen Anwendung.
+This scenario describes the possibility that a previous state can be reclaimed from the Git repository.
+It is not necessary to retrieve each repository object individually, but rather an old version of an entire application.
 ![Alt text](./img/dsagleitfaden-RECOVERY.drawio.png)
 
-### Paralleles Arbeiten
+### Parallel Work
 
 ![Alt text](./img/dsagleitfaden-parallel.drawio.png)
 
@@ -203,32 +203,32 @@ Dabei muss nicht jedes Repository-Objekt einzeln zurückgeholt werden, sondern e
 
 ![Alt text](./img/dsagleitfaden-customcode.drawio.png)
 
-## Vergleich des Entwicklungsprozess mit verschiedenen Versionsverwaltungen
+## Comparison of the development process with different version management
 
 | SAP-Standard  | git-basiert  |
 |:--------------|:-------------|
-| Auftrag muss am Anfang angelegt werden | Commit wird nach der Änderung durchgeführt |
-| Verteilen von Code – keine Kontrolle über die Änderungen in anderen Systemen | Zentraler Anlaufpunkt |
-| Versionierung einer Anwendung nicht möglich | Versionierung von einer ganzen Anwendung über Standardfunktionalitäten möglich |
-| Rückgängig machen der Änderungen eines Transports nur manuell mit massivem Aufwand mit Einschränkungen möglich | Zurückgehen auf vorigen Commit damit zurücksetzen aller Änderungen über gCTS oder abapgit möglich |
+| Order must be created at the beginning | Commit is performed after the change |
+| Distributing code - no control over changes in other systems | Central point of contact |
+| Versioning of an application is not possible | Versioning of an entire application possible via standard functionalities |
+| Undoing changes to a transport is only possible manually with massive effort and limitations | Going back to the previous commit allows you to reset all changes via gCTS or abapgit |
 
-## Annäherung Entwicklungsprozesse ABAP und Non-ABAP über git-basierte Tools
+## Approaching development processes ABAP and non-ABAP via git-based tools
 
-SAP-Entwickler stehen im Spannungsfeld zwischen traditioneller Stabilität und der Notwendigkeit für schnellere, flexiblere Entwicklungsprozesse. In vielen anderen IT-Abteilungen sind DevOps-Praktiken bereits erfolgreich implementiert, während SAP-Team noch mit langwierigen Release-Zyklen und komplexerer Transportmechanismen kämpfen. DevOps ist eine Kombination aus „Development“ (Entwicklung) und „Operations“ (Betrieb) und zielt darauf ab, Entwicklungs- und Betriebsprozesse so zu verzahnen, dass Software schneller, verlässlicher und mit höherer Qualität ausgeliefert wird. Durch den Einsatz einer Versionsverwaltung lässt sich auch in der SAP-Welt eine agile und effiziente Entwicklungsumgebung schaffen. 
+SAP developers find themselves caught between traditional stability and the need for faster, more flexible development processes. DevOps practices have already been successfully implemented in many other IT departments, while the SAP team is still struggling with longer release cycles and more complex transport mechanisms. DevOps is a combination of “Development” and “Operations” and aims to interlink development and operational processes so that software is delivered faster, more reliably and with higher quality. By using version management, an agile and efficient development environment can also be created in the SAP world. 
 
-## Integration an andere Komponenten
+## Integration with Other Components
 
-Die SAP-Versionsverwaltung ist der Ausgangspunkt mit ABAP-Code außerhalb eines SAP-Systems zu arbeiten
+SAP versioning is the starting point for working with ABAP code outside of a SAP system
 
 ### Azure Pipelines
 
-Azure DevOps optimiert den Bereitstellungsprozess, indem Pipelines bereitgestellt werden, die Sie ausführen können.
+Azure DevOps streamlines the deployment process by providing pipelines that you can run.
 Quelle: 
 https://community.sap.com/t5/technology-blog-posts-by-members/sap-change-management-with-azure-devops-transforming-enterprise-operations/ba-p/14130760
 
 ### Apache Jenkins
 
-Jenkins ist eines der Standardwerkzeuge für Continuous Integration. Um Continuous Integration- oder Daily/Nightly Build-Komponenten einfach auf einem ABAP-Entwicklungssystem anzuwenden, kann der Startpunkt eine Versionsverwaltung sein.
+Jenkins is one of the standard tools for continuous integration. To easily apply Continuous Integration or Daily/Nightly Build components to a ABAP development system, the starting point can be version management.
 
 Quelle:
 https://github.com/SAP/jenkins-library
@@ -238,42 +238,42 @@ https://community.sap.com/t5/application-development-and-automation-blog-posts/c
 
 ### Revisionssicherheit
 
-Durch die präzise und lückenlose Protokollierung aller Änderungen sorgt die Versionsverwaltung für eine Revisionssicherheit. Dies ist besonders wichtig, um Compliance Anforderungen zu erfüllen sowie bei der Überprüfung von Sicherheitsvorfällen oder Audits.
+By precisely and completely logging all changes, version management ensures revision security. This is particularly important to meet compliance requirements and when reviewing security incidents or audits.
 
-### Sicherung und Wiederherstellung
+### Backup and restore
 
-Versionsverwaltungen verfügen über Mechanismen zur regelmäßigen Sicherung der Daten. Im Falle eines Datenverlusts oder einer Beschädigung können frühere Versionen der Daten wiederhergestellt werden. Dadurch wird das Risiko von Datenverlust minimiert und die Kontinuität der Geschäftsprozesse sichergestellt.
+Version management has mechanisms for regularly backing up data. In the event of data loss or corruption, previous versions of the data can be restored. This minimizes the risk of data loss and ensures the continuity of business processes.
 
-### Verwaltung von Zugriffsrechten
+### Access rights management
 
-Durch den Einsatz von externen Versionsverwaltungssystemen gibt es Funktionen zur Steuerung von Zugriffsrechten. So kann von den Administratoren festgelegt werden, wer auf welche Daten zugreifen, bearbeiten oder anzeigen darf. So wird unbefugter Zugriff verhindert und die Vertraulichkeit der Daten gewahrt.
+The use of external version management systems provides functions for controlling access rights. This allows administrators to determine who is allowed to access, edit or view which data. This prevents unauthorized access and maintains the confidentiality of the data.
 
-### Änderungsverfolgung
+### Change tracking
 
-Jede Änderung wird dokumentiert, einschließlich des Zeitpunktes und des Bearbeiters. Dadurch wird Transparenz geschafft und die Fehlerbehbung erleichtert.
+Every change is documented, including the time and who made it. This creates transparency and makes troubleshooting easier.
 
 ### Manipulationseinsatz
 
-Mit Hilfe von externen Versionsverwaltungssystemen können durch deren kryptografische Hashing-Algorithmen, der Inhalt und der Änderungsverlauf vor Manipulation zu schützen.
+With the help of external version management systems, the content and the change history can be protected from manipulation using their cryptographic hashing algorithms.
 
 
 ## Risiken
 
-* Langsame Release-Zyklen: Monatelange Entwicklungsphasen und manuelle Tests sorgen für Verzögerungen.
-* Komplexe Transportmechanismen: Das herkömmliche SAP-Transportmanagement ist nicht auf CI/CD optimiert.
-* Fehlende Automatisierung: Tests, Deployment und Code-Reviews sind oft noch manuell und fehleranfällig.
-* Widerstand gegen Veränderung: Viele SAP-Teams arbeiten nach klassischen Wasserfallmethoden und stehen agilen Prozessen skeptisch gegenüber.
+* Slow release cycles: Months of development phases and manual testing cause delays.
+* Complex transport mechanisms: The traditional SAP transport management is not optimized for CI/CD.
+* Lack of automation: Testing, deployment and code reviews are often still manual and error-prone.
+* Resistance to change: Many SAP teams work according to classic waterfall methods and are skeptical about agile processes.
 
-## Empfehlung
+## Recommendation
 
 
-### Definition der Anforderungen
+### Definition of requirements
 
-Die Wahl des richtigen Versionsverwaltung hängt von den spezifischen Anforderungen und dem Entwicklungsprozess des jeweiligen Projekts oder Unternehmens ab. Definieren Sie ihre Anforderungen und entscheiden sie dann welche Versionsverwaltung sie einsetzen möchte. 
+Choosing the right version control depends on the specific requirements and development process of the respective project or company. Define your requirements and then decide which version management you want to use. 
 
-### Einsatz von weiteren Tools
+### Use of additional tools
 
-Es können mit Hilfe der Versionsverwaltung moderne Entwicklungspraktiken wie CI/CD genutzt werden. Überlegen Sie sich wie ihre Pipeline aussehen soll
+Modern development practices such as CI/CD can be used with the help of version management. Think about what your pipeline should look like
 
 {: .note }
-> [Git und SAP / Rheinwerk Verlag](https://www.rheinwerk-verlag.de/git-und-sap/?srsltid=AfmBOooMbM45uQOGPLDAiaKz5hHazrf45BIEVjmOIe8mz9HjpdHjgzZq)
+> [Git and SAP / Rheinwerk Verlag](https://www.rheinwerk-verlag.de/git-und-sap/?srsltid=AfmBOooMbM45uQOGPLDAiaKz5hHazrf45BIEVjmOIe8mz9HjpdHjgzZq)

@@ -13,70 +13,70 @@ nav_order: 3
 1. TOC
 {:toc}
 
-Was sind CDS Views und warum sind sie wichtig? 
-In SAP S/4HANA soll der Entwickler nicht mehr direkt auf die Datenbanken zugreifen, sondern das [Virtuelle Datenmodell (VDM)](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/8573b810511948c8a99c0672abc159aa.html?locale=de-DE) nutzen, um auf die Daten in SAP S/4HANA zuzugreifen, z.B. für Analytics oder Schnittstellen.  Das VDM wird in SAP S/4HANA durch CDS-Views repräsentiert. Diese CDS-Views folgen festen Regeln für die Modellierung und Benennung. Sie stellen Geschäftsdaten aus Datenbanktabellen auf Basis der Geschäftslogik dar und machen die Daten so einfacher nutzbar. 
-[CDS Views sind die Schlüsselelemente](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/abencds.html) für On-Stack Extensibility oder auch ABAP Cloud - siehe [Kapitel Clean Core](/ABAP-Leitfaden//clean-core/what-is-clean-core/). Die Nutzung und Erweiterung eines Datenmodells ist der Schlüssel zum VDM-Konzept. CDS Views werden für viele Zwecke verwendet, z.B. als Schnittstelle zwischen verschiedenen Anwendungen und Add-Ons im selben System sowie zu externen Systemen und Anwendungen. Sie können auch eigene Views erstellen, indem Sie, nach dem Clean Core Gedanken, die von SAP bereitgestellten und freigegebenen Views als Datenquelle verwenden.
+What are CDS Views and why are they important? 
+In SAP S/4HANA, the developer should no longer access the databases directly, but rather use the [Virtuelle Datenmodell (VDM)](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/8573b810511948c8a99c0672abc159aa.html?locale=de-DE) to access the data in SAP S/4HANA, e.g. for analytics or interfaces.  The VDM is represented in SAP S/4HANA by CDS views. These CDS views follow fixed rules for modeling and naming. They represent business data from database tables based on business logic, making the data easier to use. 
+[CDS Views are the key elements](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/abencds.html) for on-stack extensibility or also ABAP Cloud - see [Chapter Clean Core](/ABAP-Leitfaden//clean-core/what-is-clean-core/). The use and extension of a data model is the key to the VDM concept. CDS Views are used for many purposes, such as an interface between different applications and add-ons in the same system as well as to external systems and applications. You can also create your own views by using the views provided and shared by SAP as a data source, following the Clean Core thought.
 
-## Aufbau von dem VDM
+## Construction of the VDM
 
 ![CDS_Ueberblick](./img/cds-image-01.png)
 
-Quelle: SAP Help Darstellung des VDMs
+Source: SAP Help representation of the VDM
 {: .img-caption} 
 
-Vor die Datenbanktabellen werden verschiedene CDS-View-Layer gelegt. Das VDM sorgt beispielsweise dafür, dass die Datenbankfelder verständlich sind und der Benutzer das proprietäre SAP-Datenmodell, beispielsweise MARA-MATNR, als Produktnummer identifizieren kann. Der Basic Interface Layer greift auf die Datenbank zu. Die Composite Interface Views fassen Logik und Basic Interface Views zusammen; das VDM kann verschiedene Abstraktionsschichten enthalten. Die Consumption-Views geben das Datenmodell für den Anwendungsfall frei.  
-Im Rahmen des [ABAP RESTful Application Programming Model](../abap/restful_abap.md) (RAP) werden von SAP auch weitere Begriffsdefinitionen, z.B. Business Object Projection Layer, vorgegeben.
+Various CDS view layers are placed in front of the database tables. For example, the VDM ensures that the database fields are understandable and the user can identify the proprietary SAP data model, for example MARA-MATNR, as a product number. The Basic Interface Layer accesses the database. The Composite Interface Views combine logic and basic interface views; the VDM can contain different abstraction layers. The consumption views release the data model for the use case.  
+As part of the [ABAP RESTful Application Programming Model](../abap/restful_abap.md) (RAP), SAP also provides further definitions of terms, e.g. Business Object Projection Layer.
 
-Hier wäre die folgende Aufstellung der View Arten. Alle Standard Views beinhalten auch die Kennung / Annotation:
+Here would be the following list of view types. All standard views also include the identifier/annotation:
 
 ```abap
 @VDM.viewType:[..]
 ```
-## View-Typen, Namenskonventionen und Einsatzmöglichkeiten  
+## View types, naming conventions and possible uses  
 
 | View-Typ / Suffix  | Beschreibung | Annotation |
 |--------------------|-------------|------------|
-| **I_*** | Basic- und Composite-Interface-Views: Diese CDS-Views dienen dem Lesen von Daten und können für Erweiterungen genutzt werden. | `@VDM.viewType: #BASIC` `@VDM.viewType: #COMPOSITE` |
-| **C_*** | Consumption-Views: Eingeschränkte Wiederverwendungsviews. | `@VDM.viewType: #CONSUMPTION` |
-| **P_*** | Private Views: Diese Views dürfen nicht verwendet werden, da SAP sie bei System-Upgrades verändern kann. | `@VDM.private: true` |
-| **R_*** | Views für transaktionale Verarbeitung: Diese CDS-Views ermöglichen nicht nur das Lesen von Daten, sondern auch Aktionen wie das Anlegen, Ändern oder Löschen von Instanzen eines RAP-Business-Objekts im Kontext des ABAP-RESTful-Anwendungsprogrammiermodells (RAP). | |
-| **A_*** | Remote-API-Views: Diese CDS-Views bilden die Grundlage für externe APIs. Weitere Informationen über APIs finden Sie im [SAP Business Accelerator Hub](https://api.sap.com/). | `@VDM.viewType: #CONSUMPTION` `@VDM.lifecycle.contract.type: #PUBLIC_REMOTE_API` |
-| **X_*** | View-Erweiterungen: Diese CDS-Views können Daten nur indirekt im Kontext einer anderen CDS-View lesen. Sie bieten Zugriff auf branchen- oder länder-/regionsspezifische Felder, die von SAP definiert wurden. | `@VDM.viewExtension: true` |
-| **E_*** | Extension-Include-Views: Diese CDS-Views können Daten nur indirekt im Kontext einer anderen CDS-View lesen. Sie bieten Zugriff auf benutzerdefinierte Felder, die in der App „Benutzerdefinierte Felder“ angelegt wurden. Siehe Abschnitt "Erweiterungen von SAP Standard CDS Views"  | `@VDM.viewType: #EXTENSION` |
-| **F_*** | Ableitungsfunktionen: Leiten kontextspezifische Werte ab, mit denen Daten in analytischen Queries eingeschränkt werden können. Weitere Informationen finden Sie unter Ableitungsfunktionen für Finance | |
-| **D_*** | Abstrakte Entitäten: Bilden die Grundlage für die Modellierung von Ereignissignaturen und Aktionsparameter-/Ergebnisstrukturen. | |
+| **I_*** | Basic and composite interface views: These CDS views are used to read data and can be used for extensions. | `@VDM.viewType: #BASIC` `@VDM.viewType: #COMPOSITE` |
+| **C_*** | Consumption views: Restricted reuse views. | `@VDM.viewType: #CONSUMPTION` |
+| **P_*** | Private Views: These views may not be used as SAP can change them during system upgrades. | `@VDM.private: true` |
+| **R_*** | Views for transactional processing: These CDS views enable not only reading data, but also actions such as creating, changing or deleting instances of a RAP business object in the context of the ABAP RESTful application programming model (RAP). |    |
+| **A_*** | Remote API views: These CDS views form the basis for external APIs. For more information about APIs, see [SAP Business Accelerator Hub](https://api.sap.com/). | `@VDM.viewType: #CONSUMPTION` `@VDM.lifecycle.contract.type: #PUBLIC_REMOTE_API` |
+| **X_*** | View extensions: These CDS views can only read data indirectly in the context of another CDS view. They provide access to industry or country/region specific fields defined by SAP. | `@VDM.viewExtension: true` |
+| **E_*** | Extension Include Views: These CDS views can only read data indirectly in the context of another CDS view. They provide access to custom fields created in the Custom Fields app. See section “Extensions to SAP Standard CDS Views”  | `@VDM.viewType: #EXTENSION` |
+| **F_*** | Derivation functions: Derive context-specific values ​​that can be used to restrict data in analytical queries. For more information, see Derivation Functions for Finance |    |
+| **D_*** | Abstract Entities: Form the basis for modeling event signatures and action parameter/outcome structures. |    |
 
 
-Desweiten, gibt es die Kennung als Suffix je nach Einsatzbereich des CDS Views.
+Furthermore, there is the identifier as a suffix depending on the area of ​​application of the CDS view.
 
 | Suffix            | View-Typ | Annotation |
 |------------------|--------------------------------|-----------------------------------------------------------|
 | **Query, Qry, Q** | Analytische Query-View | `@VDM.viewType: #CONSUMPTION`<br>`@Analytics.query: true` |
 | **Cube, C**      | Analytische Cube-View | `@Analytics.dataCategory: #CUBE` |
-| **Text, Txt, T** | Provider für sprachabhängigen Text | `@ObjectModel.dataCategory: #TEXT` |
-| **TP**          | View für transaktionale Verarbeitung | `@VDM.usage.type: [ #TRANSACTIONAL_PROCESSING_SERVICE ]` |
-| **VH, StdVH**   | (Standardmäßig) View für Wertehilfe | `@ObjectModel.dataCategory: #VALUE_HELP` |
+| **Text, Txt, T** | Language dependent text provider | `@ObjectModel.dataCategory: #TEXT` |
+| **TP**          | View for transactional processing | `@VDM.usage.type: [ #TRANSACTIONAL_PROCESSING_SERVICE ]` |
+| **VH, StdVH**   | (By default) View for value help | `@ObjectModel.dataCategory: #VALUE_HELP` |
 
-CDS-Views können für viele verschiedene Zwecke verwendet werden, z. B. zum Erstellen von Fiori-Anwendungen oder zum Analysieren von Daten. Sie können eigene CDS-Views erstellen und dabei auf viele von SAP freigegebene Views zurückgreifen.
-Um Ihnen die Suche nach der passenden CDS-View zu erleichtern, hat SAP zwei Funktionen eingeführt: Unterstützte Funktionen und Modellierungsmuster. Diese Merkmale werden als Annotationen spezifiziert und können für jede CDS-View definiert werden.
-Sie können die unterstützten Funktionen und Modellierungsmuster von CDS-Views im [View-Browser App](https://fioriappslibrary.hana.ondemand.com/sap/fix/externalViewer/#/detail/Apps('F2170')/S30PCE) sehen. In den ABAP Development Tools finden Sie diese Informationen als Annotation am Anfang jeder CDS-View.
+CDS views can be used for many different purposes, such as: B. for building Fiori applications or analyzing data. You can create your own CDS views using many views released by SAP.
+To make it easier for you to find the right CDS view, SAP has introduced two features: Supported Functions and Modeling Patterns. These features are specified as annotations and can be defined for each CDS view.
+You can see the supported functions and modeling patterns of CDS views in the [View-Browser App](https://fioriappslibrary.hana.ondemand.com/sap/fix/externalViewer/#/detail/Apps('F2170')/S30PCE). In the ABAP Development Tools you will find this information as an annotation at the beginning of each CDS view.
 
-Weitere Details finden Sie unter [SAP Help](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/8a8cee943ef944fe8936f4cc60ba9bc1.html)
+For more details, see [SAP Help](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/8a8cee943ef944fe8936f4cc60ba9bc1.html)
 
 {: .note }
-> Die folgende SAP Community Seite [ZSCV_SEARCH_CDS_VIEWS](https://github.com/alwinvandeput/zscv_search_cds_views) bietet eine Open-Source-Lösung zur Suche von CDS-Views an.
+> The following SAP community page [ZSCV_SEARCH_CDS_VIEWS](https://github.com/alwinvandeput/zscv_search_cds_views) offers an open source solution for searching CDS views.
 
-## Klassifizierung von CDS Views
+## Classification of CDS Views
 
-### Unterstützte Funktionen  
-Die unterstützten Funktionen geben an, so die SAP, wofür eine CDS-View am besten verwendet werden kann. Eine CDS-View kann mehrere unterstützte Funktionen haben, da sie für verschiedene Zwecke geeignet sein kann.  
+### Supported features  
+According to the SAP, the supported functions indicate what a CDS view can best be used for. A CDS view can have multiple supported functions because it can be suitable for different purposes.  
 
-Diese Funktionen beschreiben die beste Verwendung einer CDS-View. Sie können beispielsweise die Verwendung einer CDS-View als:  
+These features describe the best use of a CDS view. For example, you can use a CDS view as:  
 - Datenquelle  
-- Ziel für Verknüpfungen in der CDS-Modellierung  
-- Datenlieferant für analytische Abfragen  
+- Target for joins in CDS modeling  
+- Data provider for analytical queries  
 
-Die unterstützten Funktionen einer CDS-View werden in einer einzigen Annotation angegeben:  
+The supported functions of a CDS view are specified in a single annotation:  
 
 ```abap
 @ObjectModel.supportedCapabilities: [ ..., ... ].
@@ -84,23 +84,23 @@ Die unterstützten Funktionen einer CDS-View werden in einer einzigen Annotation
 
 ### Modellierungsmuster  
 
-Ein Modellierungsmuster beschreibt den Hauptzweck einer CDS-View. Eine CDS-View kann nur ein Modellierungsmuster haben. Der Wert des Modellierungsmusters kann gleich dem Wert einer unterstützten Funktion sein, muss es aber nicht.  
+A modeling pattern describes the main purpose of a CDS view. A CDS view can only have one modeling pattern. The value of the modeling pattern may or may not be equal to the value of a supported function.  
 
-Die Annotation für ein Modellierungsmuster sieht so aus:  
+The annotation for a modeling pattern looks like this:  
 
 ```abap
 @ObjectModel.modelingPattern: ...
 ```
 
-## CDS View Modellierungsmöglichkeiten
+## CDS View modeling options
 
-Dieser Abschnitt beschreibt die verschiedenen Typ-Definitionen, Funktionsdefinitionen und Datenmodelle innerhalb von ABAP Core Data Services. Dabei werden elementare Typen, SQL-basierte Funktionen (Skalarfunktionen) sowie verschiedene View-Typen wie DDIC-basierte Views, View Entities und Projection Views erläutert. Ergänzt wird dies durch fortgeschrittene Konzepte wie Tabellenfunktionen, Hierarchien, Custom, External und Abstract Entities sowie Tuning-Objekte zur Optimierung von CDS-Modellen.
+This section describes the various type definitions, function definitions and data models within ABAP Core Data Services. Elementary types, SQL-based functions (scalar functions) and various view types such as DDIC-based views, view entities and projection views are explained. This is complemented by advanced concepts such as table functions, hierarchies, custom, external and abstract entities as well as tuning objects for optimizing CDS models.
 
 
 ### Typ-Definitionen
 
 #### Simple Types
-Hiermit definieren Sie elementare Datentypen, welche Sie in CDS Objekten oder in ABAP verwenden können.
+This allows you to define elementary data types that you can use in CDS objects or in ABAP.
 
 __Beispiel__
 
@@ -111,7 +111,7 @@ define type myDate : abap.dats
 Details finden Sie unter [SAP Help (CDS Simple Types)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_simple_types.htm)
 
 #### Enumerated Types
-Definieren Sie einen enumerierten Typ mit Konstanten. Sie können den Typ und die Konstanten in CDS Objekten verwenden.
+Define an enumerated type with constants. You can use the type and constants in CDS objects.
 
 __Beispiel__
 
@@ -144,27 +144,27 @@ where
 Details finden Sie unter [SAP Help (CDS Enum Types)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_enumeration_types.htm)
 
 ## Tabellenfunktionen
-Aktuell bietet SAP nur die Definition einer _Skalarfunktionen_ an. Dabei gibt es zwei verschiedene Arten von Funktionen.
+Currently SAP only offers the definition of a _scalar function_. There are two different types of functions.
 * Analytische Skalarfunktionen
-  * Diese Art der Funktionen ist aktuell nur SAP intern definierbar. Sie können die von SAP ausgelieferten Funktionen aber nutzen.
+  * This type of function can currently only be defined internally in the SAP. However, you can use the functions provided by SAP.
 * SQL-basierte Skalarfunktionen
-  * Sie können eigene Funktionen dieser Art definieren und implementieren. Die Verwendung ist wie bei den eingebauten SQL-Funktionen (wie z.B. CONCAT()). Eine Skalarfunktion kann mehrere Parameter haben und hat immer einen einzigen Rückgabewert.
-  * Sie benötigen drei Entwicklungsobjekte für eine Skalarfunktion:
-    * Eine Skalarfunktion Definition (CDS Objekt)
-    * Eine Skalarfunktion-Implemetierungsreferenz, als Verknüpfung zwischen der Definition und der Implementierung
-    * Eine [AMDP Function](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abenamdp_function_methods.htm), welche die Implementierung der Skalarfunktion darstellt
+  * You can define and implement your own functions of this type. The usage is like the built-in SQL functions (such as CONCAT()). A scalar function can have multiple parameters and always has a single return value.
+  * You need three development objects for a scalar function:
+    * A scalar function definition (CDS object)
+    * A scalar function implementation reference, as a link between the definition and the implementation
+    * A [AMDP Function](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abenamdp_function_methods.htm) representing the implementation of the scalar function
 
 Details finden Sie unter [SAP Help (CDS-Skalarfunktionens)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_scalar_functions.htm)
 
 ## Annotations
-Annotationen können überall in einem CDS Objekt auftauchen. Wo genau eine Annotation angegeben werden kann bzw. darf, hängt von der Annotation ab. Annotationen sollen das CDS Objekt mit Metadaten anreichern, die dann von einem Verwender interpretiert werden können. Beispielsweise kann man ein CDS View Entity mit Annotationen versorgen, die schlussendlich von einer Fiori Elements App ausgewertet werden können (mit einem OData Service als Zwischenschritt).
+Annotations can appear anywhere in a CDS object. Where exactly an annotation can or may be specified depends on the annotation. Annotations are intended to enrich the CDS object with metadata, which can then be interpreted by a user. For example, you can provide a CDS view entity with annotations that can ultimately be evaluated by a Fiori Elements app (with a OData service as an intermediate step).
 
-Es besteht sogar die Möglichkeit eigene CDS Annotationen zu definieren.
+It is even possible to define your own CDS annotations.
 
 Details dazu finden Sie unter [SAP Help (CDS - Definition of Annotations)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_anno_definition.htm)
 
 ### Syntax
-Um eine Annotation anzugeben, gilt folgende Syntax:
+To specify an annotation, the following syntax applies:
 
 ```
 @[<]Anno[: value ]
@@ -182,9 +182,9 @@ __Beispiel__
 Details finden Sie unter [SAP Help (CDS DDL - Annotation Syntax)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_annotations_syntax.htm)
 
 ### SAP Annotations
-Die SAP hat bereits eine Fülle von Annotationen definiert, die verwendet werden können. Dabei gibt es verschiedene Bereiche und Aspekte, die damit abgedeckt werden. 
+The SAP has already defined a wealth of annotations that can be used. There are various areas and aspects that it covers. 
 
-Ein großer Teil sind die [ABAP Annotationen (SAP Help)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_annotations_abap_tables.htm). Damit können u.a. Metadaten angegeben werden über die Art der Daten, den Datenzugriff, Erweiterbarkeit und Semantik von Daten. Diese Annotationen werden von der ABAP Laufzeit ausgewertet.
+A large part are the [ABAP Annotationen (SAP Help)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_annotations_abap_tables.htm). This allows, among other things, metadata to be specified about the type of data, data access, expandability and semantics of data. These annotations are evaluated by the ABAP runtime.
 
 __Beispiel__
 
@@ -195,7 +195,7 @@ Currency,
 ...
 ```
 
-Außerdem gibt es noch die [Framework-Spezifischen Annotationen (SAP Help)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_annotations_frmwrk_tables.htm). Damit kann man z.B. Metadaten für OData-Services, Benutzeroberflächen oder Analytics definieren. Diese Form der Annotation wird nicht von der ABAP Laufzeit erkannt, sondern von einem Framework. Das Paradebeispiel im SAP-Umfeld ist dabei Fiori Elements.
+There is also the [Framework-Spezifischen Annotationen (SAP Help)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_annotations_frmwrk_tables.htm). This can be used, for example, to define metadata for OData services, user interfaces or analytics. This form of annotation is not recognized by the ABAP runtime, but by a framework. The prime example in the SAP environment is Fiori Elements.
 
 __Beispiel__
 
@@ -208,13 +208,13 @@ Field,
 
 ## Data Definitions
 
-#### Was sind Data Definitions?
-Data Definitions sind CDS-Entitäten, die in der ABAP Development Tools (ADT) erstellt werden. Sie definieren die Struktur und das Verhalten von Datenmodellen, die auf Datenbanktabellen oder anderen CDS Views basieren. Sie ermöglichen es, Daten auf eine abstrakte, semantisch reiche Weise zu modellieren, unabhängig von der zugrunde liegenden Datenbanktechnologie.
+#### What are Data Definitions?
+Data Definitions are CDS entities created in the ABAP Development Tools (ADT). They define the structure and behavior of data models based on database tables or other CDS views. They make it possible to model data in an abstract, semantically rich way, regardless of the underlying database technology.
 
 #### DDIC-based views - OBSOLET 
-> DDIC basierte Views sind ab Release 7.55 ersetzt worden durch View Entities, welche nicht mehr von DDIC Objekten abhängig sind. Bitte nutzen Sie die View Entities. 
+> As of Release 7.55, DDIC based views have been replaced by view entities, which are no longer dependent on DDIC objects. Please use the View Entities. 
 
-Ein DDIC basierte View kann für DDIC Datenbanktabellen, DDIC Views und andere CDS Views erstellt werden. Bei der Definition müssen Sie über eine Annotation ein SQL-View-Name angeben, der im ABAP Dictionary als DDIC View erzeugt wird. Bei der Aktivierung des CDS Views werden ein CDS Entity und der annotierte DDIC View erzeugt bzw. aktualisiert. Per SQL greifen Sie auf die Daten der referenzierten Objekte zu.
+A DDIC based view can be created for DDIC database tables, DDIC views and other CDS views. When defining it, you must specify an SQL view name via an annotation, which is generated in the ABAP dictionary as a DDIC view. When the CDS view is activated, a CDS entity and the annotated DDIC view are created or updated. You access the data of the referenced objects via SQL.
 
 __Beispiel__
 
@@ -232,7 +232,7 @@ where
 Details finden Sie unter [SAP Help (CDS DDIC-Based Views)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_v1_views.htm)
 
 ### View Entities
-Mit einem CDS View Entity können Sie auf Felder einer Datenquelle (Datenbanktabellen, andere CDS Entitäten) zugreifen, sowie: Berechnungen durchführen, Beziehungen definieren, Metadaten mit Annotationen anreichern, etc. Die View Entities dienen als Basis für die [ABAP Data Models](https://help.sap.com/docs/abap-cloud/abap-data-models/abap-data-models) und werden vom [ABAP RESTful Application Programming Model](../abap/restful_abap.md) verwendet. Sie sind also ein wichtiger Bestandteil für eine moderne ABAP Entwicklung.
+With a CDS view entity you can access fields of a data source (database tables, other CDS entities), as well as: perform calculations, define relationships, enrich metadata with annotations, etc. The view entities serve as the basis for the [ABAP Data Models](https://help.sap.com/docs/abap-cloud/abap-data-models/abap-data-models) and are used by the [ABAP RESTful Application Programming Model](../abap/restful_abap.md). So they are an important component for a modern ABAP development.
 
 __Beispiel__
 
@@ -249,63 +249,63 @@ where
 Details finden Sie unter [SAP Help (CDS View Entities)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_v2_views.htm)
 
 ### Projection Views
-Ein Projection View basiert auf einem anderen CDS View Entity und wird für service-spezifische Anwendungsfälle genutzt. Dazu zählen:
-* Transaktionale Abfragen (relevant für [ABAP RESTful Application Programming Model](/../abap/restful_abap.md))
-* Transaktionales Interface (relevant für [ABAP RESTful Application Programming Model](../abap/restful_abap.md))
+A projection view is based on another CDS view entity and is used for service-specific use cases. These include:
+* Transactional queries (relevant for [ABAP RESTful Application Programming Model](/../abap/restful_abap.md))
+* Transactional interface (relevant for [ABAP RESTful Application Programming Model](../abap/restful_abap.md))
 * Analytical Abfragen
 
 > Details finden Sie unter [SAP Help (CDS Projection Views)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_proj_views.htm)
 
 ### Tabellenfunktion
-Eine Tabellenfunktion besteht aus zwei Teilen. Einem CDS Entity, welches z.B. bei den CDS View Entities oder Projection Views verwendet werden kann, und einer [AMDP Function](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenamdp_function_methods.htm), welche die Implementierung der Funktion darstellt. Das Ergebnis einer Tabellenfunktion sind Datensätze. Eine AMDP Function ist nur in einer Umgebung nutzbar, deren Datenbanksystem AMDP unterstützt (z.B. SAP HANA). Mit der AMDP Function können Sie plattform-spezifische SQL-Befehle anwenden. Der Vorteil liegt darin, dass Sie spezielle Abfragen durchführen auf die Datenbank und die Ergebnisse als Datenquelle für andere CDS Entities bereitstellen können.
+A table function consists of two parts. A CDS entity, which can be used for example with the CDS view entities or projection views, and a [AMDP Function](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenamdp_function_methods.htm), which represents the implementation of the function. The result of a table function is data sets. An AMDP function can only be used in an environment whose database system supports AMDP (e.g. SAP HANA). With the AMDP Function you can apply platform-specific SQL commands. The advantage is that you can perform specific queries on the database and provide the results as a data source for other CDS entities.
 
 Details finden Sie unter [SAP Help (CDS Tabellenfunktion)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_table_functions.htm)
 
 ### Hierarchies
-Mit dieser Art von CDS-View können Sie hierarchische Daten bereitstellen. Dabei werden nur die Eltern-Kind-Hierarchien unterstützt. Als Grundlage muss ein CDS View Entity angegeben werden, welches eine Association auf sich selbst besitzt. Diese Association beschreibt die Beziehung zum Eltern-Knoten. In der Feldliste können Sie Felder der CDS View Entity angeben und spezielle Hierarchie-Attribute, z.B. das Level des Eintrags in der Hierarchie.
+This type of CDS view allows you to provide hierarchical data. Only parent-child hierarchies are supported. As a basis, a CDS view entity must be specified, which has an association on itself. This association describes the relationship to the parent node. In the field list you can specify fields of the CDS view entity and special hierarchy attributes, e.g. the level of the entry in the hierarchy.
 
 Details finden Sie unter [SAP Help (CDS Hierarchies)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_f1_define_hierarchy.htm)
 
 ### Custom Entities
-CDS Custom Entities gehören zu den Non-SQL-Entitäten, d.h. sie legen keinen SQL View auf der HANA Datenbank an. Custom Entities sind über eine Annotation mit einer ABAP Klasse verbunden, in der man Geschäftslogik und Datenabfragen implementieren kann, die über SQL hinausgehen. Zum Beispiel Daten in einer Datei, einem BLOB oder von einem Web-Service. Für den tatsächlichen Zugriff müssen Sie eine ABAP Klasse erstellen, welche ein bestimmtes Interface implementiert. In der Definition des CDS Custom Entity müssen Sie die Klasse per Annotation angeben. Außerdem definieren Sie dort mögliche Eingabeparameter und die resultierende Feldliste.
+CDS Custom Entities are non-SQL entities, i.e. they do not create an SQL view on the HANA database. Custom entities are connected via an annotation to a ABAP class where you can implement business logic and data queries that go beyond SQL. For example, data in a file, a BLOB or from a web service. For actual access you need to create a ABAP class that implements a specific interface. In the definition of the CDS Custom Entity you must specify the class via annotation. You also define possible input parameters and the resulting field list there.
 
-Die Nutzung der CDS Custom Entities ist aber eingeschränkt. Sie können sie nicht im Zusammenhang mit SELECTs verwenden, d.h. weder in einem anderen CDS View noch per ABAP-SQL. Sie können allerdings Associations darauf definieren und diese in der Feldliste anbieten. Allgemein werden die Custom Entities von der RAP Query Engine verarbeitet und wenn eine Abfrage ausgeführt wird, z.B. im Zusammenhang mit einem OData-Service.
+However, the use of the CDS Custom Entities is restricted. You cannot use them in conjunction with SELECTs, i.e. neither in another CDS view nor via ABAP-SQL. However, you can define associations on it and offer them in the field list. In general, the custom entities are processed by the RAP query engine and when a query is executed, e.g. in connection with a OData service.
 
 Details finden Sie unter [SAP Help (CDS Custom Entities)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_custom_entities.htm)
 
 ### Abstract Entities
-CDS Abstract Entities gehören zu den Non-SQL-Entitäten. Sie können sie als komplexe Datenstrukturen für RAP Actions, RAP Functions und RAP Business Events nutzen. In anderen CDS Views ist es nur möglich Associations auf diese Entities zu definieren. Ein Zugriff per SQL oder auf Inhalte ist aber nicht möglich.
+CDS Abstract Entities are non-SQL entities. You can use them as complex data structures for RAP Actions, RAP Functions and RAP Business Events. In other CDS views it is only possible to define associations on these entities. However, access via SQL or to content is not possible.
 
 Details finden Sie unter [SAP Help (CDS Abstract Entities)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_f1_define_abstract_entity.htm)
 
 ### External Entities
 
-CDS External Entities bieten eine moderne Möglichkeit, sekundäre Datenbankverbindungen in ABAP Cloud zu verwalten. Sie ermöglichen ABAP-Programmen, mittels SQL Daten aus anderen Datenbanksystemen abzurufen und zu bearbeiten. Im Gegensatz zu herkömmlichen sekundären Verbindungen, die nur auf SAP HANA-Datenbanken beschränkt sind, unterstützen CDS External Entities Verbindungen zu verschiedenen Datenbanksystemen, einschließlich SAP S/4HANA Cloud, SAP BTP ABAP Environment und SAP HANA Cloud, basierend auf der SAP HANA Smart Data Access-Technologie.
+CDS External Entities provide a modern way to manage secondary database connections in ABAP Cloud. They enable ABAP programs to retrieve and manipulate data from other database systems using SQL. Unlike traditional secondary connections that are limited only to SAP HANA databases, CDS External Entities support connections to various database systems, including SAP S/4HANA Cloud, SAP BTP ABAP Environment and SAP HANA Cloud, based on the SAP HANA Smart Data Access technology.
 
 Details finden Sie unter [SAP Experten Blog: )](https://community.sap.com/t5/technology-blog-posts-by-sap/abap-cds-release-news-2408-external-entities/ba-p/13784415)
 
 ### Tuning objects
-Aktuell bietet SAP nur einen Konfigurationstyp an: Define View Entity Buffer. Damit kann eine Pufferung der Daten definiert werden (keine Pufferung, Einzelsatz, Bereiche, Vollständig). Diese Einstellung kann sich auf die Performance auswirken. 
+Currently SAP only offers one configuration type: Define View Entity Buffer. This allows data buffering to be defined (no buffering, single record, ranges, complete). This setting can impact performance. 
 
-Details zur Performance finden sie auch hier:
-Siehe SAP Help Seiten [SQL Hint](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/4ba9edce1f2347a0b9fcda99879c17a1.html?locale=en-US&version=2.0.05) und [Tuning Objects](https://help.sap.com/docs/abap-cloud/abap-data-models/tuning-objects)
+Performance details can also be found here:
+See SAP Help pages [SQL Hint](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/4ba9edce1f2347a0b9fcda99879c17a1.html?locale=en-US&version=2.0.05) and [Tuning Objects](https://help.sap.com/docs/abap-cloud/abap-data-models/tuning-objects)
 
 ## Access Control
-Über die Access Controls können Sie durch Angabe von Rollen, Regeln und Bedingungen definieren, welche Nutzer bzw. welcher Nutzerkreis Zugriff auf bestimmte Daten erhält.
-CDS-Views bieten Zugriffskontrollen über Data Access Controls / Data Control Language (DCL), ähnlich dem klassischen Authority Check. 
+Using the access controls, you can define which users or group of users have access to certain data by specifying roles, rules and conditions.
+CDS views provide access controls via Data Access Controls / Data Control Language (DCL), similar to the classic Authority Check. 
 
 ### Eigenschaften  
-Zugriffskontrollen in CDS ermöglichen es Ihnen, präzise zu definieren, welche Datensätze für jeden Benutzer zugänglich sind.  
-- Diese Zugriffskontrollen arbeiten zusammen mit den üblichen SAP-Berechtigungsobjekten.  
-- SAP-Berechtigungsobjekte beziehen sich immer auf ein bestimmtes Feld in einer Tabelle und eine Aktivität, wie z.B. das Anlegen, Ändern oder Anzeigen von Daten.  
-- Der Zugriff auf eine CDS View wird über die sogenannte Data Control Language gesteuert.  
+Access controls in CDS allow you to precisely define which records are accessible to each user.  
+- These access controls work in conjunction with the usual SAP permission objects.  
+- SAP authorization objects always refer to a specific field in a table and an activity, such as creating, changing or displaying data.  
+- Access to a CDS View is controlled via the so-called Data Control Language.  
 
-Ob eine Zugriffskontrolle angewendet wird, wird durch die folgende Annotation entschieden: 
+Whether access control is applied is decided by the following annotation: 
 ```abap
 @AccessControl.authorizationCheck: []
 ```
 
-Das Standard VDM beinhaltet immer Zugriffskontrollen. Eine gängige Vorgehensweise ist, die Zugriffskontrollen von den unterliegenden CDS Views auf Ihre kundenspezifischen CDS Views zu vererben.
+The standard VDM always includes access controls. A common approach is to inherit the access controls from the underlying CDS views to your customer-specific CDS views.
 
 __Beispiel__
 
@@ -316,16 +316,16 @@ define role ZC_BusinesspartnerAddress_DAC {
         where inheriting conditions from entity C_BusinesspartnerAddresstp_2;
 }
 ```
-Es gibt noch weitere Funktionen, die Sie sich hier ansehen können:
+There are other features you can check out here:
 [SAP ABAP CDS - Access Control Documentation](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/abencds_access_control.html) 
 
 {: .note }
-> Mit der Transaktion SACMSEL können Berechtigungsprüfergebnisse vereinfacht angezeigt werden.
+> Using transaction SACMSEL, authorization check results can be displayed in a simplified manner.
 
 ## Associations
-Mit Associations können CDS Entitäten miteinander verknüpft werden. Die Quelle ist immer die eigene CDS View Entität. Als Ziel können DDIC-Tabellen und andere CDS Entitäten definiert werden. Wichtig sind die Angaben zur Kardinalität und die Kondition zur Verknüpfung. Die Kardinalität bestimmt die Relation, also z.B. 1:1 oder 0:n. Die Kondition bestimmt über welche Felder Quelle und Ziel verbunden sind.
-Eine Association wird immer nur in eine Richtung definiert. Wenn man zwei Entitäten in beide Richtungen miteinander verbinden möchte, muss man in beiden die Association zur jeweils anderen angeben.
-Die Association kann zusätzlich in der Feldliste bekannt gegeben werden, wodurch Verwender auch auf die Association zugreifen können.
+CDS entities can be linked to one another using associations. The source is always its own CDS View entity. DDIC tables and other CDS entities can be defined as targets. The information on cardinality and the condition for the link are important. The cardinality determines the relation, e.g. 1:1 or 0:n. The condition determines which fields source and target are connected.
+An association is only ever defined in one direction. If you want to connect two entities in both directions, you have to specify the association to the other in both.
+The association can also be announced in the field list, which means that users can also access the association.
 
 __Beispiel__
 
@@ -334,42 +334,42 @@ association [0..*] to OtherView as _Other on _Other.ForeignKeyField = $projectio
 ```
 
 {: .important }
-> Achtung! Ab Release 2023, wird eine andere Syntax verwendet. [Siehe Blog-Eintrag](https://community.sap.com/t5/application-development-and-automation-blog-posts/new-cardinality-syntax-for-performance-optimization-in-abap-cds-and-abap/ba-p/13554546)
+> Attention! From release 2023, a different syntax will be used. [See blog post](https://community.sap.com/t5/application-development-and-automation-blog-posts/new-cardinality-syntax-for-performance-optimization-in-abap-cds-and-abap/ba-p/13554546)
 >
 > Details finden Sie unter [SAP Help (CDS View Entity, SELECT, Associations)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_association_v2.htm)
 
-Eine spezielle Form der Association ist eine sog. `ASSOCIATION TO PARENT`. Damit kann man eine CDS Entität als Eltern-Entität definieren. Dies ist vor allem im Kontext von [RAP](/ABAP-Leitfaden/abap/restful_abap/) relevant. Die Association in die andere Richtung, also zur Kind-Entität, wird per `COMPOSITION` definiert. Sie müssen zunächst die Association zur Eltern-Entität eintragen und können erst danach die Association zur Kind-Entität angeben.
+A special form of the association is a so-called `ASSOCIATION TO PARENT`. This allows you to define a CDS entity as a parent entity. This is particularly relevant in the context of [RAP](/ABAP-Leitfaden/abap/restful_abap/). The association in the other direction, i.e. to the child entity, is defined using `COMPOSITION`. You must first enter the association to the parent entity and only then can you enter the association to the child entity.
 
-Details finden Sie unter [SAP Help (ASSOCIATION TO PARENT)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_to_parent_assoc_v2.htm) und [SAP Help (COMPOSITION)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_composition_v2.htm)
+For details see [SAP Help (ASSOCIATION TO PARENT)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_to_parent_assoc_v2.htm) and [SAP Help (COMPOSITION)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_composition_v2.htm)
 
-## Erweiterbarkeit
-### Stabilitätsverträge  
-Um die zuverlässige Nutzung von CDS-Views zu gewährleisten, hat SAP drei Stabilitätsverträge (Englisch: Release Contracts) eingeführt. Diese Verträge definieren, wie CDS-Views in verschiedenen Nutzungsszenarien verwendet werden können:  
+## Extensibility
+### Stability contracts  
+To ensure the reliable use of CDS views, SAP has introduced three stability contracts (release contracts). These contracts define how CDS views can be used in different usage scenarios:  
 
-1. **Vertrag für Erweiterungen (C0):** Für die Nutzung und Anpassung vorhandener Views.  
-2. **Vertrag für den systeminternen Gebrauch (C1):** Für Views innerhalb des gleichen Systems.  
-3. **Vertrag für Remote-API-Verwendung (C2):** Für die Nutzung von Views durch externe Systeme und Anwendungen.  
+1. **Contract for Extensions (C0):** For the use and adaptation of existing views.  
+2. **Contract for system-internal use (C1):** For views within the same system.  
+3. **Agreement for Remote API Use (C2):** For the use of Views by external systems and applications.  
 
-Weitere Informationen finden Sie im [Stabilitätskontrakte für CDS-Views](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/2e4edbede2f94fb7b7f6eac856c02b19.html?locale=de-DE).  
+For more information, see [Stability contracts for CDS views](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/2e4edbede2f94fb7b7f6eac856c02b19.html?locale=de-DE).  
 
-### Erweiterungen von SAP Standard CDS Views
-Ein großer Vorteil ist die Möglichkeit, beliebige CDS Views mit dem Vertrag für Erweiterungen (C0) und höher zu erweitern. Ein CDS View, der mit dem C0 Vertrag für Erweiterungen klassifiziert wurde, bietet stabile Punkte für Erweiterungen. SAP garantiert Stabilität, sodass es bei S/4HANA Upgrades nicht zu inkompatiblen Änderungen kommen kann. Dies birgt aber auch eine Gefahr! Wenn Sie z.B. Felder aus einer bestehende CDS Views in Ihrer erweiterten CDS View ( ZE_* ) verwenden, dann können diese bei S/4HANA Upgrades verändert werden. Achten Sie darauf nur in den vorgesehenen E_* CDS Views, CDS Views "hinzufügen". Wir empfehlen diese [Learning Journey von SAP](https://learning.sap.com/learning-journeys/acquire-core-abap-skills/extending-cds-views_fab548c5-6438-41e1-8384-c5190f13ea7b), hier wird der Sachverhalt erläutert.
+### Extensions of SAP standard CDS views
+A big advantage is the ability to expand any CDS views with the contract for extensions (C0) and higher. A CDS view classified with the C0 contract for extensions provides stable points for extensions. SAP guarantees stability, so S/4HANA upgrades cannot result in incompatible changes. But this also poses a danger! For example, if you use fields from an existing CDS view in your extended CDS view (ZE_*), then these can be changed during S/4HANA upgrades. Make sure to only "add" CDS views in the designated E_* CDS views. We recommend this [Learning Journey by SAP](https://learning.sap.com/learning-journeys/acquire-core-abap-skills/extending-cds-views_fab548c5-6438-41e1-8384-c5190f13ea7b), the facts are explained here.
 
-## BW-Integration, Embedded Analytics und ODP
-Das Operational Data Provisioning Framework (ODP) ermöglicht die Übertragung von Daten aus verschiedenen SAP-Repositories nach SAP BW, SAP BW/4HANA und anderen Systemen oder Services. CDS Views können als Quelle für die Datenextraktion dienen.  
+## BW integration, embedded analytics and ODP
+The Operational Data Provisioning Framework (ODP) enables the transfer of data from various SAP repositories to SAP BW, SAP BW/4HANA and other systems or services. CDS Views can serve as a source for data extraction.  
 
-#### Voraussetzungen für den Transfer zu SAP BW/4HANA 
-Der klassische CDS View oder CDS View Entity sollte folgende Annotationen besitzen:  
+#### Requirements for the transfer to SAP BW/4HANA 
+The classic CDS View or CDS View Entity should have the following annotations:  
 - `@Analytics.dataCategory`  
 - `@Analytics.dataExtraction.enabled`  
 
-### Voraussetzungen für Embedded Analytics
-Embedded Analytics funktioniert nicht nur in den Analytical Fiori Apps oder über die Key-User Extensibility Apps. Ein direkter Konsum eines CDS Views, durch die Online Analytical Processing (OLAP) Engine, ist auch direkt in den Business Intelligence (BI) Tools möglich. Insbesondere die SAP Analytic Cloud (SAC), aber auch Analyse for Office (AO).
+### Requirements for Embedded Analytics
+Embedded analytics doesn't just work in the Analytical Fiori apps or via the key user extensibility apps. Direct consumption of a CDS view, through the Online Analytical Processing (OLAP) engine, is also possible directly in the Business Intelligence (BI) tools. In particular the SAP Analytic Cloud (SAC), but also Analysis for Office (AO).
 
-Weitere Informationen finden Sie [in diesem Blog-Eintrag](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-members/sap-s-4hana-embedded-analytics-an-overview/ba-p/13530854#:~:text=It%20is%20a%20collection%20of%20SAP%20Fiori%20tiles,as%20Fiori%20analytical%20apps%20for%20various%20functional%20areas.). 
+For more information, see [in this blog entry](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-members/sap-s-4hana-embedded-analytics-an-overview/ba-p/13530854#:~:text=It%20is%20a%20collection%20of%20SAP%20Fiori%20tiles,as%20Fiori%20analytical%20apps%20for%20various%20functional%20areas.). 
 
-Hier wäre die Struktur, um z.B. einen CDS View direkt aus der SAC zu konsumieren.
-Dazu müssen zwei zusätzliche CDS Views erstellt und mit der Annotation versehen werden.
+Here would be the structure to consume a CDS view directly from the SAC, for example.
+To do this, two additional CDS views must be created and provided with the annotation.
 1. Composite CDS View (Entity) `@Analytics.dataCategory: #CUBE / '#FACT / #DIMENSION` 
 2. Consumption CDS View (Entity) `@Analytics.query: true` 
 
@@ -377,8 +377,8 @@ Dazu müssen zwei zusätzliche CDS Views erstellt und mit der Annotation versehe
 Musteraufbau: Direkter Zugriff vom SAC 
 {: .img-caption}
 
-Dabei ist zu beachten, dass für den Consumption CDS View einen **Vertrag für den systeminternen Gebrauch (C1)** vergeben werden muss.
-Zusätzlich werden noch die folgenden Authorisierungs-Objekte in den Rollen der Anwender benötigt.
+It should be noted that a **contract for system-internal use (C1)** must be assigned for the Consumption CDS View.
+In addition, the following authorization objects are required in the user roles.
 
 ```
 S_RS_COMP
@@ -398,22 +398,21 @@ S_RS_AUTH
 		BIAUTH		  0BI_ALL
 ```
 
-Weitere Informationen finden Sie im [SAP Help Portal](https://help.sap.com/docs/SAP_BW4HANA/107a6e8a38b74ede94c833ca3b7b6f51/af11a5cb6d2e4d4f90d344f58fa0fb1d.html). 
+For more information, see [SAP Help Portal](https://help.sap.com/docs/SAP_BW4HANA/107a6e8a38b74ede94c833ca3b7b6f51/af11a5cb6d2e4d4f90d344f58fa0fb1d.html). 
 
 ### Funktionsweise ODP
-Die ODP-Schnittstelle ermöglicht den Zugriff auf Bewegungsdaten und Stammdaten (Attribute, Texte, Hierarchien). Das SAP BW/4HANA-System abonniert operative Delta-Queues und repliziert die Daten. Die Datenänderungsquellen unterstützen ebenfalls Deltaverfahren.
+The ODP interface enables access to transaction data and master data (attributes, texts, hierarchies). The SAP BW/4HANA system subscribes to operational delta queues and replicates the data. The data change sources also support delta processes.
 
-Weitere Informationen finden Sie im [SAP Help Portal](https://help.sap.com/docs/SAP_BW4HANA/107a6e8a38b74ede94c833ca3b7b6f51/202710d1cee84333a4f4d593324bdf51.html).  
+For more information, see [SAP Help Portal](https://help.sap.com/docs/SAP_BW4HANA/107a6e8a38b74ede94c833ca3b7b6f51/202710d1cee84333a4f4d593324bdf51.html).  
 
-## Tipps und Trick
+## Tips and Trick
 
 {: .recommendation }  
-> 1. Performance Tracing - Untersuchen Sie immer jeden CDS-View! Egal ob SAP Standard oder selbst erstellt. Über einen SQL Trace in ST05 können Sie die SQL Ausführung nachvollziehen, dazu müssen Sie die .PLV Datei extrahieren und in Eclipse anzeigen. So können Sie Zeitverteilungen und Ausführungspläne analysieren. Achten Sie darauf, die Gesamtzahl der zurückgegebenen Datensätze zu überprüfen, um Designprobleme zu erkennen. 
-> [Siehe DSAG Eclipse ADT Guides - Performance "Auswahl einer konkreten Selektion"](https://1dsag.github.io/ADT-Leitfaden/troubleshooting/performance-analysis/)
-> 2. Massive JOINs und komplexe Abfragen - Für massive JOINs (z.B. 7-14 Tabellen) können CDS Views effizienter sein, indem sie in Schichten mit Assoziationen aufgeteilt werden, um die Performance zu verbessern. Für komplexe Abfragen ermöglichen CDS Views Code Pushdown, aber Vorsicht bei AMDPs auf großen Tabellen (> 1 Million Einträge), da dies die Performance beeinträchtigen kann.
-> Bitte beachten Sie, dass AMDPs pro Tabellenzeile selektieren. Mit welcher Selektion gehen Sie in die AMDP?
-> 3. Schnelle Abfragen - Halten Sie Selektionen klein und spezifisch, um die Leistung zu optimieren, und vermeiden Sie AMDPs auf großen Tabellen, um den Datenbankzugriff zu beschleunigen. Wir empfehlen den [Hinweis 2000002 - FAQ: SAP HANA SQL Optimization](https://me.sap.com/notes/2000002).
-> Falls die Optimierung am SQL Engine selbst stattfinden soll nutzen Sie gerne dann diese Seite [HINT Details](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/4ba9edce1f2347a0b9fcda99879c17a1.html?locale=en-US&version=2.0.05).
-> 4. Potenzial für eine SAC Query prüfen - Für wiederholte, benutzerdefinierte Datenabfragen sind BAPIs, Funktionsbausteine oder ABAP SQL oft besser geeignet, da CDS Views für standardisierte, wiederverwendbare Modelle gedacht sind. Für SAC-Berichte sind CDS Views besonders nützlich, da sie direkt von SAC konsumiert werden können.
-> 5. Bereitstellung von Daten für Subsysteme - RAP kann verwendet werden, um CDS Views als OData Services zu exponieren, was ideal für die Bereitstellung von Daten für Subsysteme ist. Dies bietet modifikationsfreie Erweiterbarkeit, insbesondere in Cloud-Umgebungen. [Siehe Kapitel ABAP - RAP](../abap/restful_abap.md) 
-
+> 1. Performance Tracing - Always examine every CDS view! No matter whether SAP standard or self-created. You can trace the SQL execution using an SQL trace in ST05. To do this, you must extract the .PLV file and display it in Eclipse. This allows you to analyze time distributions and execution plans. Be sure to check the total number of records returned to identify design issues. 
+> [See DSAG Eclipse ADT Guides - Performance "Selecting a concrete selection"](https://1dsag.github.io/ADT-Leitfaden/troubleshooting/performance-analysis/)
+> 2. Massive JOINs and complex queries - For massive JOINs (e.g. 7-14 tables), CDS views can be more efficient by splitting them into layers with associations to improve performance. For complex queries, CDS views allow code pushdown, but be careful with AMDPs on large tables (>1 million entries) as this can impact performance.
+> Please note that AMDPs select per table row. What selection do you have going into the AMDP?
+> 3. Fast Queries - Keep selections small and specific to optimize performance and avoid AMDPs on large tables to speed up database access. We recommend the [Note 2000002 - FAQ: SAP HANA SQL Optimization](https://me.sap.com/notes/2000002).
+> If the optimization should take place on the SQL engine itself, please use this page [HINT Details](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/4ba9edce1f2347a0b9fcda99879c17a1.html?locale=en-US&version=2.0.05).
+> 4. Check potential for a SAC query - BAPIs, function modules or ABAP SQL are often more suitable for repeated, user-defined data queries, as CDS views are intended for standardized, reusable models. For SAC reports, CDS Views are particularly useful because they can be consumed directly by SAC.
+> 5. Providing data to subsystems - RAP can be used to expose CDS Views as OData Services, which is ideal for providing data to subsystems. This provides modification-free extensibility, especially in Cloud environments. [See chapter ABAP - RAP](../abap/restful_abap.md) 

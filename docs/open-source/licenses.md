@@ -12,13 +12,13 @@ nav_order: 1
 1. TOC
 {:toc}
 
-## Aspekte von Software-Lizenzen
+## Aspects of software licenses
 
-Die Lizenz einer Software ist ausschlaggebend dafür, wie Sie sie einsetzen können. Konkret in Bezug auf Open Source macht eine Open-Source-Lizenz eine Software zur Open-Source-Software. Open-Source-Lizenzen gewähren ausdrücklich Rechte gegenüber dem Lizenznehmer, geben ihm aber auch Pflichten auf, wie dieser mit der Software umzugehen hat. Wenn Sie ein Softwareprojekt finden, welches seinen Quellcode öffentlich zugänglich publiziert hat, aber keine Lizenz zu finden ist, dann handelt es sich nicht um Open Source, sondern lediglich um _Source Available_. Bei einer Einführung von Open Source sollten Sie sich in Ihrem Unternehmen informieren, ob, beziehungsweise wer sich mit dem Lizenzthema beschäftigt. Gerade in größeren Unternehmen, die viele verschiedene Programmiersprachen einsetzen, kann es eine zentrale Instanz geben, die sich um Kompatibilität der Lizenzen beim Einsatz von Open-Source-Komponenten kümmert.
+The license of a software determines how you can use it. Specifically in relation to open source, an open source license makes a software open source software. Open source licenses expressly grant rights to the licensee, but also give them obligations regarding how they should handle the software. If you find a software project that has published its source code publicly accessible, but no license can be found, then it is not open source, but simply _Source Available_. When introducing open source, you should find out whether or who in your company is dealing with the licensing issue. Especially in larger companies that use many different programming languages, there can be a central authority that takes care of license compatibility when using open source components.
 
-## Übersicht von Open-Source-Lizenzen
+## Overview of open source licenses
 
-In nachfolgender Tabelle finden Sie populäre Open-Source-Lizenzen, die auch in der ABAP-Entwicklung verwendet werden (Quelle [dotabap.org](https://dotabap.org/)). Details finden Sie zum Beispiel unter [choosealicense](https://choosealicense.com) beziehungsweise [choosealicense Appendix](https://choosealicense.com/appendix/).
+In the table below you will find popular open source licenses that are also used in ABAP development (source [dotabap.org](https://dotabap.org/)). Details can be found, for example, under [choosealicense](https://choosealicense.com) or [choosealicense Appendix](https://choosealicense.com/appendix/).
 
 <!-- markdownlint-disable MD033 -->
 <table>
@@ -57,21 +57,21 @@ In nachfolgender Tabelle finden Sie populäre Open-Source-Lizenzen, die auch in 
         <td colspan="5" class="bg-grey-lt-000">Pflichten</td>
     </tr>
     <tr>
-        <td>Veröffentlichung von Quellcode zu Modifikationen</td>
+        <td>Publication of source code for modifications</td>
         <td></td>
         <td></td>
         <td><span class="label label-blue">Erforderlich</span></td>
         <td><span class="label label-blue">Erforderlich</span></td>
     </tr>
     <tr>
-        <td>Angabe der Lizenz / Copyright im eigenen Produkt</td>
+        <td>Indication of the license / copyright in your own product</td>
         <td><span class="label label-blue">Erforderlich</span></td>
         <td><span class="label label-blue">Erforderlich</span></td>
         <td><span class="label label-blue">Erforderlich</span></td>
         <td><span class="label label-blue">Erforderlich</span></td>
     </tr>
     <tr>
-        <td>Nutzung der selben Lizenz für Modifikationen</td>
+        <td>Use of the same license for modifications</td>
         <td></td>
         <td></td>
         <td><span class="label label-blue">Erforderlich</span></td>
@@ -82,17 +82,17 @@ In nachfolgender Tabelle finden Sie populäre Open-Source-Lizenzen, die auch in 
     </tr>
     <tr>
         <td>Haftung</td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
+        <td><span class="label label-red">Limited</span></td>
+        <td><span class="label label-red">Limited</span></td>
+        <td><span class="label label-red">Limited</span></td>
+        <td><span class="label label-red">Limited</span></td>
     </tr>
     <tr>
         <td>Garantie</td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
-        <td><span class="label label-red">Eingeschränkt</span></td>
+        <td><span class="label label-red">Limited</span></td>
+        <td><span class="label label-red">Limited</span></td>
+        <td><span class="label label-red">Limited</span></td>
+        <td><span class="label label-red">Limited</span></td>
     </tr>
 </table>
 <!-- markdownlint-enable MD033 -->

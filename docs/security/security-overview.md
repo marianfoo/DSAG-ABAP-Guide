@@ -1,98 +1,98 @@
 ---
 layout: page
-title: Überblick
+title: overview
 permalink: /security/overview/
-parent: Sicherheit
+parent: Security
 nav_order: 1
 ---
 
 {: .no_toc}
 
-# Überblick
+# Overview
 
 1. TOC
 {:toc}
 
-## ABAP Security: Warum sichere Programmierung in SAP entscheidend ist
+## ABAP Security: Why secure programming is crucial in SAP
 
-Ein SAP-System oder eine ABAP-Laufzeit enthält verschiedene Funktionen für das Identitäts- und Zugriffsmanagement von Benutzern, die ABAP-Programme ausführen. Die Funktionen umfassen:
+A SAP system or ABAP runtime includes various features for identity and access management of users running ABAP programs. Features include:
 
-- Werkzeuge zur Benutzerverwaltung, wie z.B. das Anlegen, Sperren und Löschen von Benutzern gemäß den gängigen Compliance-Standards.
-- Verschiedene Authentifizierungsprotokolle, einschließlich Single-Sign-On-Optionen
-- Durchsetzung von Passwortrichtlinien und Credential Management für Benutzer
-- Ein erweiterbares Rollen- und Berechtigungsmanagement mit der Möglichkeit, individuelle Rollen für Benutzer zu entwerfen und zuzuweisen.
-- Implizite Zugriffskontrolle auf Programmebene beim Start eines ABAP-Programms durch Überprüfung der Startberechtigungen der Benutzer
-- APIs zur Zugriffskontrolle innerhalb eines Programms und implizite Zugriffskontrolle auf Anweisungsebene für bestimmte APIs (z.B. Zugriff auf das Dateisystem).
+- User management tools, such as creating, blocking and deleting users in accordance with common compliance standards.
+- Various authentication protocols including single sign-on options
+- Enforcing password policies and credential management for users
+- An extensible role and permissions management with the ability to design and assign individual roles for users.
+- Implicit program-level access control when launching a ABAP program by checking users' launch permissions
+- APIs for access control within a program and implicit access control at the instruction level for certain APIs (e.g. access to the file system).
 
-SAP hat im Laufe der Zeit verschiedene Sicherheits-APIs und Sicherheitsfunktionen in den funktionalen Kern der Sprache und in die propagierten Frameworks implementiert, um es Programmierern zu ermöglichen, Sicherheitsanforderungen in ABAP-Programmen umzusetzen. Ein ABAP-Entwickler kann oft aus mehreren Anweisungen oder APIs auswählen, um bestimmte Funktionen zu implementieren. Implizite Sicherheitsfunktionen wie Eingabevalidierung und Verschlüsselung variieren ebenfalls je nach dem gewählten Framework. Die folgenden APIs und Sicherheitsframeworks stehen zur Wiederverwendung zur Verfügung:
+SAP has over time implemented various security APIs and security features into the functional core of the language and propagated frameworks to enable programmers to implement security requirements in ABAP programs. A ABAP developer can often choose from multiple instructions or APIs to implement specific functionality. Implicit security features such as input validation and encryption also vary depending on the framework chosen. The following APIs and security frameworks are available for reuse:
 
-- OS-Befehlsbeschränkung
+- OS command limitation
 - RFC-Callback-Whitelisting
 - Unified Connectivity Protocol (UCON)
 - HTTP-Pfad-Whitelist
-- Ausgabekodierung und
-- Dienstprogramme für die Eingabevalidierung
+- Output encoding and
+- Input validation utilities
 - Virus Scan Interface (VSI)
 - Zugangskontroll-API
-- Protokollierungs-APIs (eine Menge) und implizite Protokollierung
+- Logging-APIs (a lot) and implicit logging
 
 ### Vom funktionierenden Code zur sicheren Anwendung
 
-Als ABAP-Entwickler kennen Sie das: Ein neues Projekt steht an, die Anforderungen sind klar definiert, und der Zeitdruck ist hoch. Die Prioritäten sind schnell gesetzt -- die Funktion muss implementiert werden, der Code soll wartbar und performant sein. Doch wo bleibt dabei die Sicherheit?
+As a ABAP developer, you know this: a new project is coming up, the requirements are clearly defined, and the time pressure is high. The priorities are quickly set -- the function must be implemented, the code should be maintainable and performant. But where is the security?
 
-In der Realität vieler SAP-Projekte spielt Code Security eine untergeordnete Rolle. Während wir uns intensiv Gedanken über Datenstrukturen, Algorithmen und Performance-Optimierung machen, wird die Sicherheit oft als "nice-to-have" betrachtet oder ganz übersehen. Dabei sind gerade SAP-Systeme besonders schützenswert -- sie beherbergen die wertvollsten Daten eines Unternehmens.
+In the reality of many SAP projects, code security plays a minor role. While we think deeply about data structures, algorithms and performance optimization, security is often viewed as a "nice-to-have" or overlooked entirely. SAP systems are particularly worth protecting - they house a company's most valuable data.
 
-### ABAP-Code: Der Schlüssel zu den Kronjuwelen
+### ABAP Code: The Key to the Crown Jewels
 
-Ihr ABAP-Code ist mehr als nur Programmlogik. Er ist der Schlüssel zu den digitalen Kronjuwelen Ihres Unternehmens:
+Your ABAP code is more than just program logic. It is the key to your company's digital crown jewels:
 
-- **Vollzugriff auf Unternehmensdaten**: Stammdaten, Finanzdaten, Personalinformationen -- alles ist über ABAP erreichbar
-- **Systemübergreifende Verbindungen**: RFC-Calls, Webservices und Schnittstellen verbinden Ihr SAP-System mit der gesamten IT-Landschaft
-- **Privilegierte Systemzugriffe**: ABAP-Programme laufen oft mit erweiterten Berechtigungen und können Sicherheitsbarrieren umgehen
+- **Full access to company data**: master data, financial data, personnel information -- everything is accessible via ABAP
+- **Cross-system connections**: RFC calls, web services and interfaces connect your SAP system with the entire IT landscape
+- **Privileged System Access**: ABAP programs often run with elevated privileges and can bypass security barriers
 
-Unsicherer ABAP-Code kann nahezu alle etablierten Sicherheitsmaßnahmen aushebeln:
+Insecure ABAP code can defeat almost all established security measures:
 
-- Rollen- und Profilberechtigungen werden umgangen
+- Role and profile permissions are bypassed
 - Mandantentrennungen verlieren ihre Wirkung
-- Betriebssystem-Berechtigungen werden übersprungen
-- Firewall-Regeln und Netzwerksperren werden unterlaufen
+- Operating system permissions are skipped
+- Firewall rules and network blocks are circumvented
 
-### Der Teufelskreis der nachgelagerten Sicherheit
+### The vicious circle of downstream security
 
 Viele Entwicklungsprojekte folgen einem bekannten Muster:
 
-1. **Funktion implementieren** -- Das Programm muss erstmal laufen
-2. **Wartbarkeit sicherstellen** -- Code-Qualität und Dokumentation
-3. **Performance optimieren** -- Wenn es zu langsam wird, wird nachgebessert
-4. **Sicherheit nachrüsten?** -- Oft bleibt dafür keine Zeit oder kein Budget
+1. **Implement function** -- The program must run first
+2. **Ensure maintainability** -- Code quality and documentation
+3. **Optimize performance** -- If it becomes too slow, improvements will be made
+4. **Upgrade security?** -- There is often no time or budget for this
 
-Dieses Vorgehen ist problematisch, denn Sicherheit nachträglich zu implementieren ist nicht nur aufwendig, sondern oft unmöglich ohne grundlegende Neuimplementierung. Was als kleiner "Security-Fix" geplant war, wird schnell zur kompletten Architektur-Überarbeitung.
+This approach is problematic because retroactively implementing security is not only time-consuming, but often impossible without fundamental reimplementation. What was planned as a small “security fix” quickly turns into a complete architectural overhaul.
 
-## Warum Security von Anfang an mitgedacht werden muss
+## Why security must be considered from the start
 
-### Wirtschaftliche Gründe sprechen klar für "Security by Design":
+### Economic reasons clearly speak for “Security by Design”:
 
-- **Kostenfaktor**: Sicherheitslücken nachträglich zu schließen ist 10-100x teurer als sichere Programmierung von Beginn an
-- **Risikominimierung**: Ein einziger Sicherheitsvorfall kann Millionenschäden verursachen
+- **Cost factor**: Closing security gaps afterwards is 10-100x more expensive than secure programming from the start
+- **Risk minimization**: A single security incident can cause millions in damages
 - **Compliance**: Regulatorische Anforderungen (DSGVO, SOX, etc.) erfordern nachweisbar sichere Entwicklungsprozesse
-- **Reputation**: Datenschutzverletzungen beschädigen das Vertrauen von Kunden und Geschäftspartnern nachhaltig
+- **Reputation**: Data breaches permanently damage the trust of customers and business partners
 
 ### Technische Vorteile sicherer Programmierung:
 
-- **Datensparsamkeit**: Sicherer Code verarbeitet nur notwendige Daten und schont Serverressourcen
-- **Stabilität**: Security-bewusste Programmierung führt zu robusterem Code
-- **Wartbarkeit**: Explizite Sicherheitsprüfungen machen Code verständlicher und nachvollziehbarer
+- **Data economy**: Secure code only processes necessary data and conserves server resources
+- **Stability**: Security-aware programming leads to more robust code
+- **Maintainability**: Explicit security checks make code more understandable and comprehensible
 
 ## Ihr Beitrag zur Unternehmenssicherheit
 
-Als ABAP-Entwickler tragen Sie eine besondere Verantwortung. Ihr Code läuft im Herzen der Unternehmens-IT und hat Zugriff auf die wertvollsten Daten. Mit dem Wissen aus diesem Kapitel können Sie:
+As a ABAP developer, you have a special responsibility. Your code runs at the heart of the company's IT and has access to the most valuable data. With the knowledge from this chapter you can:
 
-- Sicherheitslücken bereits in der Entwicklungsphase vermeiden
-- Bestehenden Code auf potenzielle Schwachstellen analysieren
-- Ein Bewusstsein für Security-Aspekte in Ihrem Entwicklungsteam schaffen
-- Zur Gesamtsicherheit der SAP-Landschaft beitragen
+- Avoid security gaps during the development phase
+- Analyze existing code for potential vulnerabilities
+- Create awareness of security aspects in your development team
+- Contribute to the overall security of the SAP landscape
 
-Sicherer ABAP-Code ist kein Luxus -- er ist eine Notwendigkeit in der heutigen vernetzten Geschäftswelt. Lassen Sie uns gemeinsam dafür sorgen, dass Ihre Entwicklungen nicht nur funktional und performant, sondern auch sicher sind.
+Secure ABAP code is not a luxury -- it is a necessity in today's connected business world. Let us work together to ensure that your developments are not only functional and performant, but also safe.
 
 {: .solution }
-> Die folgenden Abschnitte führen Sie durch konkrete Sicherheitsaspekte mit praxisnahen Beispielen und Lösungsansätzen. Jeder Code-Schnipsel wurde so gewählt, dass er reale Herausforderungen aus dem Entwicklungsalltag widerspiegelt.
+> The following sections guide you through specific security aspects with practical examples and solution approaches. Each code snippet was chosen so that it reflects real challenges from everyday development.

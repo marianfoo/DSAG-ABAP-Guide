@@ -2,7 +2,7 @@
 layout: page
 title: Grundlagen
 permalink: /security/basics/
-parent: Sicherheit
+parent: Security
 nav_order: 2
 ---
 
@@ -13,84 +13,84 @@ nav_order: 2
 1. TOC
 {:toc}  
 
-## Die häufigsten ABAP-Sicherheitslücken im Überblick
+## The most common ABAP security vulnerabilities at a glance
 
-Nach der Einführung in die Bedeutung sicherer ABAP-Programmierung ist es wichtig, die konkreten Bedrohungen zu verstehen, denen SAP-Systeme täglich ausgesetzt sind. Die Erfahrung aus Hunderten von SAP-Sicherheitsaudits zeigt ein klares Bild: Bestimmte Schwachstellen-Muster wiederholen sich immer wieder in ABAP-Code.
+After introducing the importance of secure ABAP programming, it is important to understand the specific threats that SAP systems face on a daily basis. Experience from hundreds of SAP security audits shows a clear picture: certain vulnerability patterns repeat again and again in ABAP code.
 
-### Die Top ABAP-Sicherheitslücken
+### The top ABAP vulnerabilities
 
-**1. SQL-Injection durch dynamische Datenbankabfragen**
-Der Klassiker unter den Sicherheitslücken: Benutzereingaben werden ungefiltert in SQL-Statements eingebaut. Ein harmlos aussehender Report kann so zum Einfallstor für Datendiebstahl werden. Besonders tückisch: Die meisten Entwickler kennen SQL-Injection aus der Web-Entwicklung, übersehen aber die ABAP-spezifischen Varianten in Open SQL und Native SQL. ABAP Schützt hier vor dem den ganz großen Problemen, bspw. der Webentwicklung mit "DROP DATABASE;". Allerdings enthält das SAP System immer die Kronjuwelen der Daten, so dass unberechtigte Zugriffe schwerere Auswirkungen im BusinessKontext haben.
+**1. SQL injection through dynamic database queries**
+The classic among security holes: user input is integrated into SQL statements without filtering. A harmless-looking report can become a gateway for data theft. Particularly tricky: Most developers know SQL injection from web development, but overlook the ABAP-specific variants in Open SQL and Native SQL. ABAP Protects against the really big problems, for example web development with "DROP DATABASE;". However, the SAP system always contains the crown jewels of data, so unauthorized access has more serious consequences in the business context.
 
-**2. Fehlende oder unvollständige Berechtigungsprüfungen**
-ABAP-Programme laufen oft mit erweiterten Systemrechten (unter anderem im Batch oder gegenüber dem Betriebssystem). Wenn die explizite Prüfung von Benutzerberechtigungen fehlt oder unvollständig implementiert ist, können Anwender auf Daten und Funktionen zugreifen, die ihnen eigentlich verwehrt sein sollten. Besonders kritisch wird es bei RFC-fähigen Funktionsbausteinen, die über das Netzwerk aufgerufen werden können.
+**2. Missing or incomplete authorization checks**
+ABAP programs often run with extended system rights (including in batch or compared to the operating system). If explicit checking of user permissions is missing or incompletely implemented, users can access data and functions that they should not be able to access. It becomes particularly critical with RFC-capable function modules that can be called via the network.
 
-**3. Cross-Site Scripting (XSS) in Web-Dynpro und BSP-Anwendungen**
-Sobald ABAP-Code Daten für Webanwendungen ausgibt, droht XSS. Ungefilterter HTML-Code in Benutzereingaben kann zu verschiedenen Problemen im Backend führen. Viele SAP Systeme "bereinigen" Benutzereingaben nicht und das Problem verstärkt sich durch die sich immer Verbreitende Nutzung moderner Frontend-Technologien wie Fiori und UI5. 
+**3. Cross-Site Scripting (XSS) in Web-Dynpro and BSP applications**
+As soon as ABAP code outputs data to web applications, there is a risk of XSS. Unfiltered HTML code in user input can lead to various problems in the backend. Many SAP systems do not "clean up" user input, and the problem is compounded by the ever-increasing use of modern front-end technologies such as Fiori and UI5. 
 
-**4. Code-Injection in dynamischen ABAP-Konstrukten**
-ABAP bietet mächtige Funktionen für dynamische Programmierung: GENERATE SUBROUTINE POOL, dynamische Methodenaufrufe, RTTI (Run Time Type Information) oder XCO. Diese Flexibilität kann zum Sicherheitsrisiko werden, wenn Benutzereingaben ungefiltert in dynamischen Code-Konstrukten verwendet werden.
+**4. Code injection into ABAP dynamic constructs**
+ABAP offers powerful functions for dynamic programming: GENERATE SUBROUTINE POOL, dynamic method calls, RTTI (Run Time Type Information) or XCO. This flexibility can become a security risk if user input is used unfiltered in dynamic code constructs.
 
 **5. Directory Traversal (Write Access)**
-Directory-Traversal-Angriffe (Verzeichniswechselangriffe) funktionieren durch Manipulation des Dateinamens oder der Pfadinformationen durch Eingabe von Sonderzeichen in eine Zeichenkette, die als Datei-Locator dient. Wird eine derartige Zeichenkette zur Abänderung von Inhalten einer Datei verwendet, lässt sich eine Anwendung austricksen und dazu bringen, Dateien zu ändern, auf die der Benutzer keinen Zugriff besitzen sollte. Dieser Angriff ist möglich, da es der Anwendung nicht gelingt, Befehlszeichen in Eingaben zu ermitteln und zu entfernen, die als Bestandteil des Datei-Locators verwendet werden.
+Directory traversal attacks work by manipulating the file name or path information by entering special characters into a string that acts as a file locator. If such a string is used to modify the contents of a file, an application can be tricked into modifying files that the user should not have access to. This attack is possible because the application fails to detect and remove command characters in input used as part of the file locator.
 
-### Warum entstehen diese Schwachstellen immer wieder?
+### Why do these vulnerabilities keep emerging?
 
-Die Ursachen sind vielfältig, aber vorhersagbar:
+The causes are varied but predictable:
 
-**Zeitmangel und Projektdruck**: Sicherheitsprüfungen werden als "zusätzlicher Aufwand" gesehen und bei knappen Deadlines gestrichen. Dabei ist sicherer Code oft nicht komplexer als unsicherer – er erfordert nur das richtige Bewusstsein.
+**Lack of time and project pressure**: Security checks are seen as “additional effort” and are canceled when deadlines are tight. Secure code is often no more complex than unsafe code – it just requires the right level of awareness.
 
-**Fehlende Security-Awareness**: Viele ABAP-Entwickler kommen aus der klassischen betriebswirtschaftlichen Anwendungsentwicklung oder sind technisch interessiert Keyuser gewesen und haben Security-Aspekte nie systematisch gelernt. Was in der Java- oder .NET-Welt Standard ist, ist in der ABAP-Welt oft unbekannt.
+**Lack of security awareness**: Many ABAP developers come from classic business application development or have been key users with a technical interest and have never learned security aspects systematically. What is standard in the Java or .NET world is often unknown in the ABAP world.
 
-**Komplexität der SAP-Berechtigungskonzepte**: SAP-Autorisierungen sind komplex und vielschichtig. Entwickler verlassen sich darauf, dass "das System schon richtig konfiguriert ist", ohne zu verstehen, wo ihre Verantwortung beginnt.
+**Complexity of SAP authorization concepts**: SAP authorizations are complex and multi-layered. Developers rely on the fact that "the system is already configured correctly" without understanding where their responsibility begins.
 
-**Legacy-Code ohne Security-Fokus**: Viele SAP-Systeme enthalten Code aus den 1990er Jahren, als Sicherheit noch keine Priorität hatte. Dieser Code wird oft kopiert und als Vorlage für neue Entwicklungen verwendet – samt seiner Schwachstellen.
+**Legacy code without a security focus**: Many SAP systems contain code from the 1990s, when security was not yet a priority. This code is often copied and used as a template for new developments - including its vulnerabilities.
 
 ## Security-Mindset: Vom reaktiven zum proaktiven Denken
 
-Der entscheidende Unterschied zwischen sicherer und unsicherer Software liegt nicht in der Technologie – er liegt in der Denkweise der Entwickler. Ein "Security-Mindset" bedeutet, Sicherheit nicht als nachträgliche Prüfung zu betrachten, sondern als integralen Bestandteil des Entwicklungsprozesses.
+The key difference between secure and insecure software isn't the technology - it's the way developers think. A "security mindset" means not viewing security as an afterthought, but rather as an integral part of the development process.
 
 ### Reaktives vs. proaktives Security-Denken
 
-**Reaktiver Ansatz – "Security als Feuerwehr":**
-- Sicherheitslücken werden erst behoben, wenn sie entdeckt werden
-- Security-Tests finden erst am Ende der Entwicklung (oder gar nicht) statt
-- Schwachstellen erfordern oft grundlegende Code-Änderungen
-- Hohe Kosten durch Nachbesserungen und mögliche Sicherheitsvorfälle
+**Reactive approach – “Security as a fire department”:**
+- Vulnerabilities are only fixed when they are discovered
+- Security tests only take place at the end of development (or not at all).
+- Vulnerabilities often require fundamental code changes
+- High costs due to improvements and possible security incidents
 
 **Proaktiver Ansatz – "Security by Design":**
-- Sicherheitsanforderungen werden von Anfang an mitgedacht
-- Jede Funktion wird unter Sicherheitsaspekten entworfen
-- Kontinuierliche Sicherheitsprüfungen während der Entwicklung
-- Geringere Gesamtkosten durch Vermeidung von Nachbesserungen
+- Safety requirements are taken into account right from the start
+- Every feature is designed with security in mind
+- Continuous security checks during development
+- Lower overall costs by avoiding rework
 
-### Die Prinzipien des Security-Mindsets
+### The principles of the security mindset
 
-**1. Vertraue niemals, prüfe immer**
-Jede Eingabe ist potenziell gefährlich – egal ob sie von einem vertrauenswürdigen System oder einem internen Benutzer kommt. Implementieren Sie Validierung und Sanitizing für alle Eingaben, auch für interne Schnittstellen. Der schlimmste Satz für einen Entwickler sollte der "Ich brauche das nicht Testen, ich vertraue dir!" sein. Dies wälzt die Verantwortung alleine auf den Entwickler.
+**1. Never trust, always check**
+Any input is potentially dangerous, whether it comes from a trusted system or an internal user. Implement validation and sanitization for all inputs, including internal interfaces. The worst sentence for a developer should be "I don't need to test this, I trust you!" be. This places the responsibility solely on the developer.
 
-**2. Minimiere die Angriffsfläche**
-Exponieren Sie nur die Funktionen, die wirklich benötigt werden, Löschen Sie was überflüssig geworden ist. Ein RFC-fähiger Funktionsbaustein, der nur intern verwendet wird, ist eine unnötige Schwachstelle. Der alte, obsolete Report, den man aus "Dokumentationsgründen" noch im System lässt wird zur Falle. Implementieren Sie das Prinzip der minimalen Berechtigung – sowohl für Code als auch für Benutzer. Weiterhin kann Sie UCON auch dabei unterstützen, Zugriffe auf Standard-Funktionsbausteine zu steuern, die in ihren Prozessen vielleicht gar nicht verwendet werden.
+**2. Minimize the attack surface**
+Expose only the functions that are really needed, delete what has become unnecessary. An RFC-enabled function module that is only used internally is an unnecessary vulnerability. The old, obsolete report that is still left in the system for “documentation reasons” becomes a trap. Implement the principle of minimum permission - for both code and users. Furthermore, UCON can also support you in controlling access to standard function blocks that may not even be used in your processes.
 
 **3. Denken Sie wie ein Angreifer**
-Fragen Sie sich bei jeder Funktion: "Wie könnte jemand diese missbrauchen?" Betrachten Sie nicht nur den vorgesehenen Anwendungsfall, sondern auch mögliche Missbrauchsszenarien. Was passiert, wenn jemand unerwartete Eingaben macht oder mehrere Funktionen in unvorhergesehener Reihenfolge aufruft? Sind alle Fehler abgefangen?
+For each feature, ask yourself, "How could someone abuse this?" Consider not only the intended use case, but also possible misuse scenarios. What happens if someone makes unexpected input or calls multiple functions in an unexpected order? Are all errors caught?
 
-**4. Implementieren Sie Defense in Depth**
-Verlassen Sie sich nie auf eine einzige Sicherheitsmaßnahme. Kombinieren Sie Input-Validierung, Berechtigungsprüfungen, Output-Encoding und Logging. Wenn eine Schutzmaßnahme versagt, sollten andere greifen. Sorgen Sie in ihrer Abteilung für eine einheitliche Art des Loggings, so dass Probleme schnell sichtbar werden.
+**4. Implement Defense in Depth**
+Never rely on a single security measure. Combine input validation, authorization checks, output encoding and logging. If one protective measure fails, others should take effect. Ensure that your department uses a consistent method of logging so that problems become quickly visible.
 
-**5. Machen Sie Sicherheit transparent**
-Dokumentieren Sie Ihre Sicherheitsmaßnahmen im Code. Verwenden Sie aussagekräftige Variablennamen und Kommentare, die auch späteren Entwicklern zeigen, warum bestimmte Prüfungen implementiert wurden.
+**5. Make security transparent**
+Document your security measures in code. Use meaningful variable names and comments that show later developers why certain checks were implemented.
 
-### Der Weg zur Security-Kultur im Team
+### The path to a security culture in the team
 
-Die Entwicklung eines Security-Mindsets ist nicht nur eine individuelle Aufgabe – sie erfordert eine Kulturveränderung im gesamten Entwicklungsteam. Daher macht es Sinn, dass Sie sich im vorhinein Gedanken zu den folgenden Themen machen:
+Developing a security mindset is not just an individual task – it requires a culture change across the entire development team. It therefore makes sense for you to think about the following topics in advance:
 
-**Wissensaufbau**: Regelmäßige Security-Schulungen und der Austausch über aktuelle Bedrohungen schaffen Bewusstsein. Nutzen Sie interne Präsentationen, um konkrete Beispiele aus Ihren eigenen Systemen zu diskutieren.
+**Knowledge building**: Regular security training and exchanges about current threats create awareness. Use internal presentations to discuss concrete examples from your own systems.
 
-**Integration in den Entwicklungsprozess**: Machen Sie Sicherheitsprüfungen zu einem festen Bestandteil Ihrer Code-Reviews. Entwickeln Sie Checklisten und Guidelines, die jedem Entwickler helfen, sicherheitsrelevante Aspekte zu berücksichtigen.
+**Integrate into the development process**: Make security checks an integral part of your code reviews. Develop checklists and guidelines that help every developer take security-relevant aspects into account.
 
-**Positive Fehlerkultur**: Behandeln Sie entdeckte Sicherheitslücken als Lernmöglichkeiten, nicht als Versagen. Teams, die offen über Schwachstellen sprechen können, entwickeln ein stärkeres Sicherheitsbewusstsein.
+**Positive error culture**: Treat discovered vulnerabilities as learning opportunities, not as failures. Teams that can openly discuss vulnerabilities develop greater security awareness.
 
-**Kontinuierliche Verbesserung**: Analysieren Sie regelmäßig aufgetretene Sicherheitsprobleme und leiten Sie systematische Verbesserungen ab. Welche Schwachstellen-Muster treten wiederholt auf? Wie können Sie diese in Zukunft vermeiden?
+**Continuous Improvement**: Analyze regularly encountered security issues and derive systematic improvements. Which vulnerability patterns occur repeatedly? How can you avoid these in the future?
 
-Das Security-Mindset ist kein Ziel, das man einmal erreicht – es ist eine kontinuierliche Haltung, die jeden Tag gelebt werden muss. Mit dem Wissen um die häufigsten Schwachstellen und der richtigen Einstellung können Sie dazu beitragen, dass Ihre ABAP-Entwicklungen nicht nur funktional und performant, sondern auch sicher sind.
+The security mindset is not a goal that can be achieved once - it is an ongoing attitude that must be lived every day. With knowledge of the most common vulnerabilities and the right attitude, you can help ensure that your ABAP developments are not only functional and performant, but also secure.

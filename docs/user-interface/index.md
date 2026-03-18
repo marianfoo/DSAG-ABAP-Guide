@@ -11,78 +11,78 @@ nav_order: 6
 1. TOC
 {:toc}
 
-Dieses Kapitel gibt einen Überblick über verschiedene UI-Technologien, die im Kontext von ABAP-System zum Einsatz kommen. Der Hauptfokus liegt relevanzbedingt auf Fiori (SAPUI5). Im späteren Verlauf wird jedoch auch ein Überblick auf ältere und teils weiterhin relevante Technologien gegeben.
+This chapter provides an overview of various UI technologies used in the context of the ABAP system. Due to its relevance, the main focus is on Fiori (SAPUI5). Later, however, an overview of older and some still relevant technologies will also be given.
 
 {: .recommendation }
-> * Für Neuentwicklungen sollte in den allermeisten Fällen eine Fiori-konforme Oberfläche zum Einsatz kommen.  
-> * Wann immer möglich sollten neue Applikationen mit Fiori Elements umgesetzt werden. SAPUI5 Freestyle-Apps verlocken gerne dazu, sich durch zusätzliche Freiheiten in erhöhte Komplexität locken zu lassen und führen in der Regel zu deutlichem Mehraufwand.
+> * In most cases, a Fiori-compliant surface should be used for new developments.  
+> * Whenever possible, new applications should be implemented with Fiori Elements. SAPUI5 freestyle apps often tempt you to allow yourself to be lured into increased complexity through additional freedom and usually lead to significant additional effort.
 
 ## Fiori & SAPUI5
 
-SAP Fiori bezeichnet die neue User Experience aktueller Lösungen der SAP, die auf Basis moderner Design-Prinzipien entstanden sind. Fiori ist die strategische Oberflächentechnologie der SAP und sollte in den meisten Fällen von Neuentwicklungen als gesetzte Technologie angesehen werden. Der Begriff **Fiori** meint dabei jedoch teils unterschiedliche Themen:
+SAP Fiori describes the new user experience of current SAP solutions, which were created based on modern design principles. Fiori is the strategic surface technology of SAP and should be viewed as a set technology in most cases of new developments. However, the term **Fiori** means partly different topics:
 
-* Fiori als Designsprache moderner Oberflächen
-* Fiori-Empfehlungen zu guter User Experience
-* Fiori Elements Technologie zur annotationsgestützten Generierung von Applikationen
-* Entwicklung von Fiori-Apps mit SAPUI5
+* Fiori as a design language for modern surfaces
+* Fiori recommendations for good user experience
+* Fiori Elements technology for annotation-based generation of applications
+* Development of Fiori apps with SAPUI5
 
-Die reinen Design- und UX-Empfehlungen der SAP lassen sich theoretisch auch mit anderen Technologien umsetzen. Damit sich neu entworfene Anwendungen jedoch nativ in die SAP-Umgebung einbinden und für Nutzende ähnlich aussehen und sich ähnlich bedienen lassen ist es wichtig, sich an eben diese Empfehlungen zu halten. Dies sollte im Prozess bereits frühzeitig beachtet werden und je nach Situation auch mit Design Thinking oder Mockup-Erstellungen mit SAP's [Fiori Design Stencils](https://www.sap.com/design-system/fiori-design-web/v1-96/resources/libraries/downloads?external) beispielsweise für [Figma](https://www.figma.com/de-de/design/) sichergestellt werden. Sowohl Entwickler als auch Fachberater sollten daher mit den [Fiori Design Guidelines](https://experience.sap.com/fiori-design/) vertraut sein.
+The pure design and UX recommendations of the SAP can theoretically also be implemented with other technologies. However, so that newly designed applications can be integrated natively into the SAP environment and look and operate similarly for users, it is important to adhere to these recommendations. This should be taken into account early on in the process and, depending on the situation, also ensured with design thinking or mockup creations with SAP's [Fiori Design Stencils](https://www.sap.com/design-system/fiori-design-web/v1-96/resources/libraries/downloads?external), for example for [Figma](https://www.figma.com/de-de/design/). Both developers and technical consultants should therefore be familiar with the [Fiori Design Guidelines](https://experience.sap.com/fiori-design/).
 
-Abgesehen von der rein optischen und interaktiven Betrachtung der Fiori Guidelines wird unter Fiori im Allgemeinen auch die tatsächliche Entwicklung und Technologie hinter den Fiori-Apps bezeichnet. Hier lässt sich zwischen den generierten Fiori Elements Apps ohne Frontend-Coding und Freestyle-Applikationen entscheiden, die mit SAPUI5 (also Type- bzw. JavaScript) entwickelt werden. Das Flexible Programming Model bietet eine Mischform aus beiden. Diese verschiedenen Möglichkeiten werden später im Kapitel näher erläutert. Allgemein lässt sich jedoch sagen, dass Fiori-Applikationen als Browser-Website von Anwender konsumiert werden. Daher ist die Nutzung auch nicht mehr auf Endgeräte eingeschränkt, auf denen die SAP GUI installierbar ist - ein moderner Webbrowser ist ausreichend. Somit können Fiori Apps auch auf mobilen Geräten wie Smartphones, Tablets oder AR-Headsets genutzt werden.
+Apart from the purely visual and interactive view of the Fiori Guidelines, Fiori also generally refers to the actual development and technology behind the Fiori apps. Here you can choose between the generated Fiori Elements apps without front-end coding and freestyle applications that are developed with SAPUI5 (i.e. Type or JavaScript). The Flexible Programming Model offers a hybrid of both. These different options are explained in more detail later in the chapter. In general, however, it can be said that Fiori applications are consumed by users as a browser website. Therefore, use is no longer restricted to devices on which the SAP GUI can be installed - a modern web browser is sufficient. This means that Fiori apps can also be used on mobile devices such as smartphones, tablets or AR headsets.
 
-Einhergehend mit dieser Trennung geht auch die stärkere Unterscheidung von Front- und Backend-Entwicklung als Sie dies vielleicht aus bisherigen SAP-Entwicklungen kennen. Das S/4 System liefert als Backend die Datenhaltung, Prüfung von Berechtigungen und den Großteil der Transaktionslogik für Apps. Nach außen hin wird dies als OData Service veröffentlicht.  Dieser dient als Schnittstelle für die tatsächliche Frontend-App (die im Browser ausgeführte Fiori-App) um Daten zu lesen, schreiben oder Aktionen ausführen zu können. Diese Kommunikation über OData ist per Definition stateless, das Backend ist also die Single Source of Truth zum Datenstand und verwaltet den Großteil der Datenlogik. In bestimmten Szenarien kann diese Zweiteilung die Entwicklung verkomplizieren. Beispielsweise entstand dadurch auch die Notwendigkeit des Draft-Konzeptes, um die Vorhaltung von Zwischenständen zu Datensätzen zu ermöglichen.
+Accompanied by this separation is the stronger distinction between front and backend development than you may be familiar with from previous SAP developments. As a backend, the S/4 system provides data storage, authorization checking and most of the transaction logic for apps. This will be published externally as the OData service.  This serves as an interface for the actual frontend app (the Fiori app running in the browser) to read, write data or execute actions. This communication via OData is stateless by definition, so the backend is the single source of truth for the data status and manages the majority of the data logic. In certain scenarios, this dichotomy can complicate development. For example, this also created the need for the draft concept to enable the provision of interim data sets.
 
-Wenn auch mittlerweile archiviert sei an dieser Stelle dennoch auf den (englischsprachigen) [DSAG UI5 Best Practice Guide](https://1dsag.github.io/UI5-Best-Practice/) hingewiesen.  In der folgenden Tabelle werden die Vor- und Nachteile von SAPUI5 gegenübergestellt: 
+Even though it has now been archived, we would like to point out the (English-language) [DSAG UI5 Best Practice Guide](https://1dsag.github.io/UI5-Best-Practice/) at this point.  The following table compares the advantages and disadvantages of SAPUI5: 
 
 | Vorteile SAPUI5                      | Nachteile SAPUI5           |
 | ------------------------------------ | ------------------------- | 
-| Umfassende Sammlung von Standard-UI-Elementen, die die Implementierung stark vereinfachen. | JavaScript erforderlich (ABAP nur im Backend). Daher Skill-Aufbau notwendig. |
-| Modernstes Aussehen | SAP Gateway erforderlich (bei der separaten Installation zusätzliche Kosten) |
-| Theoretisch ist alles möglich, was HTML5 in Verbindung mit JavaScript erlaubt. | In Spezialfällen u.U. fehlende Features und schlechtere Performance gegenüber SAP GUI / ALV. |
-| Nutzung auf Tablets und Smartphones. | Komplexe Apps erfordern mehr Aufwand (Stateless Apps) |
-| Responsive UI (Automatische Anpassung an das jeweilige Endgerät) | |
-| Nutzung der Endgerätefähigkeiten wie z.B. Kameras | |
-| Native SAP-Fiori-Launchpad-Integration | |
-| Relativ neue, ständig weiterentwickelte Technologie. Daher optimale Integration in aktuelle Web-Browser | |
+| Comprehensive collection of standard UI elements that greatly simplify implementation. | JavaScript required (ABAP only in the backend). Therefore skill building is necessary. |
+| Modernstes Aussehen | SAP Gateway required (additional cost if installed separately) |
+| Theoretically, everything that HTML5 allows in conjunction with JavaScript is possible. | In special cases there may be missing features and poorer performance compared to SAP GUI / ALV. |
+| Use on tablets and smartphones. | Komplexe Apps erfordern mehr Aufwand (Stateless Apps) |
+| Responsive UI (automatic adaptation to the respective device) |    |
+| Use of end device capabilities such as cameras |    |
+| Native SAP-Fiori-Launchpad-Integration |    |
+| Relatively new, constantly evolving technology. Therefore optimal integration into current web browsers |    |
 
 ### Fiori Elements
-Das Fiori Elements Framework ermöglicht es, größtenteils ohne Frontend-Erfahrungen (JavaScript, XML) vollwertige Fiori-Unternehmensanwendungen umzusetzen. Dazu gibt es einige vorgefertigte Floorplans (App-Typen) der SAP, die basierend auf einem OData-Service generiert werden. Der am weitesten verbreitete UseCase ist die Kombination aus [List Report](https://experience.sap.com/fiori-design-web/list-report-floorplan-sap-fiori-element/) und [Object Page](https://experience.sap.com/fiori-design-web/object-page/). Mit diesen Typen lassen sich transaktionale Szenarien umsetzen, in der einzelne Business Datensätze in einer durchsuchbaren Tabelle aufgelistet und in der Object Page übersichtlich angelegt oder geändert werden können. Die [Analytical List Page](https://experience.sap.com/fiori-design-web/analytical-list-page/) ermöglicht eine standardisierte Anzeige zur Auswertung analytischer Datensätze.
+The Fiori Elements Framework makes it possible to implement full-fledged Fiori business applications largely without front-end experience (JavaScript, XML). There are also some pre-built floorplans (app types) of the SAP, which are generated based on a OData service. The most common use case is the combination of [List Report](https://experience.sap.com/fiori-design-web/list-report-floorplan-sap-fiori-element/) and [Object Page](https://experience.sap.com/fiori-design-web/object-page/). These types can be used to implement transactional scenarios in which individual business data records can be listed in a searchable table and clearly created or changed in the object page. The [Analytical List Page](https://experience.sap.com/fiori-design-web/analytical-list-page/) enables a standardized display for evaluating analytical data sets.
 
-Grundsätzlich ist es für die Erstellung ausreichend, den OData-Service mit UI-Annotationen anzureichern. Hierfür werden im CDS Consumption View beziehungsweise Metadata Extensions die gewünschten Konfigurationen hinterlegt. Über den OData-Service veröffentlicht wertet das Fiori Elements Framework die Annotationen zur Laufzeit aus und generiert die Fiori App dementsprechend. Für die Entwicklung transaktionaler Fiori Elements Applikationen bietet sich insbesondere das [ABAP RESTful Application Programming Model (RAP)](../abap/restful_abap.md) an. Zur Entwicklung wird auf den [DSAG ADT Leitfaden](https://1dsag.github.io/ADT-Leitfaden/) verwiesen, da die nötigen UI Annotationen zur Generierung von Fiori Elements Apps nur in der Entwicklungsumgebung Eclipse angelegt werden können.
+In principle, it is sufficient for creation to enrich the OData service with UI annotations. For this purpose, the desired configurations are stored in the CDS Consumption View or Metadata Extensions. Published via the OData service, the Fiori Elements Framework evaluates the annotations at runtime and generates the Fiori app accordingly. The [ABAP RESTful Application Programming Model (RAP)](../abap/restful_abap.md) is particularly suitable for the development of transactional Fiori Elements applications. For development, reference is made to the [DSAG ADT Guide](https://1dsag.github.io/ADT-Leitfaden/), as the necessary UI annotations to generate Fiori Elements apps can only be created in the Eclipse development environment.
 
-Im UI5 Demo Kit finden sich einige offizielle [Tutorials und Kurse](https://sapui5.hana.ondemand.com/#/topic/8b49fc198bf04b2d9800fc37fecbb218) der SAP zum Einstieg in die Fiori Elements Entwicklung. Einen guten Überblick zu Möglichkeiten und einen Hinweis zur entsprechenden Umsetzung einzelner Features bietet die [Fiori Elements Feature Map](https://sapui5.hana.ondemand.com/sdk/#/topic/62d3f7c2a9424864921184fd6c7002eb). Grundsätzlich ist auch die Entwicklung mit dem Cloud Application Programming Model (CAP) möglich - im Kontext dieses ABAP Leitfadens jedoch nicht weiter im Fokus.
+The UI5 ​​​​Demo Kit contains some official [Tutorials and courses](https://sapui5.hana.ondemand.com/#/topic/8b49fc198bf04b2d9800fc37fecbb218) of the SAP to get you started with the Fiori Elements development. The [Fiori Elements Feature Map](https://sapui5.hana.ondemand.com/sdk/#/topic/62d3f7c2a9424864921184fd6c7002eb) offers a good overview of the possibilities and information on how to implement individual features accordingly. In principle, development with the Cloud Application Programming Model (CAP) is also possible - but in the context of this ABAP guide, this is not the focus.
 
 ### Fiori Freestyle
-Wenn für eine zu entwickelnde Anwendung die von der SAP zur Verfügung gestellten Floorplans nicht ausreichend sind muss die UI-Oberfläche manuell entwickelt werden. Hierfür kommt eine Fiori Freestyle Entwicklung zum Einsatz. Die Fiori-Entwicklung wird mit dem SAPUI5-Framework umgesetzt, hierfür sind Kenntnisse zu JavaScript, XML-Views sowie dem MVC-Konzept notwendig.
+If the floorplans provided by SAP are not sufficient for an application to be developed, the UI interface must be developed manually. A Fiori Freestyle development is used for this. The Fiori development is implemented using the SAPUI5 framework, which requires knowledge of JavaScript, XML views and the MVC concept.
 
-Über Fiori Tools lässt sich eine leere Applikations-Hülle mit Anbindung an einen OData-Service erstellen. Die restliche Applikations-Logik muss dann jedoch selbst implementiert werden. Die Darstellung der tatsächlichen Oberfläche wird über XML-Views definiert. Hierfür stellt SAP eine breite Auswahl an Controls zur Verfügung, die bereits viel Implementierungsaufwand ersparen und ein Fiori-konformes Design unterstützen. Diese sind in der [SAPUI5 API Referenz](https://sapui5.hana.ondemand.com/#/api) nach Version aufgeschlüsselt einsehbar.
+An empty application shell with a connection to a OData service can be created using Fiori tools. However, the remaining application logic must then be implemented yourself. The representation of the actual surface is defined via XML views. For this purpose, SAP provides a wide selection of controls that save a lot of implementation effort and support a Fiori-compliant design. These can be viewed broken down by version in the [SAPUI5 API Referenz](https://sapui5.hana.ondemand.com/#/api).
 
-Unter dem Namen [OpenUI5](https://openui5.org/) wird SAPUI5 auch unter einer Open-Source-Lizenz vertrieben. Hierbei sind allerdings einige Komponenten nicht in der Distribution enthalten. Grundsätzlich lassen sich damit aber nach Bedarf auch ohne Nutzung eines SAP-Backends Fiori-Applikationen umsetzen.
+SAPUI5 is also distributed under an open source license under the name [OpenUI5](https://openui5.org/). However, some components are not included in the distribution. In principle, Fiori applications can be implemented as required even without using a SAP backend.
 
 
 ### Flexible Programming Model
-Das [Flexible Programmiermodell (FPM)](https://ui5.sap.com/test-resources/sap/fe/core/fpmExplorer/index.html#/overview/introduction) bietet eine Mischform aus generierten Fiori Elements- und manuell entwickelten SAPUI5 Freestyle-Oberflächen. Es steht ab SAPUI5 v1.94 und nur mit OData V4 zur Verfügung. Das FPM ermöglicht es dabei, über eigenständige Container Freestyle-Elemente in einer Fiori Elements Applikation einzubinden. Andererseits können auch Fiori Elements-Bausteine in einer Freestyle-App eingebaut werden. Um einen Eindruck zu den Vorteilen des FPM zu gewinnen bieten sich [dieser CodeJam](https://github.com/SAP-samples/fiori-elements-fpm-exercises-codejam) oder diese [Learning Journey](https://learning.sap.com/learning-journeys/developing-an-sap-fiori-elements-app-based-on-a-cap-odata-v4-service/getting-an-overview-of-the-flexible-programming-model_fc9ea1ee-20a8-4add-b3f9-c8c8e3701ae0) an.
+The [Flexible Programmiermodell (FPM)](https://ui5.sap.com/test-resources/sap/fe/core/fpmExplorer/index.html#/overview/introduction) offers a mix of generated Fiori Elements and manually developed SAPUI5 Freestyle interfaces. It is available from SAPUI5 v1.94 and only with OData V4. The FPM makes it possible to integrate freestyle elements into a Fiori Elements application via independent containers. On the other hand, Fiori Elements components can also be installed in a Freestyle app. To get an impression of the advantages of the FPM, [this CodeJam](https://github.com/SAP-samples/fiori-elements-fpm-exercises-codejam) or [Learning Journey](https://learning.sap.com/learning-journeys/developing-an-sap-fiori-elements-app-based-on-a-cap-odata-v4-service/getting-an-overview-of-the-flexible-programming-model_fc9ea1ee-20a8-4add-b3f9-c8c8e3701ae0) are ideal.
   
 
-![Flexible Programming Model als Mischform von Fiori Elements und Freestyle SAPUI5, © SAP](./img/FPM.png)
+![Flexible Programming Model as a hybrid of Fiori Elements and Freestyle SAPUI5, © SAP](./img/FPM.png)
   
-Flexible Programming Model als Mischform von Fiori Elements und Freestyle SAPUI5, © SAP
+Flexible Programming Model as a hybrid of Fiori Elements and Freestyle SAPUI5, © SAP
 {: .img-caption}
 
-Die durchs FPM ermöglichte Flexibilität bietet einem die Möglichkeiten, auch in generierten Applikationen mehr Freiheiten bei der Entwicklung zu genießen. Die strikte Wahl zwischen SAPUI5-Freestyle oder Fiori Elements rückt dadurch ein Stück weit in den Hintergrund. Gekapselt können Fiori Elements Teilbereiche über Building Blocks eingebettet werden. Der [Flexible Programming Model Explorer](https://sapui5.hana.ondemand.com/test-resources/sap/fe/core/fpmExplorer/index.html) liefert live testbare Beispiele über FPM-Implementierungsmöglichkeiten über Extension Points und Building Blocks und erlaubt es, Beispieldateien oder ganze Projekte als Referenz herunterzuladen.
+The flexibility enabled by FPM offers you the opportunity to enjoy more freedom in development, even in generated applications. The strict choice between SAPUI5-Freestyle or Fiori Elements is pushed into the background to some extent. Encapsulated, Fiori Elements sections can be embedded via building blocks. The [Flexible Programming Model Explorer](https://sapui5.hana.ondemand.com/test-resources/sap/fe/core/fpmExplorer/index.html) provides live testable examples of FPM implementation options via Extension Points and Building Blocks and allows sample files or entire projects to be downloaded for reference.
 
 ## Legacy Technologien
-Dieses Kapitel soll einen kurzen Überblick über bisher nicht genannte Oberflächentechnologien geben. Da diese im Laufe der Zeit immer mehr an Relevanz verlieren wird an dieser Stelle nicht näher auf einzelne Technologien eingegangen.  
+This chapter is intended to provide a brief overview of previously unmentioned surface technologies. Since these become increasingly less relevant over time, individual technologies will not be discussed in more detail here.  
 
-| UI-Technologie                       | SAP-Roadmap               | Kommentar           | Empfehlung für Neuentwicklungen           |
+| UI-Technologie                       | SAP-Roadmap               | Kommentar           | Recommendation for new developments           |
 | ------------------------------------ | ------------------------- | ------------------- |  ---------------------------------------- |
-| Dynpro (klassisch) | nur noch Support | SAP rät von Neuentwicklungen ab. Geringerer Entwicklungsaufwand, vor allem bei einfachen Reports mit generiertem Selektionsbild. Bei Power-Usern beliebt. | Für kleinere Entwicklungen in vielen Fällen weiterhin sinnvoll, in S/4 Cloud jedoch nicht unterstützt. |
-| Business Server Pages (BSP) | nur noch Support | Durch Web Dynpro abgelöst | Nicht sinnvoll |
-| Webclient UIF | nur noch Support | Im CRM auf Basis der BSP-Technologie entwickelt und im Einsatz | Für klassische CRM-Apps weiterhin relevant. SAP Hybris C4C setzt hier auf SAPUI5 / SAP Fiori |
-| Web Dynpro Java | nur noch Support | Sollte nicht mehr verwendet werden | Nicht sinnvoll |
-| Web Dynpro ABAP inkl. Floorplan Manager | Kleinere Erweiterungen | In Kombination mit Floorplan Manager weniger aufwändig als Standalone. | Stattdessen SAPUI5 in Erwägung ziehen. |
-| SAP Screen Personas | Kleinere Erweiterungen | Konfiguration und Scripting (Java-Script), um existierende Anwendungen auf Basis klassischer Dynpros attraktiver und besser bedienbar zu machen. | Für UI-Überarbeitung existierender Dynpro-Programme sinnvoll. |
-| CRM Web UI | n/a | Aus SAP Change Request Management bekannte Oberflächentechnologie. | Stattdessen SAPUI5 in Erwägung ziehen. |
+| Dynpro (klassisch) | nur noch Support | SAP advises against new developments. Lower development effort, especially for simple reports with a generated selection screen. Popular with power users. | Still useful for smaller developments in many cases, but not supported in S/4 Cloud. |
+| Business Server Pages (BSP) | nur noch Support | Superseded by Web Dynpro | Not useful |
+| Webclient UIF | nur noch Support | Developed and used in CRM based on BSP technology | Still relevant for classic CRM apps. SAP Hybris C4C relies on SAPUI5 / SAP Fiori |
+| Web Dynpro Java | nur noch Support | Should no longer be used | Not useful |
+| Web Dynpro ABAP inkl. Floorplan Manager | Kleinere Erweiterungen | In combination with Floorplan Manager, less complex than standalone. | Consider SAPUI5 instead. |
+| SAP Screen Personas | Kleinere Erweiterungen | Configuration and scripting (Java script) to make existing applications based on classic screens more attractive and easier to use. | Useful for UI revision of existing Dynpro programs. |
+| CRM Web UI | n/a | Surface technology known from SAP Change Request Management. | Consider SAPUI5 instead. |
 
 
 

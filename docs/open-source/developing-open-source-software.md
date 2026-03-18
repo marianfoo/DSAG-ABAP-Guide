@@ -1,94 +1,94 @@
 ---
 layout: page
-title: Entwicklung von Open-Source-Software
+title: Open source software development
 permalink: /open-source/developing-open-source-software/
 parent: Open Source
 nav_order: 4
 ---
 
-# Entwicklung von Open-Source-Software
+# Open source software development
 {: .no_toc}
 
-Dieser Abschnitt beschreibt den Anwendungsfall als Unternehmen eigene Komponenten als Open-Source-Projekt zu entwickeln. Dies entspricht der dritten [Ausbaustufe](/ABAP-Leitfaden/open-source/#ausbaustufen) und damit der Anspruchsvollsten.
+This section describes the use case as a company developing its own components as an open source project. This corresponds to the third [Ausbaustufe](/ABAP-Leitfaden/open-source/#ausbaustufen) and therefore the most demanding.
 
 1. TOC
 {:toc}
 
 ## Mehrwert aus Unternehmenssicht
 
-In diesem Anwendungsfall entscheiden Sie sich dafür eine ABAP-basierte Komponente Ihrer Software als Open-Source-Projekt zu veröffentlichen und weiterzuentwickeln. Dies bedeutet, dass Sie diese Komponente für andere Verwender außerhalb Ihres Unternehmens öffnen und zur Verfügung stellen. Sie entscheiden sich für eine [Open-Source-Lizenz](/ABAP-Leitfaden/open-source/licenses) und erlauben damit ausdrücklich die Nutzung, Modifikation und Weitergabe des Quellcodes der Komponente im Rahmen der konkreten Lizenzbedingungen.
+In this use case, you decide to publish and further develop a ABAP-based component of your software as an open source project. This means that you open and make this component available to other users outside of your company. You choose a [Open-Source-Lizenz](/ABAP-Leitfaden/open-source/licenses) and thereby expressly allow the use, modification and distribution of the component's source code within the scope of the specific license conditions.
 
-Dies hört sich zunächst vielleicht nicht nach einem erstrebenswerten Modell an. Konkret nehmen Sie allerdings nicht Ihre proprietäre Implementierung des Geschäftsmodells Ihres Unternehmens sondern Sie wählen geeignete Komponenten aus. Besonderes eignen sich folgende:
+This may not initially sound like a desirable model. Specifically, however, you do not use your proprietary implementation of your company's business model, but rather you select suitable components. The following are particularly suitable:
 
-- Wiederverwendbare Komponenten ("Reuse Services"), die wiederkehrende technische Probleme lösen (z. B. Protokollierung, Pflegedialoge, Unit-Test-barkeit, ...)
+- Reusable components ("Reuse Services") that solve recurring technical problems (e.g. logging, maintenance dialogs, unit testability, ...)
 - SDKs zur Anbindung Ihrer Kunden, beispielsweise zur Einbindung Ihrer bereitgestellten Webservices
-- Proof of Concepts und technische Demos
+- Proof of concepts and technical demos
 
-Durch die Entwicklung als Open-Source-Projekt ergeben sich Ihnen folgende Vorteile:
+Developing as an open source project gives you the following advantages:
 
-- **Beteiligung durch externe Entwickler**  
-  Externe Entwickler können Ihre Komponente in anderen Systemen mit anderen Release-Ständen oder installierten Abhängigkeiten testen. Sie können Features vorschlagen oder mit Ihrer Unterstützung in der Komponente selbst ergänzen. Ihre Open-Source-Komponente gewinnt an Qualität und Funktionsumfang, ohne dass zwangsläufig in Ihrem Unternehmen Entwicklungsaufwände entstehen.  
-  Dieses Szenario ist aus der Sicht des sich beteiligenden Entwicklers in [Beteiligung an Open-Source-Software](/ABAP-Leitfaden/open-source/contributing-to-open-source-software.md) beschrieben.
-- **Entwicklerperspektiven über den eigenen Tellerrand hinaus**  
-  Durch die externe Beteiligung gewinnen Sie neue Perspektiven hinzu. Dies kann dadurch entstehen, dass Externe einen anderen Releasestand, eine andere Laufzeitumgebung oder ein anderes SAP-Produkt für den Einsatz Ihrer Komponente verwenden oder weil sie technisch andere Erfahrungen gemacht haben und andere Architekturen oder Entwurfsmuster kennen. Sie lernen diese Perspektiven kennen und können sie bewerten und gegebenenfalls in weiteren, auch internen, Projekten einbringen.
-- **Entwicklung als eigenständige Komponente**  
-  Um die Komponente als Open-Source-Projekt veröffentlichen zu können, müssen Sie sich zwangsläufig mit einigen technischen Fragestellungen zur Softwarearchitektur befassen, die sich gerade in der Inhouse-Entwicklung in der Regel nicht stellen. Die Auseinandersetzung mit diesem Thema kann Ihre Softwarequalität erhöhen. Einige dieser Fragestellungen sind im Abschnitt [Architektur](#architektur) beschrieben.
-- **Außendarstellung**  
-  Mit der Veröffentlichung Ihrer Komponente als Open-Source-Software zeigen Sie als Unternehmen, dass Sie von Ihren Entwicklungsfähigkeiten und -prozessen überzeugt sind und qualitativ hochwertige Software entwickeln können. Dies kann als Aushängeschild dienen und sich positiv im Recruiting darstellen.
+- **Involvement by external developers**  
+  External developers can test your component on other systems with different release levels or installed dependencies. You can suggest features or add them with your support in the component itself. Your open source component gains in quality and functionality without necessarily incurring development costs in your company.  
+  This scenario is described from the perspective of the participating developer in [Beteiligung an Open-Source-Software](/ABAP-Leitfaden/open-source/contributing-to-open-source-software.md).
+- **Developer perspectives outside the box**  
+  Through external participation you gain new perspectives. This can occur because external parties use a different release level, a different runtime environment or a different SAP product to deploy your component or because they have different technical experiences and know different architectures or design patterns. You get to know these perspectives and can evaluate them and, if necessary, incorporate them into other projects, including internal ones.
+- **Development as an independent component**  
+  In order to be able to publish the component as an open source project, you inevitably have to deal with some technical questions about the software architecture that usually do not arise, especially in in-house development. Addressing this topic can increase your software quality. Some of these questions are described in section [Architecture](#architektur).
+- **External appearance**  
+  By publishing your component as open source software, you as a company show that you are confident in your development skills and processes and can develop high-quality software. This can serve as a figurehead and present itself positively in recruiting.
 
-## Anpassung des Entwicklungsprozesses zur Berücksichtigung externer Entwickler
+## Adaptation of the development process to take external developers into account
 
-Haben Sie sich für eine Komponente entschieden, die Sie "open-sourcen" möchten, gibt es einige Punkte zu beachten, um den Zugang für externe Beteiligung möglichst einfach zu gestalten.
+Once you have decided on a component that you would like to "open source", there are a few points to consider in order to make access as easy as possible for external participation.
 
-### Dokumentation
+### Documentation
 
-Stellen Sie Dokumentation bereit, wie sich Externe an Ihrem Projekt beteiligen können. Dazu zählt eine README-Datei mit Installationsanweisungen und Details zu Abhängigkeiten und unterstützten Produkten und Releases. Dazu zählen aber auch beispielweise Issue-Templates als Vorlage für Bug-Reports und Contribution-Guidelines mit den verwendeten Namenskonventionen und Architekturmustern. Dies ist nicht ABAP-spezifisch, Tipps finden Sie beispielsweise auf [Open Source Guides](https://opensource.guide/starting-a-project/#launching-your-own-open-source-project).
+Provide documentation on how external parties can participate in your project. This includes a README file with installation instructions and details about dependencies and supported products and releases. This also includes, for example, issue templates as a template for bug reports and contribution guidelines with the naming conventions and architectural patterns used. This is not ABAP specific, for tips see [Open Source Guides](https://opensource.guide/starting-a-project/#launching-your-own-open-source-project).
 
-### Namensräume
+### Namespaces
 
-Das Namensraumkonzept in ABAP führt dazu, dass lediglich im Kundennamensraum die Beteiligung ohne zusätzliche Schritte möglich ist. Der Kundennamensraum erhöht allerdings die Wahrscheinlichkeit für Namenskonflikte über verschiedene Projekte hinweg. Es gibt zwei verschiedene Lösungsansätze:
+The namespace concept in ABAP means that participation is only possible in the customer namespace without additional steps. However, the customer namespace increases the likelihood of name conflicts across different projects. There are two different approaches to solving the problem:
 
-#### Kollisionsprüfung auf dotabap.org
+#### Collision checking on dotabap.org
 
-Ist Ihr Projekt auf [dotabap.org](https://dotabap.org) gelistet, werden die enthaltenen Objekte automatisch auf Namenskollisionen mit allen anderen dort gelisteten Projekten geprüft. Die Bezeichner Ihrer Entwicklungsobjekte sollten neben dem Namensraum ein Projektkürzel, oft ein dreistelliges Akronym, tragen, welches noch nicht verwendet wird.
+If your project is listed on [dotabap.org](https://dotabap.org), the objects it contains are automatically checked for name collisions with all other projects listed there. In addition to the namespace, the identifiers of your development objects should contain a project abbreviation, often a three-character acronym, which is not yet used.
 
-#### Eigener reservierter Namensraum
+#### Own Reserved Namespace
 
-Sie können einen selbst reservierten Namensraum (`/NSPC/`) verwenden. In diesem Fall müssen Sie jedoch den externen Entwicklern einen Entwicklungs- oder Reparaturschlüssel zur Beteiligung bereitstellen. abapGit bietet dafür eingebauten Support und serialisiert/deserialisiert die Reparaturlizenz automatisch in der Community-Version ([Dokumentation](https://docs.abapgit.org/user-guide/reference/namespaces.html)). Die SAP-Version von abapGit in den Public-Cloud-Systemen bietet die Funktionalität nicht. Der vorgesehene Weg zur Installation von Namensräumen über die Maintain-Namespaces-App ist ebenfalls ungeeignet, da Sie nicht beliebigen Personen und Unternehmen den Namensraum freigegeben können ([Dokumentation](https://help.sap.com/docs/sap-btp-abap-environment/landscape-portal/maintain-namespaces?locale=en-US)). Eine Lösung dafür sind die ABAP Open Source Namespaces.
+You can use a self-reserved namespace (`/NSPC/`). However, in this case, you must provide the external developers with a development or repair key to participate. abapGit offers built-in support for this and automatically serializes/deserializes the repair license in the community version ([documentation](https://docs.abapgit.org/user-guide/reference/namespaces.html)). The SAP version of abapGit in the public Cloud systems does not provide the functionality. The intended way to install namespaces via the Maintain Namespaces app is also unsuitable because you cannot share the namespace with just any person or company ([documentation](https://help.sap.com/docs/sap-btp-abap-environment/landscape-portal/maintain-namespaces?locale=en-US)). A solution for this is the ABAP open source namespaces.
 
 #### ABAP Open Source Namespaces
 
-Ein ABAP Open Source Namespace ist ein reservierter Namensraum, dessen Reparaturlizenz öffentlich einsehbar ist. Sie sind in der Maintain-Namespaces-App automatisch verfügbar und lösen damit die Problematik der Installation in Public-Cloud-Systemen. Der Schwierigkeitsgrad im Vergleich zur Verwendung des Kundennamensraum wird trotzdem erhöht, da die Berechtigungen zum Zugriff auf die App in der Regel in Unternehmen sehr eingeschränkt sind. Ein solcher Namensraum kann insbesondere auch ohne Zugriff auf die Maintain-Namespaces-App in SAP for Me oder Geschäftsbeziehung zu SAP beantragt werden. Details finden Sie unter [ABAP Open Source Namespaces](https://github.com/SAP/abap-open-source-namespaces).
+A ABAP open source namespace is a reserved namespace whose repair license is publicly viewable. They are automatically available in the Maintain Namespaces app and thus solve the problem of installation in public Cloud systems. The level of difficulty compared to using the customer namespace is still increased because the permissions to access the app are usually very limited in companies. In particular, such a namespace can be requested without access to the Maintain Namespaces app in SAP for Me or a business relationship with SAP. Details can be found at [ABAP Open Source Namespaces](https://github.com/SAP/abap-open-source-namespaces).
 
-### Architektur
+### Architecture
 
-Ihre Komponente sollte von externen Entwicklern außerhalb Ihres Entwicklungssystems verwendbar sein. Das heißt sie darf keine Abhängigkeiten zu Objekten haben, die nicht im unterstützten SAP-Produkt und Release verfügbar sind. Das beinhaltet auch eigene Utility-Bibliotheken die entweder ebenfalls als Open-Source-Projekt und damit als installierbare Abhängigkeit veröffentlicht werden müssten oder deren Verwendung in der Komponente entfernt werden muss. Auch innerhalb des SAP-Standards sollten Sie sich über Einschränkungen Gedanken machen. Entwickeln Sie eine Hilfsbibliothek, die technische Probleme löst, sollten Sie es vermeiden unnötigerweise Objekte aus dem SAP-Standard zu verwenden, die beispielsweise in den Softwarekomponenten `SAP_APPL` oder `S4CORE` angesiedelt sind. Damit schränken Sie die Beteiligung auf einen Personenkreis ein, der Zugriff auf ein SAP ERP / SAP S/4HANA System hat und schließen die Verwendung des [ABAP Cloud Developer Trials](https://community.sap.com/t5/technology-blog-posts-by-sap/abap-cloud-developer-trial-2023-available-now/ba-p/14057183) aus. Dieses ist besonders beliebt in der Open-Source-Community, da es lokal betrieben werden kann, kostenlos ist und keine aktive Geschäftsbeziehung mit der SAP benötigt.
+Your component should be usable by external developers outside of your development system. This means it must not have any dependencies on objects that are not available in the supported SAP product and release. This also includes your own utility libraries, which would either have to be published as an open source project and therefore as an installable dependency, or whose use in the component must be removed. Even within the SAP standard, you should be concerned about limitations. If you are developing a helper library that solves technical problems, you should avoid unnecessarily using objects from the SAP standard that are located, for example, in the `SAP_APPL` or `S4CORE` software components. This restricts participation to a group of people who have access to a SAP ERP / SAP S/4HANA system and excludes the use of the [ABAP Cloud Developer Trials](https://community.sap.com/t5/technology-blog-posts-by-sap/abap-cloud-developer-trial-2023-available-now/ba-p/14057183). This is particularly popular in the open source community because it can be operated locally, is free and does not require an active business relationship with the SAP.
 
-### Unterstützung verschiedener Releases
+### Support various releases
 
-Unabhängig von der Produkt-Unterstützung (ABAP Cloud Developer Trial, SAP ERP, SAP S/4HANA, Branchenlösung) und den damit generell verfügbaren Softwarekomponenten, sollten Sie sich auch Gedanken über die Release-Unterstützung machen, dem Release-Stand und Patch-Level dieser Softwarekomponenten, den Sie minimal unterstützen möchten. Es ist unwahrscheinlich, dass externe Entwickler exakt den Releasestand Ihres Entwicklungssystem verwenden. Je mehr Sie unterstützen, desto einfacher ist die Beteiligung, desto schwieriger ist aber auch die Entwicklung, da Sie auf neue Features und APIs verzichten müssen.
+Regardless of the product support (ABAP Cloud Developer Trial, SAP ERP, SAP S/4HANA, industry solution) and the software components generally available with it, you should also think about the release support, the release status and patch level of these software components that you want to support minimally. It is unlikely that external developers will use the exact release level of your development system. The more you support, the easier it is to participate, but the more difficult it is to develop because you have to do without new features and APIs.
 
-[abapGit](https://github.com/abapGit/abapGit) und [abap2UI5](https://github.com/abap2UI5/abap2UI5) unterstützen beispielsweise beide noch den ABAP-Release 7.02. Technisch verwenden Sie dafür zwei verschiedene Ansätze:
+For example, [abapGit](https://github.com/abapGit/abapGit) and [abap2UI5](https://github.com/abap2UI5/abap2UI5) both still support the ABAP release 7.02. Technically, you use two different approaches for this:
 
-abapGit schränkt sich auf den Syntax und die verfügbaren APIs von ABAP 7.02 ein. Dass niemand versehentlich neueren Syntax verwendet, wird über Continuous Integration mit [abaplint](https://github.com/abaplint/abaplint) sichergestellt, welches auf Release-spezifischen Syntax prüfen kann. Wird technisch eine API benötigt, die in dem unterstützten Release nicht zur Verfügung steht, wird der Aufruf dynamisch implementiert.
+abapGit is limited to the syntax and available APIs from ABAP 7.02. Continuous integration with [abaplint](https://github.com/abaplint/abaplint), which can check for release-specific syntax, ensures that no one accidentally uses newer syntax. If a API is technically required and is not available in the supported release, the call is implemented dynamically.
 
-abap2UI5 verwendet einen anderen Ansatz. Der verwendete Syntax wird mit abaplint auf Kompatibilität mit ABAP 7.50 geprüft. Über eine [CI-Pipeline](https://github.com/abap2UI5/abap2UI5/blob/main/.github/workflows/ABAP_702.yaml) wird ebenfalls mit abaplint ein automatischer Downport des Syntax vorgenommen und in einem separaten Branch committet. Details zu diesem Ansatz finden Sie auch in diesem [Beitrag](https://www.linkedin.com/pulse/running-abap2ui5-older-r3-releases-downport-compatibility-abaplint-mjkle/) des Maintainers.
+abap2UI5 uses a different approach. The syntax used is checked for compatibility with ABAP 7.50 using abaplint. The syntax is also automatically downloaded using abaplint via a [CI-Pipeline](https://github.com/abap2UI5/abap2UI5/blob/main/.github/workflows/ABAP_702.yaml) and committed to a separate branch. Details about this approach can also be found in this [article](https://www.linkedin.com/pulse/running-abap2ui5-older-r3-releases-downport-compatibility-abaplint-mjkle/) from the maintainer.
 
-### Unterstützung verschiedener ABAP-Sprachversionen
+### Support various ABAP language versions
 
-Eine weitere Komplexität ist die Unterstützung mehrerer ABAP-Sprachversionen. Es kann beispielsweise sein, dass Sie sich auf ABAP-Release 7.50 einschränken und eine SAP-API dort bereits verfügbar und auch im ABAP Cloud Developer Trial enthalten ist. Sie ist allerdings nicht für die Nutzung in ABAP Cloud freigegeben. In diesem Fall würden Sie regulär im Clean Core Level Concept einen Wrapper anlegen. Dieser ist aber natürlich nicht mehr in Level A und damit nicht in Public-Cloud-Systeme auslieferbar. Vielleicht gibt es in ABAP Cloud eine neuere API, die freigegeben ist. Diese ist jedoch nicht in ABAP 7.50 verfügbar. Möchten Sie dieses Szenario unterstützen, haben Sie verschiedene Möglichkeiten:
+Another complexity is the support of multiple ABAP language versions. For example, it may be that you are limited to ABAP release 7.50 and a SAP-API is already available there and also included in the ABAP Cloud developer trial. However, it is not approved for use in ABAP Cloud. In this case, you would normally create a wrapper in the Clean Core Level Concept. Of course, this is no longer available in Level A and therefore cannot be delivered in public Cloud systems. Maybe there is a newer API released in ABAP Cloud. However, this is not available in ABAP 7.50. If you would like to support this scenario, you have various options:
 
 - __Branching__  
-  Sie können pro Unterscheidung nach Release oder ABAP-Sprachversion einen eigenen Branch in git verwenden. Dies bietet den Vorteil, dass sie spezifische APIs und Features normal und statisch geprüft verwenden können. Auch für den Nutzer Ihrer Komponente ist die Installation vergleichsweise einfach, da dieser einfach den spezifischen Branch wählt. Die Wartung dieses Setups ist jedoch sehr aufwändig, da sie alle neuen Funktionen und Bugfixes in verschiedene Branches kontinuierlich portieren müssen.
-- __Standard ABAP als Abhängigkeit in separatem Repository__  
-  Sie können das primäre Coding Ihrer Anwendung mit der Sprachversion ABAP für Cloud-Entwicklung implementieren und alle spezifischen Release- / Produkt- oder Sprachversion-abhängigen Aufrufe in separate Repositorys auslagern, die dann als Abhängigkeit im jeweiligen System installiert werden müssen.
+  You can use a separate branch in git per release or ABAP language version distinction. This offers the advantage that you can use specific APIs and features normally and statically tested. Installation is also comparatively easy for the user of your component, as they simply select the specific branch. However, maintaining this setup is very time-consuming as you have to continuously port all new features and bug fixes to different branches.
+- __Standard ABAP as a dependency in a separate repository__  
+  You can implement the primary coding of your application with language version ABAP for Cloud development and offload any specific release/product or language version dependent calls into separate repositories, which then have to be installed as a dependency in the respective system.
 - __Dynamische API-Verwendung__  
-  Sie können die nur in Standard ABAP und nur in ABAP Cloud verwendbaren APIs beide dynamisch Aufrufen und die ABAP-Cloud-API als Fallback verwenden. In diesem Fall verlieren Sie weitgehend die Syntaxprüfung. Sie gewinnen allerdings eine einfachere Installation und ein einfacheres Repository-Setup. Beispiele für solche Aufrufe finden Sie unter [steampunkification](https://github.com/heliconialabs/steampunkification).
+  You can both dynamically call the APIs, which can only be used in standard ABAP and only in ABAP Cloud, and use the ABAP-Cloud-API as a fallback. In this case you largely lose syntax checking. However, you gain an easier installation and a simpler repository setup. Examples of such calls can be found at [steampunkification](https://github.com/heliconialabs/steampunkification).
 
-abapGit bietet zusätzlich weitere Optionen zur Handhabung der ABAP-Sprachversion. Diese finden Sie unter [abapGit Docs - ABAP Language Version](https://docs.abapgit.org/user-guide/reference/abap-language-version.html).
+abapGit also offers further options for handling the ABAP language version. You can find these under [abapGit Docs - ABAP Language Version](https://docs.abapgit.org/user-guide/reference/abap-language-version.html).
 
-### Continuous Integration ohne SAP-System
+### Continuous integration without SAP system
 
-Die nächste Schwierigkeit ist die Tooling-Unterstützung für statische und dynamische Quellcodeanalyse zur Qualitätssicherung. Regulär käme hier das ABAP Test Cockpit (ATC) zum Einsatz. In der Open-Source-Entwicklung steht dieses jedoch nicht integriert zur Verfügung, da es kein Originalsystem zur Entwicklung gibt. Die Single Source of Truth ist das Git-Repository. Sie können in Ihrem Entwicklungssystem natürlich ATC einsetzen, davon profitieren allerdings die externen Entwickler nicht und Sie sehen kein direktes Feedback in Pull Requests. Ein Anbindung Ihres Entwicklungssystem an den Git-Anbieter wie GitHub ist technisch unproblematisch, allerdings lizenztechnisch nicht abgedeckt. Die Lösung ist die Verwendung von Quellcodeanalysetools außerhalb des SAP-Systems.
+The next difficulty is tooling support for static and dynamic source code analysis for quality assurance. The ABAP Test Cockpit (ATC) would normally be used here. However, this is not available integrated in open source development because there is no original system for development. The single source of truth is the Git repository. You can of course use ATC in your development system, but the external developers do not benefit from this and you do not see any direct feedback in pull requests. Connecting your development system to the Git provider such as GitHub is technically unproblematic, but is not covered by the license. The solution is to use source code analysis tools outside of the SAP system.
 
-[abaplint](https://abaplint.org/) lässt sich nativ in Continous-Integration-Umgebungen wie GitHub Actions integrieren und bietet für statische Quellcodeanalyse einen vergleichsbaren Funktionsumfang zu Standard-ATC-Prüfungen oder auch Code Pal for ABAP. Zusätzlich ist es über den eingebauten Transpiler möglich auch Unit-Tests außerhalb des Systems auszuführen und damit vollumfänglich den Entwicklungsprozess zu unterstützen. Auch die Syntaxprüfung über mehrere Repositories hinweg ist möglich.
+[abaplint](https://abaplint.org/) can be integrated natively into continuous integration environments such as GitHub Actions and offers a comparable range of functions to standard ATC tests or Code Pal for ABAP for static source code analysis. In addition, it is possible to run unit tests outside the system using the built-in transpiler, thereby fully supporting the development process. Syntax checking across multiple repositories is also possible.
