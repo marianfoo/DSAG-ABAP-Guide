@@ -1,58 +1,58 @@
 ---
 layout: page
-title: Ausgabelösungen
+title: Output solutions
 permalink: /forms/output-solutions/
 parent: Formulare
 nav_order: 2
 ---
 
 {: .no_toc}
-# Ausgabelösungen
+# Output solutions
 
 1. TOC
 {:toc}
 
-Im Folgenden erhalten Sie einen Überblick über die möglichen Ausgabelösungen.
+Below you will find an overview of the possible output solutions.
 
 ## Nachrichtensteuerung (NAST)  
-Mit der Nachrichtensteuerung werden verschiedene Ausgabearten wie Drucken, E-Mail, EDI, Workflows, Systemintegration (ALE) und Sonderfunktionen im SAP pro Nachricht zu diversen Modulen (z.B. SD und MM) gecustomized. Über die sogenannte Konditionstechnik wird die produktive Ausgabe von Formularen und Etiketten gesteuert. Hinter einer Nachricht liegt die Zuordnung des Druckprogramms und des Formulars, welche angestoßen werden, wenn eine Nachricht erzeugt wird.  
+With the message control, various output types such as printing, email, EDI, workflows, system integration (ALE) and special functions in the SAP are customized into various modules (e.g. SD and MM) per message. The productive output of forms and labels is controlled via the so-called condition technology. Behind a message lies the assignment of the print program and the form, which are triggered when a message is generated.  
 
-Die Transaktion NACE dient als zentraler Einstiegspunkt zur Pflege der Nachrichtenfindung pro Applikation. Die dort gepflegten Einstellungen werden in der Datenbanktabelle TNAPR gespeichert.  
+The transaction NACE serves as a central entry point for maintaining message determination per application. The settings maintained there are saved in the database table TNAPR.  
     
 _Hinweis:_  
-Eine Auswertung aller erzeugten Nachrichten kann über die Transaktion TAANA für die Datenbanktabelle NAST erstellt werden. Hierfür muss diese Transaktion im Produktivsystem ausgeführt werden. Um die Auswertung jahresweise durchzuführen, muss vorher ggf. noch ein neues „virtuelles Feld“ (ERYEAR) hinzugefügt werden. Die Ergebnisliste kann als Excel-Tabelle heruntergeladen werden und dort für eine leichtere Auswertung zur Pivot-Tabelle umgestellt werden.
+An evaluation of all messages generated can be created using transaction TAANA for the database table NAST. To do this, this transaction must be carried out in the productive system. In order to carry out the evaluation year by year, a new “virtual field” (ERYEAR) may have to be added beforehand. The list of results can be downloaded as an Excel table and converted into a pivot table for easier evaluation.
 
 {: .recommendation }
-> Eine solche Auswertung empfiehlt sich, um sich einen Überblick zu verschaffen, welche Nachrichtenarten überhaupt und hauptsächlich verwendet werden. In welchen Sprachen 
-> werden meine Belege (Formulare) ausgegeben und wie groß ist das jeweilige Volumen. Dies hilft bei einer weiteren Planung von Umstellungs- und Go-Live Szenarien.  
+> Such an evaluation is recommended in order to get an overview of which types of messages are actually and mainly used. In which languages 
+> Will my receipts (forms) be issued and how large is the respective volume? This helps with further planning of conversion and go-live scenarios.  
 
-Eine genaue Anleitung zur Nutzung der Transaktion TAANA finden Sie unter folgendem Link als [YouTube](https://youtu.be/HsHHBt5znOE) Video.
+You can find detailed instructions on how to use the TAANA transaction as a [YouTube](https://youtu.be/HsHHBt5znOE) video at the following link.
 
-![Pflege der Tabelle](./img/image-09.png)
+![Maintenance of the table](./img/image-09.png)
 
-Pflege der Tabelle
+Maintenance of the table
 {: .img-caption}
 
-![Pflege der Felder](./img/image-10.png)
+![Care of the fields](./img/image-10.png)
 
-Pflege der Felder
+Care of the fields
 {: .img-caption}
 
 ## Post Processing Framework (PPF)
 
-Das PPF dient der Automatisierung von bestimmten Aktionen in der Lieferabwicklung zur Ausgabe von Dokumenten von Belegen per Drucker oder per E-Mail. Verwendung findet es z.B. im eWM und TM. Die Pflege erfolgt über die Transaktion SPPFCADM.  
+The PPF is used to automate certain actions in delivery processing to output documents from receipts via printer or email. It is used, for example, in eWM and TM. Maintenance is carried out using transaction SPPFCADM.  
 
 ## Druck-Workbench
 
-Die Ausgabe von Dokumenten erfolgt über die Definition von Korrespondenzarten. Verwendet wird sie vor allem als Branchenlösung im IS-U Bereich (Energieversorger), ist aber auch außerhalb von IS-U grundsätzlich verfügbar. In der Druck-Workbench wird die Datenversorgung eines Anwendungsformulars gekapselt. Es können zur Datenermittlung SAP Standard Objekte oder kundeneigene Objekte verwendet und hinterlegt werden. Mittels Transaktion EFRM werden die relevanten Einstelllungen vorgenommen werden.  
+Documents are issued by defining correspondence types. It is used primarily as an industry solution in the IS-U area (energy suppliers), but is also generally available outside of IS-U. The data supply of an application form is encapsulated in the print workbench. SAP standard objects or customer-specific objects can be used and stored for data determination. The relevant settings will be made using transaction EFRM.  
 
-## Applikationsspezifische Lösungen
+## Application-specific solutions
 
-Applikationsspezifisches Customizing bestimmt die Ausgabe von Dokumenten. Diese Art der Ausgabelösung wird z.B. im FI, PP und QM verwendet. Im FI zum Beispiel wird die Findung des Mahnformulars abhängig von der Mahnstufe durchgeführt.  
+Application-specific Customizing determines the output of documents. This type of output solution is used, for example, in FI, PP and QM. In FI, for example, the dunning form is determined depending on the dunning level.  
 
 ## S/4HANA Output Control  
 
-Mit SAP S/4HANA bietet SAP eine weitere Ausgabelösung mit dem Namen „SAP S/4HANA Output Management“ an. Diese beinhaltet den wiederverwendbaren Service „SAP S/4HANA Output Control“, welcher für viele komplexe Ausgabeszenarien verwendet werden kann. Auf Ebene von Organisationseinheiten kann die Findung von Masterformularvorlagen, Logos und allgemeine Kopf- und Fußtexte gecustomized werden. Mit dieser Ausgabelösung können sogenannte „Adobe Fragments“ verwendet werden. Siehe hierzu den entsprechenden Abschnitt. Im Vergleich zur Nachrichtensteuerung (NAST) haben Sie mit der Output Control die Einschränkung, dass keine Workflows und Sonderfunktionen hinterlegt werden können.  
+With SAP S/4HANA, SAP offers another output solution called “SAP S/4HANA Output Management”. This includes the reusable service “SAP S/4HANA Output Control”, which can be used for many complex output scenarios. At the level of organizational units, the identification of master form templates, logos and general header and footer texts can be customized. So-called “Adobe Fragments” can be used with this output solution. See the relevant section. In comparison to message control (NAST), with output control you have the restriction that no workflows and special functions can be stored.  
 
 ![Output Szenarien](./img/image-11.png)
 
@@ -60,11 +60,11 @@ Output Szenarien
 {: .img-caption}
 
 {: .warning } 
-> In diesem Zusammenhang wird oft BRFplus (oder BRF+) als Ausgabelösung genannt. Dies ist falsch. BRFplus ist _eine optionale Möglichkeit_ um eine Konfiguration für die 
-> Dokumentenausgabe zu hinterlegen (= ein Regelwerk, ähnlich der Konditionstechnik NAST).  
+> In this context, BRFplus (or BRF+) is often mentioned as an output solution. This is wrong. BRFplus is _an optional option_ to configure for the 
+> Document output to be stored (= a set of rules, similar to the condition technology NAST).  
 
-Die Einstellungen im S/4HANA Output Control erfolgt in der GUI über den folgenden Pfad:  
-Transaktion SPRO > Anwendungsübergreifende Komponenten > Ausgabesteuerung  
+The settings in the S/4HANA Output Control are made in the GUI via the following path:  
+Transaction SPRO > Cross-Application Components > Output Control  
 
 {: .note }
-> Unter Hinweis [2791338](https://me.sap.com/notes/2791338/E) finden sich FAQs zum Thema Ausgabesteuerung.
+> FAQs on the topic of output control can be found under note [2791338](https://me.sap.com/notes/2791338/E).

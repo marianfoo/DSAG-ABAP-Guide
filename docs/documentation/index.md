@@ -1,31 +1,31 @@
 ---
 layout: page
-title: Dokumentation
+title: Documentation
 permalink: /documentation/
 has_children: true
 nav_order: 7
 ---
 
 {: .no_toc}
-# Dokumentation von ABAP Entwicklungen
+# Documentation of ABAP developments
 
 1. TOC
 {:toc}
 
 ## Zielgruppe
 
-Dieses Kapitel ist an ABAP Entwickler, Software Architekten, technische Schreiber und Entwicklungsleiter gerichtet und basiert auf dem Inhalt der [**DSAG Handlungsempfehlung Best Practice Leitfaden Development - Praxistipps rund um das Thema ABAP Development**](https://dsag.de/wp-content/uploads/2021/12/dsag_handlungsempfehlung_abap_2016_0.pdf)". Das Kapitel wurde an entsprechender Stelle modernisiert und um Inhalt erweitert.
+This chapter is aimed at ABAP developers, software architects, technical writers and development managers and is based on the content of the [**DSAG recommended action Best Practice Guide Development - practical tips on the topic of ABAP Development**](https://dsag.de/wp-content/uploads/2021/12/dsag_handlungsempfehlung_abap_2016_0.pdf)". The chapter has been modernized and expanded to include content where appropriate.
 
 
-Wir möchten sie mit den Inhalten des Kapitels bei der Einführung und Optimierung ihrer technischen Dokumentationsaufgaben von ABAP Entwicklungen unterstützen und ihnen nach Möglichkeit pragmatische Lösungen anbieten, die sie und ihre Kollegen langfristig bei der Wissensvermittlung über ihre Individualsoftware unterstützt.
+We would like to use the contents of the chapter to support you in introducing and optimizing your technical documentation tasks for ABAP developments and, if possible, to offer you pragmatic solutions that will support you and your colleagues in the long term in imparting knowledge about your individual software.
 
-## Inhalt des Kapitels
+## Contents of the chapter
 
-Technische Dokumentation dient der Wissensvermittlung und soll dem Leser einen schnellen Einstieg in die Architektur und die Funktionsweise eines Softwaresystems vermitteln, ohne dass man sich auf Quellcode-Ebene mit den Details des Systems auseinandersetzen muss. Fehlt die Dokumentation oder ist sie nicht in ausreichendem Maß vorhanden, führt dies spätestens bei der Weiterentwicklung oder dem Wechsel von Entwicklern zu erhöhten Aufwänden.
+Technical documentation serves to impart knowledge and is intended to give the reader a quick introduction to the architecture and functionality of a software system without having to deal with the details of the system at the source code level. If the documentation is missing or is not available to a sufficient extent, this will lead to increased costs at the latest when further development or when developers change.
 
-Allgemein ist es bei jeder Dokumentation wichtig, das richtige Maß zu finden und die beiden Extreme einer zu umfangreichen und oft veralteten Dokumentation, oder gar keiner Dokumentation zu vermeiden. Abhilfe schafft die Definition klarer, leicht verständlicher, mit Beispielen angereicherte Dokumentationsrichtlinien. Sind die offiziellen Anforderungen an die Dokumentation zu hoch oder zu abstrakt, führt dies in der Regel dazu, dass die Dokumentation entweder gar nicht oder mit schlechter Qualität erst wird.
+In general, it is important for any documentation to find the right balance and to avoid the two extremes of too extensive and often outdated documentation, or no documentation at all. The solution is to define clearer, easier-to-understand documentation guidelines enriched with examples. If the official requirements for documentation are too high or too abstract, this usually leads to the documentation either not being produced at all or being of poor quality.
 
-Die Dokumentation sollte während der Entwicklung, unbedingt aber vor der Produktivsetzung bzw. Bereitstellung erstellt werden und es sollte keine Produktivsetzung ohne fertige Dokumentation geben. Ansonsten ergibt sich in der Regel ein Mehraufwand oder letztlich eine fehlende Dokumentation.
+The documentation should be created during development, but definitely before go-live or deployment, and there should be no go-live without finished documentation. Otherwise, there is usually additional effort or ultimately a lack of documentation.
 
-Sind sie daran interessiert, wie Künstliche Intelligenz ihre Dokumentationsvorhaben unterstützen kann? Dann schauen sie doch einfach in nachfolgendem Kapitel vorbei:
-- [**AI als Werkzeug bei Dokumentationserstellung**](/ABAP-Leitfaden/artificial-intelligence/#ai-als-werkzeug-bei-dokumentationserstellung)
+Are you interested in how artificial intelligence can support your documentation projects? Then just take a look at the following chapter:
+- [**AI as a tool for documentation creation**](/ABAP-Leitfaden/artificial-intelligence/#ai-als-werkzeug-bei-dokumentationserstellung)

@@ -2,7 +2,7 @@
 layout: page
 title: Bedrohungen
 permalink: /security/threats/
-parent: Sicherheit
+parent: Security
 nav_order: 3
 ---
 
@@ -13,13 +13,13 @@ nav_order: 3
 1. TOC
 {:toc}  
 
-## SQL-Injection in ABAP: Angriffsvektoren und Abwehrmaßnahmen
+## SQL injection in ABAP: attack vectors and defenses
 
-SQL-Injection gehört zu den gefährlichsten und zugleich am häufigsten übersehenen Schwachstellen in ABAP-Systemen. Während viele Entwickler glauben, dass OpenSQL automatisch vor Injection-Angriffen schützt, zeigt die Praxis ein anderes Bild. Im Folgenden finden Sie verschiedene Beispiele aus dem Bereich der ABAP Entwicklung, wie sie die Entwicklung nicht gestalten sollten und was als Gegenmaßnahme hilft.
+SQL injection is one of the most dangerous and often overlooked vulnerabilities in ABAP systems. While many developers believe that OpenSQL automatically protects against injection attacks, practice shows a different picture. Below you will find various examples from the area of ​​ABAP development, how you should not design the development and what helps as a countermeasure.
 
-### Angriffsvektoren in ABAP
+### Attack vectors in ABAP
 
-**Native SQL – Der offensichtliche Risikofaktor:**
+**Native SQL – The Obvious Risk Factor:**
 ```abap
 " GEFÄHRLICH: Direkte Einbindung von Benutzereingaben
 DATA: lv_where TYPE string.
@@ -29,10 +29,10 @@ EXEC SQL.
 ENDEXEC.
 ```
 
-Ein Angreifer könnte `p_kunnr` mit `' OR '1'='1` befüllen und erhält Zugriff auf alle Kundendaten. Noch kritischer wird es bei UPDATE- oder DELETE-Statements.
+An attacker could fill `p_kunnr` with `' OR '1'='1` and gain access to all customer data. It becomes even more critical with UPDATE or DELETE statements.
 
-**OpenSQL – Vermeintlich sicher, aber tückisch:**
-Auch OpenSQL ist nicht automatisch immun gegen Injection-Angriffe, besonders bei dynamischen WHERE-Klauseln:
+**OpenSQL – Supposedly safe, but treacherous:**
+Even OpenSQL is not automatically immune to injection attacks, especially with dynamic WHERE clauses:
 ```abap
 " GEFÄHRLICH: Dynamische WHERE-Klausel ohne Validierung
 DATA: lv_where TYPE string.
@@ -40,10 +40,10 @@ lv_where = |KUNNR = '{ p_kunnr }'|.
 SELECT * FROM kna1 WHERE (lv_where) INTO TABLE lt_customers.
 ```
 
-**RFC-Funktionsbausteine als Einfallstor:**
-Besonders kritisch werden SQL-Injections, wenn sie über RFC-Schnittstellen ausgenutzt werden können. Ein unsicherer Funktionsbaustein kann zum Sprungbrett für Angriffe aus dem gesamten Netzwerk werden. Der Funktionsbaustein RFC_READ_TABLE implementiert eine solche, dynamische Programmierung.
+**RFC function blocks as a gateway:**
+SQL injections become particularly critical when they can be exploited via RFC interfaces. An insecure function block can become a springboard for attacks from the entire network. The RFC_READ_TABLE function block implements such dynamic programming.
 
-### Effektive Abwehrmaßnahmen
+### Effective defense measures
 
 **1. Parametrisierte Queries verwenden:**
 ```abap
@@ -62,15 +62,15 @@ ENDIF.
 ```
 
 **3. Escaping-Funktionen nutzen:**
-Für unvermeidbare dynamische Konstrukte sollten SAP-eigene Escaping-Funktionen verwendet werden, um gefährliche Zeichen zu neutralisieren.
+For unavoidable dynamic constructs, SAP's own escaping functions should be used to neutralize dangerous characters.
 
-## Cross-Site Scripting (XSS) in SAP-Webanwendungen
+## Cross-Site Scripting (XSS) in SAP web applications
 
-Mit der zunehmenden Webbasierung von SAP-Anwendungen durch Fiori, UI5 und Web Dynpro werden XSS-Angriffe zu einem kritischen Risikofaktor. ABAP-Entwickler müssen verstehen, wie ihre Backend-Logik zur Frontend-Sicherheit beiträgt.
+As SAP applications become more web-based through Fiori, UI5 and Web Dynpro, XSS attacks are becoming a critical risk factor. ABAP developers need to understand how their backend logic contributes to frontend security.
 
-### XSS-Angriffsvektoren in SAP
+### XSS attack vectors in SAP
 
-**Stored XSS in Stammdaten:**
+**Stored XSS in master data:**
 ```abap
 " GEFÄHRLICH: Ungefilterter HTML-Code in Ausgabe
 DATA: lv_name TYPE kna1-name1.
@@ -78,15 +78,15 @@ lv_name = '<script>alert("XSS")</script>Kunde GmbH'.
 " Direkte Ausgabe ohne Encoding führt zu XSS
 ```
 
-Wenn dieser Kundenname später in einer Webanwendung angezeigt wird, wird der JavaScript-Code ausgeführt. Besonders tückisch: Der Schadcode wird persistent in der Datenbank gespeichert und betrifft alle Benutzer, die diese Daten anzeigen.
+When this customer name is later displayed in a web application, the JavaScript code is executed. Particularly treacherous: The malicious code is stored persistently in the database and affects all users who view this data.
 
-**Reflected XSS in URL-Parametern:**
-Web Dynpro- und BSP-Anwendungen, die URL-Parameter direkt in die HTML-Ausgabe einbinden, sind anfällig für Reflected XSS. Ein präparierter Link kann ausreichen, um Schadcode zu injizieren.
+**Reflected XSS in URL parameters:**
+Web Dynpro and BSP applications that include URL parameters directly in HTML output are vulnerable to Reflected XSS. A crafted link can be enough to inject malicious code.
 
-**DOM-basiertes XSS in modernen UI5-Anwendungen:**
-Bei der Integration von ABAP-Backend-Daten in moderne Frontend-Frameworks entstehen neue Angriffsvektoren, wenn JSON-Responses ungefilterte Benutzerdaten enthalten.
+**DOM-based XSS in modern UI5 applications:**
+When integrating ABAP backend data into modern frontend frameworks, new attack vectors emerge when JSON responses contain unfiltered user data.
 
-### Schutzmaßnahmen gegen XSS
+### Protection measures against XSS
 
 **1. Output-Encoding implementieren:**
 ```abap
@@ -96,29 +96,29 @@ lv_encoded = cl_http_utility=>escape_html( lv_user_input ).
 ```
 
 **2. Content Security Policy (CSP) nutzen:**
-Konfigurieren Sie CSP-Header in Ihren Webanwendungen, um die Ausführung von Inline-JavaScript zu verhindern.
+Configure CSP headers in your web applications to prevent inline JavaScript execution.
 
 **3. Eingabevalidierung am Backend:**
-Implementieren Sie strenge Validierungsregeln für alle Eingaben, die später in Webanwendungen dargestellt werden.
+Implement strict validation rules for all input that will later be presented in web applications.
 
-## Unsichere Direktzugriffe auf Objekte und Autorisierungsumgehung
+## Insecure direct access to objects and authorization bypass
 
-Diese Schwachstellenklasse entsteht, wenn ABAP-Programme Objektreferenzen direkt aus Benutzereingaben übernehmen, ohne zu prüfen, ob der Benutzer berechtigt ist, auf diese Objekte zuzugreifen.
+This class of vulnerabilities arise when ABAP programs take object references directly from user input without checking whether the user is authorized to access these objects.
 
 ### Typische Angriffsmuster
 
 **Horizontale Rechteausweitung:**
-Ein Sachbearbeiter ändert eine Kundennummer in einem URL-Parameter und erhält plötzlich Zugriff auf Daten anderer Kunden, für die er keine Berechtigung hat.
+A clerk changes a customer number in a URL parameter and suddenly gains access to other customers' data for which he does not have authorization.
 
 **Vertikale Rechteausweitung:**
-Durch Manipulation von Organisationseinheiten oder Buchungskreisen in Parametern kann ein Benutzer auf Daten zugreifen, die seiner Hierarchieebene nicht entsprechen.
+By manipulating organizational units or company codes in parameters, a user can access data that does not correspond to their hierarchy level.
 
-**Session-Hijacking durch vorhersagbare IDs:**
-Wenn interne Objekt-IDs oder Session-Kennungen vorhersagbar sind, können Angreifer systematisch verschiedene Werte ausprobieren.
+**Session Hijacking through Predictable IDs:**
+When internal object IDs or session identifiers are predictable, attackers can systematically try different values.
 
-### Effektive Autorisierungsprüfungen
+### Effective authorization checks
 
-**1. Explizite Berechtigungsprüfung:**
+**1. Explicit authorization check:**
 ```abap
 " Immer explizite Berechtigung prüfen
 AUTHORITY-CHECK OBJECT 'F_KNA1_BEK'
@@ -128,22 +128,22 @@ IF sy-subrc <> 0.
   MESSAGE 'Keine Berechtigung' TYPE 'E'.
 ENDIF.
 ```
-Für alle Objekte mit ABAP Code gilt hier: 
-1) die Berechtigungsprüfung machen
-2) SY-SUBRC Auswertung nicht vergessen
-3) Ranges entsprechend erweitern mit SIGN = 'E' und 'EQ'
-4) SELECT auf die Haupttabelle machen
+The following applies to all objects with ABAP code: 
+1) do the authorization check
+2) Don't forget SY-SUBRC evaluation
+3) Expand ranges accordingly with SIGN = 'E' and 'EQ'
+4) Make SELECT on the main table
 
-In vielen Fällen haben Fachbereiche eine Debugberechtigung, damit im Supportfall schnell von der Entwicklung geholfen werden kann. In solchen Fällen könnte sich ein Sachbearbeiter einen Break-point setzen und die gesamte Tabelle vor der Berechtigungsprüfung über den Debugger herunterladen.
+In many cases, departments have debugging authorization so that development can help quickly in the event of support. In such cases, a clerk could set a break point and download the entire table via the debugger before the authorization check.
 
 **2. Kontextuelle Autorisierung:**
-Prüfen Sie nicht nur die Berechtigung für ein Objekt, sondern auch den Kontext der Anfrage (Organisationseinheit, Zeitraum, etc.). Scheuen Sie sich nicht eine Abfrage mehrfach ausführen zu lassen.
+Not only check the authorization for an object, but also the context of the request (organizational unit, time period, etc.). Don't be afraid to run a query multiple times.
 
-## Code-Injection und Dynamic Programming Risiken
+## Code injection and dynamic programming risks
 
-ABAP bietet mächtige Funktionen für dynamische Programmierung, die bei unsachgemäßer Verwendung zu schwerwiegenden Sicherheitslücken führen können.
+ABAP provides powerful dynamic programming features that can lead to serious security vulnerabilities if used improperly.
 
-### Gefährliche dynamische Konstrukte
+### Dangerous dynamic constructs
 
 **GENERATE SUBROUTINE POOL:**
 ```abap
@@ -153,7 +153,7 @@ lv_code = |FORM test. WRITE '{ p_input }'. ENDFORM.|.
 GENERATE SUBROUTINE POOL lv_code NAME lv_prog.
 ```
 
-Wenn `p_input` Schadcode enthält, wird dieser zur Laufzeit ausgeführt.
+If `p_input` contains malicious code, it will be executed at runtime.
 
 **Dynamische Methodenaufrufe:**
 ```abap
@@ -161,12 +161,12 @@ Wenn `p_input` Schadcode enthält, wird dieser zur Laufzeit ausgeführt.
 CALL METHOD (p_class)=>(p_method).
 ```
 
-Ein Angreifer könnte kritische Systemmethoden aufrufen oder Daten manipulieren.
+An attacker could call critical system methods or manipulate data.
 
 ### Sichere Alternativen
 
 **1. Whitelist-Ansatz:**
-Erlauben Sie nur definierte Werte, Methoden und Parameter und blockieren Sie alle nicht bekannten Optionen.
+Allow only defined values, methods and parameters and block all unknown options.
 
 ```abap
 " Nur erlaubte Werte zulassen
@@ -179,16 +179,16 @@ ENDCASE.
 ```
 
 **2. Factory-Pattern verwenden:**
-Implementieren Sie Factory-Klassen, die nur sichere, vordefinierte Objekte zurückgeben.
+Implement factory classes that only return safe, predefined objects.
 
 **3. Reflection-APIs sicher nutzen:**
-Wenn RTTI (Run Time Type Information) verwendet wird, implementieren Sie strenge Validierung und Berechtigungsprüfungen.
+If RTTI (Run Time Type Information) is used, implement strict validation and authorization checks.
 
-### Präventive Maßnahmen
+### Preventive measures
 
-Die effektivste Abwehr gegen diese Bedrohungen ist eine Kombination aus technischen Maßnahmen und organisatorischen Prozessen:
+The most effective defense against these threats is a combination of technical measures and organizational processes:
 
-- **Code-Reviews mit Security-Fokus:** Schulen Sie Ihr Team, diese Schwachstellen-Muster zu erkennen
-- **Automatisierte Sicherheitstests:** Nutzen Sie Tools wie den SAP Code Vulnerability Analyzer
-- **Penetrationstests:** Lassen Sie Ihre Systeme und Anwendungen regelmäßig von SAP spezialisierten Sicherheitsexperten testen
-- **Incident Response Plan:** Definieren Sie Prozesse für den Umgang mit entdeckten Schwachstellen
+- **Security-focused code reviews:** Train your team to recognize these vulnerability patterns
+- **Automated security testing:** Use tools like the SAP Code Vulnerability Analyzer
+- **Penetration Testing:** Have your systems and applications tested regularly by SAP specialized security experts
+- **Incident Response Plan:** Define processes for dealing with discovered vulnerabilities

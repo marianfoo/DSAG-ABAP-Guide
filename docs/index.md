@@ -6,6 +6,6 @@ layout: home
 nav_exclude: true
 ---
 
-# DSAG ABAP Leitfaden
+# DSAG ABAP Guide
 
-Wenn Sie einen Beitrag leisten möchten, besuchen Sie das GitHub Repository [DSAG's ABAP Leitfaden](https://github.com/1DSAG/ABAP-Leitfaden). Der DSAG ABAP Leitfaden ist ein lebendiges Dokument 👨‍💻 - es lebt von und mit seiner Community 🥳.
+If you would like to contribute, visit the GitHub repository [DSAG's ABAP guide](https://github.com/1DSAG/ABAP-Leitfaden). The DSAG ABAP guide is a living document 👨‍💻 - it lives from and with its community 🥳.

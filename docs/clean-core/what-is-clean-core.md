@@ -1,32 +1,32 @@
 ---
 layout: page
-title: Was ist Clean Core
+title: What is Clean Core
 permalink: /clean-core/what-is-clean-core/
 parent: Clean Core
 nav_order: 1
 ---
 
 {: .no_toc}
-# Was ist Clean Core
+# What is Clean Core
 
 1. TOC
 {:toc}
 
 
-## Clean Core auf den ersten Blick
-Clean Core ist ein Konzept und für einige SAP-Kunden eine Philosophie - Clean Core wird unterschiedlich verstanden, interpretiert und gelebt. Ein gemeinsames Verständnis der DSAG-Community wäre folgendes:
+## Clean Core at first glance
+Clean Core is a concept and for some SAP customers a philosophy - Clean Core is understood, interpreted and lived differently. A common understanding of the DSAG community would be the following:
 
-- **"Clean Core"** - Streng genommen ist das Konzept so zu interpretieren: System-Upgrades sollen keinen Einfluss auf Kundenerweiterungen haben. Daher 
-dürfen SAP-Kunden nur freigegebene Schnittstellen für Geschäftsprozesserweiterungen verwenden.
+- **"Clean Core"** - Strictly speaking, the concept should be interpreted as follows: System upgrades should have no influence on customer expansions. Therefore 
+SAP customers are only allowed to use released interfaces for business process extensions.
 
-- **“Keep the core clean”** - Bedeutet, dass ein Unternehmen Neuentwicklungen nach Clean-Core-Prinzipien - definierten Richtlinien in einem Unternehmen - durchführt.
+- **“Keep the core clean”** - Means that a company carries out new developments according to Clean-Core principles - defined guidelines in a company.
 
-- **"Make the core clean"** - Bezieht sich auf die Unternehmenstransformation und die iterative Reise zu einem Clean Core.
+- **"Make the core clean"** - Refers to business transformation and the iterative journey to a Clean Core.
 
 
-Clean Core hat fünf Schwerpunkte: S/4HANA Software Versionen, Geschäftsprozesse, Kundenerweiterungen, Geschäftsdaten, Betrieb und Integration. Vor allem die neuen Wege der Kundenerweiterungen stehen im Mittelpunkt diesem Kapitel.
+Clean Core has five areas of focus: S/4HANA software versions, business processes, customer extensions, business data, operations and integration. Above all, the new ways of customer expansion are the focus of this chapter.
 
-> „Die Erweiterbarkeitsfunktionen umfassen viele Optionen, die  Kunden und Partner dabei unterstützen, Standard-Business-Software an ihre Geschäftsanforderungen anzupassen.“
+> “Extensibility features include many options to help customers and partners adapt standard business software to their business needs.”
 
 Quelle: SAP Help Portal
 
@@ -35,223 +35,222 @@ Quelle: SAP Help Portal
 Clean Core
 {: .img-caption}
 
-Das Clean Core-Konzept mit seinen verschiedenen Facetten wird von SAP in der [TechEd2023 - Clean Core: What It Is, Why to Do It, and How to Get There](https://www.youtube.com/watch?v=jlzdD55ahqY) klar kommuniziert. Die Schritt-für-Schritt-Anleitung ist jedoch für etablierte Kunden, die verschiedene "Legacy"-Technologien in ihren SAP-Systemen einsetzen, unklar. 
-Es gibt zahlreiche Bestandskunden und SAP-Partner, die durch Eigenentwicklungen und Systemerweiterungen Mehrwerte in ihren Systemen geschaffen haben. Diese Mehrwerte gehören per Definition nicht zum Clean Core - die Erweiterungen basieren fast immer auf nicht freigegebenen Schnittstellen. Für die sogenannten RICEFW-Objekte gibt es verschiedene [Nachfolgetechnologie-Matrizen](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html). Intern stellen sich vor allem die Fragen: "Wie können wir den Technologiewechsel gegenüber unseren Kunden vertreten? Und warum soll ich gut funktionierende Prozesse, die z.B. auf IDocs, Messages, RFCs und ALV-Transaktionen basieren, jetzt umstellen?"
+The Clean Core concept with its various facets is clearly communicated by SAP in the [TechEd2023 - Clean Core: What It Is, Why to Do It, and How to Get There](https://www.youtube.com/watch?v=jlzdD55ahqY). However, the step-by-step instructions are unclear for established customers who use various "legacy" technologies in their SAP systems. 
+There are numerous existing customers and SAP partners who have created added value in their systems through in-house developments and system expansions. By definition, these added values ​​do not belong to the Clean Core - the extensions are almost always based on non-approved interfaces. There are different [Nachfolgetechnologie-Matrizen](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html) for the so-called RICEFW objects. Internally, the main questions are: "How can we represent the technology change to our customers? And why should I change well-functioning processes that are based, for example, on IDocs, messages, RFCs and ALV transactions now?"
 
 ## Clean Core Definition
-Im Kern dreht sich das Clean Core-Konzept um die Trennung der Kerngeschäftslogik von der Nicht-Kernfunktionalität innerhalb der SAP-Software-Suite. Durch die Isolierung von Kerngeschäftsprozessen und Datenstrukturen strebt SAP eine schlankere und agilere Basis an, die sich an veränderte Geschäftsanforderungen anpassen kann. Die neuen Wege der Kundenerweiterung heißen: ABAP Cloud und Side-by-Side Extensibility. 
+At its core, the Clean Core concept revolves around separating core business logic from non-core functionality within the SAP software suite. By isolating core business processes and data structures, SAP aims for a leaner and more agile foundation that can adapt to changing business needs. The new ways of customer expansion are called: ABAP Cloud and Side-by-Side Extensibility. 
 
-- **ABAP Cloud oder auch "On-Stack Extensibility"** - Das sind zwei unterschiedliche Technologien: "Developer Extensibility" und "Key-User Extensibility".
+- **ABAP Cloud or "On-Stack Extensibility"** - These are two different technologies: "Developer Extensibility" and "Key-User Extensibility".
 
-- **Side-by-Side Extensibility** - Ist die Auslagerung von Kundenerweiterungen in die Business Technology Platform - BTP.
+- **Side-by-Side Extensibility** - Is the outsourcing of customer extensions to the Business Technology Platform - BTP.
 
 
-Ein Beispiel: Anstatt das MATMAS IDoc in heterogener Form an verschiedene Systeme zu senden, sollten Sie die standardisierte Schnittstelle [Product Master API](https://api.sap.com/api/API_PRODUCT_SRV/overview) verwenden. Zur Versorgung der SAP- und Non-SAP-Systeme dient dann eine Schnittstelle, die homogen ausgeprägt werden kann.
+An example: Instead of sending the MATMAS IDoc in heterogeneous form to different systems, you should use the standardized interface [Product Master API](https://api.sap.com/api/API_PRODUCT_SRV/overview). An interface that can be designed to be homogeneous is then used to supply the SAP and non-SAP systems.
 
-Das Datenmodell darunter wird durch Key-User-Extensibility erweitert und auch in generischen Reports wie Embedded Analytics oder auch der SAP Analytic Cloud (SAC) verwendet. Bei komplexer Kundenlogik muss der Entwickler diese Kundenlogik mit Developer Extensibility und dem ABAP RESTful Application Programming Model (RAP) erweitern.
+The data model underneath is expanded through key user extensibility and is also used in generic reports such as embedded analytics or the SAP Analytic Cloud (SAC). For complex customer logic, the developer must extend this customer logic with Developer Extensibility and the ABAP RESTful Application Programming Model (RAP).
 
-Grundsätzlich ist Clean Core so, wie es der Hersteller beschreibt: 
-1. Erweiterungen sind klar vom SAP-Code getrennt und Erweiterungen verändern keine SAP-Objekte.
-2. Nutzen Sie die neuen Erweiterungstechnologien und den SAP-Standard. Die neuen Erweiterungstechnologien sind: Key-User, Developer und Side-by-Side Extensibility. 
-3. Erweiterungen verwenden nur stabile, freigegebene SAP APIs und Erweiterungspunkte. Classic Extensibility sollte nur in freigegebenen Business Add-Ins (BADI) mit freigegebenen Entwicklungsobjekten stattfinden. 
-4. Legacy Technologien wie RFCs, IDocs und kundeneigene Dynprotransaktionen oder SAP SEGW Projekte sollten nicht mehr für Neuentwicklungen verwendet werden. 
-5. Alte kundeneigene Entwicklungen und Erweiterungen sollen auf neue Technologien migriert werden oder die Geschäftsprozessanforderung wird im SAP Standard wiedergefunden.
+Basically, Clean Core is as the manufacturer describes it: 
+1. Extensions are clearly separated from the SAP code and extensions do not modify SAP objects.
+2. Take advantage of new expansion technologies and the SAP standard. The new extension technologies are: Key User, Developer and Side-by-Side Extensibility. 
+3. Extensions only use stable, released SAP APIs and extension points. Classic Extensibility should only take place in released Business Add-Ins (BADI) with released development objects. 
+4. Legacy technologies such as RFCs, IDocs and customer-specific screen transactions or SAP SEGW projects should no longer be used for new developments. 
+5. Old customer developments and extensions should be migrated to new technologies or the business process requirement will be found in the SAP standard.
 
-Aus den Herstellerangaben ergeben sich vier Anwendungsbereiche und die Fakten zur Erreichung eines Clean Core sehen wie folgt aus:
+The manufacturer's information indicates four areas of application and the facts for achieving a Clean Core are as follows:
 
 #### Datenmodelle
-* Unabhängig davon, ob einfache oder komplexe Anwendungsfälle implementiert werden sollen, ist eine Datenmodellierung mit dem Virtual Data Model (VDM) erforderlich. 
-* Es sollte kein direkter Zugriff auf SAP Standardtabellen erfolgen.
-* SAP konzentriert sich auf Standarddatenprodukte (z.B. Kundenauftrag). Kundenprozesse und Datenmodelle außerhalb des SAP-Standards bleiben in der Verantwortung des SAP-Kunden.
+* Regardless of whether simple or complex use cases are to be implemented, data modeling with the Virtual Data Model (VDM) is required. 
+* There should be no direct access to SAP standard tables.
+* SAP focuses on standard data products (e.g. customer order). Customer processes and data models outside of the SAP standard remain the responsibility of the SAP customer.
 
 #### Anwendungslogik
-* SAP Standard Coding soll nicht mehr klassisch erweitert werden.
-* Erweiterungen am Standard sollen in definierte und freigegebene BADIs migriert werden.
-* Eigenentwicklungen müssen Clean Core konforme Entwicklungsobjekte verwenden (Stichwort: Release Contracts).
+* SAP standard coding should no longer be expanded in the classic way.
+* Extensions to the standard should be migrated to defined and released BADIs.
+* In-house developments must use Clean Core compliant development objects (keyword: release contracts).
 
 #### Applikationen
-* Grundsätzlich sollen Kunden die Standard Fiori Apps oder SAP GUI for HTML mit Screen Personas verwenden, um bestehende SAP Standardtransaktionen zu nutzen.
-* Die Standard Fiori Apps und die dahinterliegenden Standard APIs sollen erweitert werden.
-* Für Custom Apps sollten zunächst Fiori Elements und Standard APIs (basierend auf RAP) verwendet werden. Die App kann dann über das Flexbile Programming Model (FPM) erweitert werden. Der letzte Schritt wären dann Freestyle Fiori Apps. 
-* Weitere Lösungswege: Cloud Native Applikationen in einem Cloud-Umgebung (Side-by-Side Extensibility). Low-/No-Code Plattformen und das SAP Build Portfolio bieten weitere Lösungsansätze.
+* In principle, customers should use the standard Fiori apps or SAP GUI for HTML with screen personas to use existing SAP standard transactions.
+* The standard Fiori apps and the standard APIs behind them are to be expanded.
+* For custom apps, Fiori Elements and standard APIs (based on RAP) should initially be used. The app can then be expanded using the Flexbile Programming Model (FPM). The last step would then be Freestyle Fiori apps. 
+* Other solutions: Cloud Native applications in a Cloud environment (Side-by-Side Extensibility). Low/no-code platforms and the SAP build portfolio offer further solutions.
 
 #### Schnittstellen
-* Es werden nur Clean Core konforme, freigegebene Schnittstellen verwendet.
-* Erweiterungen werden an APIs und Microservices vorgenommen, um die Funktionalität von SAP zu erweitern, ohne die Integrität des Kernsystems zu beeinträchtigen.
-* Die Integration nach außen muss klar geregelt sein, Prozessintegration und Middleware für das API-Management müssen vorhanden sein.
-* Legacy-Technologien wie IDocs, RFCs und SAP SEGW-Projekte müssen sukzessive abgelöst werden.
+* Only Clean Core compliant, approved interfaces are used.
+* Extensions are made to APIs and microservices to extend the functionality of SAP without affecting the integrity of the core system.
+* External integration must be clearly regulated; process integration and middleware for API management must be available.
+* Legacy technologies such as IDocs, RFCs and SAP SEGW projects must be gradually replaced.
 
-Zusammenfassend stellt das Clean Core-Konzept der SAP einen Paradigmenwechsel im Design von Unternehmenssoftware dar. SAP setzt darauf, neue Services nur noch in der Cloud anzubieten und die Schnittstellen zum Core weiter auszubauen. Der Mehrwert, gut laufende Lösungen auf eine neue Plattform zu bringen, ist vorerst nicht gegeben. Neue Lösungen sollte ein Unternehmen mit den neuen Erweiterungsarten gehen, um für die Zukunft gerüstet zu sein. So profitiert ein SAP-Kunde von den Innovationen rund um den Standard. Zum Paradigmenwechsel gehört auch die digitale Transformation: weg vom SAP GUI und Dynpros hin zum Fiori Launchpad, die Endanwender sollen primär im Browser arbeiten. Zu einem Clean Core gehört auch ein massives Change Management durch die IT und die Fachbereiche.
+In summary, the Clean Core concept of the SAP represents a paradigm shift in the design of corporate software. SAP aims to only offer new services in the Cloud and to further expand the interfaces to the Core. The added value of bringing well-running solutions to a new platform is not present for the time being. A company should adopt new solutions with the new types of expansion in order to be prepared for the future. This is how a SAP customer benefits from the innovations surrounding the standard. The paradigm shift also includes digital transformation: away from the SAP GUI and Dynpros towards the Fiori Launchpad, the end users should primarily work in the browser. A Clean Core also includes massive change management by IT and the departments.
 
-Durch die Umsetzung der Prinzipien des Clean Core und strategischer Initiativen können sich Organisationen auf zukünftige SAP-Strategien, insbesondere Cloud-Technologien, vorbereiten. 
+By implementing the Clean Core principles and strategic initiatives, organizations can prepare for future SAP strategies, particularly Cloud technologies. 
 
-Laut SAP geht es bei Clean Core vor allem, dass die Kunden sich die Zukunft nicht versperren und standardisiert Schnittstellen aufbauen. Durch die Standardisierung von Geschäftsprozessen und den Einsatz der SAP BTP können SAP Services oder auch Lösungen von SAP Partnern komplett verwendet werden.  
-Die Clean Core Strategie ist für viele Bestandskunden eine Philosophie, bis interne Richtlinien die Nutzungen der Nachfolge-Technologien regeln. Basierend auf den Richtlinien werden Entwickler organisatorisch ausgerichtet, und geschult. Ein Gremium um die "Clean Core Governance" einzuhalten ist Pflicht, mit dem Mandat die Richtlinien zu pflegen, zu erweitern und zu forcieren. Research und Development sollte häufig betrieben werden, um die Mehrwerte durch SAP-Service herauszuarbeiten.
+According to SAP, the main thing with Clean Core is that customers do not block the future and build standardized interfaces. By standardizing business processes and using the SAP BTP, SAP services or solutions from SAP partners can be used completely.
+The Clean Core strategy is a philosophy for many existing customers until internal guidelines regulate the use of the successor technologies. Based on the guidelines, developers are organizationally aligned and trained. A committee to comply with the "Clean Core Governance" is mandatory with the mandate to maintain, expand and enforce the guidelines. Research and development should be carried out frequently to identify the added value of SAP service.
 
 ## Zielgruppe
-Im Wesentlichen sind im DSAG-Netzwerk zwei große Kundengruppen sichtbar: Die erste Gruppe entscheidet sich für eine große Investition in ihre SAP-Landschaft und arbeitet mit SAP und ihren Partnern zusammen, um auf einen Clean Core im Sinne der SAP-Definition zu gehen. Die andere Gruppe entscheidet sich für einen skalierten Ansatz, bei dem die Investitionen über mehrere Jahre verteilt werden. 
+Essentially, two large customer groups are visible in the DSAG network: The first group decides to make a large investment in their SAP landscape and works with SAP and their partners to move towards a Clean Core in accordance with the SAP definition. The other group opts for a scaled approach, where investments are spread over several years. 
 
-Hier einige Beispiele für mögliche SAP Kunden:
+Here are some examples of possible SAP customers:
 
-1. Neue SAP-Kunden, die auf S/4HANA migrieren. Hier sollte der Greenfield-Ansatz und das strikte Clean Core laut SAP angewendet werden.
-2. Brownfield to Bluefield: Bestandskunden von SAP, die seit Jahrzehnten mit SAP arbeiten und auf S/4HANA migrieren. Je nach Investitionsbereitschaft kann schrittweise der Clean Core definiert und die Neuentwicklung konform dazu gehalten werden. Bestehende Kundenerweiterungen werden in Großprojekten auf eine Clean Core konforme Entwicklung umgestellt.
-3. Brownfield to Greenfield: Bestands SAP Kunden, welche seit Jahrzenten mit SAP zusammenarbeiten und auf S/4HANA migrieren. Hier kann eine Abbildung der Kundenerweiterungen mit sehr hohem Investitionsvolumen erfolgen.
-4. Brownfield im S/4HANA: Ist identisch mit Szenario zwei.
+1. New SAP customers migrating to S/4HANA. The greenfield approach and the strict Clean Core according to SAP should be applied here.
+2. Brownfield to Bluefield: Existing SAP customers who have been working with SAP for decades and are migrating to S/4HANA. Depending on your willingness to invest, the Clean Core can be defined step by step and the new development can be kept compliant with it. Existing customer extensions are converted to a Clean Core compliant development in large projects.
+3. Brownfield to Greenfield: Existing SAP customers who have been working with SAP for decades and are migrating to S/4HANA. Customer expansions with very high investment volumes can be depicted here.
+4. Brownfield in S/4HANA: Is identical to scenario two.
 
 ### Private/Public Cloud
-Die digitale Transformation eines jeden SAP-Kunden hängt von der im Unternehmen vorhandenen Expertise, den Partnern, den Investitionsmöglichkeiten und vielen weiteren Faktoren ab. Das DSAG-Netzwerk kann empfehlen, beim Hersteller nachzufragen und zu evaluieren, für welche SAP-Systeme eine Transformation in die Cloud möglich ist. Die Analysetools und die Beratungsbereitschaft von SAP sind sehr hoch. Danach sind die Schritte vielfältig. Nur die Frage muss irgendwann beantwortet werden: Soll das Unternehmen mit seinen SAP-Systemen in die Public Cloud? Hier einige Tipps zu Cloud-Szenarien.
+The digital transformation of every SAP customer depends on the company's existing expertise, partners, investment opportunities and many other factors. The DSAG network can recommend asking the manufacturer and evaluating which SAP systems can be transformed into the Cloud. The analysis tools and willingness to provide advice from SAP are very high. After that, the steps are varied. The only question that needs to be answered at some point is: Should the company and its SAP systems go public Cloud? Here are some tips for Cloud scenarios.
 
 
-## Unterschiede zwischen den Modellen
+## Differences between models
 
 ### Public Cloud
 
-Die SAP S/4HANA Cloud, public edition (GROW) ist per Definition "clean". Starten Sie als Kunde mit GROW oder migrieren Sie ihr System auf ein S/4HANA Public Cloud System, dann können Sie nur noch Clean Core entwickeln und haben keine Möglichkeit auf nicht freigegebene Objekte im Standard zurückzugreifen.
+The SAP S/4HANA Cloud, public edition (GROW) is “clean” by definition. If you as a customer start with GROW or migrate your system to a S/4HANA Public Cloud system, then you can only develop Clean Core and have no option to access non-released objects in the standard.
 
-Möchten Sie mit bestehendem Kundencode auf ein Public-Cloud-System, muss dieser ABAP-Cloud-fähig sein und Ihre Prozesse müssen sich mit dem Standard der SAP abbilden lassen.
+If you want to use an existing customer code on a public Cloud system, it must be ABAP-Cloud-capable and your processes must be mapped to the SAP standard.
 
 
 ### Private Cloud
 
-Die SAP S/4HANA Cloud, private edition (RISE) ist ein durch SAP betriebenes On-Premise System. Hier müssen Sie kein striktes Clean Core einhalten und haben alle Freiheiten der klassischen On-Premise Entwicklung. Der Fokus liegt hier auf der Vereinfachung der Industry Solutions-Entwicklungen, ohne alle Prozesse vollständig neu zu gestalten. Allerdings kann es sein, dass nicht mehr alle Modifikationen am System durch SAP erlaubt werden.
+The SAP S/4HANA Cloud, private edition (RISE) is an on-premise system operated by SAP. Here you don't have to adhere to a strict Clean Core and you have all the freedom of classic on-premise development. The focus here is on simplifying Industry Solutions developments without completely redesigning all processes. However, it may be that not all modifications to the system are permitted by SAP.
 
 
 ### On-Premise
 
-Sie möchten Ihr System im eigenen Rechenzentrum oder durch einen Dienstleister betreiben lassen, dann sind Sie im klassischen On-Premise Umfeld. Für die Upgrades sind Sie verantwortlich und haben alle Freiheiten bei der Modifikation Ihres Systems.
+If you would like to have your system operated in your own data center or by a service provider, then you are in the classic on-premise environment. You are responsible for the upgrades and have complete freedom to modify your system.
 
 
-### Anwendbarkeit von Clean Core:
+### Applicability of Clean Core:
 - Relevante Szenarien:
   - SAP S/4HANA on-premise
   - SAP S/4HANA Cloud, private edition (RISE)
-- Public Cloud ist Clean by default:
-  - Die SAP S/4HANA Cloud, public edition (GROW) ist von Grund auf auf Clean-Core-Prinzipien aufgebaut.
+- Public Cloud is Clean by default:
+  - The SAP S/4HANA Cloud, public edition (GROW) is built from the ground up on Clean-Core principles.
 
 
 ## S/4HANA Transformation
 
-Diese Abgrenzung hilft bei der Entscheidungsfindung, welcher Ansatz am besten zu den Zielen, Ressourcen und Gegebenheiten eines Unternehmens passt.
+This distinction helps in deciding which approach best suits a company's goals, resources and circumstances.
 
 ### Greenfield-Ansatz
-Der Greenfield-Ansatz beschreibt eine vollständige Neuimplementierung eines SAP-Systems. Dabei wird das bestehende System nicht migriert, sondern ein komplett neues System auf der „grünen Wiese“ aufgebaut.
+The greenfield approach describes a complete reimplementation of a SAP system. The existing system is not migrated, but rather a completely new system is built on a “greenfield site”.
 
 Merkmale:
-- Neustart: Vollständige Neuimplementierung ohne Altlasten.
-- Flexibilität: Möglichkeit, Prozesse, Strukturen und Architekturen komplett neu zu gestalten.
-- Aufwand: Erfordert intensive Vorbereitungen, Schulungen und hohe Investitionen.
-- Vorteil: Ideale Lösung für Unternehmen, die ihre Geschäftsprozesse grundlegend überarbeiten und optimieren möchten.
-- Risiko: Höherer Implementierungsaufwand, längere Projektlaufzeiten.
+- Restart: Complete new implementation without legacy problems.
+- Flexibility: Possibility to completely redesign processes, structures and architectures.
+- Effort: Requires intensive preparation, training and high investments.
+- Advantage: Ideal solution for companies that want to fundamentally revise and optimize their business processes.
+- Risk: Higher implementation effort, longer project durations.
 
 
 ### Brownfield-Ansatz
-Der Brownfield-Ansatz bezeichnet die Umstellung eines bestehenden SAP-Systems auf ein neues SAP-System (z. B. SAP S/4HANA) durch Migration. Im Gegensatz zum Greenfield-Ansatz werden hier bestehende Systeme, Daten und Prozesse weitgehend übernommen.
+The brownfield approach refers to the conversion of an existing SAP system to a new SAP system (e.g. SAP S/4HANA) through migration. In contrast to the greenfield approach, existing systems, data and processes are largely adopted here.
 
 Merkmale:
-- Bestandserhaltung: Nutzung vorhandener Systeme und Prozesse.
-- Effizienz: Schnellere Implementierung durch Nutzung bestehender Infrastruktur.
-- Aufwand: Geringerer Aufwand im Vergleich zum Greenfield-Ansatz.
-- Vorteil: Minimale Unterbrechung des Geschäftsbetriebs; geringere Risiken.
-- Risiko: Übernahme von Altlasten (z. B. veraltete Prozesse oder schlechte Datenqualität).
+- Inventory preservation: use of existing systems and processes.
+- Efficiency: Faster implementation by using existing infrastructure.
+- Effort: Lower effort compared to the greenfield approach.
+- Advantage: Minimal disruption to business operations; lower risks.
+- Risk: Taking over legacy issues (e.g. outdated processes or poor data quality).
 
 
 ### Bluefield-Ansatz
-Der Bluefield-Ansatz stellt einen hybriden Ansatz zwischen Greenfield und Brownfield dar. Dabei wird eine selektive Daten- und Prozessmigration durchgeführt, wodurch sowohl Altlasten eliminiert als auch bestehende Systeme genutzt werden können.
+The bluefield approach represents a hybrid approach between greenfield and brownfield. Selective data and process migration is carried out, which means that legacy issues can be eliminated and existing systems can be used.
 
 Merkmale:
-- Selektivität: Unternehmen können entscheiden, welche Daten und Prozesse übernommen oder neugestaltet werden.
-- Flexibilität und Kontrolle: Optimierung bestehender Prozesse ohne vollständige Neuimplementierung.
-- Aufwand: Zwischen Greenfield und Brownfield.
-- Vorteil: Optimale Balance zwischen Innovation und Effizienz.
-- Risiko: Komplexität in der Planung und Durchführung, da sowohl alte als auch neue Komponenten integriert werden müssen.
+- Selectivity: Companies can decide which data and processes are adopted or redesigned.
+- Flexibility and control: Optimization of existing processes without completely re-implementing them.
+- Effort: Between greenfield and brownfield.
+- Advantage: Optimal balance between innovation and efficiency.
+- Risk: Complexity in planning and implementation, as both old and new components have to be integrated.
 
 
-## Abgrenzung im Überblick
+## Delimitation at a glance
 
 | Merkmal           | **Greenfield**                 | **Brownfield**                 | **Bluefield**                  |
 |--------------------|--------------------------------|--------------------------------|--------------------------------|
-| **Ansatz**         | Vollständiger Neubeginn       | Systemmigration                | Selektive Migration            |
-| **Datenübernahme** | Keine                         | Vollständig                    | Teilweise                      |
-| **Prozessübernahme** | Neu                         | Bestehend                      | Selektiv                       |
+| **Ansatz**         | Complete new beginning       | Systemmigration                | Selektive Migration            |
+| **Data transfer** | No                         | Complete                    | Teilweise                      |
+| **Process takeover** | Neu                         | Bestehend                      | Selektiv                       |
 | **Aufwand**        | Hoch                          | Mittel                         | Mittel bis hoch                |
-| **Flexibilität**   | Sehr hoch                     | Gering                         | Hoch                           |
-| **Risiken**        | Lange Implementierungszeit    | Übernahme von Altlasten        | Hohe Komplexität               |
-| **Geeignet für**   | Unternehmen mit radikalem Neugestaltungsbedarf | Unternehmen mit bewährten Prozessen | Unternehmen mit gemischten Anforderungen |
+| **Flexibility**   | Sehr hoch                     | Gering                         | Hoch                           |
+| **Risiken**        | Lange Implementierungszeit    | Takeover of legacy assets        | High complexity               |
+| **Suitable for**   | Companies in need of radical redesign | Companies with proven processes | Companies with mixed requirements |
 
 
-Siehe auch den folgenden SAP Leitpfaden für weitere S/4HANA und Cloud-Themengebiete [Mapping your journey to SAP S/4HANA Cloud Private Edition - A practical guide for senior IT leadership](https://d.dam.sap.com/x/HvXc6b7/94115_92460_enUS.pdf?rc=19&inline=true)
+See also the following SAP guides for additional S/4HANA and Cloud topic areas [Mapping your journey to SAP S/4HANA Cloud Private Edition - A practical guide for senior IT leadership](https://d.dam.sap.com/x/HvXc6b7/94115_92460_enUS.pdf?rc=19&inline=true)
 
 
-## Modifikationen in SAP Code
+## Modifications in SAP code
 
-Hier wären ein paar Hilfestellungen für SAP Kunden, welche mittelfristig noch nicht in die Public Cloud migrieren können.
+Here is some help for SAP customers who cannot yet migrate to the public Cloud in the medium term.
 
-### Grundsätze für Modifikationen  
-- **Definition laut SAP Help**:  
-  Eine Modifikation bezeichnet das direkte Ändern des SAP-Standardcodes. Dies ist eine Maßnahme, die von SAP ausdrücklich nicht empfohlen wird, da sie zukünftige Updates und Wartungszyklen erschwert. Mit jedem System-Upgrade wird eine Abarbeitung mit der Transaktion SPAU zwingend durchzuführen sein.
-- **Definition laut dem Dokument "Extend SAP S/4HANA in the cloud and on premise with ABAP based extensions"**:
-   Sie sollten auch die verbleibenden klassischen Standard-Erweiterungstypen kritisch betrachten und die Verwendung von BADIs bevorzugen.
-  Siehe: ["5.3.2 Using classical business logic extension techniques"](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html)
-- **Empfohlener Umgang**:  
- Modifikationen und Erweiterungen (Enhancements) gehören zu den klassischen Erweiterungsmethoden und sollten nur dann vorgenommen werden, wenn alle anderen Möglichkeiten, wie die neuen Erweiterungsarten, die Verwendung von BADIs oder Anpassungen durch kundeneigene Objekte ausgeschöpft sind.   
+### Principles for Modifications  
+- **Definition according to SAP Help**:  
+  A modification refers to directly changing the SAP standard code. This is a measure that SAP strongly does not recommend as it complicates future updates and maintenance cycles. With every system upgrade, processing with transaction SPAU will have to be carried out.
+- **Definition according to the document "Extend SAP S/4HANA in the cloud and on premise with ABAP based extensions"**:
+   You should also look critically at the remaining standard classic extension types and favor the use of BADIs.
+  See: ["5.3.2 Using classical business logic extension techniques"](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html)
+- **Recommended approach**:  
+ Modifications and extensions (enhancements) are classic extension methods and should only be carried out when all other options, such as the new types of extensions, the use of BADIs or adjustments using customer-specific objects, have been exhausted.   
 
-### Wichtige Hinweise  
-- Vor der Durchführung einer Modifikation ist immer eine **Auswirkungsanalyse** durchzuführen, um potenzielle Konflikte mit künftigen Updates zu minimieren.  
-- Der Einsatz von kundenspezifischen Erweiterungen sollte bevorzugt werden. In dem SAP Help-Portal finden Sie zahlreiche Möglichkeiten für Erweiterungen, einschließlich:  
-  - **User Exits**: Vorgesehen für kundenindividuelle Logik.  
-  - **BAdIs (Business Add-Ins)**: Flexible Erweiterungspunkte im SAP-Standard.  
-  - **Enhancements (Erweiterungen)**: Technologien wie Enhancement Framework und Switch Framework für gezielte Änderungen.  
+### Important Notes  
+- Always perform an **Impact Analysis** before making a modification to minimize potential conflicts with future updates.  
+- The use of customer-specific extensions should be preferred. In the SAP Help portal you will find numerous options for extensions, including:  
+  - **User Exits**: Intended for custom logic.  
+  - **BAdIs (Business Add-Ins)**: Flexible extension points in the SAP standard.  
+  - **Enhancements**: Technologies such as Enhancement Framework and Switch Framework for targeted changes.  
 
-### “NIEMALS SAP CODE KOPIEREN”  
-- **SAP-Help-Grundsatz**:  
-  Das Kopieren von SAP-Standardcode birgt das Risiko von Inkonsistenzen und erschwert sowohl die Nachvollziehbarkeit als auch die Wartung. Änderungen sollten ausschließlich über die bereitgestellten SAP-Erweiterungsoptionen wie User-Exits, BAdIs oder Enhancements Points vorgenommen werden.  
-- **Ausnahmeregelung**:  
-  - In spezifischen Fällen, beispielsweise im Bereich **FI** (Financial Accounting), kann es notwendig sein, Ausnahmen zu definieren. Diese betreffen Szenarien, in denen Wirtschaftsprüfer spezifische Anforderungen haben oder hohe Audit-Komplexität besteht.  
-  - Eine Modifikations-Implementierung auf Grund von OSS Notes oder Third Party Add-Ons ist meistens der Grund für die Mehrzahl an Modifikationen.
+### “NEVER COPY SAP CODE”  
+- **SAP Help principle**:  
+  Copying standard SAP code risks inconsistencies and makes both traceability and maintenance difficult. Changes should only be made via the SAP extension options provided such as user exits, BAdIs or enhancement points.  
+- **Exception rule**:  
+  - In specific cases, for example in the area of ​​​​**FI** (Financial Accounting), it may be necessary to define exceptions. These concern scenarios in which auditors have specific requirements or there is high audit complexity.  
+  - A modification implementation due to OSS Notes or third party add-ons is usually the reason for the majority of modifications.
 
-  In solchen Fällen gilt:  
-  - **Dokumentation und Rechtfertigung der Maßnahme** ist zwingend.  
-  - Der betroffene Code muss klar kommentiert und als modifizierter Code gekennzeichnet werden.  
+  In such cases:  
+  - **Documentation and justification of the measure** is mandatory.  
+  - The affected code must be clearly commented and marked as modified code.  
 
 
-#### Rechtfertigung für Modifikationen  
-Modifikationen dürfen nur nach gründlicher Abwägung vorgenommen werden. Die Gründe dafür müssen klar dokumentiert und nachvollziehbar sein.  
+#### Justification for modifications  
+Modifications may only be made after careful consideration. The reasons for this must be clearly documented and understandable.  
 
-#### Mögliche Rechtfertigungen:  
-- **Implementierung von Alleinstellungsmerkmalen (USPs)**:  
-  Schaffung oder Anpassung von Funktionen, die eine Differenzierung des Unternehmens ermöglichen.  
+#### Possible justifications:  
+- **Implementation of unique selling points (USPs)**:  
+  Creation or adaptation of functions that allow the company to differentiate.  
 - **Prozessoptimierung**:  
-  Abbildung kundeneigener Geschäftsprozesse oder Automatisierung der Standardprozesse und interner Abläufe.  
+  Mapping customer-specific business processes or automating standard processes and internal procedures.  
 - **Kosteneinsparungen**:  
-  Reduktion von operativen oder langfristigen Aufwänden durch gezielte Anpassungen.  
+  Reduction of operational or long-term expenses through targeted adjustments.  
 
 
 ## Saubere Modifikationen
-Wenn Sie den SAP-Standard verändern möchten, beachten Sie die folgenden Regeln und Best Practices. Die Einhaltung dieser Richtlinien sorgt für wartbaren, nachvollziehbaren und zukunftssicheren Code, der SAP-Upgrades und Patches standhält.  
+If you want to modify the SAP standard, consider the following rules and best practices. Adhering to these guidelines ensures maintainable, traceable, and future-proof code that can withstand SAP upgrades and patches.  
 
 ### DO
-- **SAP-Code öffnen und einen Enhancement-Spot anlegen**:  
-  - Legen Sie in der Modifikation einen **Enhancement-Spot** an.  
-  - Nutzen Sie alle Vorteile der Enhancements, z. B. die Trennung von Standard- und kundeneigenem Code, sowie die Speicherung im **Z-Paket**.  
-- **Klare Trennung der Logik**:  
-  - Geschäftsprozesslogik in separate Klassen oder Methoden auslagern.  
-  - Verwenden Sie dabei **eigenständige Testmethoden**, um die Logik unabhängig testen zu können.  
-- **Dokumentation nicht vergessen**:  
-  - Jede Modifikation muss umfassend dokumentiert sein, einschließlich:  
-    - Zweck der Änderung.  
-    - Auswirkungen auf zukünftige Updates.  
+- **Open SAP code and create an enhancement spot**:  
+  - Create an **Enhancement Spot** in the modification.  
+  - Use all the advantages of the enhancements, e.g. B. the separation of standard and customer code, as well as storage in the **Z package**.  
+- **Clear separation of logic**:  
+  - Separate business process logic into separate classes or methods.  
+  - Use **standalone testing methods** to be able to test the logic independently.  
+- **Don't forget documentation**:  
+  - Any modification must be fully documented, including:  
+    - Purpose of the change.  
+    - Impact on future updates.  
     - Getestete Szenarien.  
 
 ### DON'T
-- **Geschäftsprozesslogik direkt in der Modifikation schreiben**:  
-  - Derartige Änderungen erschweren zukünftige Wartungen und Tests.  
-- **Kopieren von SAP-Standardcode**:  
-  - Vermeiden Sie das Kopieren von Code, da dies zu Inkonsistenzen und technischen Schulden führen kann.  
-- **Unübersichtliche Änderungen**:  
-  - Vermischen Sie nicht Standardcode und kundenspezifischen Code.  
+- **Write business process logic directly in the modification**:  
+  - Such changes complicate future maintenance and testing.  
+- **Copying SAP default code**:  
+  - Avoid copying code as this can lead to inconsistencies and technical debt.  
+- **Confusing changes**:  
+  - Do not mix standard code and custom code.  
 
 ## Clean ABAP - Abgrenzung
 
-Bei Clean ABAP geht es um das Schreiben von ABAP Code dessen Fokus auf Verständlichkeit und Wartbarkeit liegt. Bei Clean Core der SAP geht es um die Behandlung der Grenzen von kundenindividuellen Programmen im SAP Standard. Nur weil eine Umsetzung der Clean Core Strategie entspricht, ist diese nicht automatisch Clean ABAP und umgekehrt. Mehr dazu im Kapitel [ABAP](/ABAP-Leitfaden/abap).
-
+Clean ABAP is about writing ABAP code that focuses on understandability and maintainability. Clean Core and SAP are about dealing with the limits of customer-specific programs in the SAP standard. Just because an implementation corresponds to the Clean Core strategy does not automatically make it Clean ABAP and vice versa. More about this in chapter [ABAP](/ABAP-Leitfaden/abap).
 

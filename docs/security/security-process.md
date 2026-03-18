@@ -2,7 +2,7 @@
 layout: page
 title: Entwicklungsprozess
 permalink: /security/process/
-parent: Sicherheit
+parent: Security
 nav_order: 5
 ---
 
@@ -13,84 +13,84 @@ nav_order: 5
 1. TOC
 {:toc} 
 
-## Secure Code Reviews: Systematische Sicherheitsprüfungen
+## Secure Code Reviews: Systematic security checks
 
-Code Reviews sind in der ABAP-Entwicklung bereits etabliert – aber werden sie auch systematisch für Sicherheitsaspekte genutzt? Ein effektiver Secure Code Review geht über die reine Funktionalitätsprüfung hinaus und integriert Sicherheitsaspekte als festen Bestandteil des Qualitätssicherungsprozesses.
+Code reviews are already established in ABAP development - but are they also used systematically for security aspects? An effective secure code review goes beyond pure functionality testing and integrates security aspects as an integral part of the quality assurance process.
 
-### Struktur eines Security-fokussierten Code Reviews
+### Structure of a security-focused code review
 
-**Vor dem Review: Vorbereitung ist alles**
-Der Reviewer sollte sich zunächst über den Kontext der Anwendung informieren: Welche sensiblen Daten werden verarbeitet? Über welche Schnittstellen ist das Programm erreichbar? Welche Berechtigungen sind erforderlich? Diese Informationen bestimmen das Risikoprofil und damit die Intensität der Sicherheitsprüfung.
+**Before the review: Preparation is everything**
+The reviewer should first find out about the context of the application: What sensitive data is being processed? Which interfaces can the program be accessed via? What permissions are required? This information determines the risk profile and thus the intensity of the security check.
 
-**Während des Reviews: Systematisches Vorgehen**
-Ein strukturierter Ablauf verhindert, dass wichtige Sicherheitsaspekte übersehen werden. Beginnen Sie mit den kritischen Bereichen: Eingabeverarbeitung, Datenbankzugriffe, Ausgabegenerierung und Berechtigungsprüfungen. Arbeiten Sie sich systematisch durch den Code und dokumentieren Sie dabei nicht nur gefundene Probleme, sondern auch positive Sicherheitsmaßnahmen.
+**During the review: systematic approach**
+A structured process prevents important security aspects from being overlooked. Start with the critical areas: input processing, database access, output generation, and authorization checks. Work your way through the code systematically, documenting not only any problems you find, but also positive security measures.
 
-**Nach dem Review: Nachverfolgung und Lernen**
-Jeder Secure Code Review sollte dokumentiert werden. Welche Schwachstellen wurden gefunden? Welche Sicherheitsmaßnahmen wurden positiv bewertet? Diese Informationen helfen dabei, wiederkehrende Problemmuster zu identifizieren und das Team kontinuierlich zu verbessern.
+**After Review: Follow Up and Learn**
+Every secure code review should be documented. What vulnerabilities were found? Which security measures were rated positively? This information helps identify recurring problem patterns and continually improve the team.
 
-### Best Practices für ABAP Secure Code Reviews
+### Best Practices for ABAP Secure Code Reviews
 
-**Fokus auf kritische Code-Pfade**: Nicht jede Zeile Code hat das gleiche Sicherheitsrisiko. Konzentrieren Sie sich auf Bereiche mit Benutzereingaben, Datenbankzugriffe, RFC-Schnittstellen und privilegierte Operationen.
+**Focus on critical code paths**: Not every line of code has the same security risk. Focus on user input areas, database access, RFC interfaces, and privileged operations.
 
-**Vier-Augen-Prinzip mit Security-Expertise**: Idealerweise sollte mindestens ein Reviewer über fundierte Security-Kenntnisse verfügen. Wenn das nicht möglich ist, nutzen Sie Checklisten und Tools, um das fehlende Fachwissen zu kompensieren.
+**Four eyes principle with security expertise**: Ideally, at least one reviewer should have in-depth security knowledge. If this is not possible, use checklists and tools to compensate for the lack of expertise.
 
-**Dokumentation der Sicherheitslogik**: Prüfen Sie, ob sicherheitskritische Entscheidungen im Code dokumentiert sind. Warum wurde eine bestimmte Validierung implementiert? Welche Angriffsvektoren soll sie abwehren?
+**Security logic documentation**: Check whether safety-critical decisions are documented in the code. Why was a particular validation implemented? Which attack vectors should it defend against?
 
-## Automatisierte Sicherheitstests in der ABAP-Entwicklung
+## Automated security testing in ABAP development
 
-Manuelle Code Reviews sind unverzichtbar, aber sie skalieren schlecht und sind fehleranfällig. Automatisierte Sicherheitstests können wiederkehrende Prüfungen übernehmen und das Entwicklungsteam bei der kontinuierlichen Qualitätssicherung unterstützen.
+Manual code reviews are essential, but they are poorly scaled and are prone to errors. Automated security tests can take over recurring checks and support the development team in continuous quality assurance.
 
-### Static Application Security Testing für ABAP
+### Static Application Security Testing for ABAP
 
-**Integration in die Entwicklungsumgebung**: Moderne Static Application Security Testing-Tools können direkt in die SAP-Entwicklungsumgebung integriert werden. Sie analysieren den ABAP-Code bereits während der Entwicklung und weisen auf potenzielle Sicherheitslücken hin, bevor der Code ins Produktivsystem gelangt.
+**Integration into the development environment**: Modern static application security testing tools can be integrated directly into the SAP development environment. They analyze the ABAP code during development and point out potential security gaps before the code reaches the production system.
 
-**Automatisierte Pattern-Erkennung**: Diese Tools erkennen bekannte Schwachstellen-Muster wie SQL-Injection-Potenziale, fehlende Input-Validierung oder unsichere Kryptografie-Verwendung. Sie können auch compliance-relevante Coding-Standards durchsetzen.
+**Automated Pattern Detection**: These tools detect known vulnerability patterns such as SQL injection potential, lack of input validation, or insecure cryptography usage. You can also enforce compliance-relevant coding standards.
 
-**Kontinuierliche Überwachung**: In der Entwicklungsumgebung können Static Application Security Testing-Tools bei jedem Transport automatisch ausgeführt werden. Kritische Sicherheitslücken können so den Transport blockieren und erzwingen eine Nachbesserung vor der Produktivsetzung.
+**Continuous Monitoring**: In the development environment, Static Application Security Testing tools can run automatically on every transport. Critical security gaps can block transport and force improvements before going live.
 
-### Integration in den Entwicklungsprozess
+### Integration into the development process
 
-**Regelmäßige Scans**: Führen Sie Scans in regelmäßigen Abständen durch – idealerweise automatisiert nach größeren Code-Änderungen oder vor wichtigen Releases.
+**Regular Scans**: Run scans at regular intervals - ideally automated after major code changes or before important releases.
 
-**Developer-Feedback**: Stellen Sie sicher, dass Ergebnisse zeitnah an die verantwortlichen Entwickler kommuniziert werden. Je schneller Feedback erfolgt, desto effektiver ist das Lernen.
+**Developer Feedback**: Ensure that results are communicated to the responsible developers in a timely manner. The faster feedback occurs, the more effective the learning.
 
-## Security-Checklisten für ABAP-Entwickler
+## Security checklists for ABAP developers
 
-Checklisten sind ein bewährtes Mittel, um komplexe Prozesse systematisch und vollständig abzuarbeiten. Für die ABAP-Sicherheit sind sie besonders wertvoll, da sie auch weniger erfahrenen Entwicklern helfen, wichtige Sicherheitsaspekte nicht zu übersehen.
+Checklists are a proven means of processing complex processes systematically and completely. They are particularly valuable for ABAP security because they help even less experienced developers not to overlook important security aspects.
 
 
-### Entwicklungs-Checkliste: Vor der Implementierung
+### Development Checklist: Before Implementation
 
-**Sicherheitsanforderungen definieren**: Welche sensiblen Daten werden verarbeitet? Welche Benutzergruppen sollen Zugriff haben? Welche regulatorischen Anforderungen sind zu beachten? Wurden relevante Berechtigungsobjekte genannt? Müssen eigene Berechtigungsobjekte erstellt werden?
+**Define security requirements**: Which sensitive data is processed? Which user groups should have access? Which regulatory requirements must be observed? Were relevant authorization objects mentioned? Do you have to create your own authorization objects?
 
-**Bedrohungsmodellierung**: Welche Angriffsvektoren sind für diese spezifische Anwendung relevant? Wo sind die kritischen Sicherheitsgrenzen?
+**Threat Modeling**: Which attack vectors are relevant for this specific application? Where are the critical safety limits?
 
-### Implementierungs-Checkliste: Während der Entwicklung
+### Implementation Checklist: During development
 
-**Input-Validierung**: Werden alle Benutzereingaben validiert und sanitized? Sind die Validierungsregeln angemessen strikt?
+**Input validation**: Are all user inputs validated and sanitized? Are the validation rules appropriately strict?
 
-**Berechtigungsprüfungen**: Sind alle sicherheitskritischen Operationen durch explizite Berechtigungsprüfungen geschützt?
+**Authorization Checks**: Are all safety-critical operations protected by explicit authorization checks?
 
-**Sichere Datenbankzugriffe**: Werden parametrisierte Queries verwendet? Ist Dynamic SQL vermieden oder sicher implementiert?
+**Secure database access**: Are parameterized queries used? Is Dynamic SQL avoided or safely implemented?
 
-**Output-Encoding**: Werden alle Ausgaben kontextspezifisch encodiert?
+**Output Encoding**: Are all outputs encoded context-specifically?
 
-### Test-Checkliste: Vor der Produktivsetzung
+### Test checklist: Before going live
 
-**Sicherheitstests durchgeführt**: Wurden alle relevanten automatisierten Sicherheitstests ausgeführt?
+**Security testing performed**: Have all relevant automated security tests been performed?
 
-**Code Review abgeschlossen**: Hat ein qualifizierter Reviewer den Code unter Sicherheitsaspekten geprüft?
+**Code Review Complete**: Has a qualified reviewer checked the code from a security perspective?
 
-**Penetration Testing**: Wurden kritische Anwendungen durch Penetration Tests validiert?
+**Penetration Testing**: Have critical applications been validated through penetration testing?
 
-**Dokumentation vollständig**: Sind alle Sicherheitsmaßnahmen und -entscheidungen dokumentiert?
+**Documentation complete**: Are all security measures and decisions documented?
 
-### Wartungs-Checkliste: Nach der Produktivsetzung
+### Maintenance checklist: After going live
 
-**Monitoring aktiv**: Sind alle sicherheitsrelevanten Ereignisse in das Monitoring eingebunden?
+**Monitoring active**: Are all security-relevant events included in the monitoring?
 
-**Update-Prozesse**: Sind Prozesse für Security-Updates und Patch-Management etabliert?
+**Update processes**: Are processes for security updates and patch management established?
 
-**Regelmäßige Re-Assessments**: Sind regelmäßige Sicherheitsüberprüfungen geplant?
+**Regular re-assessments**: Are regular security checks planned?
 
-Die Kombination aus systematischen Code Reviews, automatisierten Tools und strukturierten Checklisten schafft ein robustes Sicherheitsnetz für Ihre ABAP-Entwicklung. Kein einzelnes Tool oder Verfahren kann alle Sicherheitslücken verhindern – aber die intelligente Kombination verschiedener Ansätze minimiert das Risiko erheblich und schafft eine Kultur der kontinuierlichen Sicherheitsverbesserung.
+The combination of systematic code reviews, automated tools and structured checklists creates a robust safety net for your ABAP development. No single tool or process can prevent all security vulnerabilities - but intelligently combining different approaches significantly minimizes risk and creates a culture of continuous security improvement.

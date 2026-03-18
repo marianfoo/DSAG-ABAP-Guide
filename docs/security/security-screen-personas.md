@@ -2,7 +2,7 @@
 layout: page
 title: Screen Personas 
 permalink: /security/screen-personas/
-parent: Sicherheit
+parent: Security
 nav_order: 8
 ---
 
@@ -15,65 +15,65 @@ nav_order: 8
 
 ## Allgemein
 
-Was sind “SAP Screen Personas 3.0”?
+What are “SAP Screen Personas 3.0”?
 
-Aus der [SAP Onlinehilfe](https://help.sap.com/docs/SAP_SCREEN_PERSONAS/e9aec5d380204249836a4fc3fc76f38e/d59f3aac0f574537af49f2ce0033bba8.html):
+From the [SAP Onlinehilfe](https://help.sap.com/docs/SAP_SCREEN_PERSONAS/e9aec5d380204249836a4fc3fc76f38e/d59f3aac0f574537af49f2ce0033bba8.html):
 
-_SAP Screen Personas 3.0 unterstützt die Transformation klassischer Anwendungen in benutzerorientierte UIs, die auf bestimmte Anwendungsrollen und Geschäftsanforderungen zugeschnitten sind. Die vereinfachten Versionen klassischer Anwendungen werden als Flavors bezeichnet. Diese angepassten UIs können für ein oder mehrere Bilder innerhalb einer klassischen Anwendung oder anwendungsübergreifend verwendet werden. Die Flavors sind von den zugrunde liegenden Transaktionen unabhängig und können auf bestimmte Anwendungsrollen ausgerichtet sein. Eine klassische Anwendung kann über mehrere Flavors verfügen. Beispielsweise kann es ein bestimmtes Flavor pro Benutzergruppe geben._
+_SAP Screen Personas 3.0 supports the transformation of classic applications into user-centric UIs tailored to specific application roles and business needs. The simplified versions of classic applications are called flavors. These custom UIs can be used for one or more images within a classic application or across applications. The flavors are independent of the underlying transactions and can be targeted to specific application roles. A classic application can have multiple flavors. For example, there can be a specific flavor per user group._
 
-Technisch basiert SAP Screen Personas 3.0 (Personas) auf einem SICF-Service, der einen vorkonfigurierten  Service des SAP GUI for HTML unter dem Standardknoten /sap/bc/personas startet. Die Engine  hat eigene Services unter dem Standardknoten host/sap/bc/se. Das bedeutet die  Sicherheitsmaßnahmen für das SAP GUI for HTML und ITS gelten für Screen Personas und  seine Services grundsätzlich auch.
+Technically, SAP Screen Personas 3.0 (Personas) is based on a SICF service that starts a preconfigured service of the SAP GUI for HTML under the standard node /sap/bc/personas. The engine has its own services under the standard node host/sap/bc/se. This means that the security measures for the SAP GUI for HTML and ITS generally also apply to Screen Personas and its services.
 
 ![SICF Service](./img/image21.png)
 
 SICF Service
 {: .img-caption}
 
-Bei SAP Screen Personas handelt es sich um eine Benutzungsoberflächen-Technologie, die als  Add-On im Backend-System implementiert wird, Die Sicherheit ist deshalb abhängig von den für dieses System  verfügbaren Funktionen. Die  meisten dieser Systemfunktionen werden durch die zugrunde liegenden Systemmechanismen  und -richtlinien vorgegeben. Alle für SAP Screen Personas spezifischen Aspekte oder möglichen  Diskrepanzen und Bereiche von besonderem Interesse werden nachfolgend erläutert.
+SAP Screen Personas is a user interface technology that is implemented as an add-on in the backend system. Security is therefore dependent on the functions available for this system. Most of these system functions are dictated by the underlying system mechanisms and policies. Any aspects specific to SAP Screen Personas or potential discrepancies and areas of particular interest are discussed below.
 
 ## Spezielle Sicherheitsaspekte
 
-### SSL Verschlüsselung der Verbindung
+### SSL encryption of the connection
 
-Die Services welche von Personas verwendet werden sind SSL zu verschlüsseln:
+The services used by Personas must be encrypted using SSL:
 
-![Verschlüsselung](./img/image22.png)
+![Encryption](./img/image22.png)
 
-Verschlüsselung
+Encryption
 {: .img-caption}
 
-### Schutz vor Cross Site Request Forgery für ITS
+### Cross site request forgery protection for ITS
 
-Zum Schutz von Cross Site Requests ist an den Services unter GUI Konfiguration der Parameter  ~XSRFCHECK = 1 zu setzen. Details sind im Hinweis 1481392 beschrieben.
+To protect cross site requests, the parameter ~XSRFCHECK = 1 must be set in the services under GUI configuration. Details are described in note 1481392.
 
 ![Parametereinstellung](./img/image23.png)
 
 Parametereinstellung
 {: .img-caption}
 
-## Allgemeine Empfehlungen für ITS und SAP  GUI for HTML
+## General recommendations for ITS and SAP GUI for HTML
 
-### Abmeldung für SAP GUI for HTML aktivieren
+### Enable logout for SAP GUI for HTML
 
-Damit die Abmeldung aus dem HTML GUI sicher funktioniert müssen folgende Dinge beachtet  werden:
+To ensure that logging out of the HTML GUI works safely, the following things must be taken into account:
 
-- Logoff Service muss in ICF aktiviert werden → Service-Baum /sap/public/bc/icf/logoff  aktivieren
-- Im HTML GUI Service sowie in den Personas Services muss als Abmeldeseite der  Logoff Service hinterlegt werden
+- Logoff service must be activated in ICF → Activate service tree /sap/public/bc/icf/logoff
+- The logoff service must be stored as a logout page in the HTML GUI service and in the personas services
 
 ![Abmeldung Web-GUI](./img/image24.png)
 
 Abmeldung Web-GUI
 {: .img-caption}
 
-Bei der Abmeldeseite des WEBGUI Services den Service /sap/public/bc/icf/logoff als Redirect angeben.
+On the logoff page of the WEBGUI service, specify the service /sap/public/bc/icf/logoff as a redirect.
 
 {: .note }
-> Details sind im SAP Hinweis 1777513 beschrieben (ebenso weitere Hintergrundinformationen)
+> Details are described in SAP note 1777513 (as well as further background information)
 
 ### Domain Relaxing deaktivieren (falls notwendig)
 
-Das Domain Relaxing ermöglicht es client-seitigen (zum Beispiel auf einem Browser)  Funktionen oder Anwendungen, mit anderen client-seitigen Funktionen in anderen Client Fenstern zu kommunizieren. Das Domain Relaxing ist nötig, falls Anwendungen von  verschiedenen Backend-Systemen (Servern) am Frontend Daten austauschen müssen. Es muss  dafür gesorgt werden, dass für alle betroffenen Anwendungen die gleiche Client Domain eingestellt ist, da andernfalls vom Client (Browser) ein Zugriffsfehler beim Versuch der  Kommunikation beanstandet wird.
+Domain relaxing allows client-side (e.g. on a browser) functions or applications to communicate with other client-side functions in other client windows. Domain relaxing is necessary if applications from different backend systems (servers) need to exchange data at the frontend. It must be ensured that the same client domain is set for all affected applications, otherwise the client (browser) will complain about an access error when attempting to communicate.
 
-Falls es zu einem solchen Browser-Verhalten kommen sollte, muss das Domain Relaxing  deaktiviert werden. Dazu wird in der GUI-Konfiguration des Services der Parameter  ~no_domain_relaxing hinzugefügt und auf 1 (Eins) gesetzt.
+If such browser behavior occurs, domain relaxing must be deactivated. To do this, the ~no_domain_relaxing parameter is added to the service's GUI configuration and set to 1 (one).
 
 ![Domain Relaxing](./img/image25.png)
 
@@ -81,21 +81,21 @@ Domain Relaxing
 {: .img-caption}
 
 {: .note }
-> Details sind im SAP Hinweis 2111099 beschrieben (ebenso weitere Hintergrundinformationen)
+> Details are described in SAP Note 2111099 (as well as further background information)
 
 ## SAP Berechtigungen
 
-SAP Screen Personas 3.0 ist nur dann für einen Benutzer aktiviert, wenn er über die  erforderlichen Berechtigungen basierend auf Benutzerrolle verfügt. Die Rollenzuordnung erfolgt  im Rahmen des regulären Benutzerverwaltungsprozesses. SAP liefert folgende Standardrollen  aus:
+SAP Screen Personas 3.0 is enabled for a user only if they have the required permissions based on user role. Role assignment occurs as part of the regular user management process. SAP delivers the following standard roles:
 
-- Administrator: **/PERSONAS/ADMIN_ROLE** \- Diese Rolle hat vollständigen Zugriff auf alle Funktionen, die SAP Screen Personas dem Flavor-Consumer zur Laufzeit zur Verfügung stehen, kann den Zugriff auf alle Funktionen der Flavor-Builder-Aufgaben zur  Design-Zeit ermöglichen und Administrationsaufgaben in der Administrationsumgebung  ausführen.
-- Flavor-Konsument: **/PERSONAS/CONSUMER_ROLE** \- Diese Rolle hat  Berechtigungen für den Zugriff auf Flavors für klassische Anwendungen. Flavor Konsumenten können mit dem Flavor-Manager zwischen Flavors und dem  ursprünglichen Bild wählen und Flavors zwischen dem Flavor-Manager und der Flavor Galerie verschieben.
-- Flavor-Builder: **/PERSONAS/EDITOR_ROLE** \- Diese Rolle wird verwendet, um  Flavors und andere benutzereigene Objekte mit Bearbeitungsrechten in allen Design Zeit-Editoren zu erstellen.
+- Administrator: **/PERSONAS/ADMIN_ROLE** \- This role has full access to all functions available to the flavor consumer at runtime, can provide access to all functions of the flavor builder tasks at design time, and can perform administration tasks in the administration environment.
+- Flavor Consumer: **/PERSONAS/CONSUMER_ROLE** \- This role has permissions to access flavors for classic applications. Flavor consumers can use the Flavor Manager to choose between flavors and the original image and move flavors between the Flavor Manager and the Flavor Gallery.
+- Flavor Builder: **/PERSONAS/EDITOR_ROLE** \- This role is used to create flavors and other user-owned objects with editing rights in all Design Time editors.
 
-SAP liefert die Rollen ohne generiertes Berechtigungsprofil aus, deshalb muss das Profil jeweils generiert und sehr wahrscheinlich auch angepasst werden.
+SAP delivers the roles without a generated authorization profile, so the profile must be generated and most likely also adjusted.
 
-Grundsätzlich gilt: Die Benutzer müssen immer Zugriff auf den Transaktionscode haben, zusätzlich zu dem, was ihnen in SAP Screen Personas gehört um eine Funktion innerhalb von  Personas ausführen zu können. Also TCD (Applikationsberechtigung) plus Personas  Berechtigungen müssen vorhanden sein.
+Basically: Users must always have access to the transaction code, in addition to what belongs to them in SAP Screen Personas, in order to be able to perform a function within Personas. So TCD (application authorization) plus Personas authorizations must be present.
 
-Die folgenden Tabellen erläutern, wie Personas die verschiedenen Berechtigungsobjekte zum Erstellen von Flavors verwendet und mit den standardmäßig ausgelieferten Rollen verteilt:
+The following tables explain how Personas uses the various permission objects to create flavors and distributes them using the roles shipped by default:
 
 ![Screen Personas Berechtigungen (Teil 1)](./img/image26.png)
 

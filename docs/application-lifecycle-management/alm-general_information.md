@@ -1,87 +1,87 @@
 ---
 layout: page
-title: ALM Hintergrundwissen und Werkzeugunterstützung
+title: ALM background knowledge and tool support
 permalink: /application-lifecycle-management/alm-general_information/
 parent: ALM
 nav_order: 2
 ---
 
 {: .no_toc}
-# ALM-Hintergrundwissen und Werkzeugunterstützung
+# ALM background knowledge and tool support
 
 1. TOC
 {:toc}
 
-## ALM-Unterstützung durch die SAP
+## ALM support from SAP
 
-Die SAP unterstützt den Themenbereich ALM durch die umfangreiche Bereitstellung verschiedener Werkzeuge, Best Practices und Services (siehe dazu [SAP Support - ALM](https://support.sap.com/en/alm.html)). Besonders deutlich wurde dies mit der Einführung des SAP Solution Managers 7.0 im Jahr 2008 und der im Release 7.1 (2011) enthaltenen Funktionserweiterungen. Seitdem ist der Solution Manager bei vielen SAP Kunden als zentraler Bestandteil der SAP-ALM-Strategie für On-Premise Systeme der SAP Business Suite 7 Komponenten im Einsatz. Der SAP Solution Manager folgt der Wartungsstrategie der SAP Business Suite 7 und wird (Stand: Mai 2025) noch bis Ende 2027 (mit Extended Maintenance Support bis 2030) von der SAP gewartet.
+The SAP supports the ALM subject area by extensively providing various tools, best practices and services (see [SAP Support - ALM](https://support.sap.com/en/alm.html)). This became particularly clear with the introduction of the SAP Solution Manager 7.0 in 2008 and the functional extensions contained in release 7.1 (2011). Since then, the Solution Manager has been used by many SAP customers as a central component of the SAP ALM strategy for on-premise systems of the SAP Business Suite 7 components. The SAP Solution Manager follows the maintenance strategy of the SAP Business Suite 7 and will (as of May 2025) be maintained by the SAP until the end of 2027 (with extended maintenance support until 2030).
 
-Das Nachfolgeprodukt des SAP Solution Managers nennt sich SAP Cloud ALM und ist - wie der Name schon sagt - eine reine Cloud-Lösung, die auf der SAP Business Technology Platform (BTP) läuft. SAP Cloud ALM befindet sich seit einigen Jahren im Aufbau und wird kontinuierlich, in enger Abstimmung mit der DSAG und Anwenderunternehmen, weiterentwickelt. Der Funktionsumfang ist im Vergleich zum SAP Solution Manager derzeit noch eingeschränkt und aktuell (Stand: Mai 2025) eher für kleinere Unternehmen ohne über Jahre gewachsenes ALM sowie für cloud-zentrierte Systemlandschaften geeignet.
+The successful product to the SAP Solution Manager is called SAP Cloud ALM and is - as the name suggests - a pure Cloud solution that runs on the SAP Business Technology Platform (BTP). SAP Cloud ALM has been under construction for several years and is continuously being developed further in close coordination with DSAG and user companies. The scope of functions is currently still limited compared to the SAP Solution Manager and is currently (as of May 2025) more suitable for smaller companies without ALM that has grown over the years and for cloud-centric system landscapes.
 
-Weitere SAP-Produkte aus der ALM-Familie sind SAP Focused Run als eigenständiges On-Premise-System für den Monitoring-Bereich, sowie die SAP Solution Manager-Addons Focused Build für z.B. agile Projekte und Focused Insights für Dashboards jeglicher Art.
+Other SAP products from the ALM family are SAP Focused Run as an independent on-premise system for the monitoring area, as well as the SAP Solution Manager addons Focused Build for e.g. agile projects and Focused Insights for dashboards of all kinds.
 
-Zusammengefasst decken die oben genannten Produkte folgenden Funktionsumfang ab:
+In summary, the products mentioned above cover the following range of functions:
 
 **Anforderungsmanagement**
 
-- Erfassung, Dokumentation und Nachverfolgung von Geschäftsanforderungen
-- Unterstützung bei der Abstimmung von IT- und Business-Zielen
+- Capturing, documenting and tracking business requirements
+- Support in aligning IT and business goals
 
-**Change- und Request-Management**
+**Change and request management**
 
-- Steuerung von Änderungen an SAP-Systemen
-- Planung und Durchführung von Releases und Transporten
-- Minimierung von Ausfallzeiten und Risiken durch strukturierte Prozesse
+- Controlling changes to SAP systems
+- Planning and execution of releases and transports
+- Minimizing downtime and risks through structured processes
 
-**Testmanagement**
+**Test management**
 
-- Planung, Durchführung und Dokumentation von Tests
-- Integration manueller und automatisierter Tests
-- Qualitätssicherung vor Produktivsetzungen
+- Planning, carrying out and documenting tests
+- Integration of manual and automated tests
+- Quality assurance before go-lives
 
 {: .note }
-> [Testmanagement](/ABAP-Leitfaden/testing/index)
+> [Test management](/ABAP-Leitfaden/testing/index)
 
 **IT-Service-Management (ITSM)**
 
-- Unterstützung bei Störungsmanagement, Incident- und Problem-Handling
-- Integration mit ITIL-konformen Prozessen
+- Support with disruption management, incident and problem handling
+- Integration with ITIL-compliant processes
 
-**Projekt- und Portfolio-Management (PPM)**
+**Project and Portfolio Management (PPM)**
 
-- Planung, Steuerung und Kontrolle von IT-Projekten
-- Ressourcenmanagement und Budgetverfolgung
+- Planning, management and control of IT projects
+- Resource management and budget tracking
 
 **Custom Code Management**
 
-- Analyse und Optimierung von kundenspezifischem ABAP-Code
-- Bewertung der Systembelastung und Wartbarkeit
+- Analysis and optimization of custom ABAP code
+- Assessment of system load and maintainability
 
 **Application Operations / System Monitoring**
 
-- Überwachung von SAP-Systemen in Echtzeit
-- Proaktive Fehlererkennung und Performance-Optimierung
+- Real-time monitoring of SAP systems
+- Proactive error detection and performance optimization
 
-**Business Process Monitoring und Optimierung**
+**Business Process Monitoring and Optimization**
 
-- Überwachung und Analyse von Geschäftsprozessen
-- Identifikation von Optimierungspotenzialen
+- Monitoring and analysis of business processes
+- Identification of optimization potential
 
-**Dokumentation und Wissensmanagement**
+**Documentation and knowledge management**
 
-- Zentrale Ablage von technischen und funktionalen Dokumentationen
-- Wiederverwendbarkeit von Informationen und Know-how-Sicherung
+- Central storage of technical and functional documentation
+- Reusability of information and know-how backup
 
 {: .note }
 > - [SAP Support - Application Lifecycle Management (ALM)](https://support.sap.com/en/alm.html)
 > - [E3-Special SAP Solution Manager](https://e3mag.com/wp-content/uploads/2018/03/1205-E-3_Extra.pdf)
 
-## Nutzen von ALM
+## Benefits of ALM
 
-Der Mehrwert eines durchgängigen ALM-Ansatzes besteht in der strukturierten Erfassung, Dokumentation und Nachvollziehbarkeit aller Aktivitäten über den gesamten Lebenszyklus einer Anwendung hinweg. Hiervon profitieren unternehmensinterne und externe Akteure gleichermaßen.
+The added value of a consistent ALM approach lies in the structured recording, documentation and traceability of all activities across the entire life cycle of an application. Internal and external actors benefit equally from this.
 
-So können durch das ALM - korrekt implementiert und stringent angewendet - die Anforderungen von Wirtschaftsprüfern zu rechtlichen Regularien wie z.B. die lückenlose Dokumentation aller Änderungen an Systemen, die finanzrelevante Prozesse betreffen erfüllt werden (§ 239 Abs. 2 HGB, § 257 HGB). Dies betrifft das Anforderungsmanagement über ein nachvollziehbares Test- und Transportmanagement bis zur vollständigen Dokumentation einschließlich aller Änderungen, um nur die wichtigsten Aspekte hervorzuheben.
+The ALM - correctly implemented and strictly applied - can meet the auditors' requirements for legal regulations, such as the complete documentation of all changes to systems that affect finance-relevant processes (Section 239 Paragraph 2 HGB, Section 257 HGB). This affects requirements management, traceable test and transport management, and complete documentation including all changes, to highlight only the most important aspects.
 
-Aus Sicht der SAP-Entwicklung ist in erster Linie das Change Request Management (ChaRM) hervorzuheben, dass die Prozesse und Anwendungen des Anforderungs- und Transportmanagements perfekt verbindet und um verschiedene Konsistenz- und Qualitätsprüfungen erweitert werden kann.
+From the perspective of the SAP development, the Change Request Management (ChaRM) is primarily worth highlighting, as it perfectly combines the processes and applications of requirements and transport management and can be expanded to include various consistency and quality checks.
 
-Hinsichtlich der Dokumentation besteht unter anderem die Möglichkeit, Entwicklungsobjekte automatisch aus den angebundenen SAP-Systemen auszulesen und anschließend (manuell) den entsprechenden Prozessen zuzuweisen, was etwa die Änderung von Prozessen durch den Entwickler vereinfachen kann.
+With regard to documentation, there is, among other things, the option of automatically reading development objects from the connected SAP systems and then assigning them (manually) to the corresponding processes, which can simplify changes to processes by the developer.

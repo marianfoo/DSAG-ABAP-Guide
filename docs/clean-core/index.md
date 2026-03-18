@@ -8,4 +8,4 @@ nav_order: 2
 
 # Clean Core
 
-In diesem Kapitel erhalten Sie einen Überblick über das Thema Clean Core aus den verschiedenen Blickwinkeln der Migration, der Struktur, der Architektur und als Ziel im Unternehmen.
+In this chapter you will receive an overview of the topic Clean Core from the different perspectives of migration, structure, architecture and as a goal in the company.

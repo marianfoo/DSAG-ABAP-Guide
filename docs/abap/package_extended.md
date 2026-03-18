@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Grundlagen des Paketkonzepts
+title: Basics of the package concept
 permalink: /abap/package_details/
-parent: Architektur und Strukturierung in der ABAP Entwicklung
+parent: Architecture and structuring in the ABAP development
 grand_parent: Moderne ABAP Entwicklung
 nav_order: 1
 ---
@@ -11,110 +11,110 @@ nav_order: 1
 {:toc}
 
 {: .no_toc}
-# Grundlagen des Paketkonzepts
+# Basics of the package concept
 
-Im Folgenden sind zum besseren Verständnis der im Leitfaden genannten Empfehlungen die Grundlagen hier detailliert erläutert. Wir empfehlen hierzu auch die offizielle SAP Dokumentation zu verwenden.
+For a better understanding of the recommendations mentioned in the guide, the basics are explained in detail below. We also recommend using the official SAP documentation.
 
-## Begriffserklärungen zum Paketkonzept
+## Explanations of terms for the package concept
 
-Ein **Paket** dient der Strukturierung von Software. In einem Paket werden Softwareartefakte zusammengefasst, die für einen bestimmten Zweck zuständig sind. Pakete können (und sollten auch) gekapselt sein. Das bedeutet, dass ein Objekt eines Paketes ein Objekt eines anderen Pakets nicht verwenden kann bzw. von einem Objekt eines anderen Pakets nicht verwendet werden kann, sofern diese nicht über eine Paketschnittstelle öffentlich gemacht werden und beim Verwender im Verwendungsnachweis deklariert werden.  
-Um unsere Empfehlung für Sie umsetzbar zu machen, werden im Folgenden ein paar Grundlagen genannt, um dann den Nutzen und die Vorteile zu erläutern.
+A **package** is used to structure software. A package combines software artifacts that are responsible for a specific purpose. Packets can (and should) be encapsulated. This means that an object from one package cannot use an object from another package or cannot be used by an object from another package unless they are made public via a package interface and declared to the user in the where-used list.  
+In order to make our recommendation practical for you, a few basics are mentioned below and then the benefits and advantages are explained.
 
-Im SAP Paketkonzept gibt es das **Hauptpaket**, welches Unterpakete, aber keine Entwicklungsobjekte enthält. Das Hauptpaket repräsentiert im Regelfall die Anwendung, die alleine lauffähig ist. Weitere Fälle werden weiter unten beschrieben.  
+In the SAP package concept there is the **main package**, which contains sub-packages but no development objects. The main package usually represents the application that can run alone. Other cases are described below.  
 
-Ein **Unterpaket** definiert sich dadurch, dass es nicht als Hauptpaket gekennzeichnet ist und einem Hauptpaket zugeordnet ist. Die Unterpakete dienen der internen Strukturierung der Artefakte des Hauptpaketes.  
-Das Hauptpaket definiert die Struktur nach außen und stellt die verschiedenen Anwendungen dar. Die Unterpakete definieren die innere Struktur einer Anwendung.  
+A **sub-package** is defined by the fact that it is not marked as a main package and is assigned to a main package. The subpackages are used to internally structure the artifacts of the main package.  
+The main package defines the external structure and represents the various applications. The sub-packages define the internal structure of an application.  
 
-Die **Paketschnittstellen** werden pro Paket definiert und definieren die Sichtbarkeit der in der Paketschnittstelle enthaltenen Objekten nach außen.
+The **package interfaces** are defined per package and define the external visibility of the objects contained in the package interface.
 
-Als letzten hier zu erklärendem Begriff kommt die **Verwendungserklärung**, die in einem Paket gepflegt wird. In die Verwendungserklärung werden Paketschnittstellen aufgenommen, deren Objekte vom aktuellen Paket verwendet werden.  
-Verwendet ein Paket A ein Artefakt aus einem Paket B, wird in der Verwendungserklärung des Paketes A, die entsprechende Paketschnittstelle B aufgenommen. Somit ist auf Paketebene sofort ersichtlich, welche Abhängigkeiten das Paket A besitzt (nämlich zu Paket B). Dazu ist die Verwendungserklärung auch im Verwendungsnachweis auswertbar. Somit ist es möglich herauszufinden, wie die Verwendungsbeziehungen gestaltet sind.
+The last term to be explained here is the **Declaration of Use**, which is maintained in a package. Package interfaces whose objects are used by the current package are included in the usage declaration.  
+If a package A uses an artifact from a package B, the corresponding package interface B is included in the usage declaration of package A. This means that at package level it is immediately clear which dependencies package A has (namely to package B). The declaration of use can also be evaluated in the proof of use. This makes it possible to find out how the usage relationships are designed.
 
-Den Hauptpaketen übergeordnet finden sich die **Strukturpakete**, die Hauptpakete auf höchster Ebene zusammenfassen. Diese machen vor allem bei grossen Softwareprojekten Sinn, bei denen es eine große Anzahl von Hauptpaketen gibt.
-In Sinne der Komplexitätsreduzierung wird in diesem Leitfaden allerdings auf die Strukturpakete nicht weiter eingegangen. Details finden Sie hierzu in der SAP Dokumentation.  
-Strukturpakete einzusetzen, kann sinnvoll sein, wenn im Unternehmen das Paketkonzept bereits umfänglich mit Haupt- und Unterpaketen angewendet wird und eine übergeordnete Struktur sinnvoll abbildbar ist. Strukturpakete werden von SAP selbst verwendet um eine technische gesicherte Entkopplung von Paketen sicherzustellen und dies nicht auf Hauptpaketebene definiert werden soll [SAP Dokumentation: Von Paketen zu Strukturpaketen](https://help.sap.com/docs/ABAP_PLATFORM_NEW/bd833c8355f34e96a6e83096b38bf192/4aa197adacd5007fe10000000a42189c.html?locale=de-DE).  
-Die Paketschnittstellen der Strukturpakete können keine Entwicklungsobjekte enthalten, sondern definieren die Beziehungen zu anderen Strukturpaketen. Damit kann die Deklaration und Pflege von Verwendungsbeziehungen reduziert werden und die technische Entkopplung von Applikationen (wie bei SAP_APPL und SAP_HR) sichergestellt werden.  
-Im Rahmen von Cloud werden Strukturpakete als Wurzelpakete der Softwarecomponents benötigt und sind daher dort notwendig.
+Above the main packages are the **structure packages**, which combine main packages at the highest level. These make sense especially for large software projects where there are a large number of main packages.
+In order to reduce complexity, however, the structural packages will not be discussed further in this guide. Details can be found in the SAP documentation.  
+It can make sense to use structural packages if the package concept is already used extensively in the company with main and sub-packages and a higher-level structure can be sensibly mapped. Structure packages are used by SAP itself to ensure a technically secured decoupling of packages and this should not be defined at the main package level [SAP Documentation: From packages to structure packages](https://help.sap.com/docs/ABAP_PLATFORM_NEW/bd833c8355f34e96a6e83096b38bf192/4aa197adacd5007fe10000000a42189c.html?locale=de-DE).  
+The package interfaces of the structure packages cannot contain development objects, but rather define the relationships to other structure packages. This means that the declaration and maintenance of usage relationships can be reduced and the technical decoupling of applications (as with SAP_APPL and SAP_HR) can be ensured.  
+As part of Cloud, structure packages are required as root packages of the software components and are therefore necessary there.
 
-## Definition des Hauptpakets
+## Definition of the main package
 
-In den folgenden Ausführungen beschreiben wir die Aspekte des Paketkonzepts für die Erstellung einer größeren Eigenentwicklung. Auf andere Fälle wird später eingegangen.
-Am Anfang der Umsetzung einer Eigenentwicklung muss klar definiert sein, welche Funktion die Software erfüllen soll und welchen SAP Applikationsbereich die Software betrifft. Damit kann nun der Name der Eigenentwicklung als Komponente definiert werden. Dabei müssen Vorgaben der Entwicklungsrichtlinien im Unternehmen wie Namenskonventionen und Präfixe beachtet werden.
-Die Namensgebung spielt hier eine wichtige Rolle und sollte gut bedacht werden, unter Berücksichtigung anderer Komponenten. So sollte im Namen ersichtlich sein, um welches SAP Objekt es sich handelt (z.B. Belegtyp, Formulare ...) und welche Funktion die Komponente erfüllt. Da Eigenwicklungen meistens in Bezug zu SAP Funktionen stehen, sollte dieser Bezug auch über den Namensbezug erkennbar sein. Meistens muss der Name noch sinnvoll gekürzt werden, da durch Namensräume und Präfixe die Anzahl der verfügbaren Zeichen begrenzt ist.  
-Wenn Sie beispielsweise eine abgegrenzte und wiederverwendbare Erweiterung bzw. Eigenentwicklung im Bereich EWM umsetzen möchten, die Funktionen in der Be- und Verarbeitung von Handling Units behandelt, sollte sich sowohl der Bereich EWM, das Objekt HU, als auch die Aufgabe im Namen wiederfinden. Der Name könnte sich z.B. wie folgt zusammensetzen:  *Z_EWM_HU_PROCESSING*.  
-Dieses Paket kann dann mehrere Funktionen in EWM beinhalten, die HU's betreffen.
+In the following information we describe the aspects of the package concept for the creation of a larger in-house development. Other cases will be discussed later.
+At the beginning of the implementation of an in-house development, it must be clearly defined which function the software should fulfill and which application area the software affects. This means that the name of the in-house development can now be defined as a component. The requirements of the company's development guidelines such as naming conventions and prefixes must be observed.
+The naming plays an important role here and should be carefully considered, taking other components into account. It should be clear in the name which SAP object it is (e.g. document type, forms ...) and which function the component fulfills. Since custom developments are usually related to SAP functions, this connection should also be recognizable through the name reference. Most of the time the name has to be shortened sensibly because the number of available characters is limited by namespaces and prefixes.  
+For example, if you want to implement a separate and reusable extension or in-house development in the EWM area that deals with functions in the processing of handling units, both the EWM area, the object HU, and the task should be reflected in the name. The name could, for example, be composed as follows: *Z_EWM_HU_PROCESSING*.  
+This package can then contain several functions in EWM that affect HUs.
 
-Damit steht der Name des Hauptpaketes, das nun in SAP erstellt werden kann und sowohl als Hauptpaket als auch als gekapselt eingestellt wird. Bei der Erstellung des Pakets wird nun noch die SAP Applikationskomponente zugeordnet, hierbei sollte dieselbe Komponente verwendet werden, die auch der zugehörigen SAP Standardkomponente zugeordnet ist. Dies kann dem Paket der zugehörigen SAP Objekte, die in Beziehung zur Eigenentwicklung stehen, entnommen werden.
+This is the name of the main package, which can now be created in SAP and is set as both main package and encapsulated. When creating the package, the SAP application component is now assigned; the same component should be used that is also assigned to the associated SAP standard component. This can be found in the package of associated SAP objects that are related to the in-house development.
 
-Innerhalb dieses Hauptpaketes sind nun die Unterpakete zu erstellen, die sich im Namen an dem Hauptpaket orientieren, als Postfix aber die Funktion des Unterpaketes ausdrücken. Ein Unterpaket zum EWM-HU Paket, welches das Verpacken betrifft, könnte z.B. wie folgt abgeleitet werden: *Z_EWM_HU_PRC_PACKING*.
+Within this main package, the sub-packages must now be created, the names of which are based on the main package, but as a postfix they express the function of the sub-package. A sub-package to the EWM-HU package that concerns packaging could, for example, be derived as follows: *Z_EWM_HU_PRC_PACKING*.
 
-## Erstellung der Unterpakete - Unterteilung nach Funktion der enthaltenen Objekte
+## Creation of sub-packages - division according to the function of the included objects
 
-Die Unterteilung des Hauptpaketes in Unterpakete sollte nicht nach Objekttyp erfolgen (z.B: DDIC, Forms, Klassen), sondern nach logischer Funktion. Je nach Art der Software können folgende Unterpakete erstellt werden:  
+The main package should not be divided into sub-packages according to object type (e.g.: DDIC, Forms, Classes), but rather according to logical function. Depending on the type of software, the following sub-packages can be created:  
 
-- **.._CORE** oder **..._ENG** (für Engine) Basispaket
-  In diesem Paket werden Objekte erstellt, die von den anderen Unterpaketen verwendet werden und die zentralen Funktionen wie Geschäftsprozesslogik und gemeinsam genutzte Funktionen enthalten.  
-- **.._UI** - Alle Artefakte für Anwendungsoberflächen.
-- **.._API** oder **..IF** - z.B: für ODATA services, Klassen oder RAP-BO Interfaces, die von anderen Paketen verwendet werden können und entsprechend in der Paketschnittstelle propagiert werden.
-- **.._DATA**- Objekte die Datenbankabfragen kapseln oder anderweitig Daten beschaffen (CDS Artefakte).
-- **.._TEST** - Objekte für Unit Tests und Testhelper wie auch Mock-Objekte - alles was zur Testinfrastruktur zugehörig ist.
-- **.._HLP**  oder **..SHARED** - Unterpaket für Hilfsobjekte oder Funktionen, die in mehreren Unterpaketen verwendet werden, z.B. Nachrichtenklassen oder Logging Funktionen.
+- **.._CORE** or **..._ENG** (for engine) basic package
+  This package creates objects that are used by the other subpackages and contain core functionality such as business process logic and shared functions.  
+- **.._UI** - All application interface artifacts.
+- **.._API** or **..IF** - e.g.: for ODATA services, classes or RAP-BO interfaces that can be used by other packages and are propagated accordingly in the package interface.
+- **.._DATA**- Objects that encapsulate database queries or otherwise obtain data (CDS artifacts).
+- **.._TEST** - Objects for unit tests and test helpers as well as mock objects - everything that is part of the test infrastructure.
+- **.._HLP** or **..SHARED** - Subpackage for helper objects or functions that are used in multiple subpackages, e.g. message classes or logging functions.
 
-## Einsatz von Paketen bei der Implementierung von BAdIs und bei kleinen Erweiterungen
+## Use of packages when implementing BAdIs and small extensions
 
-Die oben beschriebene Struktur ist sinnvoll für größere Entwicklungen, bei denen zahlreiche Objekte erstellt werden, und schafft Ordnung und Übersicht. Die gleiche Vorgehensweise in reduzierter Form macht aber auch für kleine Erweiterungen, wie bei BAdI-Implementierungen, durchaus Sinn.
-Hierbei erstellt man ein Hauptpaket als Entsprechung des Paketes des SAP Enhancement Spots, orientiert sich an der Namensgebung und vergibt dieselbe Applikationskomponente.  
-Die Unterpakete kann man hier entsprechend den Teilbereichen der einzelnen BADIs strukturieren, je nach Umfang der einzelnen BADIs des Enhancement Spots.
-Für Funktionen, die in mehreren BADIs wiederverwendet werden, können wie oben beschrieben Objekte in Helper und Core Unterpaketen erstellt und in den BADIs entsprechend aufgerufen werden.
+The structure described above is useful for larger developments where numerous objects are created and creates order and overview. The same approach in a reduced form also makes sense for small extensions, such as BAdI implementations.
+Here you create a main package that corresponds to the SAP enhancement spot package, follow the naming and assign the same application component.  
+The sub-packages can be structured here according to the sub-areas of the individual BADIs, depending on the scope of the individual BADIs of the enhancement spot.
+For functions that are reused in multiple BADIs, objects can be created in Helper and Core subpackages as described above and called accordingly in the BADIs.
 
-Manchmal sind Entwicklungen sehr kleine Objekte wie Hilfsreports, oder einzelne Klassen die mehrfach über Pakete verteilte Funktionen bereitstellen. Hierfür jeweils eigene Hauptpakete mit Unterpaketen bereitzustellen, wäre überdimensioniert.  
-Für diesen Fall empfehlen wir die Anlage von Hauptpaketen, die funktionsorientiert gemeinsame Funktionen bereitstellen (z.B. 'Bereich'**_UTILS**). Die Unterpakete können dann weiter die einzelnen Aufgabenbereiche gliedern und zentrale Funktionen werden im Core Unterpaket gesammelt.
+Sometimes developments are very small objects such as auxiliary reports, or individual classes that provide functions that are distributed multiple times across packages. Providing separate main packages with sub-packages for this would be oversized.  
+In this case, we recommend creating main packages that provide common functions in a function-oriented manner (e.g. 'Area'**_UTILS**). The sub-packages can then further structure the individual task areas and central functions are collected in the Core sub-package.
 
-Idealerweise werden die nach außen sichtbaren Funktionen in den Paketschnittstellen propagiert, so dass die Verwender diese Pakete im Verwendungsnachweis deklarieren können.
+Ideally, the externally visible functions are propagated in the package interfaces so that users can declare these packages in the where-used list.
 
 ## Paketschnittstellen
 
-Die oben beschriebenen Maßnahmen führen dazu, dass frühzeitig architektonische Überlegungen in der Umsetzung berücksichtigt werden müssen und sich die Struktur der Anwendung in den Paketen wiederfindet.  
-Maßgebliche Vorteile und Verbesserungen im Softwaremanagement ergeben sich aber erst durch die Nutzung der Paketschnittstellen.
+The measures described above mean that architectural considerations must be taken into account early on in the implementation and the structure of the application is reflected in the packages.  
+However, significant advantages and improvements in software management only arise through the use of the package interfaces.
 
-Ist ein Paket in sich geschlossen und die Verwendung von Objekten des Paketes durch andere Pakete ist nicht erforderlich oder gewünscht, benötigt das Paket keine Paketschnittstelle. Handelt es sich aber um ein Paket, das Funktionalitäten nach außen propagieren und somit von anderen Paketen genutzt werden soll, werden Paketschnittstellen benötigt.  
-In einer Schnittstelle werden gezielt Objekte aufgenommen, die zur Verwendung durch andere Pakete bestimmt sind. Dabei folgen die Paketschnittstellen derselben hierarchischen Struktur wie die Pakete selbst. Details zum Aufbau von Paketschnittstellen und wie Objekte aus Unterpaketen über das Hauptpaket propagiert werden, findet sich in der SAP-Dokumentation.
+If a package is self-contained and the use of objects in the package by other packages is not required or desired, the package does not require a package interface. However, if it is a package that is intended to propagate functionalities to the outside and thus be used by other packages, package interfaces are required.  
+Objects intended for use by other packages are specifically included in an interface. The package interfaces follow the same hierarchical structure as the packages themselves. Details on the structure of package interfaces and how objects from sub-packages are propagated via the main package can be found in the SAP documentation.
 
-Ein gut designtes Paket sollte ein eigenes API- oder Interface Unterpaket besitzen, das Interfaces, Klassen (insbesondere Fassadenklassen) und Artefakte enthält, die für die Verwendung von anderen Paketen freigegeben sind.  
-Dieses Interfacepaket mit seinen Objekten versteckt damit gezielt die Implementierung (Information Hiding) und damit die Komplexität der Anwendung. Mittels Propagierung dieser Objekte im Paketinterface werden diese Artefakte explizit zur externen Verwendung deklariert. Somit können innerhalb des Paketes jederzeit Änderungen vorgenommen werden, solange das Interface nach außen stabil bleibt.  
-Bei Inkompatiblen Änderungen am Interface werden neue Interfaces erstellt und in die Paketschnittstelle aufgenommen und als neue Version veröffentlicht.
+A well-designed package should have its own API or interface subpackage that contains interfaces, classes (especially facade classes), and artifacts that are shared for use by other packages.  
+This interface package with its objects specifically hides the implementation (information hiding) and thus the complexity of the application. By propagating these objects in the package interface, these artifacts are explicitly declared for external use. This means that changes can be made within the package at any time, as long as the external interface remains stable.  
+If there are incompatible changes to the interface, new interfaces will be created and included in the package interface and released as a new version.
 
-## Verwendungserklärung
+## Statement of Use
 
-Auf Paketebene gibt es neben den Schnittstellen, die die Propagierung nach außen deklariert, noch die Verwendungserklärung. Mit dieser wird aufgelistet, welche Paketschnittstellen ein Paket verwendet. So kann in der Verwendungserklärung geprüft werden, ob die aufgelistete Verwendung und somit die Erzeugung von Abhängigkeiten von Paket xy wirklich gewünscht und vorgesehen ist. Damit werden diese Abhängigkeiten technisch dokumentiert und sind auswertbar bzw. ablesbar.  
-Dies gilt bedingt für SAP-Pakete. Sofern SAP-Objekte in Paketschnittstellen deklariert wurden, können diese auch über den Paketcheck und die Vorschlagfunktion automatisiert in den Verwendungsnachweis aufgenommen werden. Allerdings sind seitens SAP die Paketschnittstellen nicht für die Kommunikation zu den Kunden bzgl. der Objektfreigabe vorgesehen.
-Zumindest hilft die Verwendungserklärung hier einen Überblick über sichtbare (über die Verwendungserklärung) und unsichtbare (Fehler im Paketcheck) SAP-Objekte zu bekommen.
+At the package level, in addition to the interfaces that the propagation declares to the outside world, there is also the usage declaration. This lists which package interfaces a package uses. In this way, it can be checked in the usage declaration whether the listed usage and thus the creation of dependencies on package xy is really desired and intended. This means that these dependencies are technically documented and can be evaluated and read.  
+This applies conditionally to SAP packages. If SAP objects have been declared in package interfaces, they can also be automatically included in the where-used list using the package check and suggestion function. However, SAP does not provide the package interfaces for communication with customers regarding object release.
+At least the usage declaration helps to get an overview of visible (via the usage declaration) and invisible (errors in the package check) SAP objects.
 
-## Paketprüfung
+## Package inspection
 
-Eine zentrale Rolle zur sinnvollen Umsetzung des Paketkonzepts in Eigenentwicklungen ist die Paketprüfung. Diese kann In den ABAP Development Tools, im ATC oder in SE80 ausgeführt werden.  
-Für die Durchführung der Paketprüfung müssen Pakete gekapselt sein. Ebenso muss auf Systemebene die Paketprüfung gemäß Dokumentation konfiguriert sein.  
-Bei der Paketprüfung können zwei Fehlersituationen auftreten, die Ihnen Aufschluss über bestehende Abhängigkeiten geben:  
+Package testing plays a central role in the sensitive implementation of the package concept in in-house developments. This can be carried out in the ABAP Development Tools, in the ATC or in SE80.  
+To perform packet inspection, packets must be encapsulated. The package check must also be configured at the system level according to the documentation.  
+Two error situations can occur during package checking that will provide you with information about existing dependencies:  
 
-- **Unsichtbares Objekt**: Wird ein Objekt aus einem anderen Paket verwendet, das nicht in einer freigegebenen Paketschnittstelle enthalten ist, meldet die Paketprüfung einen Fehler, dass das Objekt nicht sichtbar ist.
-Hier gibt es verschiedene Möglichkeiten zu reagieren:
-Das Objekt soll nicht verwendet werden und der Entwickler muss eine Alternative verwenden oder eine eigenes Objekt innerhalb des Paketes erstellten, dass die Funktion bereitstell.  
-Falls die Verwendung gewünscht ist, muss der Paketverantwortliche des anderen Paketes kontaktiert werden, damit das Objekt in die Paketschnittstelle aufgenommen wird.
+- **Invisible Object**: When using an object from another package that is not included in a shared package interface, the package checker reports an error that the object is not visible.
+There are different ways to react here:
+The object should not be used and the developer must use an alternative or create their own object within the package that provides the function.  
+If use is desired, the package manager of the other package must be contacted so that the object is included in the package interface.
 
-- **Fehlende Verwendungserklärung**: Wird ein Objekt eines anderen Paketes verwendet, welches sich in einer Paketschnittstelle befindet, muss diese Schnittstelle noch in der Verwendungserklärung deklariert werden um Fehler in der Paketprüfung zu vermeiden. Diese Deklaration kann automatisiert aus der Paketprüfungsmeldung durchgeführt werden, wobei die gesamte Hierarchie berücksichtigt wird. Dies ist bei den komplexen SAP-Paketen hilfreich und zeitsparend.
+- **Missing usage declaration**: If an object from another package is used that is located in a package interface, this interface must still be declared in the usage declaration to avoid errors in the package check. This declaration can be done automatically from the package inspection message, taking the entire hierarchy into account. This is helpful and time-saving for the complex SAP packages.
 
-Der Paketverantwortliche hat die Aufgabe zu prüfen, welche Objekte seines Paketes anderen Paketen zur Verfügung gestellt werden und dementsprechend in die Paketschnittstelle aufzunehmen um Paketprüfungsfehler im verwendenden Paket zu vermeiden. Der Verwender nimmt dann diese Paketschnittstelle in die Verwendungserklärung auf und somit ist auch eine technische Auswertung der Verwendungen möglich.
+The package manager has the task of checking which objects in his package are made available to other packages and incorporating them into the package interface accordingly in order to avoid package checking errors in the package being used. The user then includes this package interface in the declaration of use and a technical evaluation of the uses is therefore also possible.
 
-## Paketkapselung und Paketschnittstellen von Unterpaketen innerhalb des Hauptpaketes
+## Package encapsulation and package interfaces of sub-packages within the main package
 
-Das Kapseln der Hauptpakete dient der Dokumentation der Abhängigkeiten über die Paketprüfung. Die Kapselung ist allerdings auch für Unterpakete sinnvoll. Dazu sollte pro Unterpaket eine Paketschnittstelle angelegt werden und darin die Objekte aufgenommen werden, die von anderen Unterpaketen verwendet werden. Dementsprechend wird dann auch die Verwendungserklärung gepflegt. Dies bringt einen Verwaltungsaufwand bei der Erstellung einher, bringt aber den Vorteil mit sich, dass die Abhängigkeiten der Unterpakete dokumentiert sind und hier eine gezielte Steuerung und Überwachung möglich ist. Pro Hauptpaket muss eine klare Verwendungsbeziehung definiert sein und eine gemischte Wiederverwendung innerhalb der Unterpakete vermieden werden.  
-Gerade bei Sammlerpaketen kann es sinnvoll sein, bei entsprechender Größe, einzelne Pakete herauszulösen und als eigenständige Komponenten bereitzustellen. Dabei ist es hilfreich, hier bereits klare und geordnete Verwendungsbeziehungen zu haben.
+Encapsulating the main packages serves to document the dependencies via package checking. However, encapsulation is also useful for sub-packages. To do this, a package interface should be created for each subpackage and the objects used by other subpackages should be included in it. The declaration of use is then maintained accordingly. This involves administrative effort during creation, but has the advantage that the dependencies of the sub-packages are documented and targeted control and monitoring is possible. A clear usage relationship must be defined per main package and mixed reuse within the sub-packages must be avoided.  
+Particularly in the case of collector packages, it can make sense to separate individual packages and provide them as independent components if the size is appropriate. It is helpful to already have clear and orderly usage relationships here.
 
 ## Pakethierarchien
 
-Mit den oben genannten Methoden und Werkzeugen kann eine gute Softwarearchitektur in SAP über die Pakete mit den Abhängigkeiten dargestellt werden. Die Überlegungen die für ein gutes Paketdesign angestellt werden müssen führen letztlich zu einer guten Anwendungsarchitektur, wenn die Designprinzipien für sauberer Architektur eingehalten werden. Hinweise zu Prinzipien moderner Softwarearchitektur finden Sie in einschlägiger Fachliteratur z.B. "Clean Architecture" von Robert C. Martin.  
-Bei der Gestaltung der Pakete sollte auch immer der Blick auf die Entwicklungen paketübergreifend erfolgen und bei der Anlage neuer bzw. Erweiterung bestehender Pakete geprüft werden, inwieweit die Pakete zueinander passen und zu prüfen ob Eigenentwicklungen eigener Funktionen in verschiedene Pakete getrennt werden soll. Bei komplexen Systemlandschaften kann es sinnvoll sein, Framework Pakete zu definieren, die Basisfunktionen anbieten, dann Grundfunktionspakete, die die Geschäftslogik abbilden und optionale Add-On Pakete zu erstellen, die unterschiedliche Oberflächentechnologien oder Ausprägungen der Funktionalitäten abbilden. Dadurch entsteht eine Hierarchie von Hauptpaketen, deren Abhängigkeiten über die Paketschnittstellen gut abgebildet und dokumentiert werden können.
-Wichtig ist dabei darauf zu achten, dass die Abhängigkeit immer nur in eine Richtung definiert sein darf.
+Using the above methods and tools, a good software architecture can be represented in SAP via the packages with the dependencies. The considerations that go into good package design ultimately lead to good application architecture when clean architecture design principles are followed. Information on the principles of modern software architecture can be found in relevant specialist literature, e.g. "Clean Architecture" by Robert C. Martin.  
+When designing packages, you should always look at developments across packages and when creating new or expanding existing packages, you should check to what extent the packages fit together and check whether in-house developments of your own functions should be separated into different packages. For complex system landscapes, it can make sense to define framework packages that offer basic functions, then basic function packages that represent the business logic and optional add-on packages that represent different interface technologies or versions of the functionalities. This creates a hierarchy of main packages whose dependencies can be easily mapped and documented via the package interfaces.
+It is important to ensure that the dependency can only ever be defined in one direction.
 
-Ein anderer Anwendungsfall wäre z.B. dieselbe Funktionalität für verschiedene Releases bereitzustellen, wobei die Kernfunktion in einem zentralen Paket, die Differenzierungen nach Release in unterschiedlichen Hauptpaketen implementiert sind.
+Another use case would be, for example, to provide the same functionality for different releases, with the core function implemented in a central package and the differentiations according to release in different main packages.
 

@@ -2,7 +2,7 @@
 layout: page
 title: Sichere Entwicklung
 permalink: /security/secure-development/
-parent: Sicherheit
+parent: Security
 nav_order: 4
 ---
 
@@ -13,11 +13,11 @@ nav_order: 4
 1. TOC
 {:toc}  
 
-In einer zunehmend digitalisierten Geschäftswelt ist die Absicherung von ABAP-Anwendungen unerlässlich. Sicherheit beginnt bereits bei der Entwicklung – durch konsequent angewendete sichere Programmierungspraktiken.
+In an increasingly digitalized business world, securing ABAP applications is essential. Security begins with development – ​​​​through consistently applied secure programming practices.
 
-## Input-Validierung: Der erste Schutzwall
+## Input validation: The first protective barrier
 
-Die Validierung von Benutzereingaben ist eine der effektivsten Verteidigungslinien gegen Angriffe. Ohne Validierung können manipulierte Eingaben zu Code-Injektionen oder unautorisierten Zugriffen führen. In ABAP sollten daher nur bekannte und erwartete Werte akzeptiert werden. Hier bieten sich Whitelists, Eingabemasken und Typprüfungen an. Besonders bei dynamischen SQL-Statements oder Dateioperationen ist eine vorherige Prüfung auf Plausibilität unabdingbar.
+Validating user input is one of the most effective lines of defense against attacks. Without validation, manipulated input can lead to code injections or unauthorized access. Therefore, only known and expected values ​​​​should be accepted in ABAP. Whitelists, input masks and type checks are useful here. A prior plausibility check is essential, especially for dynamic SQL statements or file operations.
 
 **Whitelist-Ansatz bevorzugen:**
 ```abap
@@ -29,21 +29,21 @@ ELSE.
 ENDIF.
 ```
 
-**Datentyp- und Längenprüfung:**
+**Data type and length check:**
 ```abap
 " Explizite Längen- und Formatprüfung (Gerne mit REGEX arbeiten)
 IF strlen( p_email ) > 50 OR p_email CN '@.'.
   MESSAGE 'Ungültige E-Mail-Adresse' TYPE 'E'.
 ENDIF.
 ```
-**Webservice-Eingaben härten:**
-Bei SOAP- und REST-Services müssen neben den obigen Input-Validierungen evtl. als String übergebene XML/JSON-Inhalte zusätzlich auf strukturelle Integrität geprüft werden, bevor sie in ABAP-Strukturen deserialisiert werden.
+**Harden web service inputs:**
+For SOAP and REST services, in addition to the above input validations, XML/JSON content passed as a string may also need to be checked for structural integrity before it is deserialized into ABAP structures.
 
 ## Output-Encoding: Daten sicher ausgeben
 
-Bei Webtechnologien wie BSP, Web Dynpro oder UI5 kann unsicherer Output zu Cross Site Scripting (XSS) führen. Um dies zu verhindern, ist ein konsequentes Output-Encoding notwendig. Die SAP-eigene Methode `cl_http_utility=>escape_html` bietet hier eine einfache Möglichkeit, HTML-Ausgaben abzusichern. Alle potenziell gefährlichen Zeichen sollten bei der Ausgabe entschärft werden, insbesondere wenn User-Eingaben in HTML, JavaScript oder XML-Kontexten erscheinen.
+With web technologies such as BSP, Web Dynpro or UI5, unsafe output can lead to Cross Site Scripting (XSS). To prevent this, consistent output encoding is necessary. SAP's own method `cl_http_utility=>escape_html` offers a simple way to secure HTML output. All potentially dangerous characters should be defused during output, especially when user input appears in HTML, JavaScript, or XML contexts.
 
-### HTML-Encoding für Webanwendungen
+### HTML encoding for web applications
 
 ```abap
 " HTML-Encoding für Web-Ausgabe
@@ -53,13 +53,13 @@ lv_encoded = cl_http_utility=>escape_html( lv_user_input ).
 
 ## Sichere Datenbankzugriffe: OpenSQL Best Practices
 
-OpenSQL bietet eine abstrahierte und sichere Möglichkeit, auf Daten zuzugreifen. Dennoch entstehen Sicherheitsrisiken durch dynamische Statements, insbesondere wenn Tabellen- oder WHERE-Bedingungen aus Benutzereingaben generiert werden. Die Verwendung von `CLIENT SPECIFIED` oder direkter SQL-Manipulation (z. B. `EXEC SQL`) kann zu Mandantenüberschreitungen und Audit-Bypass führen. Best Practices umfassen hier:
+OpenSQL provides an abstracted and secure way to access data. However, security risks arise from dynamic statements, especially when table or WHERE conditions are generated from user input. Using `CLIENT SPECIFIED` or direct SQL manipulation (e.g. `EXEC SQL`) can lead to tenant overruns and audit bypass. Best practices here include:
 
-* Verwendung fester Tabellen- und Feldnamen
-* Keine dynamischen WHERE-Klauseln aus User-Input
-* Kein direkter Zugriff mit nativem SQL
-* Verzicht auf `MODIFY` ohne Prüfung von Berechtigungen
-* Keine Mandantenüberschreitungen benutzen
+* Use of fixed table and field names
+* No dynamic WHERE clauses from user input
+* No direct access with native SQL
+* Waiver of `MODIFY` without checking permissions
+* Do not use tenant exceedances
 
 ### Dynamische WHERE-Klauseln absichern
 
@@ -79,17 +79,17 @@ ENDCASE.
 SELECT * FROM kna1 WHERE (lt_where) INTO TABLE @lt_result.
 ```
 
-## Berechtigungsprüfungen richtig implementieren
+## Implement authorization checks correctly
 
-Ein häufiger Fehler besteht in fehlenden oder unvollständigen Authority-Checks. Jeder sicherheitsrelevante Zugriff muss durch `AUTHORITY-CHECK` abgesichert und der Rückgabewert `sy-subrc` sofort ausgewertet werden. Problematisch sind insbesondere:
+A common mistake is missing or incomplete authority checks. Every security-relevant access must be secured by `AUTHORITY-CHECK` and the return value `sy-subrc` must be evaluated immediately. The following are particularly problematic:
 
-* Prüfungen mit DUMMY-Feldern (z. B. `ACTVT = ' '`)
-* Prüfungen auf Superuser-Berechtigungen (`*`)
-* fehlende Prüfung nach dem `AUTHORITY-CHECK` auf `SY-SUBRC`
-* Verwendung von Alias-Usern in `SUBMIT ... USER`-Anweisungen
+* Checks with DUMMY fields (e.g. `ACTVT = ' '`)
+* Checks for superuser permissions (`*`)
+* missing check after `AUTHORITY-CHECK` on `SY-SUBRC`
+* Use of alias users in `SUBMIT ... USER` statements
 
-Zudem ist sicherzustellen, dass kundeneigene Programme mit einer Berechtigungsgruppe versehen werden, um implizite Prüfungen auszulösen. Für eine gute UI und eine sichere Programmierung empfiehlt es sich die wichtigsten Berechtigungsobjekte direkt nach dem Start, vor der Usereingabe mit `DUMMY` zu prüfen, um sowohl den Anwendungsserver als auch den Datenbankserver nicht mit Anfragen zu belasten, die im Nachhinein sowieso nicht berechtigt sind.
-Beispielsweise zeigt ein Report Daten zu einem Debitor in einer Verkaufsorganisation an. Der Report ist mit einem Z-Berechtigungsobjekt versehen um zu prüfen ob der User diesen Kunden sehen darf. Hier kann beim ersten Aufruf (INITIALIZATION im Report) direkt das Berechtigungsobjekt gegen Dummyobjekte geprüft werden. Schlägt dies schon fehl braucht der User sich nicht die Mühe machen eine funktionierende Kombination zu finden.
+It must also be ensured that customer programs are provided with an authorization group in order to trigger implicit checks. For a good UI and secure programming, it is recommended to check the most important authorization objects with `DUMMY` immediately after the start, before the user input, in order not to burden both the application server and the database server with requests that are not authorized afterwards anyway.
+For example, a report displays data for a customer in a sales organization. The report is provided with a Z authorization object to check whether the user is allowed to see this customer. Here, the authorization object can be checked against dummy objects the first time it is called (INITIALIZATION in the report). If this fails, the user doesn't need to bother finding a combination that works.
 
 ```abap
 " Vollständige Berechtigungsprüfung
@@ -108,15 +108,15 @@ CASE sy-subrc.
 ENDCASE.
 ```
 
-### Berechtigungen in CDS Views
+### Permissions in CDS Views
 
-CDS Views bringen mit der Data Control Language (DCL) einen paradigmatischen Wandel in der SAP-Berechtigungslogik. Während traditionelle ABAP-Programme Autorisierungsprüfungen explizit im Code implementieren müssen, werden Berechtigungen in CDS Views deklarativ auf Datenebene definiert. DCL ermöglicht es, Berechtigungslogik direkt bei den Datenstrukturen zu definieren, anstatt sie in jeden konsumierenden Report oder jede Anwendung zu implementieren. Dies reduziert Redundanz sowie Arbeitsaufwand und erhöht die Konsistenz der Berechtigungsprüfungen erheblich.
+CDS Views bring a paradigmatic change to the SAP authorization logic with the Data Control Language (DCL). While traditional ABAP programs must implement authorization checks explicitly in code, permissions in CDS Views are defined declaratively at the data level. DCL makes it possible to define authorization logic directly on the data structures instead of implementing it in every consuming report or application. This reduces redundancy and workload and significantly increases the consistency of authorization checks.
 
-Mit der konsequenten Anwendung von DCL, durchdachten Berechtigungskonzepten und regelmäßigen Sicherheitsüberprüfungen können Sie die Vorteile von CDS nutzen.
+With the consistent use of DCL, well thought-out authorization concepts and regular security checks, you can take advantage of the advantages of CDS.
 
-Die Investition in sichere CDS-Entwicklung zahlt sich langfristig aus. Sie ermöglicht es, moderne SAP-Anwendungen zu entwickeln, die sowohl performant als auch sicher sind.
+Investing in secure CDS development pays off in the long term. It makes it possible to develop modern SAP applications that are both performant and secure.
 
-### Organisatorische Berechtigungen immer komplett prüfen
+### Always check organizational authorizations completely
 
 ```abap
 " Mehrstufige Berechtigungsprüfung
@@ -137,15 +137,15 @@ IF sy-subrc <> 0.
  ENDIF.
 ```
 
-### Sichere RFC- und Webservice-Kommunikation
+### Secure RFC and web service communication
 
-Remote Function Calls (RFC) stellen ein zentrales Kommunikationselement dar, sind jedoch nur im Zielsystem autorisierungsgeprüft. Die Verwendung von Trusted-RFC-Verbindungen erhöht hier die Gefahr unkontrollierter Funktionsaufrufe. Daher müssen RFCs:
+Remote Function Calls (RFC) represent a central communication element, but are only authorized for authorization in the target system. The use of Trusted RFC connections increases the risk of uncontrolled function calls. Therefore RFCs must:
 
-* mit abgesichert werden,
-* gezielt per Rollenvergabe autorisiert werden,
-* im Fall externer Kommunikation mit Whitelisting abgesichert werden.
+* be secured with,
+* be specifically authorized by role assignment,
+* In the case of external communication, be secured with whitelisting.
 
-Für Webservices ist besonders auf die sichere Übergabe von Parametern und eine saubere Serialisierung/Deserialisierung zu achten.
+For web services, particular attention must be paid to the secure transfer of parameters and clean serialization/deserialization.
 
 ### RFC-Funktionsbausteine absichern
 
@@ -162,18 +162,18 @@ FUNCTION z_secure_customer_read.
 
 ## Mandantensicherheit: Datentrennungen garantieren
 
-SAP-Systeme basieren auf der strikten Trennung von Mandanten. Diese Trennung wird jedoch bei unsachgemäßer Verwendung von `CLIENT SPECIFIED` aufgehoben. Programme dürfen keine mandantenübergreifenden Zugriffe enthalten, es sei denn, dies ist zwingend erforderlich und autorisiert. Die Datenintegrität und Compliance-Vorgaben erfordern es, dass Mandantengrenzen eingehalten und regelmäßig auditiert werden.
+SAP systems are based on the strict separation of clients. However, this separation is broken if `CLIENT SPECIFIED` is used improperly. Programs may not contain cross-client access unless this is absolutely necessary and authorized. Data integrity and compliance requirements require that client limits are adhered to and regularly audited.
 
-## Sichere Dateizugriffe und Pfadtraversal-Schutz
+## Secure file access and path traversal protection
 
-Dateizugriffe sind besonders kritisch, da sie direkt auf das Dateisystem des Servers zugreifen. ABAP bietet hierzu `OPEN DATASET`, `READ`, `TRANSFER` usw., die alle über das Objekt `S_DATASET` abgesichert sind. Schutzmaßnahmen beinhalten:
+File accesses are particularly critical because they access the server's file system directly. ABAP offers `OPEN DATASET`, `READ`, `TRANSFER` etc., all of which are secured via the object `S_DATASET`. Protective measures include:
 
-* Nutzung von `AUTHORITY_CHECK`
+* Use of `AUTHORITY_CHECK`
 * Verwendung logischer Dateinamen (Transaktion FILE)
-* Vermeidung von Directory Traversal durch das Blockieren von „..“ oder `/`
-* Pflegen der Tabelle `SPTH`
+* Avoiding directory traversal by blocking ".." or `/`
+* Maintain table `SPTH`
 
-Zusätzlich sollten Dateiuploads/-downloads nur über Dialogfunktionen der `CL_GUI_FRONTEND_SERVICES` erfolgen, um eine Sicherheitsprüfung auf der Client-Seite zu ermöglichen.
+In addition, file uploads/downloads should only take place via dialog functions of the `CL_GUI_FRONTEND_SERVICES` in order to enable a security check on the client side.
 
 **Pfadvalidierung implementieren**
 
@@ -197,4 +197,4 @@ lv_safe_path = |/secure/upload/{ p_filename }|.
 ```
 
 ## Generelles
-Generell sollten aktuelle Techniken in anderen Sprachen immer darauf geprüft werden, ob und in welcher Weise sie in ABAP relevant sind. Bei manchen Techniken verlagert sich das Risiko, aber es bleibt gleich hoch.
+In general, current techniques in other languages ​​​​should always be checked to see whether and in what way they are relevant in ABAP. With some techniques the risk shifts but remains the same.

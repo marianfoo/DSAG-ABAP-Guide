@@ -1,179 +1,179 @@
 ---
 layout: page
-title: Künstliche Intelligenz
+title: Artificial intelligence
 permalink: /artificial-intelligence/
 nav_order: 14
 ---
 
 {: .no_toc}
-# Generative künstliche Intelligenz (genAI)
+# Generative artificial intelligence (genAI)
 
 1. TOC
 {:toc}
 
-## KI in der Entwicklung - Ein Thema mit großer Bedeutung und Dynamik
+## AI in development - A topic of great importance and dynamics
 
-Das Thema generative KI (im Folgenden in Kurzform KI genannt) ist aktuell *das* zentrale Thema, an dem man auch in der SAP-Entwicklung nicht mehr vorbeikommt. Produkte/Lösungen wie ChatGPT,  Microsoft Copilot, Google GEMINI und natürlich SAP selbst mit Joule werden überall diskutiert und finden (künftig) in zahlreichen Lösungen ihre praktische Anwendung. Auch in der Softwareentwicklung werden diese Lösungen eingesetzt, sogar in der ABAP Entwicklung gibt es entsprechende Möglichkeiten der KI-Unterstützung. 
+The topic of generative AI (hereinafter referred to as AI for short) is currently *the* central topic that can no longer be avoided in SAP development. Products/solutions such as ChatGPT, Microsoft Copilot, Google GEMINI and of course SAP itself with Joule are discussed everywhere and will (in the future) find their practical application in numerous solutions. These solutions are also used in software development; there are even corresponding AI support options in ABAP development. 
 
-Die Entwicklung in diesem Bereich geht rasant von statten und in kurzen Zyklen stehen immer neuere Features und Möglichkeiten zur Verfügung - die Ergebnisse werden immer besser. Eine konkrete Prognose, wie es über die nächsten (nicht Jahre sondern) Wochen weitergeht, lässt sich sehr schwer treffen. 
+Development in this area is happening rapidly and newer features and options are becoming available in short cycles - the results are getting better and better. It is very difficult to make a concrete forecast as to what will happen over the next (not years but) weeks. 
 
-Ein prominentes Beispiel hierfür ist die jüngst angekündigte Integrationsmöglichkeit von MCP-Servern (u.a. auch für den Kontext SAP Dokumentation und auch ABAP) deren Potenzial hoch scheint, aber noch eher schwer zu greifen ist. Auch Vibe Coding war auf der SAP TechEd 2025 überraschend stark vertreten - ein weiterer Ausblick in eine mögliche Zukunft (auch für ABAP?).
+A prominent example of this is the recently announced integration option for MCP servers (including for the SAP documentation and ABAP context), the potential of which seems high, but is still rather difficult to grasp. Vibe Coding was also surprisingly well represented at SAP TechEd 2025 - another glimpse into a possible future (also for ABAP?).
 
-Trotz aller Ungewissheiten wollen wir in diesem Kapitel versuchen, Ihnen (Stand heute, SAP TechEd 2025) eine Hilfestellung zur Entscheidungsfindung bzgl. Nutzung/Anwendung von KI in der Softwareentwicklung mit SAP zu geben. Wir stellen deswegen bewusst nicht alle verfügbaren Softwarelösungen vor und gehen auch nicht ins Detail. Als Leitfaden wollen wir Ihnen generelle Hinweise und mögliche Anwendungsszenarien aufzeigen.  
+Despite all the uncertainties, in this chapter we want to try to give you (as of today, SAP TechEd 2025) assistance in making decisions regarding the use/application of AI in software development with SAP. We therefore deliberately do not present all available software solutions or go into detail. As a guide, we want to show you general information and possible application scenarios.  
 
-KI stellt Werkzeuge zur Verfügung die dabei helfen bessere Software schneller zu entwickeln. Auch wenn die KI sich rasant weiterentwickelt, wird die KI den menschlichen Entwickler nicht ersetzen können. Als Grundlage guter Entwicklung ist auch mit KI ein gutes Wissen zu moderner Softwareentwicklung unabdingbar. Die KI kann in der Entwicklung in den verschiedenen Phasen der Softwareentwicklung unterstützen. Hierzu geben wir Ihnen ein paar Beispiele in denen der Einsatz von KI Effizienzgewinne bringt.
-
-
-## Volle Verantwortung bzgl. KI-Ergebnis, aber auch Einsatzgebiet beim Entwickler
-
-Vorweg sind uns als Autoren ein paar grundlegende Aspekte sehr wichtig, auf die wir hinweisen möchten. 
-
-Nach heutigem Wissensstand sind wir als Autoren fest davon überzeugt, dass KI den menschlichen Entwickler nicht ersetzen wird. Als Grundlage guter Entwicklung ist auch mit KI ein fundiertes Wissen rund um moderne Softwareentwicklung unabdingbar. KI kann in der Entwicklung in den verschiedenen Phasen der Softwareentwicklung *unterstützen*. Hierzu zeigen wir in späteren Kapiteln konkrete Einsatzszenarien mit Beispielen auf, in denen der Einsatz von KI Effizienzgewinne bewirken kann.
-
-Ein weiterer sehr wichtiger Aspekt liegt in der konkreten Verwendung potentieller KI-Unterstützung für den Entwickler. Das Handwerk der Programmierung und Software-Entwicklung ist komplex. Selbst mit jahr(zehnt)elanger Erfahrung vergeht kaum ein Tag, an dem wir nicht etwas dazulernen können. Unabhängig davon, ob man seinen Schwerpunkt in Entwicklung, Architektur oder Design sieht - die Herangehensweise und Umsetzung mit einzelnen Tools, um zur Lösung einer Fragestellung zu kommen ist sehr individuell. Mit anderen Worten: Jeder (ABAP) Entwickler hat eigene Präferenzen und entwickelt/analysiert auf persönliche Art und Weise nach eigenen Erfahrungswerten. 
-
-Warum ist dies wichtig? Es wird nicht funktionieren, KI-Unterstützung mit der Motivation auszurollen, dass dies nun jeder im Unternehmen einsetzen *muss*, um eine Effizienzsteigerung von xy % zu erreichen (und im schlimmsten Fall, dies auch noch einzuplanen). Der Großteil der Entwickler wird sich dies (aus unserer Sicht zu Recht) nicht vorschreiben lassen. Was kann also funktionieren? Es ist wichtig bei den Kollegen ein Bewusstsein bzgl. der neuen Möglichkeiten zu schaffen - sinnvolle Anwendungsfälle aufzuzeigen, die dem Entwickler potentiell helfen können. Echte Relevanz im Arbeitsalltag eines Entwicklers wird KI nur dann bekommen, wenn der Entwickler vom Nutzen überzeugt ist und für sich persönlich den Mehrwert erkennt.  
-
-Eng mit diesem Punkt verbunden ist der letzte Aspekt, auf den wir im Vorfeld hinweisen möchten: Verantwortung. Nutzt der Entwickler KI, um etwas (z.B. Code, Unit Tests, RAP Objekte o.ä.) zu generieren, so bleibt die Verantwortung über dem generierten Artefakt weiterhin beim Entwickler. Potentielle Fehler, inperformante Anfragen, Sicherheitslücken usw. fallen am Ende auf den Entwickler zurück - "das wurde (KI-)generiert" spricht niemanden frei von Schuld. Allein unter diesem Aspekt möchten wir nochmals darauf hinweisen, dass aus unserer Sicht jeder Kollege individuell frei entscheiden (dürfen) sollte, ob und in welchem Umfang KI-Unterstützung für den individuellen Task zum Einsatz kommen soll.   
+AI provides tools that help develop better software faster. Even though AI is developing rapidly, AI will not be able to replace human developers. As a basis for good development, good knowledge of modern software development is essential, even with AI. AI can support development in the various phases of software development. We will give you a few examples in which the use of AI brings efficiency gains.
 
 
-## Hilfestellungen für die Entscheidungsfindung zum Einsatz von KI und KI-Tools
+## Full responsibility for the AI ​​result, but also the area of ​​application for the developer
 
-Bevor der Einsatz von KI im Bereich der Entwicklung erfolgen kann, müssen wichtige Fragestellungen beleuchtet, geklärt und zur Entscheidungsfindung herangezogen werden. Dieser Punkt ist von Unternehmen zu Unternehmen sehr unterschiedlich - im Folgenden finden Sie ein paar potentiell wichtige Fragestellungen: 
+First of all, there are a few fundamental aspects that are very important to us as authors and that we would like to point out. 
 
-- Welche Sicherheitsanforderungen werden an die KI gestellt?
+Based on current knowledge, we as authors are firmly convinced that AI will not replace human developers. As a basis for good development, in-depth knowledge of modern software development is essential, even with AI. AI can *assist* in development in the various phases of software development. To this end, in later chapters we will show concrete application scenarios with examples in which the use of AI can bring about efficiency gains.
+
+Another very important aspect lies in the specific use of potential AI support for the developer. The craft of programming and software development is complex. Even with years (decades) of experience, hardly a day goes by without us learning something new. Regardless of whether you see your focus as development, architecture or design - the approach and implementation with individual tools to solve a problem is very individual. In other words: Every (ABAP) developer has their own preferences and develops/analyses in a personal way based on their own experience. 
+
+Why is this important? It will not work to roll out AI support with the motivation that everyone in the company *must* use it in order to achieve an increase in efficiency of xy% (and in the worst case, to plan for it). The majority of developers will not allow this to be dictated to them (and rightly so, in our opinion). So what can work? It is important to create awareness among colleagues about the new possibilities - to point out useful use cases that can potentially help the developer. AI will only become truly relevant in a developer's everyday work if the developer is convinced of its benefits and personally recognizes the added value.  
+
+Closely related to this point is the last aspect that we would like to point out in advance: responsibility. If the developer uses AI to generate something (e.g. code, unit tests, RAP objects, etc.), responsibility for the generated artifact remains with the developer. Potential errors, underperforming requests, security gaps, etc. ultimately fall back on the developer - "that was (AI) generated" doesn't absolve anyone of guilt. From this perspective alone, we would like to point out again that, in our view, every colleague should (be allowed to) decide individually whether and to what extent AI support should be used for their individual task.   
+
+
+## Support for decision-making on the use of AI and AI tools
+
+Before AI can be used in the area of ​​​​development, important questions must be illuminated, clarified and used for decision-making. This point varies greatly from company to company - below you will find a few potentially important questions: 
+
+- What security requirements are placed on the AI?
   - Private Space vs. Public Space
-    - Private Space: KI-Modelle und -Daten werden geschützt und sind vor unbefugtem Zugriff abgesichert
-    - Public Space: AI-Systeme und -Daten sind für die breite Öffentlichkeit zugänglich wo ist hier die Datenhaltung - in der EU?
+    - Private Space: AI models and data are protected and secured against unauthorized access
+    - Public Space: AI systems and data are accessible to the general public. Where is the data storage here - in the EU?
 
-- Welche Modelle werden verwendet?
+- Which models are used?
   - LLM Large Language Model
     - ML Machine Learning
     - Deep Learning
     - Neuronale Netze
-    - Andere, wenn ja welche?
+    - Others, if so which ones?
 
-- Werden Third-Party AI Produkte verwendet, ja ja welche?
-- Welche Datenbasis wurde/wird für das Trainieren verwendet?
-- Werden eigene Unternehmensdaten für das Trainieren der Modelle verwendet und wie wird sichergestellt, dass die Daten „beim Unternehmen verbleiben“?
-- Erfüllt die Lösung geltenden Regelungen/gesetzliche Vorgaben (z.B. EU AI Act, DSGVO/GDPR, ... )  
-- Wie ist die KI-Lösung gemäß den [EU Kritikalitätsstufen](https://www.trail-ml.com/blog/eu-ai-act-how-risk-is-classified) (minimales/kein Risiko, Begrenzt, Hoch, Inakzeptabel) eingruppiert?
-- Wird sichergestellt, dass die Lösung keine urheberrechtlich geschützten Daten oder Inhalte verwendet? Wie wird dies sichergestellt?
-- Kann die Speicherung von Prompts deaktiviert werden? Wo werden die Prompts gespeichert?
-- Hat das Unternehmen welches die Lösung entwickelt hat/vertreibt ein „AI-Ethik-Fundament“, beispielhaft sei hier die SAP genannt „[KI Ethik Handbuch](https://www.sap.com/germany/products/artificial-intelligence/ai-ethics.html)“
-- Was ist der Inhalt? Wie passt dieser auf die eigene Unternehmenskultur oder gar mit dem eigenen AI Ethik Fundament?
+- Are third-party AI products used, yes which ones?
+- Which database was/is used for training?
+- Is your own company data used to train the models and how is it ensured that the data “remains with the company”?
+- Does the solution meet applicable regulations/legal requirements (e.g. EU AI Act, DSGVO/GDPR, ...)  
+- How is the AI ​​solution classified according to the [EU criticality levels](https://www.trail-ml.com/blog/eu-ai-act-how-risk-is-classified) (Minimal/No Risk, Limited, High, Unacceptable)?
+- Is it ensured that the solution does not use copyrighted data or content? How is this ensured?
+- Can prompt storage be disabled? Where are the prompts stored?
+- Does the company that developed/sells the solution have an “AI ethics foundation”, for example the SAP called “[KI Ethik Handbuch](https://www.sap.com/germany/products/artificial-intelligence/ai-ethics.html)”
+- What is the content? How does this fit with your own corporate culture or even with your own AI ethics foundation?
 
-Neben diesen Fragestellungen birgt der Einsatz von KI auch Themen- bzw. Problemfelder wie man mit ethischen Bedenken der aus den Trainingsdaten übernommenen „Voreingenommenheit“ von KI Modellen (Schlagwort ist hier der sogenannte BIAS) umgeht bzw. wie man dieser begegnet/entgegnet.  
+In addition to these questions, the use of AI also raises issues and problem areas such as how to deal with ethical concerns about the “bias” of AI models adopted from the training data (keyword here is the so-called BIAS) or how to counter/counter them.  
 
-Ein wichtiger Aspekt ist bei Nutzung von KI ist das Thema der Ergebnisprüfung. Von KI produzierte Ergebnisse können algorithmische Verzerrungen („Halluzinationen“) enthalten und/oder fehlerhaft sein. Es ist wichtig, dass derartige Ergebnisse durch sachkundige und erfahrene Entwickler überprüft werden. Dies ist nicht trivial - z.B. das Ergebnis einer [Studie der Purdue University, West Lafayette, USA](https://dl.acm.org/doi/pdf/10.1145/3613904.3642596) im Rahmen der Konferenz CHI 2024 zeigt, dass 39% der Fehler im Ergebnis einer KI unerkannt geblieben sind, da die Fragen „höflich“ beantwortet wurden. Deshalb empfehlen wir die Ergebnisse sachlich und besonnen zu prüfen und zu validieren.
+An important aspect when using AI is the issue of checking results. Results produced by AI may contain algorithmic biases (“hallucinations”) and/or be incorrect. It is important that such results are verified by knowledgeable and experienced developers. This is not trivial - e.g. the result of a [Study by Purdue University, West Lafayette, USA](https://dl.acm.org/doi/pdf/10.1145/3613904.3642596) as part of the CHI 2024 conference shows that 39% of the errors in the results of an AI remained undetected because the questions were answered “politely”. We therefore recommend checking and validating the results objectively and prudently.
 
-## SAP AI Roadmaps und Tools für die Entwicklung
+## SAP AI roadmaps and tools for development
 
 {: .note }
-Wie bereits erwähnt, entwickelt sich das Umfeld und auch die verfügbaren Features im Kontext KI rasend schnell. Aus diesem Grund wollen wir ihnen bzgl. Joule for Developers [die SAP Roadmap](https://roadmaps.sap.com/board?PRODUCT=73554900100800006341&range=CURRENT-LAST) empfehlen, um die jüngsten und künftigen Entwicklungen zu prüfen.  
+As already mentioned, the environment and the available features in the context of AI are developing rapidly. For this reason, we would like to recommend Joule for Developers [the SAP roadmap](https://roadmaps.sap.com/board?PRODUCT=73554900100800006341&range=CURRENT-LAST) to check recent and future developments.  
 
 
-### Aktueller Stand (SAP TechEd 2025) KI-Unterstützung im SAP Umfeld
+### Current status (SAP TechEd 2025) AI support in the SAP environment
 
-SAP stellt mit *SAP Joule for Developers* ein zentrales Offering für das gesamte SAP Build Portfolio bereit. 
+With *SAP Joule for Developers*, SAP provides a central offering for the entire SAP build portfolio. 
 
 ![SAP Joule for Developers add-on](./img/joule_for_developers_addon.png)
 
 Quelle SAP TechEd 2025 – AD104 – Boost your ABAP development with SAP Joule for Developers
 {: .img-caption}
 
-Für ABAP wird die entsprechende Komponente offiziell als "SAP Joule for Developers, ABAP AI capabilities" bezeichnet und ist nativ in Eclipse über ADT integriert. Dies ist aus Sicht der Autoren ein fundamentaler Vorteil gegenüber alternativen Werkzeugen, da der Kontext (z.B. ein konkretes RAP Objekt) besser integriert werden kann.
+For ABAP, the corresponding component is officially called "SAP Joule for Developers, ABAP AI capabilities" and is natively integrated into Eclipse via ADT. From the authors' point of view, this is a fundamental advantage over alternative tools, as the context (e.g. a concrete RAP object) can be better integrated.
 
-SAP unterscheidet bei SAP Joule for Developers drei primäre Bereiche der KI-Unterstützung im ABAP Entwicklungsumfeld. Im Folgenden finden Sie neben Abgrenzung und Erklärung der Features ebenso Informationen bzgl. deren Verfügbarkeit. Bitte beachten Sie, dass darüber hinaus der Frage der Lizenzierung zu klären ist. Prüfen Sie für Kunden Material 8019124 und für Partner 8019541.
+At SAP Joule for Developers, SAP distinguishes between three primary areas of AI support in the ABAP development environment. Below you will find a definition and explanation of the features as well as information about their availability. Please note that the issue of licensing also needs to be clarified. Check material 8019124 for customers and 8019541 for partners.
 
 - **Accelerate**
-  - Die Zielgruppe für diesen Bereich ist der ABAP Entwickler und die Steigerung seiner Effinzienz während der täglichen Arbeit. SAP unterstützt den Entwickler beispielsweise mittels:
-    - Interaktion mit KI über das "Joule Copilot" Fenster
-    - Generierung von RAP Business Objekten (BO‘s) und Services
-    - Generierung von Unit-Tests für ABAP Klassen und Core Data Services
-    - Erläuterung von bereits existierendem (Legacy) code
-    - Hilfe bei Code Snippets, Codeanalysen, Dokumentation, vorhanden Hilfsinhalte und Code Prognosen ("Predective code completion")
-  - Features im Kontext Accelerate sind auf SAP BTP ABAP Environment, SAP Cloud ERP und SAP Cloud ERP private 2025 (ehemals SAP S/4HANA, private Cloud) verfügbar. Frühere Releases von SAP Cloud ERP private [können die Features per Side-by-Side konsumieren](https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/abap-ai-chapter-2/ba-p/14210568). Nach aktuellem Stand sind die Features auf On-Premise nicht verfügbar und dies ist auch seitens SAP nicht angedacht.   
+  - The target group for this area is the ABAP developer and increasing their efficiency during their daily work. SAP supports the developer, for example, by:
+    - Interact with AI via the "Joule Copilot" window
+    - Generation of RAP business objects (BO's) and services
+    - Generation of unit tests for ABAP classes and Core data services
+    - Explanation of existing (legacy) code
+    - Help with code snippets, code analysis, documentation, existing help content and code predictions (“predective code completion”)
+  - Features in the Accelerate context are available on SAP BTP ABAP Environment, SAP Cloud ERP and SAP Cloud ERP private 2025 (formerly SAP S/4HANA, private Cloud). Previous releases of SAP Cloud ERP private [can consume the features side-by-side](https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/abap-ai-chapter-2/ba-p/14210568). According to the current status, the features are not available on-premise and this is not planned by SAP.   
 
 - **Transform**
-  - Der ABAP Entwickler soll bei der Migration von kundeneigenem Code nach ABAP Cloud und einem Clean Core unterstützt werden. Sowohl existierender Code als auch Meldungen aus dem ATC Check werden erklärt. Darüber hinaus bietet die KI Vorschläge zur Anpassung/Überführung von bestehendem Coding. 
-  - Die Verfügbarkeit des Transform Anwendungsfalls ist nach aktuellem Wissenstand bzgl. SAP Cloud ERP private analog zu den Accelerate Features. 
+  - The ABAP developer should be supported in migrating customer-owned code to ABAP Cloud and a Clean Core. Both existing code and messages from the ATC check are explained. In addition, the AI ​​offers suggestions for adapting/transferring existing coding. 
+  - According to current knowledge regarding SAP Cloud ERP private, the availability of the Transform use case is analogous to the Accelerate features. 
 
 - **Empower**
-  - Dieser Hauptbereich befasst sich mit der Integration von KI in Applikationen. D.h. die Zielgruppe bzgl. KI ist hierbei der Enduser. Der ABAP Entwickler hat die Aufgabe, diese zu in die Applikation zu implementieren. SAP stellt hierfür das ABAP AI SDK mittels "ISLM" (Intelligent scenario lifecycle management) zur Verfügung. Es möglicht einen standardisierten Zugriff auf den generative AI hub innerhalb des SAP AI Core auf der SAP BTP.  
-  - Der Empower-Bereich ist sowohl auf SAP BTP ABAP Environment, SAP ERP Cloud (inkl. private) als auch S/4HANA On-Premise per Downport bis Release 2021 verfügbar (näheres finden Sie im SAP Hinweis 3513374).
+  - This main area deals with the integration of AI into applications. This means that the target group for AI is the end user. The ABAP developer has the task of implementing this into the application. SAP provides the ABAP AI SDK using “ISLM” (Intelligent scenario lifecycle management). It enables standardized access to the generative AI hub within the SAP AI Core on the SAP BTP.  
+  - The Empower area is available on both SAP BTP ABAP Environment, SAP ERP Cloud (incl. private) and S/4HANA On-Premise via downport until release 2021 (for more information, see SAP Note 3513374).
 
-Einen Überblick bzgl. der aktuellen Roadmap zum heutigen Zeitpunkt (SAP TechEd 2025) findet sie auf folgender Folie: 
+You can find an overview of the current roadmap as of today (SAP TechEd 2025) on the following slide: 
 ![Roadmap](./img/joule_for_developers_road_map.png)
 
 Aktuelle Roadmap
 {: .img-caption}
 
 
-## Unterstützung bei der ABAP Entwicklung durch alternative KI Werkzeuge
+## Support with ABAP development through alternative AI tools
 
-Der Einsatz offizieller SAP Tools wie "Joule für Developers" erfordern wie im vorhergegangenen Kapitel angedeutet den Einsatz von Cloud Systemen wie BTP oder zumindest einen Systembetrieb in der private Cloud in Verbindung mit entsprechenden Verträgen. Befinden Sie sich auf einem anderen SAP System, so bieten sich potenzielle Alternativen. 
+The use of official SAP tools such as "Joule for Developers" requires, as indicated in the previous chapter, the use of Cloud systems such as BTP or at least system operation in the private Cloud in conjunction with appropriate contracts. If you are on a different SAP system, there are potential alternatives. 
 
-### Verwendung von GitHub Copilot
+### Using GitHub Copilot
 
-Im März 2025 wurde beispielsweise bekanntgegeben, dass GitHub Copilot in Eclipse verfügbar ist und demnach auch ABAP unterstützt [Introducing ABAP Support in GitHub Copilot for Eclipse](https://devblogs.microsoft.com/java/introducing-abap-support-in-github-copilot-for-eclipse/).  
-Eine gute Übersicht hierzu finden Sie in der SAP-Community [Getting Started with ABAP Support in GitHub Copilot](https://community.sap.com/t5/technology-blog-posts-by-members/getting-started-with-abap-support-in-github-copilot-for-eclipse-ide/ba-p/14086717).  
+For example, in March 2025 it was announced that GitHub Copilot is available in Eclipse and therefore ABAP also supports [Introducing ABAP Support in GitHub Copilot for Eclipse](https://devblogs.microsoft.com/java/introducing-abap-support-in-github-copilot-for-eclipse/).  
+You can find a good overview of this in the SAP community [Getting Started with ABAP Support in GitHub Copilot](https://community.sap.com/t5/technology-blog-posts-by-members/getting-started-with-abap-support-in-github-copilot-for-eclipse-ide/ba-p/14086717).  
 
-Gegenüber der nativen SAP-Integration von Joule steht der KI hier allerdings zum heutigen Stand der volle SAP-Kontext nicht automatisch zur Verfügung. Der Kontext muss hier explizit über das Copilot Chatfenster in ADT definiert werden und eignet sich dadurch speziell für die Analyse von einer oder auch mehreren Klassen einer Anwendung. Folgende Möglichkeiten bietet der GitHub Copilot:  
+However, compared to Joule's native SAP integration, the full SAP context is currently not automatically available to the AI. The context must be explicitly defined here via the Copilot chat window in ADT and is therefore particularly suitable for analyzing one or more classes of an application. The GitHub Copilot offers the following options:  
 
 - **Code Completion**.
-Stand Ende 2025 kann dieses Feature vor allem hilfreich zur Erstellung von Kommentaren oder als etwas smartere Code Completion eingesetzt werden. Die vorgeschlagenen Code Fragmente sind auf jeden Fall intensiv auf Sinnhaftigkeit und Richtigkeit zu prüfen. Hier hängt die Ergebnisqualität auch wieder massiv vom Einsatz von Clean-Code ab. Je verständlicher und lesbarer der Code ist und je erklärender Zeilenkommentare sind, desto eher versteht die KI den Kontext und desto sinnvoller können die Vorschläge generiert werden. Daher steigert diese Funktion vor allem die Effizienz von sehr erfahrenen Entwicklern, die sofort die Sinnhaftigkeit von Vorschlägen erkennen können und deren Code die notwendige Qualitätseigenschaften besitzt.
+As of the end of 2025, this feature can be used particularly helpfully for creating comments or as a somewhat smarter code completion. In any case, the proposed code fragments must be checked intensively for meaningfulness and correctness. Here, the quality of the results depends heavily on the use of Clean code. The more understandable and readable the code is and the more explanatory line comments are, the more likely the AI ​​​​is to understand the context and the more useful the suggestions can be generated. Therefore, this function primarily increases the efficiency of very experienced developers who can immediately recognize the usefulness of suggestions and whose code has the necessary quality properties.
 
 - **Code Explanation / Code Review**
-Code Artefakte die im Kontext gelistet werden, können von Copilot erläutert werden, um ein besseres Verständnis über die Funktion zu erlangen. Als Erweiterung kann Copilot ein Review über eine oder mehrere Codeartefakte durchführen und so eine qualitätssichernde Aufgabe übernehmen, die wiederum den Entwickler entlasten. Hier liegen die Erfolgsfaktoren in gutem "Prompt-Engineering" durch den Anwender. Die gewonnenen Erkenntnisse können verwendet werden, um Defizite und Schwachstellen des Codes zu identifizieren, dessen Qualitätslevel zu bestimmen und schließlich Maßnahmen zur Schulung und Weiterbildung der Entwickler ableiten zu können.
+Code artifacts listed in context can be explained by Copilot to gain a better understanding of the function. As an extension, Copilot can carry out a review of one or more code artifacts and thus take on a quality assurance task, which in turn relieves the developer's workload. The success factors here lie in good “prompt engineering” by the user. The knowledge gained can be used to identify deficits and weak points in the code, to determine its quality level and finally to derive measures for training and further education of the developers.
 
-- **Verbesserung von Code**
- Während das Review den Fokus auf Verständnis und Qualitätslevel der Anwendung bzw. einzelner Klassen hat, kann Copilot auch verwendet werden, um einzelne Teile des Codes verbessern zu lassen. Als Beispiel sei hier die Optimierung einer komplexen If-Else-Endif Sektion mit Ersatz durch neue Statements oder Zusammenfassung der Fehlerbehandlung in Try-Catch Blöcken genannt. Anschließend kann eine Prüfung der Verbesserung durch Prompting durchgeführt werden. In Ergänzung des Syntaxchecks liefert Copilot neben Aussagen zur Richtigkeit auch eine Erklärung, warum die Richtigkeit gegeben ist.
+- **Improvement of code**
+ While the review focuses on the understanding and quality level of the application or individual classes, Copilot can also be used to improve individual parts of the code. An example here is the optimization of a complex If-Else-Endif section with replacement by new statements or summary of error handling in try-catch blocks. A check of the improvement can then be carried out through prompting. In addition to the syntax check, Copilot not only provides statements about correctness but also an explanation as to why the correctness is given.
 
-- **Weitere Aspekte**
-Neben den genannten Punkten bietet Copilot weitere Unterstützung bei Erstellung von Unit Tests oder auch bei der Fehlersuche. Neben dem Chat, der keine Änderung im Code vornimmt, gibt es auch einen Agent Mode der Code, ähnlich wie Joule, erstellt oder ändert. Da auch hier mit laufenden Änderungen und Verbesserungen zu rechnen ist, verweisen wir an dieser Stelle auf die offizielle Dokumentation.
+- **Other aspects**
+In addition to the points mentioned, Copilot offers further support in creating unit tests or troubleshooting. In addition to chat, which does not make any changes to the code, there is also an agent mode that creates or changes code, similar to Joule. Since ongoing changes and improvements are to be expected here, we refer you to the official documentation at this point.
 
 - **Custom Instructions**
-Eine wichtige Funktion sind die Custom instructions. Hier kann ein Prompt in den Einstellungen von Copilot hinterlegt werden, der grundsätzliche Definitionen und Anweisungen enthält, die Bestandteil bei jedem im Chatfenster übertragenen Prompt sind. So können Vorgaben zu Reviews, Analysen usw. vereinfacht werden, da allgemeingültige Spezifika im "Custom instruction prompt" definiert sind.
+An important function is the custom instructions. A prompt can be stored here in the Copilot settings, which contains basic definitions and instructions that are part of every prompt transmitted in the chat window. In this way, specifications for reviews, analyzes etc. can be simplified because generally applicable specifications are defined in the “Custom instruction prompt”.
 
-Auch wenn GitHub Copilot nicht die tiefe Integration von Joule besitzt, ist es ein potenziell hilfreiches Werkzeug, um gute Entwickler schneller und besser zu machen und vor allem mit der Qualitätssicherung betraute Personen wie Lead-Developer zu befähigen, in kürzerer Zeit einen besseren Einblick in die Anwendungen zu erhalten. Darauf basierend können zielführende Maßnahmen wie Code-Korrekturen oder auch Schulungen im Entwicklerteam abgeleitet werden.
+Although GitHub Copilot does not have the deep integration of Joule, it is a potentially useful tool to make good developers faster and better and, most importantly, to enable quality assurance people such as lead developers to gain better insight into applications in less time. Based on this, targeted measures such as code corrections or training in the development team can be derived.
 
-### Weitere Alternativen
+### More alternatives
 
-Wir möchten an dieser Stelle erwähnen, dass GitHub Copilot *eine" mögliche Alternative zu SAP Joule for Developers darstellt - es existieren und entstehen darüber hinaus kontinuierlich weitere Möglichkeiten, Amazon Q Developer um eine zu nennen. Wir erheben an dieser Stelle als Autoren keinen Anspruch auf Vollständigkeit und haben Github Copilot ausgewählt, um ihnen eine weitere Möglichkeit etwas detaillierter aufzuzeigen.  
+We would like to mention at this point that GitHub Copilot represents *a" possible alternative to SAP Joule for Developers - other options exist and are continually being created, including Amazon Q Developer. We as authors make no claim to completeness at this point and have selected Github Copilot to show you another option in more detail.  
 
 {: .important }
-Wie auch bei "Joule for Developers" sind alle Ergebnisse der KI vom Entwickler zu validieren. Die Verantwortung der Richtigkeit liegt beim Verwender des KI-Tools. Daher ist einerseits sicherzustellen, dass die Mitarbeiter entsprechend geschult und sensibilisiert wurden. Darüber hinaus können potentielle Prozesse etabliert werden, um sicherstellen, dass KI generierte Ergebnisse nicht ungeprüft verwendet werden können (Stichwort "Human-in-Command" bzw. "Human-in-the-loop").
+As with “Joule for Developers”, all AI results must be validated by the developer. The responsibility for accuracy lies with the user of the AI ​​tool. Therefore, on the one hand, it must be ensured that employees have been appropriately trained and sensitized. In addition, potential processes can be established to ensure that AI-generated results cannot be used unchecked (keyword “human-in-command” or “human-in-the-loop”).
 
 
-## Weiterführende Anwendungsfälle für generative KI in der Softwareentwicklung
+## Further use cases for generative AI in software development
 
-Neben den beschriebenen Möglichkeiten zur Steigerung der Effizienz während der Implementierungsphase kann KI auch in weiteren Phasen der Software-Entwicklung zum Einsatz kommen. Anhand einiger Beispielen möchten wir Ihnen erläutern, in welchen Bereichen generative KI bereits heute unterstützend eingesetzt werden kann und welchen Nutzen Sie daraus gewinnen können. Da es verschiedenste Tools gibt und die o.g. Fragestellungen in Unternehmen zu unterschiedlichen Lösungen und Anbieter führen können, nennen wir hier keine konkreten Tools, sondern möchten Ihnen den Anwendungsfall beschreiben und Ihnen Inpiration geben, auch chatbasierte Tools in der Entwicklung einzusetzen.
+In addition to the described options for increasing efficiency during the implementation phase, AI can also be used in further phases of software development. Using a few examples, we would like to explain to you in which areas generative AI can already be used to support today and what benefits you can gain from it. Since there are a wide variety of tools and the above-mentioned questions in companies can lead to different solutions and providers, we do not name any specific tools here, but would like to describe the use case and give you inspiration to also use chat-based tools in development.
 
-### KI zur Erstellung, Prüfung und Aufbereitung von Kundenanforderungen
+### AI for creating, checking and preparing customer requirements
 
-KI eignet sich besonders gut zur Texterstellung, Prüfung und Aufbereitung. Gute Anwendungen basieren auf gut definierten Anforderungen. Um gute Anforderungen zu erhalten, können Sie von Fachanwendern erstellte Anforderungen, die in strukturierter Form vorliegen oder erstellt werden sollen durch KI-Tools analysieren, auf Logik und Konsistenz prüfen und ggf. aufbereiten und strukturieren zu lassen. Hier kann Ihnen die Stärke von KI auch ohne SAP-Integration helfen, um die Basis für Softwareentwicklung auf ein stabiles Fundament zu stellen.  
+AI is particularly suitable for text creation, checking and preparation. Good applications are based on well-defined requirements. In order to obtain good requirements, you can analyze requirements created by specialist users that exist or are to be created in a structured form using AI tools, check them for logic and consistency and, if necessary, have them prepared and structured. The power of AI can help you here, even without SAP integration, to put the basis for software development on a stable foundation.  
 
-### KI als Werkzeug bei Dokumentationserstellung
+### AI as a tool for documentation creation
 
-Ein Anwendungsszenario ist die unterstützende Erstellung der Dokumentation von Eigenentwicklungen. So können aktuell verfügbare Chatbasierte Tools vom Entwickler oder dem für die Entwicklung zuständigen Mitarbeiter verwendet werden, um die technische Dokumentation der Anwendung zu erstellen. Dazu muss der generativen KI die Aufgabe (also das gewünschte Ergebnis: Erstelle eine technische Dokumentation), der Kontext und Zweck der Anwendung mitgeteilt werden. Für die technischen Details wird der Code der wichtigsten Klassen, die die Geschäftslogik enthält und ergänzende Informationen in das Chat Tool übertragen. Hierbei sind die Belange des Datenschutzes und ggf. eine Prüfung auf Vertraulichkeit der Anwendung zu berücksichtigen.
+One application scenario is the supporting creation of documentation for in-house developments. Currently available chat-based tools can be used by the developer or the employee responsible for development to create the technical documentation of the application. To do this, the generative AI must be told the task (i.e. the desired result: create technical documentation), the context and purpose of the application. For the technical details, the code of the most important classes, which contains the business logic and additional information, is transferred to the chat tool. The concerns of data protection and, if necessary, an examination of the confidentiality of the application must be taken into account.
 
-Sind bereits erläuternde Informationen als Kommentar oder im besten Fall als ABAP Doc in der Entwicklung enthalten, kann dies von der generativen KI für die Dokumentation herangezogen werden. Bei dieser maschinellen Dokumentationserstellung erhält man bessere Ergebnisse, wenn bei der Entwicklung der Anwendung die Clean Code Prinzipien angewendet wurden. Denn sauberer, lesbarer und für Menschen verständlicher Code kann auch von einer künstlichen Intelligenz besser analysiert werden.
+If explanatory information is already included in the development as a comment or, in the best case, as a ABAP Doc, this can be used by the generative AI for the documentation. This automated documentation creation produces better results if the Clean code principles were used when developing the application. Clean, readable and human-understandable code can also be better analyzed by artificial intelligence.
 
-Als Ergebnis des beschriebenen Vorgehens erhält man eine Beschreibung der KI-basierten Auswertung der Informationen aus dem Code. Hier wird schnell offensichtlich, inwiefern der Code die gewünschte Logik erklärbar umsetzt und an welchen Stellen manuelle Korrekturen und Ergänzungen notwendig sind. 
-Mit gutem Prompt Engineering und "Iterativem Prompting" bzw. Finetuning der erstellten Dokumentation erhält man eine gute Basis, auf der man die Dokumentation final durch manuelle Überarbeitung fertigstellen kann. Anschließend kann das Ergebnis durch die KI geprüft werden, anhand dessen Sie wiederum weitere Rückschlüsse auf die Qualität der Dokumentation ziehen können.  
-Das Ziel ist nicht primär vollautomatisch eine Dokumentation zu erhalten. Dieser Prozess hilft vielmehr bei der Erstellung einer Entwurfsversion bzw. deren Überarbeitung oder auch Finalisierung der Dokumentation, wodurch sich die Qualität erhöht und umfangreiche Tipparbeit eingespart werden kann. Erfolg- und Effizienzfaktoren sind hierbei Code-Basis und deren Struktur, Erfahrungen im Prompt Engineering und das Verständnis über die zu dokumentierende Anwendung.
+The result of the described procedure is a description of the AI-based evaluation of the information from the code. Here it quickly becomes obvious to what extent the code implements the desired logic in an explainable manner and where manual corrections and additions are necessary. 
+With good prompt engineering and "iterative prompting" or fine-tuning of the created documentation, you get a good basis on which you can finally complete the documentation through manual revision. The result can then be checked by the AI, which in turn allows you to draw further conclusions about the quality of the documentation.  
+The goal is not primarily to receive documentation fully automatically. Rather, this process helps to create a draft version or revise or finalize the documentation, which increases the quality and saves extensive typing. The success and efficiency factors here are the code base and its structure, experience in prompt engineering and an understanding of the application to be documented.
 
-## KI-Entwicklung auf der SAP BTP über ABAP hinaus
+## AI development on the SAP BTP beyond ABAP
 
-Abschließend sei im KI-Kapitel erwähnt, dass sich bzgl. KI-Entwicklung im SAP Ökosystem über ABAP hinaus ebenfalls sehr viel bewegt. Auch beispielsweise im Kontext SAP Fiori (SAPUI5) oder dem CAP Modell ermöglicht SAP zahlreiche Funktionen nahtlos integrierbar mittels VSCode. Wir erwarten mit der offiziellen Verfügbarkeit von ABAP in VSCode für die 2.Jahreshälfte 2026 ebenso spannende Entwicklungen im Kontext der KI-Integration für ABAP. 
+Finally, it should be mentioned in the AI ​​chapter that there is also a lot of movement in terms of AI development in the SAP ecosystem beyond ABAP. For example, in the context of SAP Fiori (SAPUI5) or the CAP model, SAP enables numerous functions to be seamlessly integrated using VSCode. With the official availability of ABAP in VSCode in the second half of 2026, we expect equally exciting developments in the context of AI integration for ABAP. 
 
-Unabhängig der Implementierungs-Werkzeuge rund um die etablierten Technologien, bringt SAP mit Joule Studio in der BTP die Möglichkeit, Joule Skills zu implementieren und diese innerhalb Agenten zu mächtigen Werkzeugen zu bündeln. Diese Joule Skills wiederum verwenden häufig API's aus dem Back-End die wiederum mit ABAP zu implementieren sind. Auch in diesem Kontext wird uns ABAP demnach weiterhin zumindest indirekt begleiten.  
+Regardless of the implementation tools surrounding the established technologies, SAP with Joule Studio in the BTP brings the possibility of implementing Joule skills and bundling them into powerful tools within agents. These Joule skills in turn often use API's from the backend, which in turn can be implemented with ABAP. In this context too, ABAP will continue to accompany us, at least indirectly.  
 
 
 ## Zusammenfassung (KI assistiert)
-KI wird die Anwendungsentwicklung in der SAP-Welt nachhaltig verändern – sie wird Entwickler nicht ersetzen, sondern ihre Stärken gezielt unterstützen und Routinearbeiten reduzieren.
-Wer die Chancen und Möglichkeiten generativer KI verantwortungsvoll nutzt, gewinnt an Effizienz und Qualität, ohne die eigene Kompetenz einzubüßen. Fundiertes Fachwissen, gute Architektur, sauberes Design und kritisches Denken bleiben die Grundlage jeder Entwicklung – auch und gerade im Zeitalter der KI. Entscheidend ist, dass der Mensch die Kontrolle über das Ergebnis behält und die Verantwortung dafür trägt.
+AI will permanently change application development in the SAP world - it will not replace developers, but will specifically support their strengths and reduce routine work.
+Anyone who uses the opportunities and possibilities of generative AI responsibly gains efficiency and quality without losing their own competence. Sound specialist knowledge, good architecture, clean design and critical thinking remain the basis of every development - even and especially in the age of AI. What is crucial is that people retain control over the result and take responsibility for it.
 
 {: .note }
-> Diese Zusammenfassung wurde mit Unterstützung einer generativen KI erstellt – selbstverständlich sorgfältig geprüft, überarbeitet, vom Autor finalisiert und von der KI sprachlich abgerundet.
+> This summary was created with the support of a generative AI - of course carefully checked, revised, finalized by the author and linguistically rounded off by the AI.

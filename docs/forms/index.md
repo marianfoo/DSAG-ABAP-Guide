@@ -8,4 +8,4 @@ nav_order: 8
 
 # Formulare
 
-In diesem Kapitel erfahren Sie mehr über die Formulartechnologien, welche noch relevant sind und wo die Zukunft der Formulare liegt.
+In this chapter you will learn more about the form technologies that are still relevant and where the future of forms lies.

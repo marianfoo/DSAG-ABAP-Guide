@@ -1,101 +1,101 @@
 ---
 layout: page
-title: Softwaretest mit ABAP Unit 
+title: Software test with ABAP unit 
 permalink: /testing/
 has_children: true
 nav_order: 5
 ---
 
 {: .no_toc}
-# Softwaretest mit ABAP Unit
+# Software test with ABAP Unit
 
 1. TOC
 {:toc}
 
-Wenn Software entwickelt wird, muss diese während der Entwicklung und vor der Inbetriebnahme ausgiebig getestet werden. Zum Testen von Software gibt es zahlreiche und vielfältige Methoden und Techniken. Testen ist aufwändig und wenn Software nicht sorgfältig und umfassend getestet wird, kann dies im besten Fall zu kleinen Störungen bis hin zu massiven Auswirkungen auf das Produktivsystem führen. Dies führt mitunter zu hohen Kosten im Betrieb und der Weiterentwicklung von SAP-Systemen.  
+When software is developed, it must be tested extensively during development and before commissioning. There are numerous and varied methods and techniques for testing software. Testing is time-consuming and if software is not tested carefully and comprehensively, this can, in the best case scenario, lead to small disruptions or even massive impacts on the productive system. This sometimes leads to high costs in the operation and further development of SAP systems.  
 
-Effizientes und effektives Testen muss im Softwareentwicklungsprozess so früh wie möglich erfolgen um Fehler und Probleme so früh wie möglich erkennen zu können. Mit ABAP Unit werden Tests in die frühe Phase der Softwareentwicklung integriert.
-In diesem Kapitel gehen wir darauf ein warum der Einsatz von ABAP Unit erforderlich und gewinnbringend ist, welche Herausforderungen sich ergeben und welche Rahmenbedingungen gegeben sein müssen, um ABAP Unit Tests effektiv einzusetzen.
+Efficient and effective testing must occur as early as possible in the software development process in order to be able to identify errors and problems as early as possible. With ABAP Unit, tests are integrated into the early phase of software development.
+In this chapter we will discuss why the use of ABAP Unit is necessary and beneficial, what challenges arise and what framework conditions must be in place in order to use ABAP Unit Tests effectively.
 
-Ergänzend finden Sie noch ein paar Hinweise zu weiteren Testtools und Methoden, diese werden aber nur kurz angesprochen.  
-Wenn im Folgenden von _Unit Tests_ die Rede ist, dann sind ABAP Unit Tests mit Hilfe des ABAP Unit Frameworks gemeint. Das ABAP bezieht sich lediglich auf die Besonderheiten von Unit Tests im ABAP Unit Framework. 
+In addition, you will find a few tips on other testing tools and methods, but these will only be discussed briefly.  
+When we talk about _Unit Tests_ below, we mean ABAP Unit Tests using the ABAP Unit Framework. The ABAP only refers to the special features of unit tests in the ABAP Unit Framework. 
 
 {: .important}
 > **Begriffsabgrenzung Unit Test**  
-> Unter Unit Tests werden oft verschiedene Definitionen von Tests verstanden.  
-> Wenn wir hier von Unit Tests schreiben, handelt es sich um programmierte Tests mit dem ABAP Unit Framework, die automatisiert ausgeführt werden können.  
-> Die manuelle Ausführung einzelner Code Einheiten z.B. mittels SE37 / SE24 / Reports ist kein Testen, sondern das Ausprobieren von Funktionalitäten.
+> Unit tests often mean different definitions of tests.  
+> When we write about unit tests here, these are programmed tests with the ABAP Unit Framework that can be executed automatically.  
+> Manual execution of individual code units, e.g. using SE37 / SE24 / Reports, is not testing, but rather trying out functionalities.
 
 ## Zielgruppe
 
-In diesem Kapitel möchten wir einerseits den Entscheidern und Verantwortlichen Empfehlungen und Hinweise geben, warum ABAP Unit Tests für die heutige Form der modernen ABAP Programmierung sehr wichtig ist und welchen Nutzen Sie für dieses Investment erhalten können.  
-Dieser Leitfaden dient aber auch Entwicklern und Entwicklungsverantwortlichen oder vgl. Rollen dazu, ABAP Unit Testing sinnvoll einzusetzen, oder falls es noch nicht umfangreich im Einsatz ist, den Einstieg zu erleichtern.  
-Vielleicht hilft dieser Leitfaden auch dabei sowohl Entwickler als auch Entscheider zu motivieren, ABAP Unit Tests umfangreich im Entwicklungsprozess einzusetzen und die Rahmenbedingungen dafür zu schaffen.
+In this chapter, on the one hand, we would like to give decision-makers and those responsible recommendations and information about why ABAP unit tests are very important for today's modern ABAP programming and what benefits you can get from this investment.  
+This guide also serves developers and those responsible for development or roles to help them use ABAP Unit Testing sensibly or, if it is not yet used extensively, to make it easier to get started.  
+Perhaps this guide will also help to motivate both developers and decision-makers to use ABAP unit tests extensively in the development process and to create the framework conditions for this.
 
 ## Motivation
 
-Ein wichtiger Faktor in SAP-Projekten ist die zur Verfügung stehende Zeit. Und meistens herrscht hoher Zeitdruck, wenn um die Erstellung von SAP-Anwendungen und Anpassungen geht. Die Erstellung von ABAP Unit Tests und die dazu erforderlichen softwaretechnischen Maßnahmen benötigen Zeit und Wissen. Hier entsteht ein Spannungsfeld da dies auf den ersten Blick Zielkonflikte aufwirft. Die Software soll schnell und im Projektzeitplan erstellt werden. Die Software soll aber auch allen Anforderungen entsprechen, robust und fehlertolerant, also von hoher Qualität sein.  
+An important factor in SAP projects is the time available. And there is usually a lot of time pressure when it comes to creating SAP applications and customizations. The creation of ABAP unit tests and the necessary software measures require time and knowledge. A field of tension arises here because at first glance this raises conflicting goals. The software should be created quickly and within the project schedule. The software should also meet all requirements, be robust and error-tolerant, and therefore of high quality.  
 
 > {: .Zitat }
-> Der Mitbegründer des agilen Manifests und Buchautor mehrerer Bücher zur Softwareentwicklung, Robert C. Martin sagte:  
+> Co-founder of the Agile Manifesto and author of several books on software development, Robert C. Martin said:  
 > **"The only way to go fast is, to go well."**
 
-Warum soll man Aufwand und Zeit in die Erstellung von Unit Tests investieren? Übersetzt in den ABAP-Kontext bedeutet diese Aussage, dass wer schnell sein will, gut vorgehen muss.  
-In ABAP Unit erfahrene Entwickler wissen, dass die Erstellung von Software, die mit ABAP Unit Tests abgedeckt ist, neben der höheren Qualität auch Effizienz- und Geschwindigkeitsvorteile mit sich bringt.  
-Wir möchten zu Beginn des Kapitels Ihnen die Vorteile aufzeigen und gehen im Weiteren auf die ABAP Unit Test Technik und die erforderlichen Maßnahmen und Vorgehensweisen ein.
+Why should you invest effort and time in creating unit tests? Translated into the ABAP context, this statement means that if you want to be fast, you have to act well.  
+Developers experienced in ABAP Unit know that creating software covered by ABAP Unit tests brings efficiency and speed benefits in addition to higher quality.  
+At the beginning of the chapter we would like to show you the advantages and then go into the ABAP unit test technology and the necessary measures and procedures.
 
-**Vorteile die sich durch den Einsatz von Unit Tests ergeben:**
+**Advantages that arise from the use of unit tests:**
 
-- Die Erstellung von Software, die mit Unit Tests unterlegt ist, beinhaltet, bedingt durch die erforderliche Massnahmen zur Testbarkeit, eine klare Struktur, die objektorientierten Designprinzipien folgt.
-- Software, die ABAP Unit Tests enthält hat aufgrund der architektonischen Erfordernisse wie Separation of Concerns eine bessere Struktur und Trennung der Belange (Fachliche Logik und technisches Coding). Damit ist die Software flexibler und besser anpassbar.
-- Die Entwicklung enthält ein Sicherheitsnetz, dass von Entwicklern genutzt werden kann wenn Software weiterentwickelt wird.
-- Fehler werden bereits während der Entwicklung auf dem Entwicklungssystem erkannt, dies spart Aufand in Integrations- und Anwendertest.
-- Durch die erforderliche Erstellung der Testfälle und programmatische Testdatenerstellung, werden Unklarheiten in der Anforderungsspezifikation in einer frühen Phase der Entwicklung festgestellt.
-- eine Testabdeckung durch Unit Test ermöglicht die ständige Verbesserung und das Refaktoring der Software, was den Aufbau von technischen Schulden vermeidet.
-- Wissensverteilung in Team. Durch Unit Tests werden Funktionalitäten dokumentiert, was es anderen Teammitgliedern einfacher macht, sich mit dem Coding vertraut zu machen und es anzupassen, da Unit Tests programmierte Spezifikation des Verhaltens darstellen und dazu auch ausführbar sind.
-- Sobald eine in der Produktion befindliche Anwendung erweitert oder angepasst werden muss, sind die Vorteile von ABAP Unit Tests feststellbar, da bereits während der Entwicklung über die Tests getestet werden kann. Fehler können zum frühesten Zeitpunkt erkannt werden. Durch die Tests liegen bereits Testdaten und technische Spezifikationen vor, welche die Änderung oder Erweiterung des Codes vereinfacht.
+- The creation of software that is supported by unit tests involves a clear structure that follows object-oriented design principles due to the necessary measures for testability.
+- Software that contains ABAP unit tests has a better structure and separation of concerns (professional logic and technical coding) due to architectural requirements such as separation of concerns. This makes the software more flexible and more customizable.
+- The development contains a safety net that can be used by developers when software is further developed.
+- Errors are detected during development on the development system, which saves time in integration and user testing.
+- Through the necessary creation of test cases and programmatic test data creation, ambiguities in the requirements specification are identified at an early phase of development.
+- Test coverage through unit testing enables continuous improvement and refactoring of the software, which avoids the build-up of technical debt.
+- Distribution of knowledge within the team. Unit tests document functionality, making it easier for other team members to familiarize themselves with the coding and adapt it, since unit tests represent programmed specification of behavior and are also executable.
+- As soon as an application in production needs to be expanded or adapted, the advantages of ABAP unit tests become apparent, as testing can be carried out using the tests during development. Errors can be detected at the earliest point. The tests already provide test data and technical specifications, which make it easier to change or expand the code.
 
-Die oben genannten Punkte führen im Ergebnis dazu, dass der Testaufwand der Anwendung durch die Fachabteilung deutlich reduziert wird. Anpassungen und Erweiterungen der Anwendungen werden durch die Implementierung von Unit Tests deutlich vereinfacht und vor allem sicherer, da neue Fehler bereits durch die bestehenden Unit Tests während der Entwicklung entdeckt werden und somit in den Anwendertests auf dem Testsystem auftreten. Dies sind vor allem Fehler in der Struktur oder Flüchtigkeitsfehler, die unvermeidlich sind.  
+The above-mentioned points result in the application testing effort by the specialist department being significantly reduced. Adjustments and extensions to applications are significantly simplified and, above all, safer through the implementation of unit tests, since new errors are already discovered by the existing unit tests during development and thus appear in the user tests on the test system. These are mainly errors in structure or careless errors, which are unavoidable.  
 
-Neben den generellen Vorteilen, die sich positiv auf den Aufwand und die Organisation auswirken, bringt der Einsatz von Unit Tests aber auch Vorteile für den Entwickler, der zuerst Aufwand und Energie in die Erstellung von Unit Tests stecken muss und ggf. auch deswegen gegen Widerstände ankämpfen muss.
+In addition to the general advantages that have a positive effect on effort and organization, the use of unit tests also brings advantages for the developer, who first has to put effort and energy into creating unit tests and may therefore have to fight against resistance.
 
-**Vorteile für den Entwickler:**
+**Benefits for the developer:**
 
-- Durch die Notwendigkeit Testdaten zu programmieren, erhält der Entwickler gute Einblicke in die zu verarbeitenden Daten und bekommt damit auch verwertbare Informationen über die zu erstellende Anwendung die helfen, die Anforderungen besser zu verstehen und damit besser umzusetzen.
-- Um Tests zu implementieren, muss von Grund auf eine gute Struktur erstellt werden. Dies verhindert die Erstellung von Code der verschiedene Belange vermischt und spätere Anpassungen erschwert.
-- Sobald die ersten Tests geschrieben sind, können auf dem Entwicklungssystem die Komponenten der Anwendung ausgeführt und debugged werden und damit auch wertvolle Hinweise über das Laufzeitverhalten frühzeitig ermittelt werden und Fehlannahmen vermieden werden, die sonst aufwändig behoben werden müssten.
-- Der initiale Mehraufwand wird durch spätere Effizienzgewinne ausgeglichen. Verbunden damit, dass der Entwickler über UNIT TEST abgesicherte Software bessere Qualität liefert, schneller funktionierende Software auf den Testsystemen zur Verfügung gestellt werden kann und weniger Fehler in späteren Testphasen auftreten, verringert sich der Gesamtaufwand, es gibt weniger Testzyklen und dies steigert letztlich die Zufriedenheit sowohl auf Entwicklungs- als auch auf Anwenderseite.
+- Due to the need to program test data, the developer gains good insights into the data to be processed and thus also receives usable information about the application to be created, which helps to better understand the requirements and thus better implement them.
+- To implement testing, a good structure needs to be created from scratch. This prevents the creation of code that mixes different concerns and makes later adjustments difficult.
+- As soon as the first tests have been written, the components of the application can be executed and debugged on the development system and valuable information about the runtime behavior can be determined at an early stage and incorrect assumptions can be avoided that would otherwise have to be remedied at great expense.
+- The initial additional effort is offset by subsequent efficiency gains. Combined with the fact that the developer delivers better quality software secured via UNIT TEST, faster functioning software can be made available on the test systems and fewer errors occur in later test phases, the overall effort is reduced, there are fewer test cycles and this ultimately increases satisfaction on both the development and user sides.
 
-## Herausforderungen die den Einsatz von ABAP Unit beeinflussen
+## Challenges that affect the use of ABAP Unit
 
-### Mangelndes Wissen und Qualifikation
+### Lack of knowledge and qualifications
 
-Auch im Jahr 2026 bleibt die Herausforderung für Unternehmen bestehen, dass ein signifikanter Anteil der ABAP-Entwickler nicht über das Wissen und Erfahrung verfügt, um effizient automatisierte Tests mit ABAP Unit zu erstellen. Denn dies erfordert einerseits hinreichende Kenntnisse in moderner objektorientierter Programmierung, Trennung der Belange, guter Strukturierung der Software in testbare Einheiten und letztlich Kenntnisse der Unit-Test Methodiken. Dies kann u.a. in der Ausbildung begründet sein und ergibt sich auch daraus, dass Anwendungsentwicklung gute Geschäftsprozesskenntnisse erfordert. Daher ist bei vielen ABAP-Entwicklern die Kenntnistiefe im Bereich der Programmierung sehr gut in Bezug auf prozedurale Techniken und Umsetzungen von Reports und klassischen Anwendungen. Im Bereich des modernen ABAP mit Techniken und Methoden, die in anderen Programmiersprachen lange Standard sind, aber durchaus noch ausbaubar.  
+Even in 2026, the challenge for companies remains that a significant proportion of ABAP developers do not have the knowledge and experience to efficiently create automated tests with ABAP Unit. On the one hand, this requires sufficient knowledge of modern object-oriented programming, separation of concerns, good structuring of the software into testable units and ultimately knowledge of unit test methodologies. This can be due to, among other things, training and also results from the fact that application development requires good knowledge of business processes. Therefore, many ABAP developers have a very good depth of knowledge in the area of ​​programming in terms of procedural techniques and implementation of reports and classic applications. In the area of ​​​​modern ABAP with techniques and methods that have long been standard in other programming languages, but can still be expanded.  
 
-### Erfahrungsdefizit als Umsetzungshürde
+### Lack of experience as a hurdle to implementation
 
 > {: .Zitat }
-> "Ohne Tests keine Tests"
+> “Without tests, no tests”
 
-Techniken und Methoden, die ein Entwickler nicht beherrscht, nicht regelmässig anwendet und auch nicht zwingend anwenden muss, werden unter Zeitdruck nicht zum Einsatz kommen. Unter derartigen Rahmenbedingungen wird sich der flächendeckende Einsatz von Unit Tests schwierig umsetzen lassen. Die oben genannten Vorteile werden nicht genutzt und die sich daraus ergebenden Nachteile. Dies führt zu hohen Testaufwänden, Fehlern im Produktivsystem, schwierigen und aufwändigen Anpassungen der Software.
+Techniques and methods that a developer does not master, does not use regularly and does not necessarily have to use will not be used under time pressure. Under such conditions, the widespread use of unit tests will be difficult to implement. The advantages mentioned above are not used and the resulting disadvantages. This leads to high testing effort, errors in the productive system, and difficult and complex adjustments to the software.
 
-### Zeitdruck und die "Definition of Done"
+### Time pressure and the “Definition of Done”
 
-In SAP-Projekten besteht oftmals hoher Zeit- und Erfolgsdruck. Die Zeit für die Umsetzung der Anforderungen ist für Entwickler knapp bemessen und es wird erwartet, dass frühzeitig testbare Versionen der Anwendung bereitgestellt werden.
-Die Definition, wann ein Artefakt geliefert wurde, besteht meistens daraus, dass die geforderte Funktionalität erfolgreich im Anwendertest abgenommen werden kann. Die Erstellung von Unit-Tests findet sich idealerweise in Handbüchern und Entwicklungsrichtlinien, ist aber nicht Teil der Abnahme. Eventuell wird das Fehlen von Unit-Tests akzeptiert, da die Funktionalität auch ohne Unit Tests produktiv gesetzt werden kann. Die dadurch entstehenden technischen Schulden sind nicht offensichtlich und werden bewusst oder unbewusst in Kauf genommen.
+In SAP projects there is often high pressure for time and success. The time for implementing the requirements is limited for developers and it is expected that testable versions of the application will be provided early.
+The definition of when an artifact has been delivered usually consists of the fact that the required functionality can be successfully accepted in user testing. The creation of unit tests can ideally be found in manuals and development guidelines, but is not part of the acceptance process. The lack of unit tests may be accepted because the functionality can also be put into production without unit tests. The resulting technical debt is not obvious and is accepted consciously or unconsciously.
 
-## Rahmenbedingungen für den Einsatz von ABAP Unit
+## Framework conditions for the use of ABAP Unit
 
-Damit sich ABAP Unit Tests in der Anwendungsentwicklung durchsetzen und effektiv eingesetzt werden kann, ist ein Umdenken bei Entscheidern und Verantwortlichen für den Betrieb von SAP-Software nötig.  
-Kenntnisse und Wissen zu ABAP Unit muss sich zu einem geforderten und geprüften Skill von ABAP-Entwicklern etablieren. Die Erstellung von ABAP Unit Tests muss in die Definition of Done und den Lieferumfang von Software aufgenommen werden und nicht als optionales To-Do betrachtet werden.
+In order for ABAP unit tests to establish themselves in application development and be used effectively, a rethink is necessary among decision-makers and those responsible for the operation of SAP software.  
+Knowledge and knowledge of the ABAP Unit must establish itself as a required and tested skill for ABAP developers. The creation of ABAP unit tests must be included in the definition of done and scope of delivery of software and not viewed as an optional to-do.
 
-Der Einsatz von ABAP Unit muss einerseits in den Entwicklungsrichtlinien und Handbüchern definiert und vorgeschrieben werden, um eine Verbindlichkeit zu erzeugen. Wie oben beschrieben, wird die formale Definition allein den flächendeckenden Einsatz von Unit Tests nicht hervorbringen.
-Um dies zu erreichen, müssen neben formalen Voraussetzungen auch Rahmenbedingungen geschaffen werden, die sowohl die oben beschriebenen Herausforderungen als auch die Herausforderungen im modernen ABAP-Entwicklungsumfeld aufgreifen und die Entwicklungsteams befähigen, ABAP Unit Tests in den Entwickleralltag zu integrieren.  
-Eine ausführliche Beschreibung der nötigen Rahmenbedingungen und in der Praxis bewährte Vorgehensweisen finden Sie im Kapitel [Organisation: Teamorganisation](https://1dsag.github.io/ABAP-Leitfaden/organization/#teamorganisation-und-teamzusammensetzung)
+On the one hand, the use of ABAP Unit must be defined and prescribed in the development guidelines and manuals in order to create a commitment. As described above, the formal definition alone will not result in the widespread use of unit tests.
+In order to achieve this, in addition to formal requirements, framework conditions must also be created that address both the challenges described above and the challenges in the modern ABAP development environment and enable the development teams to integrate ABAP unit tests into everyday developer life.  
+A detailed description of the necessary framework conditions and best practices in practice can be found in chapter [Organization: team organization](https://1dsag.github.io/ABAP-Leitfaden/organization/#teamorganisation-und-teamzusammensetzung)
 
-## Die Rolle des DSAG ABAP-Leitfadens für die Umsetzung Ihrer Test Strategie
+## The role of the DSAG ABAP guide in implementing your test strategy
 
-ABAP Unit erfordert die Berücksichtigung zahlreicher Aspekte von Seiten der Entwicklungsorganisation, der verantwortlichen Personen und der Entwickler. Um ABAP Unit sinnvoll und effektiv anwenden und einsetzen zu können, erfordert es auf Seiten der Entwickler ein gutes Wissen über Softwareentwicklung und moderne Programmierung in ABAP und das Beherrschen von Objektorientierung.  
-Auf Seiten der Organisation müssen sowohl im Entwicklungsprozess als auch in den Rahmenbedingungen Voraussetzungen geschaffen werden, die die Erstellung von Unit-Tests unterstützen und fördern. Dieser Leitfaden behandelt alle diese Aspekte und vermittelt auf technischer Seite Wissen. Das kann Ihnen helfen, die Maßnahmen in Ihrem Unternehmen abzuleiten und den Entwicklern eine Motivation und Einstiegshilfe sein, in die Welt der ABAP Unit Tests einzutauchen.
+ABAP Unit requires the consideration of numerous aspects by the development organization, the responsible persons and the developers. In order to be able to use the ABAP Unit sensibly and effectively, the developer requires a good knowledge of software development and modern programming in ABAP and a mastery of object orientation.  
+On the organization's side, prerequisites must be created in both the development process and the framework conditions that support and promote the creation of unit tests. This guide covers all of these aspects and provides knowledge on the technical side. This can help you to derive the measures in your company and provide motivation and initial help for developers to immerse themselves in the world of ABAP unit tests.
 
-Im Folgenden Abschnitt werden die technischen Grundlagen zu ABAP Unit Tests erläutert, Test- und Entwicklungstechniken vorgestellt und auch auf fortgeschrittene Techniken eingegangen, so dass mit den Ausführungen ein gutes Verständnis geschaffen und so die Grundlage gelegt werden kann, dass Unit Tests Teil des Softwareentwicklungsprozess werden.
+In the following section, the technical basics of ABAP unit tests are explained, test and development techniques are presented and advanced techniques are also discussed so that the explanations create a good understanding and thus lay the foundation for unit tests to become part of the software development process.

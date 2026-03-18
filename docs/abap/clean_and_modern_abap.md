@@ -1,115 +1,115 @@
 ---
 layout: page
-title: Sauberen und modernen ABAP Code schreiben
+title: Write clean and modern ABAP code
 permalink: /abap/clean_and_modern_abap/
 parent: Moderne ABAP Entwicklung
 nav_order: 4
 ---
 
 {: .no_toc}
-# Sauberen und modernen ABAP Code schreiben
+# Write clean and modern ABAP code
 
 1. TOC
 {:toc}
 
-ABAP gibt es seit 1983, und der Sprachumfang ist seitdem stetig gewachsen. Dadurch bildet die Sprache verschiedene Paradigmen ab, und es gibt häufig verschiedene Alternativen für ähnliche Zwecke. Als Beispiel können Funktionsgruppen und -bausteine etwa als imperativer Vorläufer ähnlich wie Klassen in ABAP OO genutzt werden. Daneben gibt es auch viele als obsolet gekennzeichnete Befehle, die häufig in bereits entwickelten Programmen oder Beispielcode im Internet zu finden sind und damit auch weiterhin für neue Entwicklungen genutzt werden.
+ABAP has been around since 1983 and the range of languages ​​has grown steadily since then. As a result, the language represents different paradigms and there are often different alternatives for similar purposes. As an example, function groups and modules can be used as imperative precursors similar to classes in ABAP OO. There are also many commands that are marked as obsolete, which can often be found in programs that have already been developed or example code on the Internet and therefore continue to be used for new developments.
 
-Die SAP hat dieses Problem selbst erkannt und als eine Unterstützung für Entwickler die [Clean ABAP Guidelines](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md) erstellt. Diese basieren auf dem Buch Clean Code von Robert C. Martin und adaptieren verschiedene Best Practices für ABAP. Die Guidelines liefern Vorgaben für viele Bereiche, etwa zur Benennung von Objekten und Variablen, über die Wahl der richtigen Sprachmittel, bis hin zur Formatierung und Kommentierung von Code.
+The SAP recognized this problem itself and created the [Clean ABAP Guidelines](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md) to support developers. These are based on the book Clean Code by Robert C. Martin and adapt various best practices for ABAP. The guidelines provide specifications for many areas, such as the naming of objects and variables, the choice of the right language, and the formatting and commenting of code.
 
 {: .note }
-Empfehlungen aus den Clean ABAP Guidelines werden in diesem Abschnitt so hervorgehoben. Dabei wird immer auf den entsprechenden Abschnitt der Guidelines verlinkt.
+Recommendations from the Clean ABAP Guidelines are highlighted in this section. There is always a link to the relevant section of the guidelines.
 
-Daneben entwickelt die SAP ABAP auch stetig weiter. Eine Übersicht über neue Entwicklungen liefert etwa die [ABAP Feature Matrix](https://software-heroes.com/en/abap-feature-matrix).
+In addition, the SAP ABAP is constantly being developed further. The [ABAP Feature Matrix](https://software-heroes.com/en/abap-feature-matrix) provides an overview of new developments.
 
-Die folgenden Abschnitte zeigen Beispiele für modernen ABAP Code, erhebt jedoch keinen Anspruch auf Vollständigkeit. Eine grundlegende Kenntnis von ABAP und insbesondere ABAP Objects
-wird vorausgesetzt.
+The following sections show examples of modern ABAP code, but are not exhaustive. A basic knowledge of ABAP and especially ABAP Objects
+is assumed.
 
-## Clean ABAP als Basis
+## Clean ABAP as base
 
-Clean ABAP stellt die Anpassung der Prinzipien aus dem Buch von Robert C. Martin auf ABAP dar. Das offizielle, im Repository der SAP freigegebene Dokument wurde von Florian Hoffmann und Klaus Häuptle 2019 auf den Weg gebracht und wird seitdem als [open source durch die ABAP Community](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md) erweitert.
+Clean ABAP represents the adaptation of the principles from Robert C. Martin's book to ABAP. The official document released in the SAP repository was launched by Florian Hoffmann and Klaus Häuptle in 2019 and has since been expanded as [open source by the ABAP community](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md).
 
-Beispielregel mit Erläuterung ([Prefer inline to up-front declarations](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations) im Clean ABAP Guide):
+Example rule with explanation ([Prefer inline to up-front declarations](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations) in the Clean ABAP Guide):
 
 ![Clean ABAP Example Rule: Prefer inline to up-front declarations](/img/clean_abap_prefer_inline_rule.png)
 
 Clean ABAP Example Rule Prefer inline to up-front declarations
 {: .img-caption}
 
-Der Gedanke von Clean ABAP ist, dass es nicht eine Version von Clean ABAP gibt, mit einem festen unveränderlichen Set an Regeln.
-Teams sind eingeladen, die Regeln anzupassen und zu verändern so wie sie für ihren spezifischen Fall am besten passen. Die öffentliche Version von Clean ABAP stellt eine exzellente Grundlage hierfür dar.
-Wichtig ist hier nur, dass diese Regeln verbindlich und für alle Teams eines Unternehmens hinweg gültig sein sollten. Der Grundgedanken von Clean ABAP - einheitliche Code Reviews - würde gebrochen, wenn das Financials Team andere ABAP Regeln hat als das Sales Team.
-Alle Regeln von Clean ABAP sind heute und sollten immer begründet und erläutert werden.
+The idea of ​​Clean ABAP is that there is not one version of Clean ABAP with a fixed unchanging set of rules.
+Teams are invited to adapt and change the rules to best suit their specific case. The public version of Clean ABAP provides an excellent basis for this.
+The only important thing here is that these rules should be binding and valid for all teams in a company. The basic idea of ​​​​Clean ABAP - uniform code reviews - would be broken if the financials team had different ABAP rules than the sales team.
+All rules of Clean ABAP are today and should always be justified and explained.
 
-Clean ABAP kann generell auf jede Sprachversion von ABAP angewendet werden von R2 bis hin zu ABAP Cloud.
+Clean ABAP can generally be applied to any language version of ABAP from R2 up to ABAP Cloud.
 
-### DSAG Empfehlung
+### DSAG recommendation
 
-Die Regeln im öffentlichen Repository sind anerkannt unter den meisten ABAP-Experten.
-Die Autoren des DSAG Leitfaden empfehlen Ihnen den Einsatz der Clean ABAP Regeln für Ihr Coding und als Grundlage für Code Reviews.
-Diskussionen über Code unter Entwicklern können nicht selten mit einer Clean ABAP Regel gelöst werden.
+The rules in the public repository are recognized by most ABAP experts.
+The authors of the DSAG guidelines recommend using the Clean ABAP rules for your coding and as a basis for code reviews.
+Discussions about code among developers can often be resolved with a Clean ABAP rule.
 
 ### Clean ABAP & Entwicklungsrichtlinien
 
-Die auf das Unternehmen angepasste Form von Clean ABAP sollte ein ergänzendes Dokument der gültigen Entwicklungsrichtlinien sein, sodass es überall Anwendung findet.
-Prüfen Sie die Anwendung der Regeln mit einem automatischen Tool wie [Code Pal for ABAP](https://github.com/SAP/code-pal-for-abap) im ABAP Test Cockpit.
+The company-adapted form of Clean ABAP should be a supplementary document to the applicable development guidelines so that it can be used everywhere.
+Check the application of the rules with an automatic tool such as [Code Pal for ABAP](https://github.com/SAP/code-pal-for-abap) in the ABAP Test Cockpit.
 
 ### Clean ABAP Owner
 
-In jedem Entwicklungsteam sollte es - gerne auch rollierend - einen Clean ABAP Owner geben, der Ansprechpartner und Verantwortlicher für Änderungen ist.
-Änderungen und Erweiterungen müssen separat in den Teams kommuniziert und abgestimmt werden.
-Clean ABAP funktioniert am besten, wenn alle Beteiligten hinter den Regeln stehen, hierfür sind immer wieder Kompromisse und Abstimmungen im Team nötig.
+In every development team there should be a Clean ABAP owner - preferably on a rotating basis - who is the contact person and person responsible for changes.
+Changes and extensions must be communicated and agreed upon separately in the teams.
+Clean ABAP works best when everyone involved supports the rules, which requires compromises and coordination within the team.
 
-### Clean ABAP ist ein Prozess
+### Clean ABAP is a process
 
-Die Anwendung bzw. das Erlernen von Clean ABAP ist kein einmaliger Workshop oder eine Managementdirektive.
-Es braucht Zeit, Übung, Motivation und den konstanten Willen um bessere ABAP Programme zu schreiben.
+Applying or learning Clean ABAP is not a one-time workshop or management directive.
+It takes time, practice, motivation and constant determination to write better ABAP programs.
 
-Die Tätigkeiten, die das Anwenden von Clean ABAP sicherstellen, heißen Pair-Programming, Code Reviews, Refactoring und Schulung.
-Hierfür müssen von der Organisation entsprechende Bedingungen geschaffen werden.
+The activities that ensure the application of Clean ABAP are called pair programming, code reviews, refactoring and training.
+The organization must create appropriate conditions for this.
 
 ## Grundlagen sauberer Entwicklung
 
-Dieser Abschnitt gibt eine kurze Auswahl wichtiger Regeln für saubere Entwicklung mit Verweis auf Quellen mit weiteren Informationen wieder.
+This section presents a short selection of important rules for clean development with references to sources for further information.
 
-Ziel von Clean ABAP ist es, sauberen und für Menschen leicht verständlichen Code zu schreiben. Dies zeigt sich etwa in kurzen Methoden und ausdrucksstarken Namen.
+The goal of Clean ABAP is to write clean code that is easy for people to understand. This is evident, for example, in short methods and expressive names.
 
 ### Ausdrucksstarke Namen
 
-Ein wichtiges Element von Clean ABAP ist [die richtige Benennung von Entwicklungsobjekten](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#names). Gute Namen
-sind lesbar und verständlich, und machen direkt klar, worum es geht. In der alltäglichen ABAP-Entwicklung ist die Versuchung groß, technische Namen der SAP wiederzuverwenden; dies
-kann jedoch die Lesbarkeit erschweren, z.B. ist `tj02_list` schwerer verständlich als `active_status` oder erfordert wenigstens mehr ABAP-Kenntnisse.
+An important element of Clean ABAP is [the correct naming of development objects](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#names). Good names
+are readable and understandable, and make it immediately clear what it is about. In everyday ABAP development, the temptation is to reuse technical names from the SAP; this
+However, it can make it more difficult to read, e.g. `tj02_list` is more difficult to understand than `active_status` or at least requires more knowledge of ABAP.
 
 ### Kommentare
 
-> Drücke dich durch Code aus - nicht durch Kommentare.
+> Express yourself through code - not comments.
 
-Dieses sollte einer der Leitsätze beim Schreiben von ABAP sein. Prüfen Sie jeden Kommentar, ob dieser nicht ein Ersatz für eine zu verbessernde Namensgebung bzw. Modularisierung ist. Eine lange Codestrecke, die mit dem Kommentar "Positionen verarbeiten" beginnt, deutet darauf, dass hier eine Methode über einen entsprechenden Namen genau dies aussagen und erledigen könnte. Ein Kommentar soll vielmehr Hinweise geben, warum etwas wie gemacht wird und ggf. den Kontext knapp erläutern, anstatt zu beschreiben was gemacht wird.
-Zur Code Dokumentation ist ABAP Doc zu verwenden, somit sind Code Kommentare nur noch für spezifische, zeilenbezogene Erläuterungen zu verwenden. Z.B., wenn Funktionen und Fehlerbehandlungsblöcke nicht ausprogrammiert wurden, noch TODOs oder offene Fragen bestehen, die im Laufe des Lebenszyklus behoben werden müssen.
+This should be one of the guiding principles when writing ABAP. Check each comment to see whether it is a replacement for a naming or modularization that needs to be improved. A long piece of code that begins with the comment "Process positions" suggests that a method with an appropriate name could say and do exactly this. Rather than describing what is being done, a comment should provide information about why something is done the way it is and, if necessary, briefly explain the context.
+ABAP Doc must be used for code documentation, so code comments can only be used for specific, line-related explanations. For example, if functions and error handling blocks have not been programmed out, there are still TODOs or open questions that need to be resolved over the course of the life cycle.
 
-Stark veraltete ABAP Richtlinien mit Aussagen wie:
+Very outdated ABAP guidelines with statements like:
 
-> Logisch zusammenhängende Einheiten sollten kommentiert werden, wobei der Kommentar vor dem jeweiligen Block steht.
+> Logically related units should be commented, with the comment preceding the respective block.
 
-oder
+or
 
-> Das Erkennen solcher Blöcke wird bei langen und tief verschachtelten Kontrollstrukturen dadurch erleichtert, dass man am Ende einen auf den Beginn referenzierenden Kommentar einfügt.
+> In the case of long and deeply nested control structures, recognizing such blocks is made easier by inserting a comment at the end that refers to the beginning.
 
-Hier nehmen die ABAP-Guidelines bereits an, dass so genanter [Spaghetti Code](https://en.wikipedia.org/wiki/Spaghetti_code) geschrieben wird.
-Kommentare können nie die Lösung für fehlende Modularisierung und Aufbrechen von tiefen Schachtelungen sein.
-Diese Probleme in der Lesbarkeit sollten durch konsequente Modularisierung und nicht durch Kommentare gelöst werden.
+Here the ABAP guidelines already assume that the so-called [Spaghetti Code](https://en.wikipedia.org/wiki/Spaghetti_code) is written.
+Comments can never be the solution to a lack of modularization and breaking deep nesting.
+These readability problems should be solved through consistent modularization and not through comments.
 
 {: .note }
-Clean ABAP rät zur [Erklärung und Strukturierung über Code, nicht über Kommentare](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#use-methods-instead-of-comments-to-segment-your-code).
+Clean ABAP recommends [Explanation and structuring via code, not via comments](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#use-methods-instead-of-comments-to-segment-your-code).
 
-Im Leitfaden von Clean ABAP steht alles was Sie zu Kommentaren beachten sollten, [Siehe](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#express-yourself-in-code-not-in-comments).
+The Clean ABAP guide contains everything you should consider about comments, [see](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#express-yourself-in-code-not-in-comments).
 
 ## Moderne Sprachmittel
 
-Dieser Abschnitt zeigt eine kurze Übersicht moderner Sprachmittel von ABAP ohne Anspruch auf Vollständigkeit.
+This section shows a brief overview of modern language resources from ABAP without claiming to be complete.
 
 ### Deklarationen
 
-In der klassischen Deklaration von Variablen werden alle Deklarationen im Kopf einer Methode vorangestellt, und anschließend arbeitet die Methode mit diesen Variablen:
+In the classic declaration of variables, all declarations are placed in front of a method in the head, and then the method works with these variables:
 
 ~~~ abap
 DATA mein_string TYPE string.
@@ -120,60 +120,60 @@ mein_string = `hello world`.
 mein_int = strlen( mein_string ).
 ~~~
 
-Mithilfe von Inline-Deklarationen können stattdessen überall in der Methode Variablen deklariert und direkt zugewiesen werden:
+Instead, using inline declarations, variables can be declared anywhere in the method and assigned directly:
 
 ~~~ abap
 DATA(mein_string) = `hello worlddd`.
 ~~~
 
 {: .note }
-[Clean ABAP empfiehlt](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations), Inline-Deklarationen den klassischen Deklarationen vorzuziehen.
+[Clean ABAP empfiehlt](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations) to prefer inline declarations to classic declarations.
 
-#### Deklaration mit FINAL
+#### Declaration with FINAL
 
 {: .new }
-Version 7.57: Inline-Deklaration mit `FINAL(var)` statt `DATA(var)`
+Version 7.57: Inline declaration with `FINAL(var)` instead of `DATA(var)`
 
-Mit `FINAL` können in ABAP unveränderbare Variablen deklariert werden. Diese können einmalig gesetzt, danach jedoch nicht mehr geändert werden:
+`FINAL` can be used to declare immutable variables in ABAP. These can be set once, but cannot be changed afterwards:
 
 ~~~abap
 FINAL(var) = 1.
 var = var + 1. " Fehler - Variable darf nicht geändert werden
 ~~~
 
-Der Vorteil einer `FINAL`-Deklaration ist, dass ein den Code lesender Entwickler nun weiß, dass er nicht weiter darauf achten muss, ob der Wert der Variable möglicherweise
-später im Code noch geändert wird.
+The advantage of a `FINAL` declaration is that a developer reading the code now knows that he does not need to pay further attention to whether the value of the variable may
+is changed later in the code.
 
 ### Funktionale Aufrufe
 
-Schon seit Version 7.5 werden Methoden in ABAP nicht mehr via `CALL METHOD objekt->methode ...` aufgerufen, sondern via `objekt->methode( ... )`. Das verkürzt ABAP-Code
-und erleichtert Entwicklern mit anderen Hintergründen das Codeverständnis.
+Since version 7.5, methods in ABAP are no longer called via `CALL METHOD objekt->methode ...`, but rather via `objekt->methode( ... )`. This shortens ABAP code
+and makes it easier for developers from other backgrounds to understand the code.
 
-Im Rahmen dieser Änderung wurden auch weitere Aufruf ähnlich gestaltet wie in anderen Programmiersprachen. So können Prädikatsmethoden, d.h. Methoden die einen der `abap_bool`-Wahrheitswerte `abap_true` oder `abap_false` zurückliefern, verkürzt in einem `IF` aufgerufen werden: Statt `IF is_predicate( ) = abap_true.` kann so einfach `IF is_predicate( ).` geschrieben werden.
+As part of this change, other calls were also designed similarly to those in other programming languages. Predicate methods, i.e. methods that return one of the `abap_bool` truth values ​​​​`abap_true` or `abap_false`, can be called in a `IF`: Instead of `IF is_predicate( ) = abap_true.` you can simply write `IF is_predicate( ).`.
 
-Auch wurden für viele imperative ABAP-Anweisungen moderne Alternativen geschaffen.
+Modern alternatives have also been created for many imperative ABAP statements.
 
 {: .note }
 [Clean ABAP empfiehlt](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-functional-to-procedural-language-constructs), funktionale Sprachelemente immer vorzuziehen.
 
-Ein Beispiel ist die alte und neue Syntax, um einen String in Großbuchstaben umzuwandeln:
+An example is the old and new syntax to convert a string to uppercase:
 
 ~~~ abap
 TRANSLATE string1 TO UPPER CASE. " alte, imperative Variante
 string2 = to_upper( string2 ).   " neue Variante mit Funktionsaufruf
 ~~~
 
-Ein anderes Beispiel ist die Bestimmung der Zeilenanzahl in einer internen Tabelle:
+Another example is determining the number of rows in an internal table:
 
 ~~~ abap
 DESCRIBE TABLE itab LINES zeilen. " alte, imperative Variante
 zeilen = lines( itab ).           " neue Variante mit Funktionsaufruf
 ~~~
 
-#### Zuweisungen von logischen Ausdrücken
+#### Logical expression assignments
 
-Ein weiteres Beispiel ist die Funktion `xsdbool`. Ursprünglich für die Verarbeitung mit XML konzipiert, ist sie mittlerweile trotz ihres Namens die bevorzugte
-Variante, um das Ergebnis eines logischen Ausdrucks an eine Variable zuzuweisen:
+Another example is the `xsdbool` function. Originally designed to process XML, it is now the preferred one despite its name
+Variant to assign the result of a logical expression to a variable:
 
 ~~~ abap
 " Direkte Zuweisung mittels xsdbool
@@ -188,51 +188,51 @@ ENDIF.
 ~~~
 
 {: .note }
-[Clean ABAP](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-functional-to-procedural-language-constructs) empfiehlt, die obere Variante zu bevorzugen.
+[Clean ABAP](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-functional-to-procedural-language-constructs) recommends preferring the upper variant.
 
-#### Funktionen in der ABAP-Hilfe
+#### Functions in the ABAP help
 
-Die ABAP-Hilfe bietet Listen von Funktionen für:
+ABAP Help provides lists of features for:
 
 - [mathematische Berechnungen,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenmathematical_functions.htm)
 - [logische Funktionen,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenpredicate_functions.htm)
-- [das Arbeiten mit Strings,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenstring_functions.htm)
-- [das Arbeiten mit Byte-Strings,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenbyte_processing_expr_func.htm)
-- [und das Arbeiten mit internen Tabellen.](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abentable_functions.htm)
+- [working with strings,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenstring_functions.htm)
+- [working with byte strings,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenbyte_processing_expr_func.htm)
+- [and working with internal tables.](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abentable_functions.htm)
 
 ### ABAP Doc
 
-ABAP Doc ist die moderne Variante, Dokumentation für Entwicklungsobjekte anzulegen. In den ABAP Development Tools lässt sich diese Dokumentation für ein Element dann schnell mit `F2` anzeigen.
+ABAP Doc is the modern variant of creating documentation for development objects. In the ABAP development tools, this documentation for an element can then be quickly displayed with `F2`.
 
-Die Dokumentation für eine Klasse wird z.B. wie angegeben:
+For example, the documentation for a class is given as follows:
 
 ~~~ abap
 "! Description of what the class does
 CLASS demo DEFINITION.
 ~~~
 
-In den ABAPDoc Dokumentationen zu der Klasse können generelle Hinweise und der Zweck der Klasse somit auswertbar und gut lesbar im Code dokumentiert werden, ebenso können Hinweise zu den einzelnen Methoden und den Parametern der Methoden mittels ABAPDoc erstellt werden. Als Hauptnutzer der ABAPDoc Dokumentation ist der Verwender/Aufrufer (bzw. dessen Entwickler) der Klasse. Somit ist diese Funktion besonders hilfreich für Klassen, die zur Verwendung für andere Funktionen zur Verfügung gestellt werden.  
-Weitere Informationen zu ABAPDoc finden Sie im Abschnitt [Dokumentation/ABAP Doc](/ABAP-Leitfaden/documentation/dev_object_related_doc/#abap-doc).
+In the ABAPDoc documentation for the class, general information and the purpose of the class can be documented in the code in an evaluable and easy-to-read manner. Notes on the individual methods and the parameters of the methods can also be created using ABAPDoc. The main user of the ABAPDoc documentation is the user/caller (or its developer) of the class. This feature is particularly useful for classes that are made available for use by other functions.  
+For more information about ABAPDoc, see section [Documentation/ABAP Doc](/ABAP-Leitfaden/documentation/dev_object_related_doc/#abap-doc).
 
 ### Konstruktoroperatoren
 
-Konstruktoroperatoren sind ein recht neues ABAP-Sprachmittel und bestehen aus dem Operator selbst, einer Typangabe, und Parameter innerhalb von Klammern. So
-ist bei `data(instance) = new class( number = 1 ).` der Operator `NEW`, der Typ `class`, und `number = 1` ist die Parameterangabe. Mit einem Konstruktoroperator
-wird grundsätzlich ein neuer Wert erzeugt, im voranstehenden Beispiel wird etwa eine neue Instanz einer Klasse erzeugt.
+Constructor operators are a fairly new ABAP language device and consist of the operator itself, a type specification, and parameters within parentheses. So
+For `data(instance) = new class( number = 1 ).`, the operator is `NEW`, the type is `class`, and `number = 1` is the parameter specification. With a constructor operator
+In principle, a new value is created, in the example above a new instance of a class is created.
 
-Mit Konstruktoroperatoren können viele typische Programmieraufgaben kürzer und präziser gelöst werden. Dieser Abschnitt zeigt die Nutzung verschiedener Konstruktoroperatoren.
+Many typical programming tasks can be solved more quickly and precisely using constructor operators. This section shows the use of various constructor operators.
 
-Eine Besonderheit ist dabei die Typangabe `#`. Damit weist der Entwickler ABAP an, den passenden Typen aus dem Kontext herzuleiten. Wird etwa mittels Konstruktoroperation
-eine zuvor deklarierte Variable gesetzt, bedeutet die Typangabe `#`, dass ein Wert vom Typ der Variable erzeugt wird.
+A special feature is the type information `#`. The developer thereby instructs ABAP to derive the appropriate type from the context. Is done using a constructor operation
+If a previously declared variable is set, the type specification `#` means that a value of the type of the variable is created.
 
 ~~~ abap
 DATA table TYPE table_type.
 table = VALUE #( ). " Erzeugen einer leeren Tabelle vom Typ table_type
 ~~~
 
-### Referenzen mit NEW erzeugen
+### Create references with NEW
 
-Wie im vorigen Abschnitt gezeigt, können mit `NEW` neue Instanzen einer Klasse erzeugt werden.
+As shown in the previous section, new instances of a class can be created with `NEW`.
 
 ~~~ abap
 " Moderne Variante
@@ -244,11 +244,11 @@ CREATE OBJECT object TYPE lcl_configuration.
 
 ### Nutzung neuer Befehlsvarianten (CALL TRANSACTION WITH AUTHORITY-CHECK)
 
-Häufig werden alte, obsolete Varianten von Befehlen genutzt. Ein Beispiel dafür ist der Befehl `CALL TRANSACTION` in alten Dynpros oder Programmen, um eine Transaktion zu öffnen.
+Old, obsolete variants of commands are often used. An example of this is the command `CALL TRANSACTION` in old screens or programs to open a transaction.
 
-Die SAP-Dokumentation unterscheidet klar zwischen der [obsoleten Variante](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_transaction_auth_obs.htm) und
-der [zu nutzenden Variante](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_transaction_authority.htm) - der Unterschied, dass in letzterer Variante
-immer entweder `WITH AUTHORITY-CHECK` oder `WITHOUT AUTHORITY-CHECK` anzugeben ist.
+The SAP documentation clearly distinguishes between the [obsoleten Variante](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_transaction_auth_obs.htm) and
+the [variant to be used](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_transaction_authority.htm) - the difference that in the latter variant
+Either `WITH AUTHORITY-CHECK` or `WITHOUT AUTHORITY-CHECK` must always be specified.
 
 ~~~ abap
 " Obsolete Variante
@@ -259,11 +259,11 @@ CALL TRANSACTION 'IW21'.
 CALL TRANSACTION 'IW21' WITH AUTHORITY-CHECK.
 ~~~
 
-Wir empfehlen Ihnen, regelmäßig in die SAP-Dokumentation zu schauen, um solche Fehler zu vermeiden.
+We recommend that you regularly check the SAP documentation to avoid such errors.
 
-## Beispiele für modernes ABAP
+## Examples of modern ABAP
 
-Dieser Abschnitt zeigt einige Beispiele für moderne Alternativen zu alter und veralteter ABAP-Syntax. Die folgenden Beispiele verwenden teilweise die folgende Struktur- und Tabellendefinition:
+This section shows some examples of modern alternatives to old and deprecated ABAP syntax. The following examples partially use the following structure and table definition:
 
 ~~~ abap
 TYPES: BEGIN OF person,
@@ -274,9 +274,9 @@ TYPES: BEGIN OF person,
 TYPES persons TYPE STANDARD TABLE OF person WITH EMPTY KEY.
 ~~~
 
-### Strukturen und Tabellen erzeugen
+### Create structures and tables
 
-Mit dem `VALUE`-Operator lassen sich interne Tabellen wesentlich schneller und übersichtlicher erzeugen:
+With the `VALUE` operator, internal tables can be created much faster and more clearly:
 
 ~~~ abap
 " Alte Variante
@@ -295,7 +295,7 @@ DATA(new_persons) = VALUE persons( ( age = 30 name = `Max Mustermann` ) ).
 
 ### Werte aus Tabellen auslesen
 
-Zum Lesen von Tabellen kann anstelle des alten `READ TABLE`-Befehls auch die neue Syntax von Tabellenausdrücken bzw. Table Expressions verwendet werden:
+To read tables, the new table expression syntax can be used instead of the old `READ TABLE` command:
 
 ~~~ abap
 " Alte Variante
@@ -305,9 +305,9 @@ READ TABLE persons INDEX 1 INTO DATA(first_person_old).
 DATA(first_person_new) = persons[ 1 ].
 ~~~
 
-Tabellenausdrücke können auch zusammengesetzt sein, mit `nested_tables[1][2]` wird die zweite Zeile der Tabelle gelesen, die wiederum in der ersten Zeile von `nested_tables` liegt.
+Table expressions can also be composed, with `nested_tables[1][2]` the second line of the table is read, which in turn is in the first line of `nested_tables`.
 
-Der Vorteil der neuen Syntax zeigt sich beispielsweise, wenn direkt auf eine bestimmte Spalte zugegriffen werden soll:
+The advantage of the new syntax becomes apparent, for example, when a specific column needs to be accessed directly:
 
 ~~~ abap
 " Alte Variante
@@ -318,9 +318,9 @@ DATA(age_maria_old) = maria_old-age.
 DATA(age_maria_new) = persons[ name = `Maria Musterfrau` ]-age.
 ~~~
 
-Wichtig ist die unterschiedliche Fehlerbehandlung: Findet `READ TABLE` eine Zeile nicht, zeigt ein Wert von `sy-subrc` ungleich 0 (oder 2) dies an. Ein Tabellenausdruck
-hingegen wirft die Exception `cx_sy_itab_line_not_found`. Statt diese Exception abzufangen, existieren jedoch zwei kurze Varianten für den typischen Umgang mit nicht 
-gefunden Werten, nämlich das Zurückgeben eines initialen Werts oder eines vorgegebenen Standardwerts:
+What is important is the different error handling: If `READ TABLE` does not find a line, a value of `sy-subrc` not equal to 0 (or 2) indicates this. A table expression
+however, the exception `cx_sy_itab_line_not_found` is thrown. However, instead of catching this exception, there are two short variants for typical handling 
+found values, namely returning an initial value or a given default value:
 
 ~~~ abap
 " Alte Variante
@@ -340,10 +340,10 @@ DATA(unknown_person_new_default) = VALUE #( persons[ name = `unbekannt` ]
 
 ### Tabellen umwandeln
 
-Häufig muss aus einer Tabelle eines Typs eine Tabelle eines anderen Typs bestimmt werden. In anderen Programmiersprachen steht dafür häufig eine `map`-Methode bereit.
+Often a table of another type has to be determined from a table of one type. In other programming languages, a `map` method is often available for this.
 
-In ABAP hingegen kann dies auch mithilfe eines `VALUE`-Statements umgesetzt werden. Wenn z.B. die Methode `read_person` zu der genutzten `person`-Struktur ein Objekt lädt,
-sieht das Umwandeln der Tabelle wie folgt aus:
+In ABAP, however, this can also be implemented using a `VALUE` statement. If, for example, the `read_person` method loads an object to the `person` structure used,
+Converting the table looks like this:
 
 ~~~ abap
 " Alte Variante
@@ -358,7 +358,7 @@ DATA(person_objects_new) = VALUE person_objects( FOR p IN persons
                                                     ( read_person_info( p ) ) ).
 ~~~
 
-Die folgenden Beispiele zeigen, wie nur bestimmte Zeilen einer Tabelle anhand eines Index übernommen werden können:
+The following examples show how only certain rows of a table can be copied using an index:
 
 ~~~ abap
 " Alte Syntax
@@ -374,23 +374,23 @@ ENDLOOP.
 DATA(shorter_table_new) = VALUE persons( ( LINES OF persons FROM 2 ) ).
 ~~~
 
-Sollen Zeilen anhand einer Bedingung gefiltert werden, sieht die moderne Syntax so aus:
+If rows are to be filtered based on a condition, the modern syntax looks like this:
 
 ~~~ abap
 DATA(younger_persons) = VALUE persons( FOR p IN persons WHERE ( age < 20 )
                                            ( p ) ).
 ~~~
 
-Für viele Möglichkeiten, die `LOOP AT` bietet - beispielsweise Gruppierungen - gibt es auch in der `VALUE`-Variante Entsprechungen. Weitere Informationen dazu finden sich [in der SAP-Dokumentation](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenvalue_constructor_params_itab.htm).
+For many of the options that `LOOP AT` offers - for example groupings - there are also equivalents in the `VALUE` variant. Further information can be found at [in the SAP documentation](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenvalue_constructor_params_itab.htm).
 
-### String Templates und Konvertierungsexits
+### String templates and conversion exits
 
-In klassischer Syntax mussten Strings für die Ausgabe mit `CONCATENATE` oder `&&` zusammengebaut werden. Als moderne Alternative dazu bietet ABAP String Templates an. String Templates beginnen und
-enden immer mit einem `|`. Dazwischen steht ein String, und Variablen oder Funktionsaufrufe können in geschweiften Klammern eingebettet werden. Ein einfaches String Template
-ist etwa `|Ihr Name: { name }|`, bei dem `{ name }` durch den Inhalt der Variablen `name` ersetzt wird. Zusätzlich können verschiedene Formatierungsangaben für die Variablen angegeben werden, etwa die
-Nutzung des Alpha-Konvertierungsexits.
+In classic syntax, strings had to be assembled for output using `CONCATENATE` or `&&`. As a modern alternative, ABAP offers string templates. String templates begin and
+always end with a `|`. There is a string in between, and variables or function calls can be embedded in curly brackets. A simple string template
+is about `|Ihr Name: { name }|`, where `{ name }` is replaced by the content of the variable `name`. In addition, various formatting specifications can be specified for the variables, such as
+Using the alpha conversion exit.
 
-Soll beispielsweise aus einer Auftrags- und einer Vorgangsnummer ein zusammengesetzter String wie `123 / 0010` entstehen, sieht dies so aus:
+For example, if you want to create a composite string like `123 / 0010` from an order number and a process number, it looks like this:
 
 ~~~ abap
 " Alte Syntax
@@ -405,15 +405,15 @@ CONCATENATE order_id_ext '/' operation_id INTO identifier SEPARATED BY space.
 FINAL(identifier_modern) = |{ order_id ALPHA = OUT WIDTH = 1 } / { operation_id }|.
 ~~~
 
-Weitere Informationen zur Verwendung liefert die [SAP-Dokumentation zu String Templates](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenstring_templates.htm).
+The [SAP documentation on string templates](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenstring_templates.htm) provides further information on use.
 
-### Bestimmung von Werten aus Tabellen, z.B. Minimum
+### Determination of values ​​from tables, e.g. minimum
 
-Neben dem `VALUE`-Operator gibt es weitere Konstruktorausdrücke, um verschiedene typische Programmieraufgaben mit einer präziseren Syntax zu übernehmen. Eine vollständige Liste der
-Konstrukturausdrücke findet sich [in der SAP-Dokumentation](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenconstructor_expressions.htm).
+In addition to the `VALUE` operator, there are other constructor expressions to handle various typical programming tasks with a more precise syntax. A complete list of the
+Construction expressions can be found [in the SAP documentation](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenconstructor_expressions.htm).
 
-Um beispielsweise aus einer Tabelle einen einzelnen Wert wie ein Minimum zu bestimmen, gibt es analog zur `reduce`-Funktion in anderen Programmiersprachen den
-`REDUCE`-Konstruktoroperator. Das folgende Listing zeigt beispielsweise, wie ein aus einer Liste von Personen die jüngste Person ermittelt werden kann:
+For example, in order to determine a single value such as a minimum from a table, there is the `reduce` function in other programming languages
+`REDUCE` constructor operator. For example, the following listing shows how the youngest person can be determined from a list of people:
 
 ~~~ abap
 " Alte Variante
@@ -435,34 +435,34 @@ DATA(youngest_person_new) = REDUCE #( INIT youngest = VALUE person( persons[ 1 ]
 
 ## Namenskonventionen - Empfehlungen NCs vs. Clean Code
 
-### Namen für Repository-Objekte
+### Names for repository objects
 
-Für Repository-Objekte wie beispielsweise Klassen sollte im Unternehmen immer ein Namensschema vorgegeben werden, da sich alle Objekte eines Typs denselben Namensraum teilen.
-Wird etwa für Instandhaltungsaufträge eine Klasse `ZCL_AUFTRAG` angelegt, steht dieser Name nicht mehr für Serviceaufträge zur Verfügung, und ein Entwickler, der den Namen der
-Klasse liest weiß nicht direkt, um was für einen Auftrag es sich handelt. Dazu kann die Entwicklungsrichtlinie beispielsweise Modulpräfixe vorgeben, etwa `ZCL_<MODUL>-NAME` - im 
-Beispiel dann `ZCL_PM_AUFTRAG`. Nicht ausdrucksstarke Namen wie `ZCL_DATA` oder `ZCL_FORMULAR3` erschweren ebenso das Verständnis beim Lesen des Quellcodes und sind zu vermeiden.
+A naming scheme should always be specified in the company for repository objects such as classes, since all objects of a type share the same namespace.
+For example, if a class `ZCL_AUFTRAG` is created for maintenance orders, this name is no longer available for service orders, and a developer who uses the name of the
+Class reads doesn't immediately know what kind of assignment it is. For this purpose, the development guidelines can, for example, specify module prefixes, such as `ZCL_<MODUL>-NAME` - in 
+Example then `ZCL_PM_AUFTRAG`. Non-expressive names such as `ZCL_DATA` or `ZCL_FORMULAR3` also make it difficult to understand when reading the source code and should be avoided.
 
 {: .note }
-Clean ABAP enthält einen [ausführlichen Abschnitt für Namen in der Entwicklung](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#names).
+Clean ABAP contains a [detailed section for names in development](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#names).
 
 ### Ungarische Notation
 
 {: .note }
-[Clean ABAP](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#avoid-encodings-esp-hungarian-notation-and-prefixes) empfiehlt, bei Variablenbenennung auf die ungarische Notation oder andere Encodings zu verzichten.
+[Clean ABAP](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#avoid-encodings-esp-hungarian-notation-and-prefixes) recommends avoiding Hungarian notation or other encodings when naming variables.
 
-Gemäß den Clean ABAP-Richtlinien entwickelter Code wird aus vielen, kurzen Methoden bestehen. In diesen ist es unnötig, Informationen wie z.B. die Gültigkeit oder den Typ einer Variable
-in ihrem Namen anzugeben. Diese Informationen sollten direkt auf einen Blick sichtbar sein, oder stehen in Eclipse z.B. mittels Druck auf `F2` direkt zur Verfügung. Stattdessen sollten
-ausdrucksstarke Namen verwendet werden.
+Code developed according to the Clean ABAP guidelines will consist of many, short methods. In these it is unnecessary to provide information such as the validity or type of a variable
+to be stated in their name. This information should be visible at a glance, or is directly available in Eclipse, for example by pressing `F2`. Instead, should
+expressive names are used.
 
-In altem Coding, das noch nicht modernisiert wurde, kann die Weiternutzung ungarischer Notation hingegen hilfreich sein. Beide Varianten sollten jedoch nicht gemischt in einem
-Entwicklungsobjekt eingesetzt werden.
+However, in old coding that has not yet been modernized, continuing to use Hungarian notation can be helpful. However, both variants should not be mixed in one
+Development object can be used.
 
 ## ABAP Cleaner
 
-Der 2023 öffentlich erschienene [ABAP Cleaner](https://github.com/SAP/abap-cleaner) ist eine Erweiterung für ADT, welche die Anwendung von mehr als 90 Regeln zur Formatierung und Gestaltung von ABAP Code ermöglicht.
+[ABAP Cleaner](https://github.com/SAP/abap-cleaner), released publicly in 2023, is an extension for ADT that enables the application of more than 90 rules for formatting and designing ABAP code.
 
-ABAP Code wird nicht nur wie bei Pretty Printer formatiert, es werden auch, basierend auf den eingestellten Regeln, Optimierungen des ABAP Codes vorgenommen.
-Nicht verwendete Methoden-Parameter werden durch Kommentare kenntlich gemacht und es können - je nach Einstellung - nicht verwendete Variablen automatisch gelöscht werden.
-Das Ergebnis der Anwendung ist einheitlicher, besser lesbarer Code und eine effektive Beschleunigung der Entwicklung, da der Cleaner Aufgaben des Programmierers übernimmt.
+ABAP code is not only formatted like Pretty Printer, optimizations of the ABAP code are also made based on the set rules.
+Unused method parameters are identified by comments and - depending on the setting - unused variables can be automatically deleted.
+The result of the application is uniform, more readable code and an effective acceleration of development because the cleaner takes over tasks from the programmer.
 
-Der Einsatz des ABAP Cleaners bringt eine Vielzahl von Vorteilen für das moderne Entwickeln von ABAP Code. Aus Sicht der Autoren dieses Leitfadens ist der Einsatz vom ABAP Cleaner unbedingt nötig.
+Using the ABAP Cleaner brings a variety of advantages for modern development of ABAP code. From the perspective of the authors of this guide, the use of the ABAP Cleaner is absolutely necessary.

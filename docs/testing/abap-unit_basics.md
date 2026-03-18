@@ -2,7 +2,7 @@
 layout: page
 title: ABAP Unit - Testtechniken
 permalink: /testing/abap-unit_basics/
-parent: Softwaretest mit ABAP Unit 
+parent: Software test with ABAP unit 
 nav_order: 2
 ---
 
@@ -15,144 +15,144 @@ nav_order: 2
 
 Technische Grundlagen Objektebene
 
-## Was ist mittels ABAP Unit testbar?
+## What can be tested using the ABAP unit?
 
 > {: .Zitat }
-> "Das kann man nicht testen"  
+> “You can’t test that”  
 
-Grundsätzlich ist fast alles mit ABAP Unit testbar. Es gibt Programmbereiche, die nicht mittels ABAP Unit Tests überprüft werden können. Dazu gehören alle Programmteile, die auf einen Dialog angewiesen sind oder Daten darstellen (z.B. ALV-Grid).
-Für alles Andere gibt es Möglichkeiten diese Programme mit ABAP Unit Tests abzusichern. Anfänglich wird dies aufwändig und mühsam sein. Die Mühe wird sich aber lohnen und schnell auszahlen. Es is definitiv möglich BAPIs, BAdIs, RFCs und IDOCs mit Unitests abzusichern.  
+Basically almost everything can be tested with ABAP Unit. There are program areas that cannot be checked using ABAP unit tests. This includes all program parts that rely on a dialog or display data (e.g. ALV grid).
+For everything else, there are options to secure these programs with ABAP unit tests. Initially this will be complex and tedious. But the effort will be worth it and will pay off quickly. It is definitely possible to secure BAPIs, BAdIs, RFCs and IDOCs with Unitests.  
 
-## Behandlung von Daten in Unit Tests
+## Handling data in unit tests
 
-Die klassische Systemkonfiguration im Entwicklungssystem mit einen Entwicklungs- und einem Testmandanten stellt eine Hürde für den reibungslosen Ablauf von Komponenten- oder Integrationstests dar, da diese meist von Daten der Datenbank abhängig sind, wenn gängige Unit Test Methodiken nicht angewendet werden.  
-Dies gilt analog für Szenarien bei denen auf dem Entwicklungssystem sich keine Daten in der Datenbank befinden. 
+The classic system configuration in the development system with a development and a test client represents a hurdle for the smooth running of component or integration tests, as these usually depend on data from the database if common unit test methodologies are not used.  
+This applies analogously to scenarios in which there is no data in the database on the development system. 
 
 {: .recommendation } 
-> Erstellen Sie ihre ABAP Unit Tests unabhängig von der Datenbank, so dass sie mit Hilfe von Dependency-Injection und Mocks in jedem  Mandanten lauffähig sind und das gleiche Ergebnis liefern.  
-> Wird dieses Vorgehen nicht angewendet, die Tests im Mandant x entwickelt, in Mandant y ausgeführt, würden die Tests keine belastbare Aussage liefern und somit seltener oder gar nicht ausgeführt.
-> Analog verhält es sich mit Unit Tests, die abhängig von einer Datenkonstellation auf dem Testsystem sind.
-> Gemäß Unit Test Methodik sind daher direkte Datenbankabfragen mittels Mocking oder Injection-Framework zu vermeiden.
-> Welche Techniken Sie beim Erreichten dieser Unabhängigkeit unterstützen finden sie hier im Abschnitt [Erweiterte Techniken](#abap_unit_advanced)
+> Create your ABAP unit tests independently of the database so that they can run in every client using dependency injection and mocks and deliver the same result.  
+> If this procedure is not used and the tests are developed in client x and executed in client y, the tests would not provide any reliable information and would therefore be carried out less often or not at all.
+> The same applies to unit tests, which depend on a data constellation on the test system.
+> According to the unit test methodology, direct database queries using mocking or injection frameworks should be avoided.
+> You can find out which techniques will support you in achieving this independence here in section [Erweiterte Techniken](#abap_unit_advanced)
 
 ## Testumgebung
 
-Die ABAP Unit-Tests können aus den ABAP-Development-Tools heraus oder der SAP-GUI Entwicklungsumgebung (SE80, SE24) erstellt und verwendet werden. Die Vorgehensweise unterscheidet sich nur in Kleinigkeiten.
-Empfohlen wird hier klar ADT, da hier auch die Verwendung von [Test Relations](https://www.youtube.com/watch?app=desktop&v=yiKhKlQz89Y&t=14s) möglich ist.  
-Die Techniken, die zur Erstellung notwendig sind, ähneln sich jedoch stark. Unit Tests, die in der SE80 erstellt wurden, können auch in Eclipse gewartet und getestet werden und umgekehrt. Die Tastenkombination zum Ausführen der Unit Tests ist in beiden Tools **STRG + SHIFT + F10.** Andere Funktionen sind in der ABAP Workbench teilweise nur durch das Menü erreichbar, während es im ADT eine Tastenkombination dafür gibt.
+The ABAP unit tests can be created and used from the ABAP development tools or the SAP-GUI development environment (SE80, SE24). The procedure only differs in small details.
+ADT is clearly recommended here, as [Test Relations](https://www.youtube.com/watch?app=desktop&v=yiKhKlQz89Y&t=14s) can also be used here.  
+However, the techniques required to create them are very similar. Unit tests created in SE80 can also be maintained and tested in Eclipse and vice versa. The key combination for running the unit tests in both tools is **CTRL + SHIFT + F10.** Other functions in the ABAP Workbench can sometimes only be accessed through the menu, while there is a key combination for this in the ADT.
 
-Im folgenden Abschnitt werden diese Themen behandelt:
+The following section covers these topics:
 
-* Erstellen von Unit Tests
-* Ausführen von Unit Tests
+* Creating unit tests
+* Run unit tests
 * Ergebnisanzeige
 * Codeabdeckung (Code Coverage)
 
-Wir gehen davon aus, dass Sie Erfahrung mit dem jeweiligen Tool haben. Aus diesem Grund erfolgt keine Schritt-für-Schritt-Anleitung, sondern lediglich eine kurze Übersicht der wichtigsten Befehle.
+We assume that you have experience with the respective tool. For this reason, there are no step-by-step instructions, just a brief overview of the most important commands.
 
-### Erstellen einer lokalen Testklasse in ADT
+### Creating a local test class in ADT
 
-* Öffnen Globale Klasse
+* Open Global Class
 * Springen zur View "Test Classes"
 * Template "testClass"
 
-### Tastenkombinationen in ADT
+### Keyboard shortcuts in ADT
 
 * **Ctrl + Shift + F9:** Unit Test Preview anzeigen
-* **Ctrl + Shift + F10:** Unit Tests ausführen
-* **Ctrl + Shift + F11:** Unit Tests mit Coverage ausführen
-* **Ctrl + Shift + F12:** Unit Test Ausführungsdialog aufrufen
-* **Ctrl + Shift + F2:** ATC-Prüfung mit Standardvariante ausführen
+* **Ctrl + Shift + F10:** Run unit tests
+* **Ctrl + Shift + F11:** Run unit tests with coverage
+* **Ctrl + Shift + F12:** Open unit test execution dialog
+* **Ctrl + Shift + F2:** Run ATC check with standard variant
 
-### Tastenkombinationen in der Workbench
+### Keyboard shortcuts in the workbench
 
-* **Ctrl + Shift + F10:** Unit Tests ausführen
-* **Ctrl + Shift + F11:** Lokale Testklassen anzeigen (nur formularbasierter Editor)
-* **Ctrl + F11:** Lokale Testklassen anzeigen (nur Quelltext-basierter Editor)
+* **Ctrl + Shift + F10:** Run unit tests
+* **Ctrl + Shift + F11:** Show local test classes (form-based editor only)
+* **Ctrl + F11:** Show local test classes (code-based editor only)
 
-## Testmethodiken und Prinzipien
+## Testing methodologies and principles
 
 ### GIVEN - WHEN - THEN
 
-GIVEN-WHEN-THEN ist ein Stil, um Unit Tests zu formulieren. Mit GIVEN wird eine Bedingung angegeben, unter denen der Test stattfinden soll. WHEN beschreibt die Aktion, die durchgeführt wird und THEN beschreibt das erwartete Ergebnis.
+GIVEN-WHEN-THEN is a style for formulating unit tests. GIVEN specifies a condition under which the test should take place. WHEN describes the action that will be taken and THEN describes the expected result.
 
-Bezogen auf unser Beispiel mit der Hausnummer könnte die Formulierung heißen:\
-GIVEN ist der Straßenname "ABC-Straße 13"\
-WHEN die Hausnummer aus diesem String ermittelt wird\
-THEN sollte die Hausnummer "13" sein
+Based on our example with the house number, the wording could be:\
+GIVEN is the street name "ABC-Straße 13"\
+WHEN the house number is determined from this string\
+THEN should be the house number "13".
 
-### Clean Code in Unit Tests
+### Clean Code in unit tests
 
-Oft trifft man auf die Einstellung, dass es in Unit Tests nicht nötig ist sich an Regeln der Code Qualität zu halten (CleanABAP, Namenskonventionen, Modularisierung, ...). Schlechte Wartbarkeit und Qualität in Unit Tests wird dazu führen, dass die Tests nicht weiterentwickelt und nutzlos werden. Doppelter Code und fehlende Modularisierung ist hier ebenso zu vermeiden wie in produktivem code.
+You often come across the attitude that it is not necessary to adhere to code quality rules in unit tests (CleanABAP, naming conventions, modularization, ...). Poor maintainability and quality in unit tests will result in the tests not being further developed and becoming useless. Duplicate code and a lack of modularization should be avoided here as well as in productive code.
 
 ### Unit Test sauber halten
 
-Ebenso ist es zwingend nötig, alle Unit Tests Erfolgreich durchzuführen. Seien Sie hier nicht nachlässig und priorisieren Sie Aufgaben, die es bedürfen den Geschäfts-Code oder den Unit Test zu reparieren, bis wieder alle Tests fehlerfrei ausgeführt werden.  
+It is also imperative to carry out all unit tests successfully. Don't be careless here and prioritize tasks that require fixing the business code or unit test until all tests are running error-free again.  
 
-### Behandlung von Ausnahmen
+### Exception handling
 
-[SAP empfiehlt](https://help.sap.com/doc/saphelp_crm700_ehp03/7.0.3.11/de-DE/dd/587324e2424b14ab5afb3239a77a8d/frameset.htm): Wenn der zu testende Code in der Lage ist, eine Ausnahme auszulösen, sollte die Testmethode selbst diese nicht behandeln, sondern sie in ihrer Signatur deklarieren (abgesehen von provozierten Ausnahmen), so dass der Testfall fehlschlägt, wenn er zur Laufzeit auftritt. 
+[SAP empfiehlt](https://help.sap.com/doc/saphelp_crm700_ehp03/7.0.3.11/de-DE/dd/587324e2424b14ab5afb3239a77a8d/frameset.htm): If the code under test is capable of throwing an exception, the test method itself should not handle it, but declare it in its signature (apart from provoked exceptions), so that the test case fails if it occurs at runtime. 
 
 
-### Aufbau einer Unit Test Klasse
+### Building a unit test class
 
-Eine Unit-Test-Klasse hat - im Gengensatz zu einer gängigen ABAP-Klasse - ein paar Besonderheiten. In diesem Kapitel beschreiben wir, wie die Unit-Test-Klasse aufgebaut ist und welche Eigenschaften sie hat.
+A unit test class has a few special features in contrast to a common ABAP class. In this chapter we describe how the unit test class is structured and what properties it has.
 
-* genereller Ablauf
+* general process
 * Risklevel
 * Duration
-* Anlage in
+*Plant in
   * Eclipse
   * SE80
 * SETUP 
 * TEARDOWN
 * FOR TESTING
 
-### Genereller Ablauf
+### General process
 
-Jede Klasse hat ein Include in dem mehrere lokale Klassen und Test-Klassen definiert werden können. Eine Testklasse besitzt Attribute, die etwas über die _Gefährlichkeit_ (Risk level) und die _Dauer_ (Duration) der Tests aussagen. Jede Testklasse hat Testmethoden, die mit dem Zusatz _FOR TESTING_ als solche kenntlich gemacht werden. Testmethoden werden in zufälliger Reihenfolge ausgeführt und dürfen nicht voneinander abhängen.
+Each class has an include in which several local classes and test classes can be defined. A test class has attributes that say something about the _danger_ (risk level) and the _duration_ (duration) of the tests. Each test class has test methods that are identified as such with the addition _FOR TESTING_. Test methods are executed in random order and must not depend on each other.
 
-In einer Testmethode wird eine (öffentliche) Methode der zu testenden Klasse ausgeführt und mit einem erwarteten Ergebnis verglichen. Stimmt die Erwartung überein, dann ist der Test erfolgreich. Die Instanz der zu testenden Klasse wird _F_CUT_ oder _CUT_ genannt. _CUT_ steht für _Code Under Test_. Vor Ausführung der Tests kann optional die Methode _SETUP_ ausgeführt werden, in der Vorbereitungen zum Testfall vorgenommen werden können (z.B. die Erzeugung der Instanz _CUT_). Nach Ausführung einer Testmethode können in der Methode _TEARDOWN_ Aufräumarbeiten durchgeführt werden. Es können beliebig viele andere Methoden oder Klassen definiert werden, die zur Unterstützung der Tests dienen.
+In a test method, a (public) method of the class under test is executed and compared with an expected result. If the expectation matches, then the test is successful. The instance of the class under test is called _F_CUT_ or _CUT_. _CUT_ stands for _Code Under Test_. Before executing the tests, the _SETUP_ method can optionally be executed, in which preparations for the test case can be made (e.g. the creation of the _CUT_ instance). After executing a test method, cleanup work can be carried out in the _TEARDOWN_ method. Any number of other methods or classes can be defined to support the tests.
 
 ### Risikostufe/ Risk Level
 
-Mit dem Zusatz _RSIK LEVEL_ definieren Sie die Risikostufe der Testfälle
+With the addition _RSIK LEVEL_ you define the risk level of the test cases
 
-Folgen sie den Vorgaben der SAP zum Risiko Level:
+Follow the SAP guidelines for risk levels:
 * CRITICAL - a test changes system settings or customizing data (default)
 * DANGEROUS - a test changes persistent data
 * HARMLESS - a test does not change system settings or persistent data
 
-Grundsätzlich sollten Sie es vermeiden, Tests zu schreiben, die wirkliche Änderungen an der Datenbank vornehmen. Dies ist oft ein Indikator für fehlendes Management von Abhängigkeiten bzw. deren Austausch. Ihr Ziel muss sein, möglichst alle Tests als _Harmless_ definieren zu können. Mit Hilfe der von SAP bereitgestellten Frameworks zum Mocken von Datenbanktabellen und CDS-Views ist dies möglich. Siehe Abschnitt [Mocking..](Mocking, faking, spying und stubbing)
+In general, you should avoid writing tests that make real changes to the database. This is often an indicator of a lack of management of dependencies or their exchange. Your goal must be able to define as many tests as _Harmless_. This is possible with the help of the frameworks provided by SAP for mocking database tables and CDS views. See section [Mocking..](Mocking, faking, spying und stubbing)
 
 ### Dauer/ Duration
 
-Mit dem Zusatz _DURATION_ definieren Sie die voraussichtliche Laufzeit der Testfälle. 
-Folgende Kategorien sind möglich. In den Klammen steht die voreingestelle Dauer in Sekunden:
+You use the addition _DURATION_ to define the expected runtime of the test cases. 
+The following categories are possible. The preset duration in seconds is shown in the brackets:
 * LONG (3600 sec)
 * MEDIUM (300 sec)
 * SHORT (60 sec)
 
-Überschreitet ein Test den im System definierten Wert, dann wird der Test abgebrochen und als "fehlgeschlagen" interpretiert.   
+If a test exceeds the value defined in the system, the test is aborted and interpreted as "failed".   
 
-Die Einstellung der verschiedenen Laufzeiten können sie mit Transaktion SAUNIT_CLIENT_SETUP vornehmen. Auch hier gilt das klare Ziel, dass ihre Tests schnell sein müssen, damit sie immer wieder ausgeführt werden können. 
+You can set the different runtimes using transaction SAUNIT_CLIENT_SETUP. Here too, the clear goal is that your tests must be fast so that they can be run again and again. 
 
 ### ASSERT 
 
-Innerhalb einer Testmethode kann das Ergebnis einer Testmethode mit den Methoden der Klasse _CL_ABAP_UNIT_ASSERT_ geprüft werden. Die Klasse hat viele Methoden, die für entsprechende Vergleiche genutzt werden können. Die wohl am häufigsten gebrauchten Methoden sind:
+Within a test method, the result of a test method can be checked using the methods of the class _CL_ABAP_UNIT_ASSERT_. The class has many methods that can be used for appropriate comparisons. The most commonly used methods are:
 * ASSERT_EQUALS
 * ASSERT_FALSE
 * ASSERT_BOUND
 
-Ein _ASSERT_ wird durchgeführt, um den ermittelten Wert mit dem erwarteten Wert abzugleichen. Sie rufen also eine Methode der zu testenden Klasse auf und vergleichen das Ergebnis mit dem, was Sie als Ausgabe erwarten. Die Parameter der entsprechenden ASSERT-Methode heißen dabei immer gleich:
-* EXP ist der zu erwartende Wert (EXPECTED VALUE)
-* ACT ist der im Test ermittelte Wert (ACTUAL VALUE)
+An _ASSERT_ is performed to compare the determined value with the expected value. So you call a method of the class under test and compare the result with what you expect as output. The parameters of the corresponding ASSERT method always have the same name:
+* EXP is the expected value (EXPECTED VALUE)
+* ACT is the value determined in the test (ACTUAL VALUE)
 * 
-Die Erwartung kann sein, dass das Ergebnis einen bestimmten Wert hat, eine bestimmte Tabellenzeile in der Ergebnistabelle vorhanden ist oder ein Objekt instaziiert wurde. Das Ergebnis muss dabei nicht direkt aus einer Methode kommen. Sie können auch mehrere Methoden der Testklasse ausführen und am Ende den Wert eines globalen Attributs prüfen.
+The expectation may be that the result has a specific value, a specific table row is present in the result table, or an object has been instantiated. The result does not have to come directly from a method. You can also execute multiple methods of the test class and check the value of a global attribute at the end.
  
-### Beispiel Testklasse
+### Example test class
 
-Das folgende Beispiel zeigt die Testklasse `LTCL_VERIFY_ADDRESSES` zu der globalen Klasse `ZCL_ADDRESS`. Die die Methode `SPLIT_ADDRESS` ist dafür zuständig, einen String, der Adresse und Hausnummer enthält, in die Bestandteile `Straße` und `Hausnummer` aufzuteilen.
+The following example shows the test class `LTCL_VERIFY_ADDRESSES` to the global class `ZCL_ADDRESS`. The `SPLIT_ADDRESS` method is responsible for dividing a string containing the address and house number into the components `Straße` and `Hausnummer`.
 
 ```
 CLASS ltcl_verify_addresses DEFINITION FINAL FOR TESTING
@@ -209,61 +209,61 @@ ENDCLASS.
 ```
 
 
-#### Methoden zur Zusammenstellung von abhängigen Klassen
+#### Methods for composing dependent classes
 
-Bei komplizierten Testfällen müssen eventuell umfangreiche Vorarbeiten getan werden, damit die eigentlichen Tests durchgeführt werden können. Es sollten zwar so wenig Abhängigkeiten wie möglich vorhanden sein, aber gänzlich vermeiden lassen sich Abhängigkeiten leider nicht immer. Hilfsmethoden können helfen, das notwendige Setup für einen Test vorzubereiten.
+In the case of complicated test cases, extensive preparatory work may need to be done so that the actual tests can be carried out. There should be as few dependencies as possible, but unfortunately dependencies cannot always be completely avoided. Auxiliary methods can help prepare the necessary setup for a test.
 
-**Beispiel:**
+**Example:**
 
-Die Methode `prepare_setup( ).` erstellt zwei Instanzen, die zur Verifizierung der Adresse notwendig sind:
-* Straßenverzeichnis
+The `prepare_setup( ).` method creates two instances that are necessary to verify the address:
+* Street directory
 * Postleitzahlenkatalog
 
-#### Hilfsmethoden zum Aufbau von Testdaten
+#### Auxiliary methods for building test data
 
-Wenn Testdaten aus vielen Komponenten bestehen (Kopfdaten, Positionsdaten, Partner, Materialien usw.), dann kann das Zusammenstellen dieser Daten umfangreich werden. Entsprechende Hilfsmethoden sind hier unbedingt erforderlich um die Zusammenstellung erleichtern.
+If test data consists of many components (header data, item data, partners, materials, etc.), then compiling this data can be extensive. Appropriate auxiliary methods are absolutely necessary here to make compilation easier.
 
-**Beispiel:**
+**Example:**
 
-Die Methode `get_setup_for_document( doc_id = c_nice_docuemt_id ).` stellt alle notwendigen Daten zur Verfügung, die zu dem geforderten Dokument gehören.
+The `get_setup_for_document( doc_id = c_nice_docuemt_id ).` method provides all the necessary data associated with the requested document.
 {: .note }
-Wenn Sie auf Dokumente der Datenbank zurückgreifen müssen, pflegen Sie zentrale Konstanten mit sprechenden Namen und Erläuterungen.  Sie werden ansonsten irgendwann nicht mehr wissen welche Eigenarten Beleg 564 hatte.   
+If you need to access documents from the database, maintain central constants with descriptive names and explanations.  Otherwise, at some point you will no longer know what peculiarities Exhibit 564 had.   
 ```ABAP
 CONSTANTS:  "! Sales order that has one item, Material ..., not released ... 
              c_order_one_iten_ok
 ```
 
 
-#### Hilfsmethoden zur Modularisierung von Tests
+#### Auxiliary methods for modularizing tests
 
-Bei Tests kann es notwendig sein, dass nicht nur ein Aspekt des Ergebnisses getestet wird, sondern viele. Solche Programmierungen können in der Regel gut in Methoden ausgelagert werden.
+Testing may require testing not just one aspect of the result, but many. Such programming can usually be easily outsourced to methods.
 
-**Beispiel:**
+**Example:**
 
-Die Methode `verify_address_is_valid( address = data )` prüft nicht nur, ob Straßenname und Hausnummer erfolgreich extrahiert werden konnten, sondern auch, ob die Postleitzahl aus fünf Zahlen besteht und mit dem Ortsnamen übereinstimmt.
+The `verify_address_is_valid( address = data )` method not only checks whether the street name and house number were successfully extracted, but also whether the postal code consists of five numbers and matches the place name.
 
-### Testen von privaten, geschützten und öffentlichen Methoden
-Es gibt die Meinung, dass nur öffentliche Methoden getestet werden sollten. Über die Codeabdeckung kann analysiert werden, ob alle Codestrecken durchlaufen wurden.
-Allerdings kann das Bereitstellen der notwendigen Daten sehr aufwändig sein, so dass es sinnvoll sein kann, die kleineren Einheiten (private und geschützte Methoden) zu testen. Zudem "verwässern" umfangreiche Datenkonstellationen den Zweck eines Unit Tests. Tests für private Methoden können ebenfalls helfen, den Ursprung eines Fehlers schneller zu lokalisieren. 
+### Testing private, protected and public methods
+There is an opinion that only public methods should be tested. The code coverage can be used to analyze whether all code sections have been passed through.
+However, providing the necessary data can be very time-consuming, so it may make sense to test the smaller units (private and protected methods). In addition, extensive data constellations “dilute” the purpose of a unit test. Private method tests can also help pinpoint the source of an error more quickly. 
 
-**Beispiel Adressaufbereitung:**
-Nehmen wir an, wir haben eine Klasse, die Adressen entgegen nimmt und analysiert. Die eine Methode `SEPARATE_HOUSENO_FROM_STREET` haben wir bereits kennengelernt. Zusätzlich gibt es eine Methode `CHECK_POST_CODE`, die sicherstellen soll, dass die Postleitzahl 5-stellig ist und nur aus Zahlen besteht. Wenn beide privaten Methoden von der öffentlichen Methode `CHECK_ADDRESS` aufgerufen werden, müssen wir zum Testen immer eine komplette Adresse übergeben. Einfacher und auch deutlicher ist es, wenn wir die privaten Methoden separat testen. Sie können so die eigentliche Funktion der Methode `SEPARATE_HOUSENO_FROM_STREET` testen. 
+**Example address preparation:**
+Let's say we have a class that receives and parses addresses. We have already gotten to know one method `SEPARATE_HOUSENO_FROM_STREET`. In addition, there is a method `CHECK_POST_CODE`, which is intended to ensure that the zip code has 5 digits and consists only of numbers. If both private methods are called by the public method `CHECK_ADDRESS`, we always have to pass a complete address for testing. It is easier and clearer if we test the private methods separately. This way you can test the actual function of the `SEPARATE_HOUSENO_FROM_STREET` method. 
 
 ### Unit Tests erweitern
 
-Wenn wir uns das Beispiel mit dem Ermitteln der Hausnummer ansehen, dann gibt es viele Fallstricke, die ein unerwartetes Ergebnis hervorrufen können. Die Eingaben, die zu einem fehlerhaften Ergebnis führen, kennen wir im Vorfeld jedoch nicht. Wir lernen sie erst kennen, wenn sich Anwender beschweren, die ein falsches Ergebnis erhalten. In diesem Fall können die Eingaben, die zu fehlerhaften Ausgaben geführt haben, in einen Unit Test aufgenommen werden. Nach der Änderung des Codings werden alle bereits definierten Unit Tests durchgeführt und der Entwickelnde kann sicher sein, dass alles wie zuvor funktioniert.
+If we look at the example of finding the house number, there are many pitfalls that can produce an unexpected result. However, we do not know in advance the entries that lead to an incorrect result. We only get to know them when users complain about getting an incorrect result. In this case, the inputs that resulted in erroneous outputs can be included in a unit test. After changing the coding, all unit tests that have already been defined are carried out and the developer can be sure that everything works as before.
 
-#### Beispiel Testklasse mit Hilfsmethode
+#### Example test class with helper method
 
-In diesem Beispiel wird die Demoklasse aus dem vorherigen Kapitel, die eine Adresse in ihre Bestandteile Straße und Hausnummer aufteilt, aufgegriffen. Diese Klasse hat drei Testmethoden für einzelne Varianten. Da das Schema immer das gleiche ist, wäre es einfacher, wenn die Straßennamen und Hausnummern zusammengesetzt und dann in einer Methode getestet würden. 
+This example uses the demo class from the previous chapter, which divides an address into its street and house number components. This class has three testing methods for individual variants. Since the schema is always the same, it would be easier if the street names and house numbers were put together and then tested in one method. 
 
-Also zum Beispiel:
+So for example:
 
 ```
 verify_address( strasse = 'Beispielstraße'  house_number = '23' ).
 ```
 
-Die Testklasse könnte dann wie folgt aussehen:
+The test class could then look like this:
 
 ```
 CLASS ltcl_verify_addresses_helper DEFINITION FINAL FOR TESTING
@@ -314,58 +314,58 @@ CLASS ltcl_verify_addresses_helper IMPLEMENTATION.
 ENDCLASS.
 ```
 
-Die Testklasse enthält nun nur noch die eine Testmethode `TEST_GERMAN_STANDARDS`, in der alle Tests durchgeführt werden.
+The test class now only contains the one test method `TEST_GERMAN_STANDARDS` in which all tests are carried out.
 
-Es gibt eine Hilfsmethode `VERIFY_ADDRESS`, die einen Straßennamen und eine Hausnummer entgegennimmt, diese zusammensetzt und durch die zu testende Methode `SPLIT_ADDRESS` wieder aufteilen lässt. Da ein Testfall nun nicht mehr 1:1 einer Testmethode entspricht, wurde der Parameter `MSG` von `CL_ABAP_UNIT_ASSERT=>ASSERT_EQUALS` verwendet, um direkt auf den fehlerhaften Testfall hinzuweisen.
+There is an auxiliary method `VERIFY_ADDRESS` that takes a street name and a house number, puts them together and then splits them up again using the method `SPLIT_ADDRESS` being tested. Since a test case no longer corresponds 1:1 to a test method, the parameter `MSG` was used by `CL_ABAP_UNIT_ASSERT=>ASSERT_EQUALS` to point directly to the faulty test case.
 
-Die Testklasse ist nun deutlich übersichtlicher und die Testfälle sind auf einen Blick gut erkennbar.
+The test class is now much clearer and the test cases can be easily identified at a glance.
 
-Diese Variante erlaubt es, auch weiterhin Tests durchzuführen, die nach einem anderen Schema funktionieren. 
+This variant allows you to continue carrying out tests that work according to a different scheme. 
 
-Hinweis: Dies ist keine Empfehlung, alle Tests in einer Testmethode unterzubringen. Das Beispiel soll lediglich aufzeigen, dass Hilfsmethoden genutzt werden können, um die Unit Tests kompakter, besser wartbar und lesbarer zu gestalten.
+Note: This is not a recommendation to accommodate all tests in one test method. The example is simply intended to show that auxiliary methods can be used to make the unit tests more compact, easier to maintain and more readable.
 
 ### Testumgebung
 
-ABAP Unit test können in ADT als auch im SAP GUI ausgeführt und ihre Ergebnisse analysiert werden. 
-Empfohlen wird hier klar ADT, da hier auch die Verwendung von [Test Relations](https://www.youtube.com/watch?app=desktop&v=yiKhKlQz89Y&t=14s) möglich ist. 
+ABAP Unit tests can be executed in ADT as well as in the SAP GUI and their results can be analyzed. 
+ADT is clearly recommended here, as [Test Relations](https://www.youtube.com/watch?app=desktop&v=yiKhKlQz89Y&t=14s) can also be used here. 
 
-### Auflösen von Abhängigkeiten mit Mocking, Faking, Stubbing und Spying
+### Resolving dependencies with mocking, faking, stubbing and spying
 
-Eine wichtige Eigenschaft von testbarem Code ist, dass (Geschäfts-)Logik, Datenbeschaffung und Präsentation strikt getrennt sind. Wenn dies gewährleistet ist, dann können abhängige Klassen durch nicht-produktive Objekte ersetzt werden. Diese Objekte können unterschiedliche Aufgaben haben und werden dementsprechend benannt. Die folgenden Arten sind möglich:
+An important property of testable code is that (business) logic, data acquisition and presentation are strictly separated. If this is guaranteed, then dependent classes can be replaced by non-productive objects. These objects can have different tasks and are named accordingly. The following types are possible:
 * Mock
 * Stub
 * Faker
 * Spy
 
-Ein **Mock**-Objekt ist ein Objekt, das dynamisch auf die Eingaben der Aufrufers reagieren kann. Ein Mock-Objekt kann zum Beispiel eine Abfrage in einem externen System oder der Datenbank imitieren und testfallabhängig die gewünschten Daten liefern.
+A **Mock** object is an object that can respond dynamically to the caller's input. A mock object can, for example, imitate a query in an external system or the database and deliver the desired data depending on the test case.
 
-Ein **Stub** ist ein Objekt mit minimaler Implementierung der zum Testen notwendigen Methoden. Dieses Objekt ist nur dazu da, um den fehlerfreien Aufruf der zu testenden Methoden zu gewährleisten.
+A **Stub** is an object with minimal implementation of the methods necessary for testing. This object is only there to ensure that the methods to be tested are called without errors.
 
-Ein **Fake**-Objekt liefert notwendige Daten nach einem vereinfachten Algorithmus. Beispielsweise könnte das Echte Objekt eine umfangreiche Postleitzahlenprüfung vornehmen, bei der Geodaten, Ortsteile und Postleitzahlen auf Grundlage verschiedener Dienste verifiziert werden. Der entsprechende Faker könnte einfache Prüfungen machen, die für die Durchführung der Tests ausreichend sind.
+A **Fake** object provides necessary data according to a simplified algorithm. For example, the Real Object could perform a comprehensive zip code check, verifying geospatial data, districts and zip codes based on various services. The corresponding faker could make simple checks that are sufficient to carry out the tests.
 
-Ein **Spion**-Objekt kann Eigenschaften von Stubs, Fakes und Mocks enthalten, übernimmt jedoch zusätzlich noch die Funktion, Zugriffe zu protokollieren. So könnte ein Spy zum Beispiel beim Testen aufgerufen werden; es wird jedoch nicht direkt das Ergebnis geprüft, sondern nur, ob diese Methode aufgerufen wurde. Dieser Typ wird gerne verwendet, um sicherzustellen, dass bei bestimmten Aktionen E-Mails oder andere Nachrichten verschickt worden wären. 
+A **Spy** object can contain properties of stubs, fakes and mocks, but also has the additional function of logging access. For example, a spy could be called during testing; However, the result is not checked directly, only whether this method was called. This type is often used to ensure that emails or other messages would have been sent for certain actions. 
 
 * [Martin Fowler - Mocks Aren't Stubs](https://www.martinfowler.com/articles/mocksArentStubs.html)
 
 #### Test-Doubles
 
-Die Verwendung von Test-Doubles ist notwendig, wenn Abhängigkeiten bestehen, die nicht ausreichend aufgelöst wurden oder aufgelöst werden konnten. Mit entsprechenden Test-Double-Frameworks kann das Ergebnis von Datenbankzugriffe oder Funktionsbausteinaufrufen gefälscht werden. 
+The use of test doubles is necessary if there are dependencies that have not been or could not be resolved sufficiently. With appropriate test double frameworks, the results of database accesses or function module calls can be faked. 
 
-Test-Double-Frameworks sind in der Regel umständlich zu bedienen und sehr unübersichtlich. Mit vielen Definitionen und Methoden müssen Eingabeparameter und die gewünschten Ergebnisse vorgegeben werden. Wenn möglich sollten Sie die Abhängigkeiten eliminieren um auf die Verwendung von Test-Doubles verzichten zu können. Dies ist jedoch nicht immer möglich. Weiterführende Informationen zu den Test-Double-Frameworks stellen wir Ihnen im Abschnitt [Erweiterte Techniken](#abap_unit_advanced) vor.
+Test double frameworks are usually cumbersome to use and very confusing. Input parameters and the desired results must be specified with many definitions and methods. If possible, you should eliminate the dependencies to avoid using test doubles. However, this is not always possible. We provide further information about the test double frameworks in section [Erweiterte Techniken](#abap_unit_advanced).
 
-#### Automatisierte regelmäßige Läufe von Unit Tests
-Es gibt mehrere Möglichkeiten Unit Test regelmäßig laufen zu lassen. 
+#### Automated regular runs of unit tests
+There are several ways to run unit tests regularly. 
 
 - Programm RS_AUCV_RUNNER  
-- ATC Läufte 
+- ATC Ran 
 - Rest Service (Communication Scenario SAP_COM_0735)
 
 {: .recommendation }
-> Planen Sie die Unit Test eines Systems regelmäßig ein und erstellen Sie Benachrichtigungen hierfür. 
-> Für jeden Enwickler sollte es zur Morgenroutine gehören zu prüfen ob alle Test fehlerfrei sind, damit dies gegebenenfalls Daily besprochen werden kann. 
+> Schedule unit testing of a system regularly and create notifications for it. 
+> It should be part of every developer's morning routine to check whether all tests are error-free so that this can be discussed daily if necessary. 
 
 
 ## Do's & Dont's 
-* Im Zweifel einen Unit Test mehr anlegen
-+ weniger in einem Test prüfen
-* Klasse CL_AUNIT_ASSERT nicht mehr benutzen bzw ersetzen, da sie obsolet ist. Es muss die Klasse CL_ABAP_UNIT_ASSERT verwendet werden. 
+* If in doubt, create one more unit test
++ check less in one test
+* No longer use or replace class CL_AUNIT_ASSERT because it is obsolete. The CL_ABAP_UNIT_ASSERT class must be used. 
