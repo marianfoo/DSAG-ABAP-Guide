@@ -35,4 +35,4 @@ gem "webrick", "~> 1.8.1"
 
 gem 'faraday-retry'
 
-gem "google-protobuf", "~> 3.24.0"
+gem "google-protobuf", ">= 3.25"
