@@ -27,7 +27,7 @@ Requirements must therefore also be made for the ABAP code:
 - ABAP code must correctly meet the functional requirements and have no negative impact on security issues or other developments.
 - ABAP code should be structured in a technically precise manner. It is developed in small, semantically matching and modular units. 
 - ABAP code should be written in a readable and understandable manner, and comments help in understanding the implemented functionality.
-- ABAP code should correspond to the [Clean Core level model](/ABAP-Leitfaden/clean-core/solution-approach/#level-concept).
+- ABAP code should correspond to the [Clean Core level model]({{ site.baseurl }}/clean-core/solution-approach/#level-concept).
 
 These requirements are difficult to meet with classic, procedural ABAP programming, as it has a high level of backward compatibility, offers outdated options and makes maintainability difficult. This classic, procedural approach is no longer relevant and should no longer be used.  
 
@@ -73,7 +73,7 @@ Further indicators can be found, for example, in [Clean-ABAP Styleguide](https:/
 
 Classes should be designed clearly and, in accordance with the single-responsibility principle, only fulfill one task. Methods as short as possible and only accomplish one task. This restriction forces tasks to be delegated to different classes. This means that the individual classes are less complex, and the complexity shifts depending on the application in the class network and the interaction of the individual classes. This interaction and the higher-level logic is bundled in a **Controller**.  
 In order to reduce a shift in complexity and avoid structural deficits, good planning and design of the structure of the application is required.  
-The fact that methods and attributes are moved and renamed and objects are [refactored](/ABAP-Leitfaden/abap/oo-design/#die-bedeutung-des-refactorings-von-bestehenden-anwendungen) during development is part of the software development process and can be carried out easily and safely thanks to modern software development tools in the ABAP development tools in Eclipse and additional add-ons.
+The fact that methods and attributes are moved and renamed and objects are [refactored]({{ site.baseurl }}/abap/oo-design/#die-bedeutung-des-refactorings-von-bestehenden-anwendungen) during development is part of the software development process and can be carried out easily and safely thanks to modern software development tools in the ABAP development tools in Eclipse and additional add-ons.
 
 ## Basic principles of object orientation (SOLID)
 
@@ -87,7 +87,7 @@ A tool for object-oriented designs are the SOLID principles. Each letter provide
 - **I**interface Segregation Principle and that
 - **D**ependency Inversion Principle
 
-A short description of the principles can be found in the [subsection](/ABAP-Leitfaden/abap/oo-basics/), a detailed explanation can be found e.g. [on Uncle Bob's blog](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html), the author of Clean Code.
+A short description of the principles can be found in the [subsection]({{ site.baseurl }}/abap/oo-basics/), a detailed explanation can be found e.g. [on Uncle Bob's blog](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html), the author of Clean Code.
 
 In particular, the first two principles can be implemented in ABAP without a very deep understanding of OO and the added value quickly becomes apparent when maintenance and changes to code can be carried out better and fewer side effects occur. Detailed knowledge and application in the ABAP context can be found in specialist literature on the subject of agile software development in ABAP or test-driven design in ABAP.  
 
@@ -101,7 +101,7 @@ In object orientation, there are numerous design patterns that offer ready-made 
    Facades are suitable for propagation in package interfaces for use by other packages
 - **MVC** (Model-View-Controller) - Separation of the interests of an application
 
-Detailed explanations and code examples can be found in the [subsection](/ABAP-Leitfaden/abap/oo-basics/)
+Detailed explanations and code examples can be found in the [subsection]({{ site.baseurl }}/abap/oo-basics/)
 
 Here, too, we unfortunately cannot go into all the design patterns in detail; on the Internet and in specialist literature you will find numerous opportunities to approach the topic and bring it into the organization. A good starting point for your own research is, for example, [ABAP-OO Design Patterns m. Beispielen](https://zevolving.com/category/abapobjects/oo-design-patterns/).
 
@@ -130,7 +130,7 @@ Once the requirements are known and analyzed, the different tasks must first be 
 - Creation of a factory class that creates the individual object instances.
 - Definition of an injector class that enables mocking of individual functions.
 
-The details about the ABAP unit and how to create unit tests can be found in the chapter [**Testing**](/ABAP-Leitfaden/testing/index))
+The details about the ABAP unit and how to create unit tests can be found in the chapter [**Testing**]({{ site.baseurl }}/testing/index))
 
 ## Concepts in object orientation
 
@@ -177,7 +177,7 @@ This ensures consistent handling and reduces effort when errors can occur in mul
 By using interfaces, the definition of methods and their implementation are decoupled from each other. If an interface is used, the implementation of the class can be changed or made more flexible. The interface defines, so to speak, the contract between the user and the implementing class and thus "hides" the implementation (software hiding principle).  
 For public methods that provide functions for other classes, you should always define interfaces and thus ensure that users only work with these interfaces. The creation of concrete objects is handled by a separate factory class or, in particularly simple cases, a factory method of the class, e.g.: ```ZCL_BUSINESS_LOGIC=>GET_INSTANCE( CompanyCode )``` [see SAP style guide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-multiple-static-creation-methods-to-optional-parameters)
 
-Interfaces are also required for unit tests, since, for example, database accesses in unit tests have to be replaced by programmed test data. The database class implements an interface that is called in the product code. When the unit test is executed, instead of the database class, a so-called mocking class is called, which contains statically stored data, provides methods for local test data generation and returns it. The information on this can be found in chapter [Testing](/ABAP-Leitfaden/testing/index).
+Interfaces are also required for unit tests, since, for example, database accesses in unit tests have to be replaced by programmed test data. The database class implements an interface that is called in the product code. When the unit test is executed, instead of the database class, a so-called mocking class is called, which contains statically stored data, provides methods for local test data generation and returns it. The information on this can be found in chapter [Testing]({{ site.baseurl }}/testing/index).
 
 ### Vererbung
 
@@ -212,7 +212,7 @@ As part of the aforementioned architecture and design decisions, test-relevant a
 
 If database accesses and accesses to SAP function blocks or classes are already encapsulated in a separate software layer and the instances are created via a factory that provides injection, it is very unproblematic for an experienced developer to test their own code via ABAP unit tests and to decouple database accesses and SAP functions via test mocks objects. This significantly reduces the effort required for unit test creation compared to an approach in which the test developer has to use techniques such as test seams in the code or has to rebuild the code to ensure the decoupling of the in-house development of SAP components in tests.
 
-The procedure, recommendations and information for the ABAP Unit can be found in the [Testing SAP applications](/ABAP-Leitfaden/testing/#testen) chapter.
+The procedure, recommendations and information for the ABAP Unit can be found in the [Testing SAP applications]({{ site.baseurl }}/testing/#testen) chapter.
 
 ## The importance of refactoring existing applications
 
@@ -220,7 +220,7 @@ The recommendations, technical methodologies and programming techniques describe
 
 Refactoring should always be carried out when existing applications need to be changed or expanded. Time must be planned for this. Good tips for a sensitive approach to refactoring are described, for example, in [Clean-ABAP Styleguide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md).
 
-Refactoring not only describes the improvement of the code in detail, but can also be applied figuratively to the structure in the form of packages. Objects can be usefully distributed into new sub-packages. If your applications are not currently based on a structure organized by main packages, we recommend creating main packages that represent your main functionalities and previous packages can then be assigned to these packages according to their affiliation. It is possible to split packages that are too large into smaller packages, but the dependencies must be checked, clarified and, if necessary, eliminated. However, packet encapsulation and packet inspection help with this. These functionalities are explained in detail in the optional section [Basics of the package concept](/ABAP-Leitfaden/abap/package_extended.md).
+Refactoring not only describes the improvement of the code in detail, but can also be applied figuratively to the structure in the form of packages. Objects can be usefully distributed into new sub-packages. If your applications are not currently based on a structure organized by main packages, we recommend creating main packages that represent your main functionalities and previous packages can then be assigned to these packages according to their affiliation. It is possible to split packages that are too large into smaller packages, but the dependencies must be checked, clarified and, if necessary, eliminated. However, packet encapsulation and packet inspection help with this. These functionalities are explained in detail in the optional section [Basics of the package concept]({{ site.baseurl }}/abap/package_extended.md).
 Improvements to existing software should occur continuously and in small steps and be backed up by tests. If this is integrated into the development process and part of the day-to-day development business, it will pay off with more maintainable and less error-prone software.
 
 ## A good architecture also needs clean code

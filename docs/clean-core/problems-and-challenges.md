@@ -33,7 +33,7 @@ Above all, alternative technologies that can be used with existing ABAP develope
  
 ## Organization
 
-The classic consultant and developer develops through the new technologies into a full-time developer with broad development knowledge; massive change management is required here. You can find out more about this in [Organization chapter](/ABAP-Leitfaden/organization/).
+The classic consultant and developer develops through the new technologies into a full-time developer with broad development knowledge; massive change management is required here. You can find out more about this in [Organization chapter]({{ site.baseurl }}/organization/).
 
 Thanks to the no-code and low-code options, especially with SAP Build, but also key-user extensibility, non-developers can work in Fusion teams. This also requires a modern way of working, which should be agile in nature.
  

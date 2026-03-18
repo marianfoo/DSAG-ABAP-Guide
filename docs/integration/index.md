@@ -12,7 +12,7 @@ nav_order: 12
 1. TOC
 {:toc}
 
-The integration of SAP systems, and also non-SAP systems, would itself go beyond the scope of this guide. Therefore, here you will primarily find technologies currently in use and an approximate direction as to which technologies will exist in the next few years. You should always keep in mind that middleware also plays an important role in distributing data and monitoring. See also section [Chapter Clean Core](/ABAP-Leitfaden//clean-core//what-is-clean-core/) 
+The integration of SAP systems, and also non-SAP systems, would itself go beyond the scope of this guide. Therefore, here you will primarily find technologies currently in use and an approximate direction as to which technologies will exist in the next few years. You should always keep in mind that middleware also plays an important role in distributing data and monitoring. See also section [Chapter Clean Core]({{ site.baseurl }}/clean-core//what-is-clean-core/) 
 
 Additionally, you should note that with the increasing migration of SAP systems to the Cloud, non-functional requirements (NFRs) such as availability, security, scalability and observability must be taken into account from the outset. These aspects are often self-evident in on-premise environments, but must be rethought and actively integrated in the Cloud. Inadequate planning can lead to high costs for improvements, especially if a system only shows its limits when the number of users increases or in an emergency. [See article "The Seven Reasons Your SAP Tech Initiatives Are Failing"](https://secondphase.com.au/seven-reasons-sap-tech-failing/)
 

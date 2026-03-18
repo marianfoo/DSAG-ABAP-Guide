@@ -5,27 +5,28 @@
 ![GitHub stars](https://img.shields.io/github/stars/1DSAG/ABAP-Leitfaden?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/1DSAG/ABAP-Leitfaden?style=social)
 
-This is not the guide itself (this can be accessed via <https://1dsag.github.io/ABAP-Leitfaden>), but the associated repository with instructions on how to contribute to the guide.
+This repository contains an English translation of the DSAG ABAP-Leitfaden.
+The original German guide is published at <https://1dsag.github.io/ABAP-Leitfaden>.
 
 The DSAG ABAP guide is a living document 👨‍💻 - it lives from and with its community 🥳.
 
-The guide is written in `markdown` (variant `kramdown`) and is provided in `GitHub Pages` (<https://1dsag.github.io/ABAP-Leitfaden>) using `jekyll`.
+The guide is written in `markdown` (variant `kramdown`) and is published with `GitHub Pages` using `jekyll`.
 
-## Inhalte
+## Contents
 
-- [DSAG's ABAP guide](#dsags-abap-leitfaden)
-  - [Inhalte](#inhalte)
-  - [Erste Schritte](#erste-schritte)
-    - [Quick start with GitHub web editor](#schnellstart-mit-github-web-editor)
-    - [Development with Docker container](#entwicklung-mit-docker-container)
-      - [Installation steps for Docker container](#installationsschritte-für-docker-container)
-    - [Local installation](#lokale-installation)
-      - [Prerequisites for Windows](#vorbedingungen-für-windows)
-      - [Installation steps for local installation](#installationsschritte-für-lokale-installation)
-  - [Mitwirken](#mitwirken)
-  - [Lizenzierung](#lizenzierung)
+- [DSAG's ABAP guide](#dsags-abap-guide)
+  - [Contents](#contents)
+  - [Getting Started](#getting-started)
+    - [Quick start with GitHub web editor](#quick-start-with-github-web-editor)
+    - [Development with Docker container](#development-with-docker-container)
+      - [Installation steps for Docker container](#installation-steps-for-docker-container)
+    - [Local installation](#local-installation)
+      - [Prerequisites for Windows](#prerequisites-for-windows)
+      - [Installation steps for local installation](#installation-steps-for-local-installation)
+  - [Contributing](#contributing)
+  - [Licensing and Attribution](#licensing-and-attribution)
 
-## Erste Schritte
+## Getting Started
 
 ### Quick start with GitHub web editor
 
@@ -40,22 +41,22 @@ You can also preview Markdown files while editing.
 This makes it very easy to get started as no local installation is required.
 You may not see the end result immediately, but GitHub can generate that for you too.
 
-1. Fork erstellen  
-   ![Fork erstellen](img/00-fork.png)
+1. Create a fork  
+   ![Create fork](img/00-fork.png)
 2. Navigate to the created fork  
    ![Jump to Fork](img/01-jump-to-fork.png)
 3. Press `.` on your keyboard to switch to the IDE
-4. Erstellen Sie einen neuen Branch  
-   ![Branch erzeugen](img/02-create-new-branch.png)
+4. Create a new branch  
+   ![Create branch](img/02-create-new-branch.png)
 5. Give the branch a name  
-   ![Branch Namen vergeben](img/03-branch-name.png)
+   ![Set branch name](img/03-branch-name.png)
 6. Start writing  
    The contents of the guide are stored in the `/docs` folder. Simply change the content of an existing Markdown page (`.md` file) or create a new subchapter.
 7. Preview the page  
    You can also view the final page on GitHub.
 
    Simply go to your repository's settings and then `Pages`.
-   The link to it is as follows `https://github.com/YOURUSERNAME/ABAP-Leitfaden/settings/pages`.
+   The link to it is as follows `https://github.com/YOURUSERNAME/DSAG-ABAP-Guide/settings/pages`.
    Select your branch you are currently working on and select the `docs` folder.
    After you have saved, it will take a few minutes until the page is accessible at the specified URL.
    From then on, the page will be recreated after every commit.  
@@ -91,7 +92,7 @@ To do this, the [WSL Extension](https://marketplace.visualstudio.com/items?itemN
 Instructions for installing the WSL can be found at [Microsoft: Installing Linux on Windows with WSL](https://learn.microsoft.com/de-de/windows/wsl/install).
 Docker [using these instructions](https://docs.docker.com/engine/install/ubuntu/) can then be installed.
 
-Please also note the step for assigning the Docker user group in the [Post-Installations-Anleitung](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+Please also note the step for assigning the Docker user group in the [post-installation guide](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 Then look in the VS Code settings for the *Dev Containers > Execute in WSL* setting for the Dev Containers plugin and activate it:
 ![Setting: Dev Containers > Execute in WSL](img/01-dev-containers-wsl-setting.png)
@@ -119,19 +120,19 @@ bundle exec jekyll serve --livereload
 
 ### Local installation
 
-:point_right: Genau wie Docker Container  
+:point_right: Same as Docker container  
 :point_right: Complete control over development environment
 
 ----
 
 #### Prerequisites for Windows
 
-- <https://chocolatey.org/> installieren
+- Install <https://chocolatey.org/>
 - Install MSYS2 with Chocaletey  
   `choco install msys2` <https://chocolatey.org/packages/msys2>
-- Ruby installieren  
+- Install Ruby  
   `choco install ruby` <https://chocolatey.org/packages/ruby>
-- Build Toolchain aktualisieren:  
+- Update build toolchain:  
   `ridk install 3`
 - See also [Test GitHub Pages website locally with Jekyll](https://docs.github.com/de/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
 
@@ -146,14 +147,14 @@ bundle exec jekyll serve --livereload
 
   ```shell
     bundle exec jekyll serve --livereload
-    Configuration file: /Users/you/ABAP-Leitfaden/docs/_config.yml
-                Source: /Users/you/ABAP-Leitfaden/docs
-           Destination: /Users/you/ABAP-Leitfaden/docs/_site
+    Configuration file: /Users/you/DSAG-ABAP-Guide/docs/_config.yml
+                Source: /Users/you/DSAG-ABAP-Guide/docs
+           Destination: /Users/you/DSAG-ABAP-Guide/docs/_site
      Incremental build: disabled. Enable with --incremental
           Generating...
            Jekyll Feed: Generating feed for posts
                         done in 0.233 seconds.
-     Auto-regeneration: enabled for '/Users/you/ABAP-Leitfaden/docs'
+     Auto-regeneration: enabled for '/Users/you/DSAG-ABAP-Guide/docs'
      LiveReload address: http://127.0.0.1:35729
         Server address: http://127.0.0.1:4000/
       Server running... press ctrl-c to stop.
@@ -161,10 +162,30 @@ bundle exec jekyll serve --livereload
 
 - Open the URL <http://localhost:4000> in your favorite web browser
 
-## Mitwirken
+## Contributing
 
-All information about the development process and best practices for content creation can be found at [Mitwirken](contributing.md)
+All information about the development process and best practices for content creation can be found in [Contributing](contributing.md).
 
-## Lizenzierung
+## Licensing and Attribution
 
-This project uses CC BY 4.0 [Lizenz](LICENSE).
+This repository contains an English translation of the DSAG ABAP-Leitfaden.
+
+Original work:
+- Title: **DSAG's ABAP-Leitfaden**
+- Source: <https://github.com/1DSAG/ABAP-Leitfaden>
+- Authors/Publisher: **1DSAG and contributors**
+- License: **CC BY 4.0** <https://creativecommons.org/licenses/by/4.0/>
+
+Changes in this repository:
+- Translation from German to English
+- Additional language corrections for readability
+- Initial machine-assisted translation with subsequent human review
+
+Disclaimer:
+- This repository is an **unofficial translation** and is **not** an official DSAG publication.
+- In case of doubt, the original German version is the authoritative source.
+
+Additional note on assets and links:
+- This repository is published under a different GitHub Pages path than the original.
+- Set the correct `baseurl` in [docs/_config.yml](docs/_config.yml) for your repository URL.
+- Internal markdown links use `{{ site.baseurl }}` so they resolve under your configured Pages URL.

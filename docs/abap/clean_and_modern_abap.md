@@ -212,7 +212,7 @@ CLASS demo DEFINITION.
 ~~~
 
 In the ABAPDoc documentation for the class, general information and the purpose of the class can be documented in the code in an evaluable and easy-to-read manner. Notes on the individual methods and the parameters of the methods can also be created using ABAPDoc. The main user of the ABAPDoc documentation is the user/caller (or its developer) of the class. This feature is particularly useful for classes that are made available for use by other functions.  
-For more information about ABAPDoc, see section [Documentation/ABAP Doc](/ABAP-Leitfaden/documentation/dev_object_related_doc/#abap-doc).
+For more information about ABAPDoc, see section [Documentation/ABAP Doc]({{ site.baseurl }}/documentation/dev_object_related_doc/#abap-doc).
 
 ### Konstruktoroperatoren
 

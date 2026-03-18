@@ -40,7 +40,7 @@ In summary, the products mentioned above cover the following range of functions:
 - Quality assurance before go-lives
 
 {: .note }
-> [Test management](/ABAP-Leitfaden/testing/index)
+> [Test management]({{ site.baseurl }}/testing/index)
 
 **IT-Service-Management (ITSM)**
 

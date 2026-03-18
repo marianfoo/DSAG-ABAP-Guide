@@ -9,7 +9,7 @@ nav_order: 3
 {: .no_toc}
 # Beteiligung an Open-Source-Software
 
-This section describes the use case of participating in open source projects as a company. He thus addresses the second [Ausbaustufe](/ABAP-Leitfaden/open-source/#ausbaustufen).
+This section describes the use case of participating in open source projects as a company. He thus addresses the second [Ausbaustufe]({{ site.baseurl }}/open-source/#ausbaustufen).
 
 1. TOC
 {:toc}

@@ -9,14 +9,14 @@ nav_order: 4
 # Open source software development
 {: .no_toc}
 
-This section describes the use case as a company developing its own components as an open source project. This corresponds to the third [Ausbaustufe](/ABAP-Leitfaden/open-source/#ausbaustufen) and therefore the most demanding.
+This section describes the use case as a company developing its own components as an open source project. This corresponds to the third [Ausbaustufe]({{ site.baseurl }}/open-source/#ausbaustufen) and therefore the most demanding.
 
 1. TOC
 {:toc}
 
 ## Mehrwert aus Unternehmenssicht
 
-In this use case, you decide to publish and further develop a ABAP-based component of your software as an open source project. This means that you open and make this component available to other users outside of your company. You choose a [Open-Source-Lizenz](/ABAP-Leitfaden/open-source/licenses) and thereby expressly allow the use, modification and distribution of the component's source code within the scope of the specific license conditions.
+In this use case, you decide to publish and further develop a ABAP-based component of your software as an open source project. This means that you open and make this component available to other users outside of your company. You choose a [Open-Source-Lizenz]({{ site.baseurl }}/open-source/licenses) and thereby expressly allow the use, modification and distribution of the component's source code within the scope of the specific license conditions.
 
 This may not initially sound like a desirable model. Specifically, however, you do not use your proprietary implementation of your company's business model, but rather you select suitable components. The following are particularly suitable:
 
@@ -28,7 +28,7 @@ Developing as an open source project gives you the following advantages:
 
 - **Involvement by external developers**  
   External developers can test your component on other systems with different release levels or installed dependencies. You can suggest features or add them with your support in the component itself. Your open source component gains in quality and functionality without necessarily incurring development costs in your company.  
-  This scenario is described from the perspective of the participating developer in [Beteiligung an Open-Source-Software](/ABAP-Leitfaden/open-source/contributing-to-open-source-software.md).
+  This scenario is described from the perspective of the participating developer in [Beteiligung an Open-Source-Software]({{ site.baseurl }}/open-source/contributing-to-open-source-software.md).
 - **Developer perspectives outside the box**  
   Through external participation you gain new perspectives. This can occur because external parties use a different release level, a different runtime environment or a different SAP product to deploy your component or because they have different technical experiences and know different architectures or design patterns. You get to know these perspectives and can evaluate them and, if necessary, incorporate them into other projects, including internal ones.
 - **Development as an independent component**  

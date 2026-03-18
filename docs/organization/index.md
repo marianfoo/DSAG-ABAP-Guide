@@ -37,7 +37,7 @@ Parts of these solutions can be quick wins for you as a company or they can be e
 
 From a company perspective, the transformation into a successful S/4HANA technology team represents a complex and often underestimated challenge. Depending on the level of maturity and the orientation of your IT organization, an adjustment of cultural and organizational adjustment screws is necessary in order to achieve the strategic goal.
 
-The greater the proportion of customer-specific adaptation and expansion of your existing SAP software is or should be strategic (see [Chapter Clean Core](/ABAP-Leitfaden//clean-core/problems-and-challenges/)), the more important is the entrepreneurial focus on the efficiency and effectiveness of your development organization. The following excerpt touches on what we believe to be the most important subject areas that will support you on your way to becoming a successful development organization.
+The greater the proportion of customer-specific adaptation and expansion of your existing SAP software is or should be strategic (see [Chapter Clean Core]({{ site.baseurl }}/clean-core/problems-and-challenges/)), the more important is the entrepreneurial focus on the efficiency and effectiveness of your development organization. The following excerpt touches on what we believe to be the most important subject areas that will support you on your way to becoming a successful development organization.
 
 
 ### Definition of the appropriate structural and process organization
@@ -55,7 +55,7 @@ Software development teams are the key element for the successful implementation
 * When putting together a team, take the professional and technical complexity into account. Especially in the SAP environment, managing complexity in the different application areas is often a challenge. In addition to the technical context, the team also has to deal with application-specific frameworks, customer existing code, technology trends and different technology stacks. Make sure that the team does not work in too many different areas of responsibility and can instead focus on a manageable area, such as a technical module. Take your team seriously if they complain that they are dealing with too much complexity. Otherwise, you risk long-term health damage and negative productivity through too frequent context switching and cognitive overload of the team.
 * Pay particular attention to ensuring that developers can concentrate on their core competency, designing and creating high-quality software, and do not have to additionally worry about issues such as requirements management or process documentation. An exception here is the time-limited implementation of these activities in order to capture the technical problem domain more precisely and to better understand the underlying concepts. As a rule, a deeper understanding of the problem domain leads to more efficient software design and thus creates added value for the developer.
 * Provide your software development teams with the appropriate freedom for experimentation, training and product optimization. Avoid burning out your developers permanently with 100% utilization. Enable developers to learn from each other through measures such as creating a community of practice. For example, experiment with [Pair-Programming](https://en.wikipedia.org/wiki/Pair_programming) and benefit from the associated [Vorteilen](https://medium.com/the-liberators/in-depth-the-costs-and-benefits-of-pair-programming-b4b54b27c6ff), such as potentially higher code quality and better software design.
-* Give teams the means and tools to gain transparency about their work area. Effective optimization can only be carried out on the basis of numbers, data and facts see [Chapter ALM](/ABAP-Leitfaden/application-lifecycle-management/ensuring-quality/). If the information about custom code and process metrics is not available, it is almost impossible to make a business-wise decision about a worthwhile investment in an optimization project.
+* Give teams the means and tools to gain transparency about their work area. Effective optimization can only be carried out on the basis of numbers, data and facts see [Chapter ALM]({{ site.baseurl }}/application-lifecycle-management/ensuring-quality/). If the information about custom code and process metrics is not available, it is almost impossible to make a business-wise decision about a worthwhile investment in an optimization project.
     
 {: .note }
 > 
@@ -89,7 +89,7 @@ A clearly defined custom code strategy supports you in transparently communicati
 * Follow official coding standards such as [SAP ABAP Programmierrichtlinien](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenabap_pgl.htm), [SAP Code Style Guides](https://github.com/SAP/styleguides) and of course the recommendations from the current document. Ensure that rule checking is carried out automatically where possible, that developers use tools with short feedback cycles and correction suggestions, and that manual code reviews also take place in addition to automatic rule checking.
 * Define specific development types and establish development type-specific quality standards and procedures. For example, a one-off correction program is short-term and dedicated to a specific purpose, which focuses on efficiency, time savings and low costs. A developer-on-stack application for customer-specific business processes, on the other hand, requires higher quality standards because it is used long-term, regularly expanded and maintained. Maintainability, scalability and minimizing long-term costs are crucial here. The different standards help developers to concentrate on the core task and use their limited time effectively. In addition, we recommend defining an abstract macro quality standard as a guideline, on the basis of which development type-specific scenarios can be derived.
 
-* [See example “What is good ABAP code?”](/ABAP-Leitfaden/abap/oo-design/#moderne-gesch%C3%A4ftsanwendungen-erfordern-moderne-softwareentwicklungsmethoden)
+* [See example “What is good ABAP code?”]({{ site.baseurl }}/abap/oo-design/#moderne-gesch%C3%A4ftsanwendungen-erfordern-moderne-softwareentwicklungsmethoden)
 
 
  
@@ -141,16 +141,16 @@ From our experience in the DSAG network, we know: The quality of software develo
 
 ### Best Practice
 
-There is a large selection of development standards, which can be found, for example, in the ABAP Guide 2016 [dsag\_handlungsempfehlung\_abap\_2016\_0.pdf](https://www.dsag.de/wp-content/uploads/2021/12/dsag_handlungsempfehlung_abap_2016_0.pdf), [Clean ABAP](/ABAP-Leitfaden//abap/clean_and_modern_abap/) and various books. From our point of view, the rough pillars on which there is consensus are:
+There is a large selection of development standards, which can be found, for example, in the ABAP Guide 2016 [dsag\_handlungsempfehlung\_abap\_2016\_0.pdf](https://www.dsag.de/wp-content/uploads/2021/12/dsag_handlungsempfehlung_abap_2016_0.pdf), [Clean ABAP]({{ site.baseurl }}/abap/clean_and_modern_abap/) and various books. From our point of view, the rough pillars on which there is consensus are:
 
 {: .recommendation}
 > - Naming conventions for customer-specific developments, optionally in a separate name space
 > - Structured package concept, optionally with clear package interfaces
 > - Static code checking (e.g. ATC checks) as part of the transport sector with testing according to the following code criteria: performance, security, compliance, robustness, maintainability, extensibility (ABAP Cloud). See also the DSAG ATC guide [dsag\_leitfaden\_atc\_2020\_06.pdf](https://www.dsag.de/wp-content/uploads/2021/12/dsag_leitfaden_atc_2020_06.pdf)
 > - Documentation of public methods/function modules
-> - Creation of [appropriate documentation](/ABAP-Leitfaden/documentation/documentation_tipps/) .
+> - Creation of [appropriate documentation]({{ site.baseurl }}/documentation/documentation_tipps/) .
 > - The use of ABAP Unit and Code Coverage
-> - Approval process for Classical Extensibility – the so-called Level D developments [see chapter Clean Core](/ABAP-Leitfaden//clean-core/solution-approach/)
+> - Approval process for Classical Extensibility – the so-called Level D developments [see chapter Clean Core]({{ site.baseurl }}/clean-core/solution-approach/)
 > - Adaptation of business process and technical documentation after a program change
 
 ### Why should anything change?
@@ -166,7 +166,7 @@ Only through organizational changes, such as a development factory, community of
 
 Without key people driving quality, teams tend to prioritize functionality over quality under the constant pressure of project work and discipline. Control and quality checks are also crucial for external contributors. The initiative requires dedicated lead developers who are intrinsically motivated to support and manage changes over the years (= change management).
 
-There must be a clear vision, strategy and defined goals that are supported by management, or ideally explicitly requested by senior management. The strict separation of SAP standard code and in-house developments - the so-called Clean-Core strategy - is pursued in order to keep the system maintainable, expandable and capable of development in the long term [see chapter Clean Core](/ABAP-Leitfaden//clean-core/solution-approach/). We therefore focus on the vision and implementation of the strategy.
+There must be a clear vision, strategy and defined goals that are supported by management, or ideally explicitly requested by senior management. The strict separation of SAP standard code and in-house developments - the so-called Clean-Core strategy - is pursued in order to keep the system maintainable, expandable and capable of development in the long term [see chapter Clean Core]({{ site.baseurl }}/clean-core/solution-approach/). We therefore focus on the vision and implementation of the strategy.
 
 
 ## Experience report from practice: Brownfield in S/4HANA
@@ -193,7 +193,7 @@ We want to effectively use the ABAP Cloud technologies and the SAP standard. We 
 **Jahr 2** **„Strategie umsetzen“**
 
 * A phased rollout of Clean-Core development
-* Definition and implementation of roles for change management: Lead Developer (according to SAFe: Product Architect), responsible for: communicating guidelines in the team, code reviews [see chapter ALM](/ABAP-Leitfaden/application-lifecycle-management/ensuring-quality/), pair programming, ATC checks - distributing code findings for your team packages, bringing ABAP unit into the development landscape.
+* Definition and implementation of roles for change management: Lead Developer (according to SAFe: Product Architect), responsible for: communicating guidelines in the team, code reviews [see chapter ALM]({{ site.baseurl }}/application-lifecycle-management/ensuring-quality/), pair programming, ATC checks - distributing code findings for your team packages, bringing ABAP unit into the development landscape.
 * Procurement of tools for quality assurance
 * Introducing code reviews and static code checks as mandatory elements of the development process
 * Further training for all ABAP developers, partly through train-the-trainers

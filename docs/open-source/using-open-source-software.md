@@ -10,7 +10,7 @@ nav_order: 2
 
 # Use of open source software
 
-This section describes the use case as integrating open source software into your own development process or specially developed software. He addresses the first [Ausbaustufe](/ABAP-Leitfaden/open-source/#ausbaustufen).
+This section describes the use case as integrating open source software into your own development process or specially developed software. He addresses the first [Ausbaustufe]({{ site.baseurl }}/open-source/#ausbaustufen).
 
 1. TOC
 {:toc}
@@ -31,7 +31,7 @@ It is therefore recommended to define a process for how the available tooling ca
 
 A comprehensive list of open source ABAP projects published on GitHub can be found on [dotabap.org](https://dotabap.org). You can submit your own projects that meet the requirements for listing to [dotabap-list](https://github.com/dotabap/dotabap-list) via a pull request.
 
-![Screenshot dotabap.org](/ABAP-Leitfaden/open-source//img/dot-abap-dot-org.png)
+![Screenshot dotabap.org]({{ site.baseurl }}/open-source//img/dot-abap-dot-org.png)
 
 Screenshot dotabap.org
 {: .img-caption}
@@ -50,9 +50,9 @@ You can take a first step towards dealing with open source software in ABAP deve
 - **Risiken**
   - Installation of third-party software in the development system / developer PCs / continuous integration environments
 
-Many of the opportunities of this use case have already been mentioned with examples under [Motivation and opportunities](/ABAP-Leitfaden/open-source/#motivation-und-chancen). In summary, the use of open source tools in the development process relieves the burden on developers, as work steps are automated or the quality specifications are automatically checked / violations of the specifications can be corrected early and in some cases automatically.
+Many of the opportunities of this use case have already been mentioned with examples under [Motivation and opportunities]({{ site.baseurl }}/open-source/#motivation-und-chancen). In summary, the use of open source tools in the development process relieves the burden on developers, as work steps are automated or the quality specifications are automatically checked / violations of the specifications can be corrected early and in some cases automatically.
 
-In order to take advantage of the opportunities, the selected open source software must be installed. Depending on the software, this happens on developer PCs, in continuous integration environments or in the SAP system. As can be seen at [Lizenzen](/ABAP-Leitfaden/open-source/licenses.md), open source licenses exclude liability and warranty unless a separate agreement is made. There are consequently security-relevant implications for the installation and use of the software. This topic is discussed in more detail in [Assessment and life cycle of an external dependency](#bewertung-und-lebenszyklus-einer-externen-abhängigkeit).
+In order to take advantage of the opportunities, the selected open source software must be installed. Depending on the software, this happens on developer PCs, in continuous integration environments or in the SAP system. As can be seen at [Lizenzen]({{ site.baseurl }}/open-source/licenses.md), open source licenses exclude liability and warranty unless a separate agreement is made. There are consequently security-relevant implications for the installation and use of the software. This topic is discussed in more detail in [Assessment and life cycle of an external dependency](#bewertung-und-lebenszyklus-einer-externen-abhängigkeit).
 
 ## Use of open source libraries in your own software
 

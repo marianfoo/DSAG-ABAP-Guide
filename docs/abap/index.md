@@ -21,16 +21,16 @@ ABAP has the advantage that requirements can be implemented quickly with little 
 In 2025, when many companies have already made or will make the leap to S/4HANA, the new technologies, methods and tools are not yet in use to the same extent as is the case with the classic ABAP. The ABAP development is facing a transformation that is challenging for both the developers and the companies.
 The guide in general and this chapter in relation to ABAP would like to give you help with this transformation. In this chapter we give you insights and recommendations into the following subject areas of ABAP development:  
 
-- [**Architecture and design of modern ABAP developments**](/ABAP-Leitfaden/abap/architecture_and_design)  
+- [**Architecture and design of modern ABAP developments**]({{ site.baseurl }}/abap/architecture_and_design)  
     Here you will find out why it is important and has many advantages to structure ABAP developments in packages, to use the package functionalities and what you need to know to implement our recommendations.  
 
-- [**Design and design of modern SAP applications**](/ABAP-Leitfaden/abap/oo-design/)  
+- [**Design and design of modern SAP applications**]({{ site.baseurl }}/abap/oo-design/)  
     The application of object orientation is an essential factor in creating modern, robust and adaptable software. In this chapter you will find our recommendations for implementing OO well and efficiently and why the use of object orientation and good structuring of functionalities in classes offers added value.
 
-- [**Clean and modern code**](/ABAP-Leitfaden/abap/clean_and_modern_abap)  
+- [**Clean and modern code**]({{ site.baseurl }}/abap/clean_and_modern_abap)  
     In addition to the higher-level structures in the form of package designs and the structuring of the application in objects, the ABAP code represents the function of the application. The code is created once, read, extended, changed and reviewed many times over the life cycle. Therefore, investing in code that is easy to read, understandable and clear pays off. The application of the Clean code principles and application of modern ABAP statements and functions is essential to create future-proof applications and operate them efficiently.
 
-- [**RESTful Application Programming Model - RAP**](/ABAP-Leitfaden/abap/restful_abap)  
+- [**RESTful Application Programming Model - RAP**]({{ site.baseurl }}/abap/restful_abap)  
     With the RESTful Application Programming Model, after several evolutionary steps, SAP has now published a stable and mature programming model that offers many options, brings many advantages and offers developers a good framework for building modern applications.  
     The recommendations in the previous sections apply to all developments in SAP, but their implementation is a good basis for being prepared for application development with RAP.  
     Recommendations for RAP and the procedure for developing RAP applications can be found in this chapter.
@@ -44,9 +44,9 @@ To do this, instances must be installed in the development organization which, i
 
 In addition to the governance aspects, the development organization must also pay close attention to training and further training the developers, creating incentives to try out and apply new things in everyday life and to rethink and adapt previous approaches. The developers' interest and motivation for new topics is an important factor in ensuring that these measures lead to successful upskilling of the development organization.  
 
-An important element here is the appreciation shown by developers for the fact that applications are implemented with new technologies, even if this often requires a longer development time at the beginning or does not always work smoothly. Only if it is recognized and valued in the organization that developers or development teams continue their training, familiarize themselves with new technologies and methods and implement them, will sustainable change take place. Only if the general conditions are right will you be able to benefit from the advantages and resulting positive effects, some of which you will find in the [Architecture and structuring in the ABAP development](/ABAP-Leitfaden/abap/architecture_and_design/#warum-sich-die-anwendung-es-paketkonzepts-lohnt---vorteile-und-mehrwert) section.
+An important element here is the appreciation shown by developers for the fact that applications are implemented with new technologies, even if this often requires a longer development time at the beginning or does not always work smoothly. Only if it is recognized and valued in the organization that developers or development teams continue their training, familiarize themselves with new technologies and methods and implement them, will sustainable change take place. Only if the general conditions are right will you be able to benefit from the advantages and resulting positive effects, some of which you will find in the [Architecture and structuring in the ABAP development]({{ site.baseurl }}/abap/architecture_and_design/#warum-sich-die-anwendung-es-paketkonzepts-lohnt---vorteile-und-mehrwert) section.
 
-Detailed and valuable recommendations on the topics of organization and general conditions can be found in chapter [**Organization**](/ABAP-Leitfaden/organization/index).
+Detailed and valuable recommendations on the topics of organization and general conditions can be found in chapter [**Organization**]({{ site.baseurl }}/organization/index).
 
 ## Target group of the chapter
 

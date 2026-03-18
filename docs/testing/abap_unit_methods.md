@@ -26,7 +26,7 @@ A fundamental rule of professional work is that data acquisition, business logic
 There are program areas that cannot be checked using unit tests. This includes all program parts that depend on a dialog or other presentation functions, such as ALV Grid. Likewise, SAP functions should not be tested using your own unit tests. 
 Separating data acquisition, business logic and display is definitely an improvement for software quality. Unit tests can be implemented more easily if existing programs are restructured (refactored) and written according to the rules of Clean-ABAP and follow the design principles of object orientation (SOLID).
 
-In order to avoid extensive revision of created software, a good design of the application is essential for the implementation of unit tests. You can find explanations in chapter [Modern ABAP Development](/ABAP-Leitfaden/abap/oo-design/#design-und-erstellung-von-sap-anwendungen) and section [Testability through good design](/ABAP-Leitfaden/abap/oo-design/#testbarkeit-durch-gutes-design).
+In order to avoid extensive revision of created software, a good design of the application is essential for the implementation of unit tests. You can find explanations in chapter [Modern ABAP Development]({{ site.baseurl }}/abap/oo-design/#design-und-erstellung-von-sap-anwendungen) and section [Testability through good design]({{ site.baseurl }}/abap/oo-design/#testbarkeit-durch-gutes-design).
 
 ### Unit tests are not optional - unit tests as part of the definition of done
 

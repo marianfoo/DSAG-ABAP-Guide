@@ -15,7 +15,7 @@ nav_order: 3
 
 What are CDS Views and why are they important? 
 In SAP S/4HANA, the developer should no longer access the databases directly, but rather use the [Virtuelle Datenmodell (VDM)](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/ee6ff9b281d8448f96b4fe6c89f2bdc8/8573b810511948c8a99c0672abc159aa.html?locale=de-DE) to access the data in SAP S/4HANA, e.g. for analytics or interfaces.  The VDM is represented in SAP S/4HANA by CDS views. These CDS views follow fixed rules for modeling and naming. They represent business data from database tables based on business logic, making the data easier to use. 
-[CDS Views are the key elements](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/abencds.html) for on-stack extensibility or also ABAP Cloud - see [Chapter Clean Core](/ABAP-Leitfaden//clean-core/what-is-clean-core/). The use and extension of a data model is the key to the VDM concept. CDS Views are used for many purposes, such as an interface between different applications and add-ons in the same system as well as to external systems and applications. You can also create your own views by using the views provided and shared by SAP as a data source, following the Clean Core thought.
+[CDS Views are the key elements](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/abencds.html) for on-stack extensibility or also ABAP Cloud - see [Chapter Clean Core]({{ site.baseurl }}/clean-core/what-is-clean-core/). The use and extension of a data model is the key to the VDM concept. CDS Views are used for many purposes, such as an interface between different applications and add-ons in the same system as well as to external systems and applications. You can also create your own views by using the views provided and shared by SAP as a data source, following the Clean Core thought.
 
 ## Construction of the VDM
 
@@ -338,7 +338,7 @@ association [0..*] to OtherView as _Other on _Other.ForeignKeyField = $projectio
 >
 > Details finden Sie unter [SAP Help (CDS View Entity, SELECT, Associations)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_association_v2.htm)
 
-A special form of the association is a so-called `ASSOCIATION TO PARENT`. This allows you to define a CDS entity as a parent entity. This is particularly relevant in the context of [RAP](/ABAP-Leitfaden/abap/restful_abap/). The association in the other direction, i.e. to the child entity, is defined using `COMPOSITION`. You must first enter the association to the parent entity and only then can you enter the association to the child entity.
+A special form of the association is a so-called `ASSOCIATION TO PARENT`. This allows you to define a CDS entity as a parent entity. This is particularly relevant in the context of [RAP]({{ site.baseurl }}/abap/restful_abap/). The association in the other direction, i.e. to the child entity, is defined using `COMPOSITION`. You must first enter the association to the parent entity and only then can you enter the association to the child entity.
 
 For details see [SAP Help (ASSOCIATION TO PARENT)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_to_parent_assoc_v2.htm) and [SAP Help (COMPOSITION)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_composition_v2.htm)
 

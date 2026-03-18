@@ -82,7 +82,7 @@ Structuring based on organizational, responsibility or project structures is not
 Enabling package encapsulation enables control over dependencies in packages.  
 In the package interfaces you define the visibility of objects when package encapsulation is switched on and you use the usage declaration to document dependencies on other packages via their package interfaces.
 Package inspection is the tool to make visible and monitor the use of invisible objects or missing usage declarations.  
-How you specifically use these elements is explained in the [detailed section](/ABAP-Leitfaden/abap/package_details/#paketpr%C3%BCfung) on the package concept. You can also find information about this in the SAP documentation.
+How you specifically use these elements is explained in the [detailed section]({{ site.baseurl }}/abap/package_details/#paketpr%C3%BCfung) on the package concept. You can also find information about this in the SAP documentation.
 
 ## Advantages and added value by using the package concept
 
@@ -104,7 +104,7 @@ When a software component is well structured, additions, changes, extensions, an
 ### Future viability
 
 In addition to the obvious advantages, creating software in well-structured packages also includes other advantages that do not take effect immediately, but can become relevant as part of the software life cycle.  
-If the in-house developments in the system are already organized into packages, important requirements have already been met in order to use modern version management systems such as abapGit or gCTS, which require packages. This means that transports using Git-based methods into other systems or even into the Cloud are possible, see chapter [Version Management](/ABAP-Leitfaden/application-lifecycle-management/version-management/).
+If the in-house developments in the system are already organized into packages, important requirements have already been met in order to use modern version management systems such as abapGit or gCTS, which require packages. This means that transports using Git-based methods into other systems or even into the Cloud are possible, see chapter [Version Management]({{ site.baseurl }}/application-lifecycle-management/version-management/).
 If the package concept with an explanation of the usage relationships has already been practiced in the company and there is already awareness of usable objects, good conditions are created for understanding and applying the concepts in ABAP Cloud with the software components.
 
 ## Measures to implement the package concept in development
@@ -144,4 +144,4 @@ Even if some elements of the package concept are no longer found in the Cloud, t
 
 ## From architecture to design
 
-After the statements mentioned here have created the prerequisites for a good architecture, which is reflected in the package structure, the application architecture must now be defined/designed in the specific form of classes in the individual sub-packages. You can find the information on this in section: [Design and design of modern SAP applications](/ABAP-Leitfaden//abap/oo-design/).
+After the statements mentioned here have created the prerequisites for a good architecture, which is reflected in the package structure, the application architecture must now be defined/designed in the specific form of classes in the individual sub-packages. You can find the information on this in section: [Design and design of modern SAP applications]({{ site.baseurl }}/abap/oo-design/).

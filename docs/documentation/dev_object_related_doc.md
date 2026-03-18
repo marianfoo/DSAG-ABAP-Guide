@@ -83,4 +83,4 @@ The advantage of using ABAP Doc is that these comments are displayed in the foll
 * Code Completion Liste.
 
 And these ABAP Doc comments can be extracted from ADT into an HTML file and thus used for further use outside of the code, e.g. on internal pages. If the code and the existing ABAP Doc documentation are maintained at the same time and ABAP Doc is extracted after each change, the external documentation is also up to date without any additional effort.
-If the ABAP Doc documentation is created in a structured manner, it can also be used with supporting generative AI to create further documentation (see [Chapter Artificial Intelligence](/ABAP-Leitfaden/artificial-intelligence/#ai-als-werkzeug-bei-dokumentationserstellung)).
+If the ABAP Doc documentation is created in a structured manner, it can also be used with supporting generative AI to create further documentation (see [Chapter Artificial Intelligence]({{ site.baseurl }}/artificial-intelligence/#ai-als-werkzeug-bei-dokumentationserstellung)).

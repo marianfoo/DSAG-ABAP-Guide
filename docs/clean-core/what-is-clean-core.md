@@ -252,5 +252,5 @@ If you want to modify the SAP standard, consider the following rules and best pr
 
 ## Clean ABAP - Abgrenzung
 
-Clean ABAP is about writing ABAP code that focuses on understandability and maintainability. Clean Core and SAP are about dealing with the limits of customer-specific programs in the SAP standard. Just because an implementation corresponds to the Clean Core strategy does not automatically make it Clean ABAP and vice versa. More about this in chapter [ABAP](/ABAP-Leitfaden/abap).
+Clean ABAP is about writing ABAP code that focuses on understandability and maintainability. Clean Core and SAP are about dealing with the limits of customer-specific programs in the SAP standard. Just because an implementation corresponds to the Clean Core strategy does not automatically make it Clean ABAP and vice versa. More about this in chapter [ABAP]({{ site.baseurl }}/abap).
 

@@ -44,7 +44,7 @@ Don't reinvent the wheel, especially with ABAP legacy tools. Evaluate other solu
 
 ## Disadvantages of the Clean Core approach
 
-See also chapter [organization](/ABAP-Leitfaden/organization)
+See also chapter [organization]({{ site.baseurl }}/organization)
 
 ### Wirtschaftlichkeit
 
