@@ -1,15 +1,15 @@
 ---
 layout: page
-title: Beteiligung an Open-Source-Software
+title: Participation in Open Source Software
 permalink: /open-source/contributing-to-open-source-software/
 parent: Open Source
 nav_order: 3
 ---
 
 {: .no_toc}
-# Beteiligung an Open-Source-Software
+# Participation in Open Source Software
 
-This section describes the use case of participating in open source projects as a company. He thus addresses the second [Ausbaustufe]({{ site.baseurl }}/open-source/#ausbaustufen).
+This section describes the use case of participating in open source projects as a company. He thus addresses the second [maturity level]({{ site.baseurl }}/open-source/#maturity-levels).
 
 1. TOC
 {:toc}

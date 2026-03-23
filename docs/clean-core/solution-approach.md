@@ -30,12 +30,12 @@ Implementing the Clean Core concept requires a strategic approach and careful pl
     * Conduct fit-gap workshops and initiate cleanup projects of underperforming, unsafe, or unused code. 
     * Train your architects to consciously use new technologies based on guidelines.
 
-## Entscheidungshilfen
+## Decision aids
 
 Here you will find a few references and possible decision-making aids: 
 * A methodology for enterprise architects [SAP Application Extension Methodology - SAP AEM](https://help.sap.com/docs/architecture_guidance/2f804cb5e53d4279879009100a2b2082/cd963582f46d421c9abfd28dc25ea7e3.html)
 * SAP's complete guide on how customers can do Clean Core extensions [Extend SAP S/4HANA in the cloud and on premise with ABAP based extensions](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html)
-* Also look at examples with the [Erweiterungsszenarien-Explorer](https://extensibilityexplorer.cfapps.eu10.hana.ondemand.com/ExtensibilityExplorer/#/ExtensibilityGuide)
+* Also look at examples with the [Extensibility Scenarios Explorer](https://extensibilityexplorer.cfapps.eu10.hana.ondemand.com/ExtensibilityExplorer/#/ExtensibilityGuide)
 * What is the shared successor development object? [Cloudification Repository Viewer](https://sap.github.io/abap-atc-cr-cv-s4hc/)
 * Further considerations can also be found in the chapter: [Integration](/integration)
 
@@ -48,7 +48,7 @@ ABAP Cloud is the new development model for all system landscapes, whether SAP B
 ABAP Cloud - Availability
 {: .img-caption}
 
-### Freigegebene APIs
+### Released APIs
 
 The use of released APIs (development objects with C1 release) is a central component of ABAP Cloud. SAP gives you as a customer the assurance that this API is stable and can be used for your own developments. This means that only SAP objects that SAP has explicitly released can be used in ABAP Cloud.
 
@@ -73,7 +73,7 @@ If the APIs is not currently released, you can create so-called wrappers that en
 {: .note }
 > [Clean Core Extensibility (White Paper)](https://www.sap.com/documents/2024/09/20aece06-d87e-0010-bca6-c68f7e60039b.html)
 >
-> [Extensibility Guide (Aktuelle Version)](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html)
+> [Extensibility Guide (Current version)](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html)
 
 ### Migration of reports
 
@@ -83,11 +83,11 @@ Currently there are the following successors:
 * Fiori App - Creation of an application based on SAP Fiori with the ABAP RESTful Programming Model, RAP for short. For more information about RAP, see the Development chapter. The app is the entry point for the user.
 * Application Job - This new type of job is developed based on a class that is started by a central routine in the system. The start takes place via a Fiori application. Jobs are particularly suitable for automated background activities.
 
-### Neue Konzepte
+### New concepts
 
 With the introduction of ABAP Cloud, various development concepts were revised and successors made available. You should therefore note that some of the old concepts are no longer valid. Some examples:
 
-| Bereich           | Alt (Level B-D)    | Neu (Level A)                       |
+| Area              | Old (Level B-D)    | New (Level A)                       |
 |-------------------|--------------------|-------------------------------------|
 | Application Log   | SLG0, SLG1         | CL_BALI_OBJECT_HANDLER, ABAP API    |
 | Job               | SM36, SM37, Report | Application Job                     |

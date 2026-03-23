@@ -2,7 +2,7 @@
 layout: page
 title: Output solutions
 permalink: /forms/output-solutions/
-parent: Formulare
+parent: Forms
 nav_order: 2
 ---
 

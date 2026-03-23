@@ -10,7 +10,7 @@ nav_order: 2
 
 # Use of open source software
 
-This section describes the use case as integrating open source software into your own development process or specially developed software. He addresses the first [Ausbaustufe]({{ site.baseurl }}/open-source/#ausbaustufen).
+This section describes the use case as integrating open source software into your own development process or specially developed software. He addresses the first [maturity level]({{ site.baseurl }}/open-source/#maturity-levels).
 
 1. TOC
 {:toc}
@@ -27,7 +27,7 @@ In both cases, the tool allows you to import large amounts of development object
 However, you should say goodbye to this idea. Although you can also restrict the use of abapGit based on permissions, even [Exits](https://docs.abapgit.org/user-guide/reference/authorizations.html) can be implemented to further refine the permission logic. However, as long as developers have the opportunity to develop in the system what their actual activity is, they can implement their own data export program or assign themselves the necessary authorizations with just a few lines of coding, bypassing all authorization checks. Too extensive regulation of tooling inevitably leads to the construction of workarounds and hinders the development process.  
 It is therefore recommended to define a process for how the available tooling can be used sensibly and in a coordinated manner within the team.
 
-## Wer stellt ABAP-Open-Source-Software bereit?
+## Who provides ABAP open source software?
 
 A comprehensive list of open source ABAP projects published on GitHub can be found on [dotabap.org](https://dotabap.org). You can submit your own projects that meet the requirements for listing to [dotabap-list](https://github.com/dotabap/dotabap-list) via a pull request.
 
@@ -36,32 +36,32 @@ A comprehensive list of open source ABAP projects published on GitHub can be fou
 Screenshot dotabap.org
 {: .img-caption}
 
-## Wer nutzt ABAP-Open-Source-Software?
+## Who uses ABAP open source software?
 
-On page [Who Uses abapGit?](https://docs.abapgit.org/user-guide/other/where-used.html) of the abapGit documentation you will find a list of companies that use abapGit and have actively decided to be listed. From this it can be deduced that they use at least abapGit itself as open source software. SAP also uses open source ABAP. abapGit is in a customized version in SAP S/4HANA Cloud Public Edition and the SAP BTP ABAP Environment [vorinstalliert](https://help.sap.com/docs/btp/sap-business-technology-platform/working-with-abapgit?locale=en-US). Projects such as [Code Pal for ABAP](https://github.com/SAP/code-pal-for-abap-cloud), [Project Kernseife](https://github.com/SAP/project-kernseife) and [RAP Generator](https://github.com/SAP-samples/cloud-abap-rap) are available on GitHub and are provided with the Apache 2.0 open source license.
+On page [Who Uses abapGit?](https://docs.abapgit.org/user-guide/other/where-used.html) of the abapGit documentation you will find a list of companies that use abapGit and have actively decided to be listed. From this it can be deduced that they use at least abapGit itself as open source software. SAP also uses open source ABAP. abapGit is in a customized version in SAP S/4HANA Cloud Public Edition and the SAP BTP ABAP Environment [preinstalled](https://help.sap.com/docs/btp/sap-business-technology-platform/working-with-abapgit?locale=en-US). Projects such as [Code Pal for ABAP](https://github.com/SAP/code-pal-for-abap-cloud), [Project Kernseife](https://github.com/SAP/project-kernseife) and [RAP Generator](https://github.com/SAP-samples/cloud-abap-rap) are available on GitHub and are provided with the Apache 2.0 open source license.
 
 ## Integration of open source tools in the development process
 
 You can take a first step towards dealing with open source software in ABAP development by considering the use of open source tools in your development process. This can result in a reduction in effort without having to develop an extensive open source strategy.
 
-- **Chancen**
+- **Opportunities**
   - Reduction of expenses through the use of generators
   - Increasing code quality through the use of additional code analysis tools
-- **Risiken**
+- **Risks**
   - Installation of third-party software in the development system / developer PCs / continuous integration environments
 
-Many of the opportunities of this use case have already been mentioned with examples under [Motivation and opportunities]({{ site.baseurl }}/open-source/#motivation-und-chancen). In summary, the use of open source tools in the development process relieves the burden on developers, as work steps are automated or the quality specifications are automatically checked / violations of the specifications can be corrected early and in some cases automatically.
+Many of the opportunities of this use case have already been mentioned with examples under [Motivation and opportunities]({{ site.baseurl }}/open-source/#motivation-and-opportunities). In summary, the use of open source tools in the development process relieves the burden on developers, as work steps are automated or the quality specifications are automatically checked / violations of the specifications can be corrected early and in some cases automatically.
 
-In order to take advantage of the opportunities, the selected open source software must be installed. Depending on the software, this happens on developer PCs, in continuous integration environments or in the SAP system. As can be seen at [Lizenzen]({{ site.baseurl }}/open-source/licenses.md), open source licenses exclude liability and warranty unless a separate agreement is made. There are consequently security-relevant implications for the installation and use of the software. This topic is discussed in more detail in [Assessment and life cycle of an external dependency](#bewertung-und-lebenszyklus-einer-externen-abhängigkeit).
+In order to take advantage of the opportunities, the selected open source software must be installed. Depending on the software, this happens on developer PCs, in continuous integration environments or in the SAP system. As can be seen at [Licenses]({{ site.baseurl }}/open-source/licenses.md), open source licenses exclude liability and warranty unless a separate agreement is made. There are consequently security-relevant implications for the installation and use of the software. This topic is discussed in more detail in [Assessment and life cycle of an external dependency](#assessment-and-lifecycle-of-an-external-dependency).
 
 ## Use of open source libraries in your own software
 
-An optional extension of this expansion level is the use of open source libraries in your own software. In this case, you integrate the selected libraries using API calls and deliver them. There is even greater added value here, as functions can be provided in your applications that would otherwise not have been possible to develop or maintain with relative effort. However, the question inevitably arises as to how such open source components are handled in productive environments and in the delivery of software. This significantly increases the importance of [Assessment and life cycle of an external dependency](#bewertung-und-lebenszyklus-einer-externen-abhängigkeit).
+An optional extension of this expansion level is the use of open source libraries in your own software. In this case, you integrate the selected libraries using API calls and deliver them. There is even greater added value here, as functions can be provided in your applications that would otherwise not have been possible to develop or maintain with relative effort. However, the question inevitably arises as to how such open source components are handled in productive environments and in the delivery of software. This significantly increases the importance of [Assessment and life cycle of an external dependency](#assessment-and-lifecycle-of-an-external-dependency).
 
-- **Chancen**
+- **Opportunities**
   - Reduction of effort through integration of finished components
   - Increasing the functionality of your applications
-- **Risiken**
+- **Risks**
   - Installation and delivery of third-party software
 
 ## Assessment and lifecycle of an external dependency

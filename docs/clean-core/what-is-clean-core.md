@@ -59,7 +59,7 @@ Basically, Clean Core is as the manufacturer describes it:
 
 The manufacturer's information indicates four areas of application and the facts for achieving a Clean Core are as follows:
 
-#### Datenmodelle
+#### Data models
 * Regardless of whether simple or complex use cases are to be implemented, data modeling with the Virtual Data Model (VDM) is required. 
 * There should be no direct access to SAP standard tables.
 * SAP focuses on standard data products (e.g. customer order). Customer processes and data models outside of the SAP standard remain the responsibility of the SAP customer.
@@ -69,13 +69,13 @@ The manufacturer's information indicates four areas of application and the facts
 * Extensions to the standard should be migrated to defined and released BADIs.
 * In-house developments must use Clean Core compliant development objects (keyword: release contracts).
 
-#### Applikationen
+#### Applications
 * In principle, customers should use the standard Fiori apps or SAP GUI for HTML with screen personas to use existing SAP standard transactions.
 * The standard Fiori apps and the standard APIs behind them are to be expanded.
 * For custom apps, Fiori Elements and standard APIs (based on RAP) should initially be used. The app can then be expanded using the Flexbile Programming Model (FPM). The last step would then be Freestyle Fiori apps. 
 * Other solutions: Cloud Native applications in a Cloud environment (Side-by-Side Extensibility). Low/no-code platforms and the SAP build portfolio offer further solutions.
 
-#### Schnittstellen
+#### Interfaces
 * Only Clean Core compliant, approved interfaces are used.
 * Extensions are made to APIs and microservices to extend the functionality of SAP without affecting the integrity of the core system.
 * External integration must be clearly regulated; process integration and middleware for API management must be available.
@@ -88,7 +88,7 @@ By implementing the Clean Core principles and strategic initiatives, organizatio
 According to SAP, the main thing with Clean Core is that customers do not block the future and build standardized interfaces. By standardizing business processes and using the SAP BTP, SAP services or solutions from SAP partners can be used completely.
 The Clean Core strategy is a philosophy for many existing customers until internal guidelines regulate the use of the successor technologies. Based on the guidelines, developers are organizationally aligned and trained. A committee to comply with the "Clean Core Governance" is mandatory with the mandate to maintain, expand and enforce the guidelines. Research and development should be carried out frequently to identify the added value of SAP service.
 
-## Zielgruppe
+## Target Group
 Essentially, two large customer groups are visible in the DSAG network: The first group decides to make a large investment in their SAP landscape and works with SAP and their partners to move towards a Clean Core in accordance with the SAP definition. The other group opts for a scaled approach, where investments are spread over several years. 
 
 Here are some examples of possible SAP customers:
@@ -133,10 +133,10 @@ If you would like to have your system operated in your own data center or by a s
 
 This distinction helps in deciding which approach best suits a company's goals, resources and circumstances.
 
-### Greenfield-Ansatz
+### Greenfield approach
 The greenfield approach describes a complete reimplementation of a SAP system. The existing system is not migrated, but rather a completely new system is built on a “greenfield site”.
 
-Merkmale:
+Characteristics:
 - Restart: Complete new implementation without legacy problems.
 - Flexibility: Possibility to completely redesign processes, structures and architectures.
 - Effort: Requires intensive preparation, training and high investments.
@@ -144,10 +144,10 @@ Merkmale:
 - Risk: Higher implementation effort, longer project durations.
 
 
-### Brownfield-Ansatz
+### Brownfield approach
 The brownfield approach refers to the conversion of an existing SAP system to a new SAP system (e.g. SAP S/4HANA) through migration. In contrast to the greenfield approach, existing systems, data and processes are largely adopted here.
 
-Merkmale:
+Characteristics:
 - Inventory preservation: use of existing systems and processes.
 - Efficiency: Faster implementation by using existing infrastructure.
 - Effort: Lower effort compared to the greenfield approach.
@@ -155,10 +155,10 @@ Merkmale:
 - Risk: Taking over legacy issues (e.g. outdated processes or poor data quality).
 
 
-### Bluefield-Ansatz
+### Bluefield approach
 The bluefield approach represents a hybrid approach between greenfield and brownfield. Selective data and process migration is carried out, which means that legacy issues can be eliminated and existing systems can be used.
 
-Merkmale:
+Characteristics:
 - Selectivity: Companies can decide which data and processes are adopted or redesigned.
 - Flexibility and control: Optimization of existing processes without completely re-implementing them.
 - Effort: Between greenfield and brownfield.
@@ -168,14 +168,14 @@ Merkmale:
 
 ## Delimitation at a glance
 
-| Merkmal           | **Greenfield**                 | **Brownfield**                 | **Bluefield**                  |
+| Characteristic    | **Greenfield**                 | **Brownfield**                 | **Bluefield**                  |
 |--------------------|--------------------------------|--------------------------------|--------------------------------|
-| **Ansatz**         | Complete new beginning       | Systemmigration                | Selektive Migration            |
-| **Data transfer** | No                         | Complete                    | Teilweise                      |
-| **Process takeover** | Neu                         | Bestehend                      | Selektiv                       |
-| **Aufwand**        | Hoch                          | Mittel                         | Mittel bis hoch                |
-| **Flexibility**   | Sehr hoch                     | Gering                         | Hoch                           |
-| **Risiken**        | Lange Implementierungszeit    | Takeover of legacy assets        | High complexity               |
+| **Approach**       | Complete new beginning         | System migration               | Selective migration            |
+| **Data transfer**  | No                             | Complete                       | Partial                        |
+| **Process takeover** | New                          | Existing                       | Selective                      |
+| **Effort**         | High                           | Medium                         | Medium to high                |
+| **Flexibility**    | Very high                      | Low                            | High                           |
+| **Risks**          | Long implementation time       | Takeover of legacy assets      | High complexity                |
 | **Suitable for**   | Companies in need of radical redesign | Companies with proven processes | Companies with mixed requirements |
 
 
@@ -250,7 +250,6 @@ If you want to modify the SAP standard, consider the following rules and best pr
 - **Confusing changes**:  
   - Do not mix standard code and custom code.  
 
-## Clean ABAP - Abgrenzung
+## Clean ABAP - Delimitation
 
 Clean ABAP is about writing ABAP code that focuses on understandability and maintainability. Clean Core and SAP are about dealing with the limits of customer-specific programs in the SAP standard. Just because an implementation corresponds to the Clean Core strategy does not automatically make it Clean ABAP and vice versa. More about this in chapter [ABAP]({{ site.baseurl }}/abap).
-

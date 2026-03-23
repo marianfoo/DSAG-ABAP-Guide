@@ -8,7 +8,7 @@ nav_order: 9
 {: .no_toc}
 # Application Lifecycle Management (ALM)
 
-## Zielgruppe
+## Target Group
 
 The chapter is primarily aimed at product managers, quality officers, development managers and interested developers who want to turn one or two adjustment screws for high-quality and effective software development as part of a holistic software life cycle approach.
 

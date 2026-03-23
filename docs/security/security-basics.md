@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Grundlagen
+title: Fundamentals
 permalink: /security/basics/
 parent: Security
 nav_order: 2
@@ -8,7 +8,7 @@ nav_order: 2
 
 {: .no_toc}
 
-# Grundlagen
+# Fundamentals
 
 1. TOC
 {:toc}  
@@ -46,7 +46,7 @@ The causes are varied but predictable:
 
 **Legacy code without a security focus**: Many SAP systems contain code from the 1990s, when security was not yet a priority. This code is often copied and used as a template for new developments - including its vulnerabilities.
 
-## Security-Mindset: Vom reaktiven zum proaktiven Denken
+## Security mindset: From reactive to proactive thinking
 
 The key difference between secure and insecure software isn't the technology - it's the way developers think. A "security mindset" means not viewing security as an afterthought, but rather as an integral part of the development process.
 

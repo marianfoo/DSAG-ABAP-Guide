@@ -21,12 +21,12 @@ In addition, you will find a few tips on other testing tools and methods, but th
 When we talk about _Unit Tests_ below, we mean ABAP Unit Tests using the ABAP Unit Framework. The ABAP only refers to the special features of unit tests in the ABAP Unit Framework. 
 
 {: .important}
-> **Begriffsabgrenzung Unit Test**  
+> **Definition of Unit Test**  
 > Unit tests often mean different definitions of tests.  
 > When we write about unit tests here, these are programmed tests with the ABAP Unit Framework that can be executed automatically.  
 > Manual execution of individual code units, e.g. using SE37 / SE24 / Reports, is not testing, but rather trying out functionalities.
 
-## Zielgruppe
+## Target Group
 
 In this chapter, on the one hand, we would like to give decision-makers and those responsible recommendations and information about why ABAP unit tests are very important for today's modern ABAP programming and what benefits you can get from this investment.  
 This guide also serves developers and those responsible for development or roles to help them use ABAP Unit Testing sensibly or, if it is not yet used extensively, to make it easier to get started.  

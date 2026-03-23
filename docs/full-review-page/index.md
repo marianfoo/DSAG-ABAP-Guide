@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Komplette Version
+title: Full Version
 permalink: /full-version/
 nav_order: 16
 has_toc: false
@@ -8,7 +8,7 @@ has_toc: false
 
 {% assign all_pages = site.pages | where_exp: "item", "item.parent == nil" | sort: "nav_order" %}
 {% for main_page in all_pages %}
-    {% if main_page.title != "Komplette Version" and main_page.title %}
+    {% if main_page.title != "Full Version" and main_page.title %}
         {{ main_page.content }}
 
         {% assign sub_pages = site.pages | where: "parent", main_page.title | sort: "nav_order" %}

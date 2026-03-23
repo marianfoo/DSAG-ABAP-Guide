@@ -2,7 +2,7 @@
 layout: page
 title: Design and design of modern SAP applications
 permalink: /abap/oo-design/
-parent: Moderne ABAP Entwicklung
+parent: Modern ABAP Development
 nav_order: 2
 ---
 

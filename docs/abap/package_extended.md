@@ -3,7 +3,7 @@ layout: page
 title: Basics of the package concept
 permalink: /abap/package_details/
 parent: Architecture and structuring in the ABAP development
-grand_parent: Moderne ABAP Entwicklung
+grand_parent: Modern ABAP Development
 nav_order: 1
 ---
 

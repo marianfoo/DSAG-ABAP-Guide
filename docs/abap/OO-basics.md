@@ -3,7 +3,7 @@ layout: page
 title: Additions to object orientation
 permalink: /abap/oo-basics/
 parent: Design and design of modern SAP applications
-grand_parent: Moderne ABAP Entwicklung
+grand_parent: Modern ABAP Development
 nav_order: 1
 ---
 

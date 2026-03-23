@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Bedrohungen
+title: Threats
 permalink: /security/threats/
 parent: Security
 nav_order: 3
@@ -8,7 +8,7 @@ nav_order: 3
 
 {: .no_toc}
 
-# Bedrohungen
+# Threats
 
 1. TOC
 {:toc}  

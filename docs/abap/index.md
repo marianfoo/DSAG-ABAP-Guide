@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Moderne ABAP Entwicklung
+title: Modern ABAP Development
 permalink: /abap/
 has_children: true
 nav_order: 4
 ---
 
 {: .no_toc}
-# Moderne ABAP Entwicklung
+# Modern ABAP Development
 
 1. TOC
 {:toc}

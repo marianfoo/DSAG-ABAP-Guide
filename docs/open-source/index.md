@@ -12,10 +12,10 @@ nav_order: 11
 1. TOC
 {:toc}
 
-Open source has a particularly difficult time gaining a foothold in ABAP development. There are still objections that the use of available software in the business-critical SAP systems is not possible or justifiable with the company data. There are solutions for many of the legitimate objections to minimize the _risks_ and to be able to use the [_Chancen_](#motivation-und-chancen), which offers open source software. In other programming languages, the opportunities have long outweighed the remaining risks and processes and tools have been created to effectively integrate open source components into your own development process. This chapter is intended to give you an overview of the current status of open source in ABAP development and introduce processes and tools to...
+Open source has a particularly difficult time gaining a foothold in ABAP development. There are still objections that the use of available software in the business-critical SAP systems is not possible or justifiable with the company data. There are solutions for many of the legitimate objections to minimize the _risks_ and to be able to use the [_opportunities_](#motivation-and-opportunities), which offers open source software. In other programming languages, the opportunities have long outweighed the remaining risks and processes and tools have been created to effectively integrate open source components into your own development process. This chapter is intended to give you an overview of the current status of open source in ABAP development and introduce processes and tools to...
 
 1. ...to integrate open source projects into your own solutions ([Use of open source software](using-open-source-software))
-2. ...an Open-Source-Projekten mitzuwirken ([Beteiligung an Open-Source-Software](contributing-to-open-source-software))
+2. ...to participate in open source projects ([Participation in Open Source Software](contributing-to-open-source-software))
 3. ...provide your own solutions as an open source project ([Open source software development](developing-open-source-software)).
 
 {: .recommendation }
@@ -23,7 +23,7 @@ Every company has to develop an _open source strategy_ for itself. Here you will
 
 ## What is Open Source?
 
-Open source software (OSS) is software that is provided under a [_Open-Source-Lizenz_](licenses). In all three use cases mentioned above, the license is decisive for the use, modification and further distribution of the provided coding. In addition, this must be _freely available_, i.e. not only made available to a certain group of people. This allows you, for example, to check the source code of an application before use and generate the binaries for execution yourself, instead of trusting that the files provided correspond exactly to the checked version of the source code. If in doubt, you can fix bugs yourself instead of having to wait for the software provider or rely on support. You can develop additional functionality and integrations yourself and also make them available to other users of the software. You can check promised features such as end-to-end encryption and disabled telemetry yourself.
+Open source software (OSS) is software that is provided under a [_open source license_](licenses). In all three use cases mentioned above, the license is decisive for the use, modification and further distribution of the provided coding. In addition, this must be _freely available_, i.e. not only made available to a certain group of people. This allows you, for example, to check the source code of an application before use and generate the binaries for execution yourself, instead of trusting that the files provided correspond exactly to the checked version of the source code. If in doubt, you can fix bugs yourself instead of having to wait for the software provider or rely on support. You can develop additional functionality and integrations yourself and also make them available to other users of the software. You can check promised features such as end-to-end encryption and disabled telemetry yourself.
 
 You can find a comprehensive definition of open source at the open source initiative on the following website: [The Open Source Definition](https://opensource.org/osd).
 
@@ -61,7 +61,7 @@ Examples: [ABAP SDK for Azure](https://github.com/microsoft/ABAP-SDK-for-Azure),
 {: .recommendation }
 As you can see, there are many places where open source can provide significant added value, including in ABAP development. It is therefore always worth considering the topic, even if only some of the points mentioned above are specifically relevant to you.
 
-## Ausbaustufen
+## Maturity Levels
 
 A possible approach to the topic is to see the different use cases as building on one another:
 
@@ -70,7 +70,7 @@ This expansion stage is described in [Use of open source software](using-open-so
     1. This level can optionally be expanded with the __use of open source projects in your developed software solutions__. In this case, the open source components also reach your productive system or are delivered as part of your software.
 
 2. Next, you can consider __participation in open source projects__. You expand or modify an open source project and make these adjustments available to the community so that other companies can also benefit from them. In order for developers to be able to participate in this way, your company must have a guideline on how this can be specifically designed.  
-This stage is covered in [Beteiligung an Open-Source-Software](contributing-to-open-source-software).
+This stage is covered in [Participation in Open Source Software](contributing-to-open-source-software).
 
 3. The final stage is __developing your own software as open source software__. In this case, you offer selected components of your own software solutions as open source software, thereby enabling others to use them and also participate in them.  
 This stage is discussed in [Open source software development](developing-open-source-software).

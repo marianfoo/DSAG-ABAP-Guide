@@ -13,7 +13,7 @@ nav_order: 2
 1. TOC
 {:toc}
 
-Technische Grundlagen Objektebene
+Technical basics at object level
 
 ## What can be tested using the ABAP unit?
 
@@ -33,9 +33,9 @@ This applies analogously to scenarios in which there is no data in the database 
 > If this procedure is not used and the tests are developed in client x and executed in client y, the tests would not provide any reliable information and would therefore be carried out less often or not at all.
 > The same applies to unit tests, which depend on a data constellation on the test system.
 > According to the unit test methodology, direct database queries using mocking or injection frameworks should be avoided.
-> You can find out which techniques will support you in achieving this independence here in section [Erweiterte Techniken](#abap_unit_advanced)
+> You can find out which techniques will support you in achieving this independence here in section [Advanced techniques](#abap_unit_advanced)
 
-## Testumgebung
+## Test Environment
 
 The ABAP unit tests can be created and used from the ABAP development tools or the SAP-GUI development environment (SE80, SE24). The procedure only differs in small details.
 ADT is clearly recommended here, as [Test Relations](https://www.youtube.com/watch?app=desktop&v=yiKhKlQz89Y&t=14s) can also be used here.  
@@ -85,7 +85,7 @@ THEN should be the house number "13".
 
 You often come across the attitude that it is not necessary to adhere to code quality rules in unit tests (CleanABAP, naming conventions, modularization, ...). Poor maintainability and quality in unit tests will result in the tests not being further developed and becoming useless. Duplicate code and a lack of modularization should be avoided here as well as in productive code.
 
-### Unit Test sauber halten
+### Keep unit tests clean
 
 It is also imperative to carry out all unit tests successfully. Don't be careless here and prioritize tasks that require fixing the business code or unit test until all tests are running error-free again.  
 
@@ -114,7 +114,7 @@ Each class has an include in which several local classes and test classes can be
 
 In a test method, a (public) method of the class under test is executed and compared with an expected result. If the expectation matches, then the test is successful. The instance of the class under test is called _F_CUT_ or _CUT_. _CUT_ stands for _Code Under Test_. Before executing the tests, the _SETUP_ method can optionally be executed, in which preparations for the test case can be made (e.g. the creation of the _CUT_ instance). After executing a test method, cleanup work can be carried out in the _TEARDOWN_ method. Any number of other methods or classes can be defined to support the tests.
 
-### Risikostufe/ Risk Level
+### Risk Level
 
 With the addition _RSIK LEVEL_ you define the risk level of the test cases
 
@@ -125,7 +125,7 @@ Follow the SAP guidelines for risk levels:
 
 In general, you should avoid writing tests that make real changes to the database. This is often an indicator of a lack of management of dependencies or their exchange. Your goal must be able to define as many tests as _Harmless_. This is possible with the help of the frameworks provided by SAP for mocking database tables and CDS views. See section [Mocking..](Mocking, faking, spying und stubbing)
 
-### Dauer/ Duration
+### Duration
 
 You use the addition _DURATION_ to define the expected runtime of the test cases. 
 The following categories are possible. The preset duration in seconds is shown in the brackets:
@@ -324,7 +324,7 @@ This variant allows you to continue carrying out tests that work according to a 
 
 Note: This is not a recommendation to accommodate all tests in one test method. The example is simply intended to show that auxiliary methods can be used to make the unit tests more compact, easier to maintain and more readable.
 
-### Testumgebung
+### Test Environment
 
 ABAP Unit tests can be executed in ADT as well as in the SAP GUI and their results can be analyzed. 
 ADT is clearly recommended here, as [Test Relations](https://www.youtube.com/watch?app=desktop&v=yiKhKlQz89Y&t=14s) can also be used here. 
@@ -351,7 +351,7 @@ A **Spy** object can contain properties of stubs, fakes and mocks, but also has 
 
 The use of test doubles is necessary if there are dependencies that have not been or could not be resolved sufficiently. With appropriate test double frameworks, the results of database accesses or function module calls can be faked. 
 
-Test double frameworks are usually cumbersome to use and very confusing. Input parameters and the desired results must be specified with many definitions and methods. If possible, you should eliminate the dependencies to avoid using test doubles. However, this is not always possible. We provide further information about the test double frameworks in section [Erweiterte Techniken](#abap_unit_advanced).
+Test double frameworks are usually cumbersome to use and very confusing. Input parameters and the desired results must be specified with many definitions and methods. If possible, you should eliminate the dependencies to avoid using test doubles. However, this is not always possible. We provide further information about the test double frameworks in section [Advanced techniques](#abap_unit_advanced).
 
 #### Automated regular runs of unit tests
 There are several ways to run unit tests regularly. 

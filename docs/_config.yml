@@ -40,22 +40,22 @@ plugins:
 
 callouts:
   recommendation:
-    title: "Empfehlung"
+    title: "Recommendation"
     color: yellow
   note:
-    title: "Hinweis"
+    title: "Note"
     color: purple
   solution:
-    title: "Lösung"
+    title: "Solution"
     color: green
   warning:
-    title: "Warnung"
+    title: "Warning"
     color: red
   important:
-    title: "Wichtig"
+    title: "Important"
     color: blue
   new:
-    title: "Neu"
+    title: "New"
     color: green
 
 mermaid:

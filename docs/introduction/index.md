@@ -45,7 +45,7 @@ The topics
 * **ABAP**
 * **ABAP Unit Test**  
 * **User Interfaces and**
-* **Formulare**
+* **Forms**
 
 give you explanations, recommendations and details on the technology-oriented aspects and technologies of modern SAP development.  
 At the beginning of each chapter you will find introductory information and an overview of the topic. This part is primarily intended for managers and decision-makers in the company who want to get an overview of the area.  
@@ -55,7 +55,7 @@ In the further part you will find sections on the topics of **Open Source** with
 Finally, you will find information on the topics of **security** and **integration**, which are more important than ever when developing SAP software.
 And of course, references to artificial intelligence should not be missing here.
 
-## Positionierung
+## Positioning
 
 The SAP has numerous documentation on application development and expansion of the SAP platform. Specialist publishers have also published very good publications on this subject. Furthermore, there are now numerous freely available learning journeys on various topics. However, it is not easy to find your way through the jungle of tools and techniques.  
 The added value of this document lies in the summary of best practices, practical tips and tried-and-tested regulations from the user companies. Therefore, this guide primarily addresses the topics from a slightly higher perspective.

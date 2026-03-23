@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Formulartechnologien
+title: Form Technologies
 permalink: /forms/form-technologies/
-parent: Formulare
+parent: Forms
 nav_order: 1
 ---
 
 {: .no_toc}
-# Formulartechnologien
+# Form Technologies
 
 1. TOC
 {:toc}
@@ -30,13 +30,13 @@ Debugging is relatively inconvenient and actually no longer up to date. Every te
 
 The SAPscript form is called using the OPEN_FORM function module.
 
-| Transaktion | Beschreibung |
+| Transaction | Description |
 | --- | --- |
 | SE71 | SAPscript Editor |
-| SE72 | SAPscript Stil |
-| SE78 | Verwaltung Formulargrafiken |
-| SO10 | (SAPscript-) Standardtexte |
-| TXBA | Verwendungsnachweis Textbausteine |
+| SE72 | SAPscript Style |
+| SE78 | Form graphic management |
+| SO10 | (SAPscript) Standard texts |
+| TXBA | Where-used list text modules |
 
 ## SmartForms (2001) 
 
@@ -53,7 +53,7 @@ If you want to debug a SmartForms form, it is best to set a breakpoint in the ge
 
 The SAP standard delivers various test programs and test forms. These start with “SF_\*”.
 
-| Transaktion | Beschreibung |
+| Transaction | Description |
 | --- | --- |
 | SMARTFORMS | SmartForms editor for forms and styles |
 
@@ -73,21 +73,21 @@ The following functionalities are supported when designing forms with SAP Intera
 - Objects can be rotated  
 - different page orientations possible in one form  
 - Graphic elements (fold marks) possible  
-- Wiederverwendung komplexer Layoutelemente  
+- Reuse of complex layout elements  
 - Use of TrueType fonts possible  
 - Barcodes can be printed on many printers (Postscript, PCL, PDF and Zebra)  
 - Accessibility possible  
 - Drag&Drop function for positioning objects
 
-Adobe Formulare bestehen bzgl. Layout aus verschiedenen Objekten:
+Adobe forms consist of various objects in terms of layout:
 
-- Masterseite:  
+- Master page:  
     One or more master pages are possible per form and are the top level of a form to structure the form. Information that should be repeated on every output page is placed here, as well as the size and space of the content area.  
 
-- Inhaltsbereich:  
+- Content area:  
     Area for outputting dynamic or static content.  
 
-- Inhaltsseite:  
+- Content page:  
     contains the content that is assigned to a content area of ​​a master page.
 
 In order to maintain and edit these objects, you must switch between the “Design View” and “Master Pages” tabs in the layout area of ​​the SFP transaction.  
@@ -110,28 +110,28 @@ preview
 
 The interface is a standalone object with a unique name. It can be used multiple times and represents the assignment of application data, e.g. from a printing program, to the form.
 
-![Aufbau](./img/image-02.png)
+![Structure](./img/image-02.png)
 
-Aufbau
+Structure
 {: .img-caption}
 
 
 The following interface types are available:
 
-- ABAP Dictionary basierte Schnittstelle
-- XML Schema basierte Schnittstelle
-- Smart Forms kompatible Schnittstelle
+- ABAP Dictionary based interface
+- XML Schema based interface
+- Smart Forms compatible interface
 
 The most commonly used interface type is the “ABAP Dictionary based” interface.  
 The interface consists of three specific areas:
 
-- Formularschnittstelle  
+- Form interface  
     with the sub-areas: import, export, exceptions  
 
-- Globale Definitionen  
+- Global definitions  
     To define variables in order to be able to store other data in addition to data from the form interface.  
 
-- Initialisierung  
+- Initialization  
     Possibility to read additional data in the form. The coding should be kept short and concise. The editor has some limitations at this point such as no forward navigation and no pretty printer.  
     
 {: .recommendation }
@@ -152,7 +152,7 @@ The translation of an Adobe form can be carried out directly in transaction SFP 
 
 The SAP standard delivers various test programs and test forms. These begin with “FP_TEST\*”.
 
-| Transaktion | Beschreibung |
+| Transaction | Description |
 | --- | --- |
 | SFP | Adobe Form Builder for forms and form interfaces |
 
@@ -175,40 +175,40 @@ This form technology is only possible together with the S/4HANA Output Control o
 > - local editing of the layout / form -> therefore the team must coordinate!  
 > - no automatic transport connection -> Remember that you have to manually search for all objects and include them in a transport.  
 
-| App ID | Beschreibung |
+| App ID | Description |
 | --- | --- |
-| F1434 | Formularvorlagen pflegen |
-| F2894 | Texte verwalten |
-| F2761 | Logos verwalten |
+| F1434 | Manage form templates |
+| F2894 | Manage texts |
+| F2761 | Manage logos |
 | F1589 | Include objects in transports |
 
 {: .note }
 > In order to be able to find these Fiori apps, the catalog ID SAP_BASIS_TCR_T must be assigned to the logged in user via a role (transaction PFCG).
 
-![Transaktion PFCG](./img/image-03.png)
+![Transaction PFCG](./img/image-03.png)
 
-Transaktion PFCG
+Transaction PFCG
 {: .img-caption}
 
-![Zuordnung Katalog](./img/image-04.png)
+![Catalog assignment](./img/image-04.png)
 
-Zuordnung Katalog
+Catalog assignment
 {: .img-caption}
 
-![Zuordnung Benutzer](./img/image-05.png)
+![User assignment](./img/image-05.png)
 
-Zuordnung Benutzer
+User assignment
 {: .img-caption}
 
 Adobe Fragments
 
 This involves reusing master form templates. This allows expenses to be composed of different parts. A distinction is made between the following two parts:
 
-- Masterformular  
+- Master form  
     Head and foot area  
     Determination by Customizing depending on organizational levels such as company code  
 
-- Inhaltsformular  
+- Content form  
     e.g. invoice or order  
     Determination by BRF+ depending on the output type (e.g. order)
 
@@ -235,7 +235,7 @@ Adobe Fragments can only be used in conjunction with Output Control
 {: .img-caption}
 
 
-## Fazit
+## Conclusion
 
 SAP generally recommends using SAP Interactive Forms by Adobe for new forms.
 This is future-proof because SAPscript and SmartForms are no longer being further developed by SAP itself.
@@ -246,7 +246,7 @@ The decision as to which technology is used to implement new developments in the
 
 If you look at the existing system landscapes, the following recommendation emerges.
 
-| Systemlandschaft | Empfohlene Technologie |
+| System Landscape | Recommended Technology |
 | --- | --- |
 | SAP ECC / S/4HANA On-Premise | SAP Interactive Forms by Adobe |
 | S/4HANA Cloud (Public / Private Edition) | SAP Interactive Forms by Adobe / SAP S/4HANA Forms (Cloud-Integration) |

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Sichere Entwicklung
+title: Secure Development
 permalink: /security/secure-development/
 parent: Security
 nav_order: 4
@@ -8,7 +8,7 @@ nav_order: 4
 
 {: .no_toc}
 
-# Sichere Entwicklung
+# Secure Development
 
 1. TOC
 {:toc}  

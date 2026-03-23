@@ -12,7 +12,7 @@ nav_order: 7
 1. TOC
 {:toc}
 
-## Zielgruppe
+## Target Group
 
 This chapter is aimed at ABAP developers, software architects, technical writers and development managers and is based on the content of the [**DSAG recommended action Best Practice Guide Development - practical tips on the topic of ABAP Development**](https://dsag.de/wp-content/uploads/2021/12/dsag_handlungsempfehlung_abap_2016_0.pdf)". The chapter has been modernized and expanded to include content where appropriate.
 

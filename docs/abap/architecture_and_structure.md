@@ -3,7 +3,7 @@ layout: page
 title: Architecture and structuring in the ABAP development
 permalink: /abap/architecture_and_design/
 has_children: true
-parent: Moderne ABAP Entwicklung
+parent: Modern ABAP Development
 nav_order: 1
 ---
 

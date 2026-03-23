@@ -2,7 +2,7 @@
 layout: page
 title: The ABAP RESTful Application Programming Model (RAP)
 permalink: /abap/restful_abap/
-parent: Moderne ABAP Entwicklung
+parent: Modern ABAP Development
 nav_order: 5
 ---
 

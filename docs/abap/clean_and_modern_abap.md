@@ -2,7 +2,7 @@
 layout: page
 title: Write clean and modern ABAP code
 permalink: /abap/clean_and_modern_abap/
-parent: Moderne ABAP Entwicklung
+parent: Modern ABAP Development
 nav_order: 4
 ---
 
@@ -67,7 +67,7 @@ It takes time, practice, motivation and constant determination to write better A
 The activities that ensure the application of Clean ABAP are called pair programming, code reviews, refactoring and training.
 The organization must create appropriate conditions for this.
 
-## Grundlagen sauberer Entwicklung
+## Fundamentals of clean development
 
 This section presents a short selection of important rules for clean development with references to sources for further information.
 
@@ -103,7 +103,7 @@ Clean ABAP recommends [Explanation and structuring via code, not via comments](h
 
 The Clean ABAP guide contains everything you should consider about comments, [see](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#express-yourself-in-code-not-in-comments).
 
-## Moderne Sprachmittel
+## Modern language features
 
 This section shows a brief overview of modern language resources from ABAP without claiming to be complete.
 
@@ -433,7 +433,7 @@ DATA(youngest_person_new) = REDUCE #( INIT youngest = VALUE person( persons[ 1 ]
                                                                 ELSE youngest ) ).
 ~~~
 
-## Namenskonventionen - Empfehlungen NCs vs. Clean Code
+## Naming conventions - recommendations NCs vs. Clean Code
 
 ### Names for repository objects
 
