@@ -220,13 +220,13 @@ Modifications may only be made after careful consideration. The reasons for this
 #### Possible justifications:  
 - **Implementation of unique selling points (USPs)**:  
   Creation or adaptation of functions that allow the company to differentiate.  
-- **Prozessoptimierung**:  
+- **Process optimization**:  
   Mapping customer-specific business processes or automating standard processes and internal procedures.  
-- **Kosteneinsparungen**:  
+- **Cost savings**:  
   Reduction of operational or long-term expenses through targeted adjustments.  
 
 
-## Saubere Modifikationen
+## Clean modifications
 If you want to modify the SAP standard, consider the following rules and best practices. Adhering to these guidelines ensures maintainable, traceable, and future-proof code that can withstand SAP upgrades and patches.  
 
 ### DO
@@ -240,7 +240,7 @@ If you want to modify the SAP standard, consider the following rules and best pr
   - Any modification must be fully documented, including:  
     - Purpose of the change.  
     - Impact on future updates.  
-    - Getestete Szenarien.  
+    - Tested scenarios.  
 
 ### DON'T
 - **Write business process logic directly in the modification**:  

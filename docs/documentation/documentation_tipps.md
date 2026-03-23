@@ -1,20 +1,20 @@
 ---
 layout: page
-title: Allgemeine Dokumentations-Tipps
+title: General documentation tips
 permalink: /documentation/documentation_tipps/
 parent: Documentation
 nav_order: 4
 ---
 
 {: .no_toc}
-# Allgemeine Dokumentations-Tipps
+# General documentation tips
 
 1. TOC
 {:toc}
 
 The following section provides you with easy-to-use and useful tips on how you can handle documentation tasks effectively. The tips are not limited to technical documentation, but can be applied universally to documentation tasks.
 
-## Goldene Dokumentationsregeln
+## Golden documentation rules
 
 ### Documentation must be easy to understand (#1)
 + Write in active form and use short sentences.

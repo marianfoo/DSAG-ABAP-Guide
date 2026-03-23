@@ -1,13 +1,13 @@
 ---
 layout: page
-title: ABAP Unit - erweiterte Techniken
+title: ABAP Unit - advanced techniques
 permalink: /testing/abap_unit_advanced/
 parent: Software test with ABAP unit
 nav_order: 3
 ---
 
 {: .no_toc}
-# ABAP Unit: erweiterte Techniken
+# ABAP Unit: advanced techniques
 
 1. TOC
 {:toc}
@@ -30,7 +30,7 @@ SAP provides you with various frameworks to solve dependencies on various databa
 
 The aim is to build a stable, repeatable environment in which tests can be repeated as often as required without having to create new documents.
 
-You can find an overview of the available options in the [SAP-Hilfe](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/managing-database-dependencies-with-ABAP-Unit).
+You can find an overview of the available options in the [SAP Help](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/managing-database-dependencies-with-ABAP-Unit).
 
 
 The challenge lies in identifying the tables/views and filling the mock database. 
@@ -58,7 +58,7 @@ See [Clean ABAP Test Seams](https://github.com/SAP/styleguides/blob/main/clean-a
 
 ### SAP Components such as BAPIs & function modules in unit test
 
-If your component or integration tests rely on a SAP function block or class executing a step that is supposed to be part of your test, it is usually necessary to have repeatable and stable test data in the relevant tables. see [Mocking database tables](Testdatenverwaltung in ECATT-Containern). 
+If your component or integration tests rely on a SAP function block or class executing a step that is supposed to be part of your test, it is usually necessary to have repeatable and stable test data in the relevant tables. See [Mocking database tables](#test-data-management-in-ecatt-containers). 
 
 ### Automatically generate VALUE statement for mock data
 
@@ -76,11 +76,11 @@ Using the ECATT containers, you can maintain and view test cases manually. If a 
 
 tbd: Attention: the data is lost during a system copy! Save data!
 
-#### Manuelle Verwaltung
+#### Manual management
 
 You can use transaction SECATT to define, view and change the ECATT containers.
 
-#### Programmatischer Zugriff 
+#### Programmatic access 
 
 ECATT test data containers can be used to create stable test data. 
 

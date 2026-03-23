@@ -14,14 +14,14 @@ nav_order: 2
 
 In addition to methods, function blocks and reports that can contain documentation in the source code, there are other development objects in the ABAP system that do not have a source code and therefore must be documented in another way. Examples of this are:
 
-* DDIC-Objekte
-* Transaktionen
+* DDIC objects
+* Transactions
 
 Since the workbench documentation is also connected to transportation, it is available in all individual systems in a system landscape. Furthermore, this documentation can be viewed by all users and is automatically integrated into the user interface for reports from the ABAP system. Another advantage can be that the documentation can be kept in multiple languages. On SAP systems with SAP_BASIS >= 7.40, ABAP doc comments can be used in the source code. This can be used as an alternative to documentation in the ABAP workbench. However, the full functionality of ABAP doc comments can currently only be exploited with the ABAP development tools for Eclipse. When using Core Data Services to define DDIC objects, significantly more development objects can be documented in the source code and the need for external documentation is eliminated.
 
 Starting with SAP NetWeaver 7.50, the ABAP doc comments of classes and interfaces can be exported as HTML files. As of ABAP Platform 7.55, the SAP is expanding its repertoire to include another technology for documenting ABAP development objects. The Knowledge Transfer Document focuses on the new object types that primarily come from the ABAP RESTful Application Programming Model (RAP) context. This includes, among other things: CDS views, behavior definitions, service definitions, service bindings, annotation definitions and packages.
 
-## Kurztexte
+## Short texts
 
 Short texts can be created for many objects, such as a description of a data element or a method.
 
@@ -36,7 +36,7 @@ KTD must be in the same package as the development object. It is not automatical
 
 # Documentation in source code
 
-## Dokumentationssprache
+## Documentation language
 
 Nowadays, development teams predominantly work together internationally. Even if you are currently developing purely in German, your project can be internationalized over time. The effort that then arises from coordination problems or even subsequent translation is disproportionate to the perhaps greater effort involved in English documentation. It has also been shown that the readability of source code and comments is increased by English-language comments. Because the ABAP commands themselves are English and structured in the style of sentences. The reader of the source code does not have to constantly change the language when the documentation is in English.
 
@@ -80,7 +80,7 @@ The advantage of using ABAP Doc is that these comments are displayed in the foll
 
 * ABAP Element Info view
 * Element Information Popup
-* Code Completion Liste.
+* Code completion list.
 
 And these ABAP Doc comments can be extracted from ADT into an HTML file and thus used for further use outside of the code, e.g. on internal pages. If the code and the existing ABAP Doc documentation are maintained at the same time and ABAP Doc is extracted after each change, the external documentation is also up to date without any additional effort.
-If the ABAP Doc documentation is created in a structured manner, it can also be used with supporting generative AI to create further documentation (see [Chapter Artificial Intelligence]({{ site.baseurl }}/artificial-intelligence/#ai-als-werkzeug-bei-dokumentationserstellung)).
+If the ABAP Doc documentation is created in a structured manner, it can also be used with supporting generative AI to create further documentation (see [Chapter Artificial Intelligence]({{ site.baseurl }}/artificial-intelligence/#ai-as-a-tool-for-documentation-creation)).

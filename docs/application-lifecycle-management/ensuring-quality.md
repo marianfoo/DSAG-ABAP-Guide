@@ -16,7 +16,7 @@ In software development, there are different testing procedures to measure the s
 
 In addition, there are software analysis tools that are more holistic in nature and focus on monitoring and the evolutionary development of the software architecture. This tool category offers options for graphically preparing the information from the static code analysis and, for example, depicting it as a trend in a timeline, as a 3D city model or as a heat map. For this purpose, further data about usage behavior, organizational circumstances, such as the number of different developers or the frequency of changes to certain source code artifacts, are read in and used to identify potential hotspots, from which organizational measures for quality improvements can then be derived.
 
-In addition to the processes, practices and tools listed below for identifying quality defects, what is most important is how you deal with the identified defects. According to the motto "Better is the enemy of good", we recommend that you deal appropriately and consciously with the issue of software quality. A suitable definition for this is a [Custom Code Strategie]({{ site.baseurl }}/organization/#definition-der-passenden-custom-code-strategie) tailored to your company, which specifically specifies which quality standard must be adhered to for which category of development.
+In addition to the processes, practices and tools listed below for identifying quality defects, what is most important is how you deal with the identified defects. According to the motto "Better is the enemy of good", we recommend that you deal appropriately and consciously with the issue of software quality. A suitable definition for this is a [custom code strategy]({{ site.baseurl }}/organization/#definition-of-the-appropriate-custom-code-strategy) tailored to your company, which specifically specifies which quality standard must be adhered to for which category of development.
 
 ## Continuous developer self-review
 
@@ -45,7 +45,7 @@ The following section provides some general code review best practices. It will 
 
 ### Best Practices
 
-#### Allgemeine Prinzipien
+#### General principles
 - Small changes, frequent reviews: Large code changes are harder to keep track of. Instead, reviews should be carried out on manageable units.
 - Static analysis as an entry criterion: Only invest manual effort in code reviews when automated procedures such as unit tests and static code analysis no longer find problems in the code.
 - Clear expectations: Define within the team what should be checked in a code review. For this purpose, it is recommended to create a common review guideline. Examples are linked below.
@@ -67,7 +67,7 @@ The following section provides some general code review best practices. It will 
 
 {: .note }
 > - [ABAP Code Reviews - A practical guide](https://github.com/SAP/styleguides/blob/main/abap-code-review/ABAPCodeReview.md)
-> - CQSE Blog "Lessons from Code Review" ([Teil 1](https://teamscale.com/blog/en/news/blog/lessons-from-code-reviews-pt1), [Teil 2](https://teamscale.com/blog/en/news/blog/lessons-from-code-reviews-pt2))
+> - CQSE Blog "Lessons from Code Review" ([Part 1](https://teamscale.com/blog/en/news/blog/lessons-from-code-reviews-pt1), [Part 2](https://teamscale.com/blog/en/news/blog/lessons-from-code-reviews-pt2))
 > - [Google Engineering Practices Documentation](https://google.github.io/eng-practices/)
 
 ### abapGit
@@ -76,7 +76,7 @@ One way to provide ABAP code in a Git repository with support for pull requests 
 
 In particular, ABAP development teams often rely on a process that includes abapGit for code review. This has been shown by various practical lectures in the Development working group ([Event page on DSAGNet](https://dsagnet.de/event/netzwerk-treffen-ak-development-ag-devops-ag-ui-technologien)). The procedure here is analogous to the non-SAP world: changes are made on a branch and published there via Git commit. This happens either [manually via the abapGit UI](https://docs.abapgit.org/user-guide/projects/online/stage-commit.html) or automatically via a [Background Push](https://docs.abapgit.org/user-guide/repo-settings/background-mode.html).
 
-A [Beispielprojekt](https://github.com/abapGit/abapgit-review-example) is also published on GitHub, which automatically creates or updates a pull request via abapGit when the task is released. According to the authors, however, this should not be seen as a finished product, but rather as a starting point for your own implementation, which is based on the specific requirements and processes of your own company.
+A [sample project](https://github.com/abapGit/abapgit-review-example) is also published on GitHub, which automatically creates or updates a pull request via abapGit when the task is released. According to the authors, however, this should not be seen as a finished product, but rather as a starting point for your own implementation, which is based on the specific requirements and processes of your own company.
 
 ### Git-based CTS (gCTS)
 
@@ -87,7 +87,7 @@ Although the SAP style guide explicitly mentions [ABAP Code Reviews - A practica
 
 These two points can be solved to a certain extent by custom code, for example by already having [A commit is created when a developer task is released](https://community.sap.com/t5/technology-blogs-by-sap/create-a-commit-in-git-when-an-abap-task-is-released/ba-p/13483954). However, the biggest obstacle to code reviews on gCTS repositories is that neither file paths nor contents in gCTS repositories are easily readable by humans. In some cases, technical identifiers are used as file names; for other object types, the code is displayed on a single line as part of a large JSON structure. For this purpose, SAP, together with the community, has defined the [ABAP File Formats](https://github.com/SAP/abap-file-formats), which addresses the problems mentioned. However, these are currently not implemented in gCTS. The GitHub page of the ABAP File Formats states that this will be the case in the future. However, the authors do not have any concrete schedules or commitments from SAP.
 
-### Fazit
+### Conclusion
 
 In summary, for conducting reviews for ABAP code, *abapGit* is currently the only viable solution.
 However, abapGit is an additional tool that developers must use. Without further adaptation, it does not integrate naturally into existing development processes. A successful solution for code reviews therefore requires some initial effort to ensure the most seamless integration into your own development process.
@@ -103,7 +103,7 @@ All other findings, such as violations of maintainability, robustness and effici
 
 - Define a procedure for systematically identifying false positive reports and exceptions during quality control. Static code analysis tools usually offer mechanisms with which you can suppress the identified findings accordingly. Avoid bottlenecks and use the process before the final quality control.
 - When introducing quality control processes, use the so-called baseline procedure to suppress quality reports that arose before the introduction of the quality control process. This is particularly useful in existing systems with a large code base of old developments where you want to distinguish messages from the existing code from newly added quality defects. Be careful not to include safety-critical tests in the baseline. These must be considered separately, analyzed and, if necessary, excluded via a false positive report or resolved in a separate correction initiative.
-- Adopt a zero-tolerance strategy for security-critical locations in customer and partner code. SAP ERP systems are a popular target for cybercrime due to their central roles in corporate IT. An unrecognized or intentionally installed security vulnerability can lead to operational interruptions and [erheblichen finanziellen Schaden](https://onapsis.com/de/blog/sap-security-breach-cited-in-companys-bankruptcy/). If your stakeholders nevertheless force you to grant an exception, request the support of your information security officer in the company and clarify whether a risk acceptance process has been defined for such a need. Further information on this topic can be found in chapter [Sicher ABAP Programmierung]({{ site.baseurl }}/security/).
+- Adopt a zero-tolerance strategy for security-critical locations in customer and partner code. SAP ERP systems are a popular target for cybercrime due to their central roles in corporate IT. An unrecognized or intentionally installed security vulnerability can lead to operational interruptions and [significant financial damage](https://onapsis.com/de/blog/sap-security-breach-cited-in-companys-bankruptcy/). If your stakeholders nevertheless force you to grant an exception, request the support of your information security officer in the company and clarify whether a risk acceptance process has been defined for such a need. Further information on this topic can be found in chapter [Secure ABAP development]({{ site.baseurl }}/security/).
 - Perform a security review of all source code artifacts before incorporating them into your system. Have SAP add-on providers provide you with extinguishing transport before you import their products into your system. Import and scan third-party transports for the first time only in a sandbox system if they do not provide you with a deletion transport.<br>
 Please contact your purchasing department or the contract management department in your company if the provider is uncooperative and does not provide you with corrections to the findings or detailed false positive descriptions.<br>
 Do not take any legal risks and refrain from publishing the identified vulnerabilities. Under German law (see [$202c Strafgesetzbuch](https://www.gesetze-im-internet.de/stgb/__202c.html)), the use or publication of exploits may be considered a preparatory act for a criminal offense. In hardship cases, it makes sense to speak to an IT lawyer or contact a recognized body such as the [Federal Office for Information Security - BSI](https://www.bsi.bund.de/DE/Service-Navi/Kontakt/Kontaktformular/kontaktformular_node.html) or a bug bounty platform.

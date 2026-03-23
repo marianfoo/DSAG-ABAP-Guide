@@ -28,4 +28,4 @@ In general, it is important for any documentation to find the right balance and 
 The documentation should be created during development, but definitely before go-live or deployment, and there should be no go-live without finished documentation. Otherwise, there is usually additional effort or ultimately a lack of documentation.
 
 Are you interested in how artificial intelligence can support your documentation projects? Then just take a look at the following chapter:
-- [**AI as a tool for documentation creation**]({{ site.baseurl }}/artificial-intelligence/#ai-als-werkzeug-bei-dokumentationserstellung)
+- [**AI as a tool for documentation creation**]({{ site.baseurl }}/artificial-intelligence/#ai-as-a-tool-for-documentation-creation)

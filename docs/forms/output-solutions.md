@@ -14,12 +14,12 @@ nav_order: 2
 
 Below you will find an overview of the possible output solutions.
 
-## Nachrichtensteuerung (NAST)  
+## Message control (NAST)  
 With the message control, various output types such as printing, email, EDI, workflows, system integration (ALE) and special functions in the SAP are customized into various modules (e.g. SD and MM) per message. The productive output of forms and labels is controlled via the so-called condition technology. Behind a message lies the assignment of the print program and the form, which are triggered when a message is generated.  
 
 The transaction NACE serves as a central entry point for maintaining message determination per application. The settings maintained there are saved in the database table TNAPR.  
     
-_Hinweis:_  
+_Note:_  
 An evaluation of all messages generated can be created using transaction TAANA for the database table NAST. To do this, this transaction must be carried out in the productive system. In order to carry out the evaluation year by year, a new “virtual field” (ERYEAR) may have to be added beforehand. The list of results can be downloaded as an Excel table and converted into a pivot table for easier evaluation.
 
 {: .recommendation }
@@ -42,7 +42,7 @@ Care of the fields
 
 The PPF is used to automate certain actions in delivery processing to output documents from receipts via printer or email. It is used, for example, in eWM and TM. Maintenance is carried out using transaction SPPFCADM.  
 
-## Druck-Workbench
+## Print Workbench
 
 Documents are issued by defining correspondence types. It is used primarily as an industry solution in the IS-U area (energy suppliers), but is also generally available outside of IS-U. The data supply of an application form is encapsulated in the print workbench. SAP standard objects or customer-specific objects can be used and stored for data determination. The relevant settings will be made using transaction EFRM.  
 
@@ -54,9 +54,9 @@ Application-specific Customizing determines the output of documents. This type o
 
 With SAP S/4HANA, SAP offers another output solution called “SAP S/4HANA Output Management”. This includes the reusable service “SAP S/4HANA Output Control”, which can be used for many complex output scenarios. At the level of organizational units, the identification of master form templates, logos and general header and footer texts can be customized. So-called “Adobe Fragments” can be used with this output solution. See the relevant section. In comparison to message control (NAST), with output control you have the restriction that no workflows and special functions can be stored.  
 
-![Output Szenarien]({{ site.baseurl }}/forms/img/image-11.png)
+![Output scenarios]({{ site.baseurl }}/forms/img/image-11.png)
 
-Output Szenarien
+Output scenarios
 {: .img-caption}
 
 {: .warning } 

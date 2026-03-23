@@ -46,12 +46,12 @@ The links below provide further information.
 {: .note }
 > 1. The arc42 template for architectural documentation, [Arc42-Template](https://arc42.org/download) (accessed on: September 19, 2024)
 > 2. Stefan Zörner: Documenting and communicating software architectures. Carl Hanser Verlag GmbH Co KG, 2021. ISBN: 978-3446469280
-> 3. [Master Guide SAP Solution Manager - Solution Documentation](https://help.sap.com/docs/SAP_Solution_Manager/c3c5ec585ee248228ddb6c3f08073ea9/2cb3e75e134249a2bd091a40fe2f6d61.html?locale=en-US) (aufgerufen am: 26.01.2025)
-> 4. [ABAP Development Tools: User Guide - Documentation of Development Objects](https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/52546a60ba3f436d8f5b54b83044d0b7.html?locale=en-US&q=documentation) (aufgerufen am: 26.01.2025)
+> 3. [Master Guide SAP Solution Manager - Solution Documentation](https://help.sap.com/docs/SAP_Solution_Manager/c3c5ec585ee248228ddb6c3f08073ea9/2cb3e75e134249a2bd091a40fe2f6d61.html?locale=en-US) (accessed on: 26.01.2025)
+> 4. [ABAP Development Tools: User Guide - Documentation of Development Objects](https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/52546a60ba3f436d8f5b54b83044d0b7.html?locale=en-US&q=documentation) (accessed on: 26.01.2025)
 
 ## Documentation for Version Management
 
-### Transportauftrag
+### Transport request
 
 It often helps to document the transport order
 
@@ -65,7 +65,7 @@ The documentation for each task and each order can be recorded during order proc
 This documentation on the "Documentation" tab can be created for every transport order that goes into the production system. Avoid redundant documentation and do not document the transport of copies. Ultimately, only the transports that are supposed to go into the productive system or have already gone are of interest.
 
 {: .note }
-> * [SAP Help: Change and Transport System - Request Editor - Writing Documentation](https://help.sap.com/docs/ABAP_PLATFORM_NEW/4a368c163b08418890a406d413933ba7/d636153aab4a0c0ee10000000a114084.html?locale=en-US) (aufgerufen am: 26.01.2025)
+> * [SAP Help: Change and Transport System - Request Editor - Writing Documentation](https://help.sap.com/docs/ABAP_PLATFORM_NEW/4a368c163b08418890a406d413933ba7/d636153aab4a0c0ee10000000a114084.html?locale=en-US) (accessed on: 26.01.2025)
 
 ### Git-Client
 

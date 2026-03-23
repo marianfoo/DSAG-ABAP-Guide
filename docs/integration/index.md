@@ -20,7 +20,7 @@ Additionally, you should note that with the increasing migration of SAP systems 
 
 The [Business Accelerator Hub](https://api.sap.com/) from SAP provides standardized documentation for all types of interfaces. If you would like to find out more about the available standard interfaces for your SAP product, you should first check the options here. Searching by product, technology and module makes it easier to find the right interfaces.
 
-## Technologie
+## Technology
 
 This section is about various interface technologies and gives you a rough overview of the common technologies.
 
@@ -81,7 +81,7 @@ When integrating SAP systems, there are borderline cases in which not all standa
 
 SAP continuously develops its integration solutions. Therefore, it should always be checked which technologies will become more important in the future and which may be replaced by newer solutions. Future-oriented planning helps to avoid technological dead ends and to make the integration stable and sustainable in the long term. 
 
-### Bestand alter Technologien
+### Existing legacy technologies
 
 Although SAP continues to provide new integration solutions, some older technologies remain valuable and cannot yet be fully replaced. It is therefore important not to decommission existing solutions too quickly, but rather to assess their relevance in the respective corporate context. For example, **IDoc** and **RFC** are deeply rooted in many legacy systems and continue to provide reliable communication options.
 
@@ -108,18 +108,18 @@ In a direct comparison, it quickly becomes clear why IDocs are the better choice
 #### Additional solutions for mass data transfer
 
 - [SAP Landscape Transformation Replication Server](https://www.sap.com/germany/products/technology-platform/landscape-replication-server.html), ABAP and NetWeaver based 
-- [SAP HANA Smart Data Integration (SDI)](https://help.sap.com/docs/SUPPORT_CONTENT/hanasdi/4740563873.html?mt=de-DE), SAP HANA Datenbank basiert
+- [SAP HANA Smart Data Integration (SDI)](https://help.sap.com/docs/SUPPORT_CONTENT/hanasdi/4740563873.html?mt=de-DE), SAP HANA database-based
 - [Master Data Governance (MDG)](https://www.sap.com/documents/2015/07/3a2f4c59-5b7c-0010-82c7-eda71af511fa.html), based on the Data Replication Framework in ERP
 
 ## Cloud Connector
 
 If you are using the Business Technology Platform (BTP), you also need a Cloud connector in your infrastructure in order to be able to establish a connection from the Cloud to on-premise. The Cloud Connector acts as a gateway and proxy and routes network traffic from the Internet to the correct systems in your landscape behind the firewall.
 
-### Aufbau
+### Setup
 
 When setting up your Cloud connector landscape, you should pay attention to the separation of the system rails, as the stricter rules for access to resources usually apply in production. In this case, at least two instances are suggested, one for DEV/TEST and one for PROD. Depending on the ongoing processes and their importance, you should think about a corresponding fail-safe structure (high availability).
 
-### Protokolle
+### Protocols
 
 There are currently two protocols that are used in most use cases and accesses.
 
@@ -128,12 +128,12 @@ There are currently two protocols that are used in most use cases and accesses.
 
 The resources are released in the respective configured systems in the Cloud Connector. With HTTP, the corresponding paths/URLs are released, with RFC the corresponding function modules. In production, we recommend explicitly releasing resources and avoiding wildcards (*).
 
-### Erweiterungen
+### Extensions
 
 If you create extensions in the BTP, you usually do so using CAP (Cloud Application Programming Model) or RAP (ABAP RESTful Application Programming Model). So that you can then access data, you need a configured Cloud connector on the sub-account. The configuration is not part of this guide as it is mostly carried out by your SAP base. 
 
 In most cases, you will configure the connection to the on-premise system in the BTP Destination Service. If you use the SAP BTP ABAP Environment to create your extensions, you can also map these in the system as Communication Arrangements and Communication Systems and do not need the configuration in the Destination Service. However, if you want to expand standard Fiori applications, you need access via the sub-account to gain access to your systems.
 
-### Zugriffsrichtung
+### Access direction
 
 So far you have mainly read about access from the Internet or the BTP towards on-premise. The Cloud Connector can also be used as a proxy to route from an on-premise system to a Cloud system and avoid the direct connection of the Cloud system. The ABAP Test Cockpit on the ABAP Environment is one such case.

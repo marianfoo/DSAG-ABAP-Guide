@@ -72,7 +72,7 @@ In this case, we recommend creating main packages that provide common functions 
 
 Ideally, the externally visible functions are propagated in the package interfaces so that users can declare these packages in the where-used list.
 
-## Paketschnittstellen
+## Package interfaces
 
 The measures described above mean that architectural considerations must be taken into account early on in the implementation and the structure of the application is reflected in the packages.  
 However, significant advantages and improvements in software management only arise through the use of the package interfaces.
@@ -110,11 +110,10 @@ The package manager has the task of checking which objects in his package are ma
 Encapsulating the main packages serves to document the dependencies via package checking. However, encapsulation is also useful for sub-packages. To do this, a package interface should be created for each subpackage and the objects used by other subpackages should be included in it. The declaration of use is then maintained accordingly. This involves administrative effort during creation, but has the advantage that the dependencies of the sub-packages are documented and targeted control and monitoring is possible. A clear usage relationship must be defined per main package and mixed reuse within the sub-packages must be avoided.  
 Particularly in the case of collector packages, it can make sense to separate individual packages and provide them as independent components if the size is appropriate. It is helpful to already have clear and orderly usage relationships here.
 
-## Pakethierarchien
+## Package hierarchies
 
 Using the above methods and tools, a good software architecture can be represented in SAP via the packages with the dependencies. The considerations that go into good package design ultimately lead to good application architecture when clean architecture design principles are followed. Information on the principles of modern software architecture can be found in relevant specialist literature, e.g. "Clean Architecture" by Robert C. Martin.  
 When designing packages, you should always look at developments across packages and when creating new or expanding existing packages, you should check to what extent the packages fit together and check whether in-house developments of your own functions should be separated into different packages. For complex system landscapes, it can make sense to define framework packages that offer basic functions, then basic function packages that represent the business logic and optional add-on packages that represent different interface technologies or versions of the functionalities. This creates a hierarchy of main packages whose dependencies can be easily mapped and documented via the package interfaces.
 It is important to ensure that the dependency can only ever be defined in one direction.
 
 Another use case would be, for example, to provide the same functionality for different releases, with the core function implemented in a central package and the differentiations according to release in different main packages.
-

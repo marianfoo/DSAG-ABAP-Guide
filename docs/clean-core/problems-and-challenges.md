@@ -15,7 +15,7 @@ nav_order: 3
 
 For established brownfield customers or SAP add-on manufacturers (partners) who are based on legacy technologies, the consistent implementation of a Clean Core concept is not possible without a redesign of the processes. 
 
-## Kundencode
+## Custom code
 
 Most of the customer code that has grown over decades needs to be reworked. The reason for this is that existing developments are often based on unreleased APIs or development components from the SAP standard. The first step should be to analyze whether you want to make your system Cloud-Ready. You should also check which solutions may already use outdated technologies, such as BOPF, the complex variant configuration settings or the classic report.
 
@@ -25,7 +25,7 @@ The dissonance between the SAP view of the Clean Core and the long-standing cust
 
 The standard transactions, standard BADIs and standard Fiori apps are often no longer sufficient to cover the business process requirements. The classic extensions / RICEFW objects have created added value that first has to be found in S/4HANA - the Clean Core. In order to use the new technologies, for example SAP Build, especially on the BTP, it requires investments in organization, technologies and processes.
  
-## Technologien
+## Technologies
 
 From negotiating the licenses, setting up the infrastructure, training the SAP base and training the developers of the new technologies to purchasing consulting services, considering and evaluating alternatives, everything must be defined in the evaluation of the development landscape.
 

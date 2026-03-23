@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Lizenzen
+title: Licenses
 permalink: /open-source/licenses/
 parent: Open Source
 nav_order: 1
 ---
 
-# Lizenzen
+# Licenses
 {: .no_toc}
 
 1. TOC
@@ -30,65 +30,65 @@ In the table below you will find popular open source licenses that are also used
         <th><a href="https://choosealicense.com/licenses/gpl-2.0/">GPL 2.0</a></th>
     </tr>
     <tr>
-        <td colspan="5" class="bg-grey-lt-000">Rechte</td>
+        <td colspan="5" class="bg-grey-lt-000">Rights</td>
     </tr>
     <tr>
-        <td>Kommerzielle Nutzung</td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
+        <td>Commercial use</td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
     </tr>
     <tr>
-        <td>Weiterverbreitung</td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
+        <td>Redistribution</td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
     </tr>
     <tr>
-        <td>Modifikation</td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
-        <td><span class="label label-green">Erlaubt</span></td>
+        <td>Modification</td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
+        <td><span class="label label-green">Allowed</span></td>
     </tr>
     <tr>
-        <td colspan="5" class="bg-grey-lt-000">Pflichten</td>
+        <td colspan="5" class="bg-grey-lt-000">Obligations</td>
     </tr>
     <tr>
         <td>Publication of source code for modifications</td>
         <td></td>
         <td></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
+        <td><span class="label label-blue">Required</span></td>
+        <td><span class="label label-blue">Required</span></td>
     </tr>
     <tr>
         <td>Indication of the license / copyright in your own product</td>
-        <td><span class="label label-blue">Erforderlich</span></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
+        <td><span class="label label-blue">Required</span></td>
+        <td><span class="label label-blue">Required</span></td>
+        <td><span class="label label-blue">Required</span></td>
+        <td><span class="label label-blue">Required</span></td>
     </tr>
     <tr>
         <td>Use of the same license for modifications</td>
         <td></td>
         <td></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
-        <td><span class="label label-blue">Erforderlich</span></td>
+        <td><span class="label label-blue">Required</span></td>
+        <td><span class="label label-blue">Required</span></td>
     </tr>
     <tr>
-        <td colspan="5" class="bg-grey-lt-000">Limitierungen</td>
+        <td colspan="5" class="bg-grey-lt-000">Limitations</td>
     </tr>
     <tr>
-        <td>Haftung</td>
+        <td>Liability</td>
         <td><span class="label label-red">Limited</span></td>
         <td><span class="label label-red">Limited</span></td>
         <td><span class="label label-red">Limited</span></td>
         <td><span class="label label-red">Limited</span></td>
     </tr>
     <tr>
-        <td>Garantie</td>
+        <td>Warranty</td>
         <td><span class="label label-red">Limited</span></td>
         <td><span class="label label-red">Limited</span></td>
         <td><span class="label label-red">Limited</span></td>

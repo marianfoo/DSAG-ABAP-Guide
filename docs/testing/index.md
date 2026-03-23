@@ -91,7 +91,7 @@ Knowledge and knowledge of the ABAP Unit must establish itself as a required and
 
 On the one hand, the use of ABAP Unit must be defined and prescribed in the development guidelines and manuals in order to create a commitment. As described above, the formal definition alone will not result in the widespread use of unit tests.
 In order to achieve this, in addition to formal requirements, framework conditions must also be created that address both the challenges described above and the challenges in the modern ABAP development environment and enable the development teams to integrate ABAP unit tests into everyday developer life.  
-A detailed description of the necessary framework conditions and best practices in practice can be found in chapter [Organization: team organization](https://1dsag.github.io/ABAP-Leitfaden/organization/#teamorganisation-und-teamzusammensetzung)
+A detailed description of the necessary framework conditions and best practices in practice can be found in chapter [Organization: team organization]({{ site.baseurl }}/organization/#team-organization-and-team-composition)
 
 ## The role of the DSAG ABAP guide in implementing your test strategy
 

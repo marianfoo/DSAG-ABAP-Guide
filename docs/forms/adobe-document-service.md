@@ -28,8 +28,8 @@ A distinction must be made between two versions of Adobe Document Services. A lo
 ## ADS On-Premise
 
 - SAP maintenance and support  
-    - SAP NetWeaver Application Server Java bis 2027 (erweiterte Wartung bis 2030)  
-    - SAP S/4HANA Java bis 2030
+    - SAP NetWeaver Application Server Java until 2027 (extended maintenance until 2030)  
+    - SAP S/4HANA Java until 2030
 - The successor solution will run on SAP HANA Extended Application Services Advanced Model (XSA) and is planned for Q1 2027 with the S/4HANA 2025 FPS03.
 - License-free for print forms
 

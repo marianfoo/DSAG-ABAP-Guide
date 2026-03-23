@@ -1,29 +1,29 @@
 ---
 layout: page
-title: Architekturkonzepte
+title: Architectural concepts
 permalink: /clean-core/architectural-concepts/
 parent: Clean Core
 nav_order: 4
 ---
 
 {: .no_toc}
-# Architekturkonzepte
+# Architectural concepts
 
 1. TOC
 {:toc}
 
 
-## Einstieg
+## Introduction
 
 This section looks at the possible architectures in the Clean Core range, learning about on-stack and side-by-side and how you can implement them in your architecture. Extensibility and its implementation is the key component for your business to achieve Clean Core. Extensibility describes all customer extensions in a SAP standard system as well as partner add-ons.
 
 
-## Szenarien
+## Scenarios
 Basically, you have the option of expanding your system via on-stack and/or side-by-side extensibility. Here you will find a schematic representation of the possibilities. 
 
-![Extensibility Szenarien]({{ site.baseurl }}/clean-core/img/image-08.png)
+![Extensibility scenarios]({{ site.baseurl }}/clean-core/img/image-08.png)
 
-Extensibility Szenarien
+Extensibility scenarios
 {: .img-caption}
 
 
@@ -55,11 +55,11 @@ In addition to the Pro Code solutions, you can also find Low Code and No Code so
 * SAP Build Work Zone - If you need centralized access to all SAP applications, whether on-stack or side-by-side, then the Work Zone can be an alternative. In addition to the Standard Edition, there is also an Advanced Edition with collaborative functions.
 
 
-## Strategie
+## Strategy
 
 Before you start working, you should think about the expansion strategy. That means which tools and environments do you want to use for the extensions. 
 
-### Modelle
+### Models
 There are some company factors to consider:
 
 * Platform - Which expansion model do you want to use in your company (CAP or RAP). Related to this, how many developers do you need in the areas.
@@ -76,9 +76,9 @@ Tools and strategy
 
 The entire SAP product portfolio is available to you, although each product requires its own skills and requirements. We therefore strongly recommend developing a strategy.
 
-### Kopplung
+### Coupling
 
-Coupling is about the different requirements that an application brings with it. Should the application be developed on-premise or side-by-side? In this [Artikel](https://software-heroes.com/blog/abap-cloud-clean-core-szenarien) you will find various criteria as to when which environment is worthwhile. Basically, you should understand that you can also achieve Clean Core on-premise on your own system and do not necessarily need side-by-side development.
+Coupling is about the different requirements that an application brings with it. Should the application be developed on-premise or side-by-side? In this [article](https://software-heroes.com/blog/abap-cloud-clean-core-szenarien) you will find various criteria as to when which environment is worthwhile. Basically, you should understand that you can also achieve Clean Core on-premise on your own system and do not necessarily need side-by-side development.
 
 The two coupling scenarios are:
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: organization
+title: Organization
 permalink: /organization/
 nav_order: 1
 ---
@@ -94,11 +94,11 @@ A clearly defined custom code strategy supports you in transparently communicati
 
  
 * Regulate the assignment of code ownership at the team level. Two roles are crucial in code ownership: On the technical side is the product owner, who is responsible for prioritizing changes and can make statements about the life cycle and the appropriateness of the technical quality for customer development. On the technical side, this is supplemented by an architect/lead developer who takes responsibility for the conceptual integrity of technical concepts and for communicating necessary clean-up work in the software architecture for which they are responsible. The package and software component concept is available as a tool for clearly assigning technical artifacts to a role.
-* Obtain the mandate for the continuous improvement of your customized software. Ensure that your developers can deal with structural optimization for better maintainability using the [Refactorings](https://refactoring.com/) or the [Tidy First Ansatz](https://software-architektur.tv/2024/07/26/episode225.html). Make sure there is a balance between functional extensions and structural optimization. Convince stakeholders with numbers, data and facts from the application lifecycle and custom code management and show the causal relationships why it makes sense to invest in code quality.
+* Obtain the mandate for the continuous improvement of your customized software. Ensure that your developers can deal with structural optimization for better maintainability using [Refactorings](https://refactoring.com/) or the [Tidy First approach](https://software-architektur.tv/2024/07/26/episode225.html). Make sure there is a balance between functional extensions and structural optimization. Convince stakeholders with numbers, data and facts from the application lifecycle and custom code management and show the causal relationships why it makes sense to invest in code quality.
     
 The first draft of a software solution is rarely long-lasting. In companies with a high level of maturity in software development, the first delivery is often based on a conscious decision to go live in a short time with a reduced range of functions and low software quality in order to achieve strategic, market-oriented or operational goals (see [Lean Startup / MVP](https://www.atlassian.com/agile/product-management/minimum-viable-product)). After achieving the goal, companies usually focus on bringing the software quality to an appropriate level to minimize the negative impact on the user experience and long-term stability of the product. If necessary, the first delivery will be completely discarded and redeveloped from scratch with the experience gained and with appropriate quality right from the start.
 
-Companies with a low level of maturity in software development often take a similar approach, with the fatal difference that they make their decision to take on technical debt unconsciously and sooner or later end up in the so-called [C.R.A.P. Cycle](https://visualstudiomagazine.com/articles/2015/07/01/domain-driven-design.aspx). The problem is often exacerbated by a lack of know-how in dealing with [langlebiger Softwarearchitektur](https://www.informatik-aktuell.de/entwicklung/methoden/langlebige-architekturen-technische-schulden-erkennen-und-beseitigen.html) and reduced to absurdity by a change process that is purely focused on expanding functions under high time pressure and little willingness to invest. Be sure to avoid this mistake for an ERP system with a life cycle of 10 - 20 years!
+Companies with a low level of maturity in software development often take a similar approach, with the fatal difference that they make their decision to take on technical debt unconsciously and sooner or later end up in the so-called [C.R.A.P. Cycle](https://visualstudiomagazine.com/articles/2015/07/01/domain-driven-design.aspx). The problem is often exacerbated by a lack of know-how in dealing with [long-lived software architecture](https://www.informatik-aktuell.de/entwicklung/methoden/langlebige-architekturen-technische-schulden-erkennen-und-beseitigen.html) and reduced to absurdity by a change process that is purely focused on expanding functions under high time pressure and little willingness to invest. Be sure to avoid this mistake for an ERP system with a life cycle of 10 - 20 years!
 
 * Establish clear rules for dealing with the version control system. Define how long a transport can remain in the development system until the development has to be dismantled and set up appropriate monitoring for this. For system landscapes with multiple productive systems and a central development system, specify that the source code must be identical in all productive systems. Define how to handle source code that is used across multiple system landscapes, how to ensure backward compatibility with different release levels, and how to handle namespaces and forks.
     
@@ -179,9 +179,9 @@ The following example is intended to show the implementation of the Clean Core s
 We want to effectively use the ABAP Cloud technologies and the SAP standard. We use custom code correctly, cleanly and specifically to gain competitive advantages. This means we reduce errors and maintenance effort by 90%!
 
 
-### Umsetzung
+### Implementation
 
-**Jahr 1**: **„Strategie finden“**
+**Year 1**: **"Find the strategy"**
 
 * Definition of a Clean-Core strategy, considering various SAP and non-SAP software
 * Building a Community of Practice: Senior ABAP Coaches
@@ -190,7 +190,7 @@ We want to effectively use the ABAP Cloud technologies and the SAP standard. We 
 * Introducing a package concept with naming of responsibilities for all package hierarchies.
     
 
-**Jahr 2** **„Strategie umsetzen“**
+**Year 2** **"Implement the strategy"**
 
 * A phased rollout of Clean-Core development
 * Definition and implementation of roles for change management: Lead Developer (according to SAFe: Product Architect), responsible for: communicating guidelines in the team, code reviews [see chapter ALM]({{ site.baseurl }}/application-lifecycle-management/ensuring-quality/), pair programming, ATC checks - distributing code findings for your team packages, bringing ABAP unit into the development landscape.

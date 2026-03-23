@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Entwicklungsprozess
+title: Development process
 permalink: /security/process/
 parent: Security
 nav_order: 5
@@ -8,7 +8,7 @@ nav_order: 5
 
 {: .no_toc}
 
-# Entwicklungsprozess
+# Development process
 
 1. TOC
 {:toc} 

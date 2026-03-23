@@ -25,7 +25,7 @@ Implementing the Clean Core concept requires a strategic approach and careful pl
 2. **Modularization and Standardization**: Decompose monolithic systems into modular components and standardize data structures and interfaces where possible. This enables greater flexibility, reusability and interoperability across the organization.
     * Decide where to store the customer-specific data. If you need additional data for your business processes, it is best integrated into a standard data product, avoid parallel data models to standard tables.
     * Harmonize your business processes and launch projects to integrate Z-Transactions into standard Fiori apps. To do this, you should find or extend the functionalities of Z transactions in standard Fiori apps.
-    * Entscheiden Sie welche Kundenerweiterung bestehen bleiben. 
+    * Decide which custom extensions should remain. 
 3. **Assessment and Rationalization**: Conduct a thorough assessment of existing SAP landscapes to identify areas of complexity and redundancy. Streamline systems and processes to align with Clean Core principles and prioritize simplification measures.
     * Conduct fit-gap workshops and initiate cleanup projects of underperforming, unsafe, or unused code. 
     * Train your architects to consciously use new technologies based on guidelines.

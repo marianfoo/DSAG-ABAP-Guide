@@ -48,7 +48,7 @@ The rules in the public repository are recognized by most ABAP experts.
 The authors of the DSAG guidelines recommend using the Clean ABAP rules for your coding and as a basis for code reviews.
 Discussions about code among developers can often be resolved with a Clean ABAP rule.
 
-### Clean ABAP & Entwicklungsrichtlinien
+### Clean ABAP & development guidelines
 
 The company-adapted form of Clean ABAP should be a supplementary document to the applicable development guidelines so that it can be used everywhere.
 Check the application of the rules with an automatic tool such as [Code Pal for ABAP](https://github.com/SAP/code-pal-for-abap) in the ABAP Test Cockpit.
@@ -73,13 +73,13 @@ This section presents a short selection of important rules for clean development
 
 The goal of Clean ABAP is to write clean code that is easy for people to understand. This is evident, for example, in short methods and expressive names.
 
-### Ausdrucksstarke Namen
+### Expressive names
 
 An important element of Clean ABAP is [the correct naming of development objects](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#names). Good names
 are readable and understandable, and make it immediately clear what it is about. In everyday ABAP development, the temptation is to reuse technical names from the SAP; this
 However, it can make it more difficult to read, e.g. `tj02_list` is more difficult to understand than `active_status` or at least requires more knowledge of ABAP.
 
-### Kommentare
+### Comments
 
 > Express yourself through code - not comments.
 
@@ -107,7 +107,7 @@ The Clean ABAP guide contains everything you should consider about comments, [se
 
 This section shows a brief overview of modern language resources from ABAP without claiming to be complete.
 
-### Deklarationen
+### Declarations
 
 In the classic declaration of variables, all declarations are placed in front of a method in the head, and then the method works with these variables:
 
@@ -127,7 +127,7 @@ DATA(mein_string) = `hello worlddd`.
 ~~~
 
 {: .note }
-[Clean ABAP empfiehlt](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations) to prefer inline declarations to classic declarations.
+[Clean ABAP recommends](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations) preferring inline declarations over classic declarations.
 
 #### Declaration with FINAL
 
@@ -144,7 +144,7 @@ var = var + 1. " Fehler - Variable darf nicht geändert werden
 The advantage of a `FINAL` declaration is that a developer reading the code now knows that he does not need to pay further attention to whether the value of the variable may
 is changed later in the code.
 
-### Funktionale Aufrufe
+### Functional calls
 
 Since version 7.5, methods in ABAP are no longer called via `CALL METHOD objekt->methode ...`, but rather via `objekt->methode( ... )`. This shortens ABAP code
 and makes it easier for developers from other backgrounds to understand the code.
@@ -154,7 +154,7 @@ As part of this change, other calls were also designed similarly to those in oth
 Modern alternatives have also been created for many imperative ABAP statements.
 
 {: .note }
-[Clean ABAP empfiehlt](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-functional-to-procedural-language-constructs), funktionale Sprachelemente immer vorzuziehen.
+[Clean ABAP recommends](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-functional-to-procedural-language-constructs) always preferring functional language elements.
 
 An example is the old and new syntax to convert a string to uppercase:
 
@@ -194,8 +194,8 @@ ENDIF.
 
 ABAP Help provides lists of features for:
 
-- [mathematische Berechnungen,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenmathematical_functions.htm)
-- [logische Funktionen,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenpredicate_functions.htm)
+- [mathematical calculations,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenmathematical_functions.htm)
+- [logical functions,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenpredicate_functions.htm)
 - [working with strings,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenstring_functions.htm)
 - [working with byte strings,](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenbyte_processing_expr_func.htm)
 - [and working with internal tables.](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abentable_functions.htm)
@@ -214,7 +214,7 @@ CLASS demo DEFINITION.
 In the ABAPDoc documentation for the class, general information and the purpose of the class can be documented in the code in an evaluable and easy-to-read manner. Notes on the individual methods and the parameters of the methods can also be created using ABAPDoc. The main user of the ABAPDoc documentation is the user/caller (or its developer) of the class. This feature is particularly useful for classes that are made available for use by other functions.  
 For more information about ABAPDoc, see section [Documentation/ABAP Doc]({{ site.baseurl }}/documentation/dev_object_related_doc/#abap-doc).
 
-### Konstruktoroperatoren
+### Constructor operators
 
 Constructor operators are a fairly new ABAP language device and consist of the operator itself, a type specification, and parameters within parentheses. So
 For `data(instance) = new class( number = 1 ).`, the operator is `NEW`, the type is `class`, and `number = 1` is the parameter specification. With a constructor operator
@@ -242,7 +242,7 @@ DATA(object) = NEW lcl_configuration( number = 1 ).
 CREATE OBJECT object TYPE lcl_configuration.
 ~~~
 
-### Nutzung neuer Befehlsvarianten (CALL TRANSACTION WITH AUTHORITY-CHECK)
+### Use of new command variants (CALL TRANSACTION WITH AUTHORITY-CHECK)
 
 Old, obsolete variants of commands are often used. An example of this is the command `CALL TRANSACTION` in old screens or programs to open a transaction.
 
@@ -293,7 +293,7 @@ INSERT old_person INTO TABLE old_persons.
 DATA(new_persons) = VALUE persons( ( age = 30 name = `Max Mustermann` ) ).
 ~~~
 
-### Werte aus Tabellen auslesen
+### Read values from tables
 
 To read tables, the new table expression syntax can be used instead of the old `READ TABLE` command:
 
@@ -338,7 +338,7 @@ DATA(unknown_person_new_default) = VALUE #( persons[ name = `unbekannt` ]
                                                                 age  = 99 ) ).
 ~~~
 
-### Tabellen umwandeln
+### Convert tables
 
 Often a table of another type has to be determined from a table of one type. In other programming languages, a `map` method is often available for this.
 
@@ -445,7 +445,7 @@ Example then `ZCL_PM_AUFTRAG`. Non-expressive names such as `ZCL_DATA` or `ZCL_F
 {: .note }
 Clean ABAP contains a [detailed section for names in development](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#names).
 
-### Ungarische Notation
+### Hungarian notation
 
 {: .note }
 [Clean ABAP](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#avoid-encodings-esp-hungarian-notation-and-prefixes) recommends avoiding Hungarian notation or other encodings when naming variables.

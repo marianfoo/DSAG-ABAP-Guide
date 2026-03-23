@@ -18,10 +18,10 @@ nav_order: 1
 Many SAP ERP systems contain numerous and extensive in-house developments that were created and continually expanded over the life of the system. The more complex a system is, the more important it is that the applications and components it contains are organized in a well-defined structure that follows common software architecture principles.
 In SAP ERP systems, this is not always the case in the area of ​​in-house developments. This has, among other things, the following reasons:
 
-- **Entwicklungsklassen**  
+- **Development classes**  
 The developments were started when the SAP package concept did not yet exist and its predecessors, the development classes, were used. These only enabled a flat structure and therefore the structure followed very rough criteria, e.g. per development team or module. This principle was retained and continued after the introduction of the package concept.
 
-- **Wissen**  
+- **Knowledge**  
 The knowledge about the package concept and the application of software architecture principles is often not sufficiently available in the ABAP environment.
 
 - **Changes and extensions to existing software**
@@ -82,7 +82,7 @@ Structuring based on organizational, responsibility or project structures is not
 Enabling package encapsulation enables control over dependencies in packages.  
 In the package interfaces you define the visibility of objects when package encapsulation is switched on and you use the usage declaration to document dependencies on other packages via their package interfaces.
 Package inspection is the tool to make visible and monitor the use of invisible objects or missing usage declarations.  
-How you specifically use these elements is explained in the [detailed section]({{ site.baseurl }}/abap/package_details/#paketpr%C3%BCfung) on the package concept. You can also find information about this in the SAP documentation.
+How you specifically use these elements is explained in the [detailed section]({{ site.baseurl }}/abap/package_details/#package-inspection) on the package concept. You can also find information about this in the SAP documentation.
 
 ## Advantages and added value by using the package concept
 

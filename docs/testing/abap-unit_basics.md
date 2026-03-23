@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ABAP Unit - Testtechniken
+title: ABAP Unit - testing techniques
 permalink: /testing/abap-unit_basics/
 parent: Software test with ABAP unit 
 nav_order: 2
@@ -8,7 +8,7 @@ nav_order: 2
 
 
 {: .no_toc}
-# ABAP Unit: Testtechniken
+# ABAP Unit: testing techniques
 
 1. TOC
 {:toc}
@@ -45,20 +45,20 @@ The following section covers these topics:
 
 * Creating unit tests
 * Run unit tests
-* Ergebnisanzeige
-* Codeabdeckung (Code Coverage)
+* Result display
+* Code coverage (Code Coverage)
 
 We assume that you have experience with the respective tool. For this reason, there are no step-by-step instructions, just a brief overview of the most important commands.
 
 ### Creating a local test class in ADT
 
 * Open Global Class
-* Springen zur View "Test Classes"
+* Navigate to the "Test Classes" view
 * Template "testClass"
 
 ### Keyboard shortcuts in ADT
 
-* **Ctrl + Shift + F9:** Unit Test Preview anzeigen
+* **Ctrl + Shift + F9:** Show Unit Test Preview
 * **Ctrl + Shift + F10:** Run unit tests
 * **Ctrl + Shift + F11:** Run unit tests with coverage
 * **Ctrl + Shift + F12:** Open unit test execution dialog
@@ -91,7 +91,7 @@ It is also imperative to carry out all unit tests successfully. Don't be careles
 
 ### Exception handling
 
-[SAP empfiehlt](https://help.sap.com/doc/saphelp_crm700_ehp03/7.0.3.11/de-DE/dd/587324e2424b14ab5afb3239a77a8d/frameset.htm): If the code under test is capable of throwing an exception, the test method itself should not handle it, but declare it in its signature (apart from provoked exceptions), so that the test case fails if it occurs at runtime. 
+[SAP recommends](https://help.sap.com/doc/saphelp_crm700_ehp03/7.0.3.11/de-DE/dd/587324e2424b14ab5afb3239a77a8d/frameset.htm): If the code under test is capable of throwing an exception, the test method itself should not handle it, but declare it in its signature (apart from provoked exceptions), so that the test case fails if it occurs at runtime. 
 
 
 ### Building a unit test class
@@ -217,7 +217,7 @@ In the case of complicated test cases, extensive preparatory work may need to be
 
 The `prepare_setup( ).` method creates two instances that are necessary to verify the address:
 * Street directory
-* Postleitzahlenkatalog
+* Postal code catalog
 
 #### Auxiliary methods for building test data
 
@@ -249,7 +249,7 @@ However, providing the necessary data can be very time-consuming, so it may make
 **Example address preparation:**
 Let's say we have a class that receives and parses addresses. We have already gotten to know one method `SEPARATE_HOUSENO_FROM_STREET`. In addition, there is a method `CHECK_POST_CODE`, which is intended to ensure that the zip code has 5 digits and consists only of numbers. If both private methods are called by the public method `CHECK_ADDRESS`, we always have to pass a complete address for testing. It is easier and clearer if we test the private methods separately. This way you can test the actual function of the `SEPARATE_HOUSENO_FROM_STREET` method. 
 
-### Unit Tests erweitern
+### Extend unit tests
 
 If we look at the example of finding the house number, there are many pitfalls that can produce an unexpected result. However, we do not know in advance the entries that lead to an incorrect result. We only get to know them when users complain about getting an incorrect result. In this case, the inputs that resulted in erroneous outputs can be included in a unit test. After changing the coding, all unit tests that have already been defined are carried out and the developer can be sure that everything works as before.
 

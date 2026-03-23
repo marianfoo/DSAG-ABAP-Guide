@@ -19,7 +19,7 @@ In SAP S/4HANA, the developer should no longer access the databases directly, bu
 
 ## Construction of the VDM
 
-![CDS_Ueberblick]({{ site.baseurl }}/core-data-services/img/cds-image-01.png)
+![CDS overview]({{ site.baseurl }}/core-data-services/img/cds-image-01.png)
 
 Source: SAP Help representation of the VDM
 {: .img-caption} 
@@ -82,7 +82,7 @@ The supported functions of a CDS view are specified in a single annotation:
 @ObjectModel.supportedCapabilities: [ ..., ... ].
 ```
 
-### Modellierungsmuster  
+### Modeling patterns  
 
 A modeling pattern describes the main purpose of a CDS view. A CDS view can only have one modeling pattern. The value of the modeling pattern may or may not be equal to the value of a supported function.  
 
@@ -97,7 +97,7 @@ The annotation for a modeling pattern looks like this:
 This section describes the various type definitions, function definitions and data models within ABAP Core Data Services. Elementary types, SQL-based functions (scalar functions) and various view types such as DDIC-based views, view entities and projection views are explained. This is complemented by advanced concepts such as table functions, hierarchies, custom, external and abstract entities as well as tuning objects for optimizing CDS models.
 
 
-### Typ-Definitionen
+### Type definitions
 
 #### Simple Types
 This allows you to define elementary data types that you can use in CDS objects or in ABAP.
@@ -130,7 +130,7 @@ define type Weekdays : abap.int1 enum
 }
 ```
 
-Verwendung
+Usage
 
 ```abap
 define ... as select from ...
@@ -141,13 +141,13 @@ where
   weekday = Weekdays.#Friday
 ```
 
-Details finden Sie unter [SAP Help (CDS Enum Types)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_enumeration_types.htm)
+Details can be found in [SAP Help (CDS Enum Types)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_enumeration_types.htm)
 
-## Tabellenfunktionen
+## Table functions
 Currently SAP only offers the definition of a _scalar function_. There are two different types of functions.
-* Analytische Skalarfunktionen
+* Analytical scalar functions
   * This type of function can currently only be defined internally in the SAP. However, you can use the functions provided by SAP.
-* SQL-basierte Skalarfunktionen
+* SQL-based scalar functions
   * You can define and implement your own functions of this type. The usage is like the built-in SQL functions (such as CONCAT()). A scalar function can have multiple parameters and always has a single return value.
   * You need three development objects for a scalar function:
     * A scalar function definition (CDS object)
@@ -256,10 +256,10 @@ A projection view is based on another CDS view entity and is used for service-sp
 
 > Details finden Sie unter [SAP Help (CDS Projection Views)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/abencds_proj_views.htm)
 
-### Tabellenfunktion
+### Table function
 A table function consists of two parts. A CDS entity, which can be used for example with the CDS view entities or projection views, and a [AMDP Function](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenamdp_function_methods.htm), which represents the implementation of the function. The result of a table function is data sets. An AMDP function can only be used in an environment whose database system supports AMDP (e.g. SAP HANA). With the AMDP Function you can apply platform-specific SQL commands. The advantage is that you can perform specific queries on the database and provide the results as a data source for other CDS entities.
 
-Details finden Sie unter [SAP Help (CDS Tabellenfunktion)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_table_functions.htm)
+Details can be found in [SAP Help (CDS table function)](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencds_table_functions.htm)
 
 ### Hierarchies
 This type of CDS view allows you to provide hierarchical data. Only parent-child hierarchies are supported. As a basis, a CDS view entity must be specified, which has an association on itself. This association describes the relationship to the parent node. In the field list you can specify fields of the CDS view entity and special hierarchy attributes, e.g. the level of the entry in the hierarchy.
@@ -294,7 +294,7 @@ See SAP Help pages [SQL Hint](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe295
 Using the access controls, you can define which users or group of users have access to certain data by specifying roles, rules and conditions.
 CDS views provide access controls via Data Access Controls / Data Control Language (DCL), similar to the classic Authority Check. 
 
-### Eigenschaften  
+### Properties  
 Access controls in CDS allow you to precisely define which records are accessible to each user.  
 - These access controls work in conjunction with the usual SAP permission objects.  
 - SAP authorization objects always refer to a specific field in a table and an activity, such as creating, changing or displaying data.  
@@ -373,7 +373,7 @@ To do this, two additional CDS views must be created and provided with the annot
 1. Composite CDS View (Entity) `@Analytics.dataCategory: #CUBE / '#FACT / #DIMENSION` 
 2. Consumption CDS View (Entity) `@Analytics.query: true` 
 
-![CDS_Ueberblick]({{ site.baseurl }}/core-data-services/img/SAC_CDS_Model.png)
+![CDS overview]({{ site.baseurl }}/core-data-services/img/SAC_CDS_Model.png)
 Musteraufbau: Direkter Zugriff vom SAC 
 {: .img-caption}
 
@@ -400,7 +400,7 @@ S_RS_AUTH
 
 For more information, see [SAP Help Portal](https://help.sap.com/docs/SAP_BW4HANA/107a6e8a38b74ede94c833ca3b7b6f51/af11a5cb6d2e4d4f90d344f58fa0fb1d.html). 
 
-### Funktionsweise ODP
+### How ODP works
 The ODP interface enables access to transaction data and master data (attributes, texts, hierarchies). The SAP BW/4HANA system subscribes to operational delta queues and replicates the data. The data change sources also support delta processes.
 
 For more information, see [SAP Help Portal](https://help.sap.com/docs/SAP_BW4HANA/107a6e8a38b74ede94c833ca3b7b6f51/202710d1cee84333a4f4d593324bdf51.html).  

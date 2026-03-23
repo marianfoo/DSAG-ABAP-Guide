@@ -234,9 +234,9 @@ Source:
 https://github.com/SAP/jenkins-library
 https://community.sap.com/t5/application-development-and-automation-blog-posts/continuous-integration-and-abap-jenkins-the-missing-link/ba-p/13489906
 
-## Security Aspekte 
+## Security aspects 
 
-### Revisionssicherheit
+### Auditability
 
 By precisely and completely logging all changes, version management ensures revision security. This is particularly important to meet compliance requirements and when reviewing security incidents or audits.
 
@@ -252,12 +252,12 @@ The use of external version management systems provides functions for controllin
 
 Every change is documented, including the time and who made it. This creates transparency and makes troubleshooting easier.
 
-### Manipulationseinsatz
+### Manipulation protection
 
 With the help of external version management systems, the content and the change history can be protected from manipulation using their cryptographic hashing algorithms.
 
 
-## Risiken
+## Risks
 
 * Slow release cycles: Months of development phases and manual testing cause delays.
 * Complex transport mechanisms: The traditional SAP transport management is not optimized for CI/CD.

@@ -50,7 +50,7 @@ The causes are varied but predictable:
 
 The key difference between secure and insecure software isn't the technology - it's the way developers think. A "security mindset" means not viewing security as an afterthought, but rather as an integral part of the development process.
 
-### Reaktives vs. proaktives Security-Denken
+### Reactive vs. proactive security thinking
 
 **Reactive approach – “Security as a fire department”:**
 - Vulnerabilities are only fixed when they are discovered
@@ -58,7 +58,7 @@ The key difference between secure and insecure software isn't the technology - i
 - Vulnerabilities often require fundamental code changes
 - High costs due to improvements and possible security incidents
 
-**Proaktiver Ansatz – "Security by Design":**
+**Proactive approach – "Security by Design":**
 - Safety requirements are taken into account right from the start
 - Every feature is designed with security in mind
 - Continuous security checks during development
@@ -72,7 +72,7 @@ Any input is potentially dangerous, whether it comes from a trusted system or an
 **2. Minimize the attack surface**
 Expose only the functions that are really needed, delete what has become unnecessary. An RFC-enabled function module that is only used internally is an unnecessary vulnerability. The old, obsolete report that is still left in the system for “documentation reasons” becomes a trap. Implement the principle of minimum permission - for both code and users. Furthermore, UCON can also support you in controlling access to standard function blocks that may not even be used in your processes.
 
-**3. Denken Sie wie ein Angreifer**
+**3. Think like an attacker**
 For each feature, ask yourself, "How could someone abuse this?" Consider not only the intended use case, but also possible misuse scenarios. What happens if someone makes unexpected input or calls multiple functions in an unexpected order? Are all errors caught?
 
 **4. Implement Defense in Depth**

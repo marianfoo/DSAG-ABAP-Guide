@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Warum Clean Core
+title: Why Clean Core
 permalink: /clean-core/why-clean-core/
 parent: Clean Core
 nav_order: 2
 ---
 
 {: .no_toc}
-# Warum Clean Core  
+# Why Clean Core  
 
 1. TOC  
 {:toc}  
@@ -20,7 +20,7 @@ The use of SAP standard processes and expansion options offers companies a futur
 ### Future security and innovation  
 SAP standard transactions and applications are improved and expanded with each S/4HANA release. SAP offers new innovations exclusively on standard processes, especially in the public Cloud. Using these processes ensures that companies can benefit from future updates and developments. Development based on standard APIs and thus standard data products is future-proof.   
 
-### Reduzierung technischer Schulden  
+### Reduction of technical debt  
  Reducing technical debt makes it easier to adopt audit/compliance-compliant and security-by-default techniques. Example: Custom APIs based on RAP in the managed scenario enable a secure data update process. In the long term, the effort for maintenance and adjustments is reduced, which supports an agile and secure IT landscape. 
  Either with an inventory or with each new requirement, you can perform an assessment of your custom code using the 4R approach: Reuse, Retire, Refactor and Replatform. By defining your Clean Core policies, you can actively refactor (Get Clean phase) through projects. After or before that, all new developments should be carried out according to the guidelines (Stay Clean phase). 
 
@@ -46,7 +46,7 @@ Don't reinvent the wheel, especially with ABAP legacy tools. Evaluate other solu
 
 See also chapter [organization]({{ site.baseurl }}/organization)
 
-### Wirtschaftlichkeit
+### Cost-effectiveness
 
 Is switching to Clean Core even economical for your company? Some solutions have been developed over decades and bring great added value to the company. A switch to Clean Core means a high investment and sometimes a completely new construction of these solutions.
 

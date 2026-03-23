@@ -179,7 +179,7 @@ For public methods that provide functions for other classes, you should always d
 
 Interfaces are also required for unit tests, since, for example, database accesses in unit tests have to be replaced by programmed test data. The database class implements an interface that is called in the product code. When the unit test is executed, instead of the database class, a so-called mocking class is called, which contains statically stored data, provides methods for local test data generation and returns it. The information on this can be found in chapter [Testing]({{ site.baseurl }}/testing/index).
 
-### Vererbung
+### Inheritance
 
 An important concept in object orientation is inheritance. A class can be derived from another class and thus inherit the properties of the parent class. An inheriting class has the attributes and methods of the parent class, but can add further specific methods or redefine inherited methods, i.e. receive an addition to the inherited implementation or even its own implementation of the method.  
 When it comes to inheritance, the Liskov substitution principle must be observed and it must be carefully examined whether inheritance makes sense in the intended context. It is often better to use interfaces instead of inheritance or to use the delegation method and distribute different aspects of a class to different classes and regulate the interaction via a controller and the instances via a factory.  

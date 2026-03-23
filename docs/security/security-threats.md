@@ -45,7 +45,7 @@ SQL injections become particularly critical when they can be exploited via RFC i
 
 ### Effective defense measures
 
-**1. Parametrisierte Queries verwenden:**
+**1. Use parameterized queries:**
 ```abap
 " SICHER: Verwendung von Platzhaltern
 SELECT * FROM kna1 
@@ -53,7 +53,7 @@ SELECT * FROM kna1
   INTO TABLE @lt_customers.
 ```
 
-**2. Input-Validierung implementieren:**
+**2. Implement input validation:**
 ```abap
 " Validierung von Eingaben vor Datenbankzugriff
 IF p_kunnr CA ';''"`*%_'.
@@ -61,7 +61,7 @@ IF p_kunnr CA ';''"`*%_'.
 ENDIF.
 ```
 
-**3. Escaping-Funktionen nutzen:**
+**3. Use escaping functions:**
 For unavoidable dynamic constructs, SAP's own escaping functions should be used to neutralize dangerous characters.
 
 ## Cross-Site Scripting (XSS) in SAP web applications
@@ -95,22 +95,22 @@ DATA: lv_encoded TYPE string.
 lv_encoded = cl_http_utility=>escape_html( lv_user_input ).
 ```
 
-**2. Content Security Policy (CSP) nutzen:**
+**2. Use Content Security Policy (CSP):**
 Configure CSP headers in your web applications to prevent inline JavaScript execution.
 
-**3. Eingabevalidierung am Backend:**
+**3. Input validation in the backend:**
 Implement strict validation rules for all input that will later be presented in web applications.
 
 ## Insecure direct access to objects and authorization bypass
 
 This class of vulnerabilities arise when ABAP programs take object references directly from user input without checking whether the user is authorized to access these objects.
 
-### Typische Angriffsmuster
+### Typical attack patterns
 
-**Horizontale Rechteausweitung:**
+**Horizontal privilege escalation:**
 A clerk changes a customer number in a URL parameter and suddenly gains access to other customers' data for which he does not have authorization.
 
-**Vertikale Rechteausweitung:**
+**Vertical privilege escalation:**
 By manipulating organizational units or company codes in parameters, a user can access data that does not correspond to their hierarchy level.
 
 **Session Hijacking through Predictable IDs:**
@@ -136,7 +136,7 @@ The following applies to all objects with ABAP code:
 
 In many cases, departments have debugging authorization so that development can help quickly in the event of support. In such cases, a clerk could set a break point and download the entire table via the debugger before the authorization check.
 
-**2. Kontextuelle Autorisierung:**
+**2. Contextual authorization:**
 Not only check the authorization for an object, but also the context of the request (organizational unit, time period, etc.). Don't be afraid to run a query multiple times.
 
 ## Code injection and dynamic programming risks
@@ -155,7 +155,7 @@ GENERATE SUBROUTINE POOL lv_code NAME lv_prog.
 
 If `p_input` contains malicious code, it will be executed at runtime.
 
-**Dynamische Methodenaufrufe:**
+**Dynamic method calls:**
 ```abap
 " GEFÄHRLICH: Unkontrollierte Methodenaufrufe
 CALL METHOD (p_class)=>(p_method).
@@ -163,9 +163,9 @@ CALL METHOD (p_class)=>(p_method).
 
 An attacker could call critical system methods or manipulate data.
 
-### Sichere Alternativen
+### Secure alternatives
 
-**1. Whitelist-Ansatz:**
+**1. Whitelist approach:**
 Allow only defined values, methods and parameters and block all unknown options.
 
 ```abap
@@ -178,10 +178,10 @@ CASE p_method.
 ENDCASE.
 ```
 
-**2. Factory-Pattern verwenden:**
+**2. Use the factory pattern:**
 Implement factory classes that only return safe, predefined objects.
 
-**3. Reflection-APIs sicher nutzen:**
+**3. Use reflection APIs securely:**
 If RTTI (Run Time Type Information) is used, implement strict validation and authorization checks.
 
 ### Preventive measures

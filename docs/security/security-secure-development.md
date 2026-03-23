@@ -19,7 +19,7 @@ In an increasingly digitalized business world, securing ABAP applications is ess
 
 Validating user input is one of the most effective lines of defense against attacks. Without validation, manipulated input can lead to code injections or unauthorized access. Therefore, only known and expected values ​​​​should be accepted in ABAP. Whitelists, input masks and type checks are useful here. A prior plausibility check is essential, especially for dynamic SQL statements or file operations.
 
-**Whitelist-Ansatz bevorzugen:**
+**Prefer a whitelist approach:**
 ```abap
 " SICHER: Nur erlaubte Zeichen zulassen
 IF p_kunnr CO '1234567890'.
@@ -39,7 +39,7 @@ ENDIF.
 **Harden web service inputs:**
 For SOAP and REST services, in addition to the above input validations, XML/JSON content passed as a string may also need to be checked for structural integrity before it is deserialized into ABAP structures.
 
-## Output-Encoding: Daten sicher ausgeben
+## Output encoding: output data securely
 
 With web technologies such as BSP, Web Dynpro or UI5, unsafe output can lead to Cross Site Scripting (XSS). To prevent this, consistent output encoding is necessary. SAP's own method `cl_http_utility=>escape_html` offers a simple way to secure HTML output. All potentially dangerous characters should be defused during output, especially when user input appears in HTML, JavaScript, or XML contexts.
 
@@ -51,7 +51,7 @@ DATA: lv_encoded TYPE string.
 lv_encoded = cl_http_utility=>escape_html( lv_user_input ).
 ```
 
-## Sichere Datenbankzugriffe: OpenSQL Best Practices
+## Secure database access: OpenSQL best practices
 
 OpenSQL provides an abstracted and secure way to access data. However, security risks arise from dynamic statements, especially when table or WHERE conditions are generated from user input. Using `CLIENT SPECIFIED` or direct SQL manipulation (e.g. `EXEC SQL`) can lead to tenant overruns and audit bypass. Best practices here include:
 
@@ -61,7 +61,7 @@ OpenSQL provides an abstracted and secure way to access data. However, security 
 * Waiver of `MODIFY` without checking permissions
 * Do not use tenant exceedances
 
-### Dynamische WHERE-Klauseln absichern
+### Secure dynamic WHERE clauses
 
 ```abap
 " Sichere Implementierung dynamischer Abfragen
@@ -147,7 +147,7 @@ Remote Function Calls (RFC) represent a central communication element, but are o
 
 For web services, particular attention must be paid to the secure transfer of parameters and clean serialization/deserialization.
 
-### RFC-Funktionsbausteine absichern
+### Secure RFC function modules
 
 ```abap
 FUNCTION z_secure_customer_read.
@@ -160,7 +160,7 @@ FUNCTION z_secure_customer_read.
   ENDIF.
 ```
 
-## Mandantensicherheit: Datentrennungen garantieren
+## Client security: ensure data separation
 
 SAP systems are based on the strict separation of clients. However, this separation is broken if `CLIENT SPECIFIED` is used improperly. Programs may not contain cross-client access unless this is absolutely necessary and authorized. Data integrity and compliance requirements require that client limits are adhered to and regularly audited.
 
@@ -169,13 +169,13 @@ SAP systems are based on the strict separation of clients. However, this separat
 File accesses are particularly critical because they access the server's file system directly. ABAP offers `OPEN DATASET`, `READ`, `TRANSFER` etc., all of which are secured via the object `S_DATASET`. Protective measures include:
 
 * Use of `AUTHORITY_CHECK`
-* Verwendung logischer Dateinamen (Transaktion FILE)
+* Use of logical file names (transaction FILE)
 * Avoiding directory traversal by blocking ".." or `/`
 * Maintain table `SPTH`
 
 In addition, file uploads/downloads should only take place via dialog functions of the `CL_GUI_FRONTEND_SERVICES` in order to enable a security check on the client side.
 
-**Pfadvalidierung implementieren**
+**Implement path validation**
 
 ```abap
 " Sichere Pfadvalidierung
@@ -196,5 +196,5 @@ ENDIF.
 lv_safe_path = |/secure/upload/{ p_filename }|.
 ```
 
-## Generelles
+## General
 In general, current techniques in other languages ​​​​should always be checked to see whether and in what way they are relevant in ABAP. With some techniques the risk shifts but remains the same.

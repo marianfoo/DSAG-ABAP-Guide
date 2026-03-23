@@ -28,7 +28,7 @@ The checks/tests are once integrated into the “Code Inspector”, which is a f
 
 The tests are rounded off with integration into the SAP CTS “correction and transport system” for system changes/developments. Here you can set the system so that every transport release is checked against the ATC checks. If findings are found, it can be set so that they prevent release for transport. This ensures that only flawless code is transported into the SAP systems. This function can also be expanded with a “liberation workflow”.
 
-## Zentrales ATC
+## Centralized ATC
 
 ![Schema Central ATC]({{ site.baseurl }}/security/img/image7.png)
 
@@ -37,17 +37,17 @@ Schema Central ATC
 
 The central ATC system can be seen on the left. As standard, this consists of the components ATC (ABAP Test Cockpit) and the ACI (ABAP Code Inspector). The CVA (SAP Custom Code Vulnerability Analyzer) can be activated and used with a separate license. The CVA checks its own created code against SAP recommendations for “safe programming”. Details about the CVA and the tests will be explained in more detail later.
 
-Note: The ATC system can be expanded with the open source component abapGIT (not to be confused with gCTS of the SAP) (see the recommendations in the chapter “Open Source”). Individual components are explained below
+Note: The ATC system can be expanded with the open source component abapGit (not to be confused with gCTS of the SAP) (see the recommendations in the chapter “Open Source”). Individual components are explained below
 
-## abapGIT
+## abapGit
 
-[abapGIT](https://abapgit.org/) is an open source GIT client for ABAP. This is developed in ABAP and requires at least a SAP BASE version 702 or higher.
+[abapGit](https://abapgit.org/) is an open source GIT client for ABAP. This is developed in ABAP and requires at least a SAP BASE version 702 or higher.
 
 abapGit is a tool for importing and exporting code between ABAP systems. If a developer has a developer key for the system, they can already perform these actions. abapGit allows the developer to perform bulk exports/modifications/imports, but no more than is already possible manually.
 
-With abapGIT it is possible to deploy objects across system boundaries quite easily using your own GIT ABAP. In the past, this option was a great help and made work easier for the ABAP developers, especially in a double maintenance phase. In addition, abapGIT is required as a basis for the [abapOpenChecks](https://docs.google.com/document/d/1--6biTn5OvRM4r8CO_19FLBKCQ3_bf1cIttiBDJJeRg/edit#heading=h.2xcytpi). Therefore this function should be implemented again.
+With abapGit it is possible to deploy objects across system boundaries quite easily using your own GIT ABAP. In the past, this option was a great help and made work easier for the ABAP developers, especially in a double maintenance phase. In addition, abapGit is required as a basis for the [abapOpenChecks](https://docs.google.com/document/d/1--6biTn5OvRM4r8CO_19FLBKCQ3_bf1cIttiBDJJeRg/edit#heading=h.2xcytpi). Therefore this function should be implemented again.
 
-abapGIT is “simply” made available as a single ABAP report via the GIT repository. This ABAP report is then implemented into the ATC system and also into the connected development systems.
+abapGit is “simply” made available as a single ABAP report via the GIT repository. This ABAP report is then implemented into the ATC system and also into the connected development systems.
 
 The installation is described here: [Installation - abapGit Docs](https://docs.abapgit.org/user-guide/getting-started/install.html) There are also detailed installation instructions in the SAP base including documentation on how to install an update/new version.
 
@@ -85,9 +85,9 @@ Typically, as part of a Custom Code Livecycle project, the entire customer code 
 
 Example:
 
-![S/4HANA Readiness Ergebnis]({{ site.baseurl }}/security/img/image11.png)
+![S/4HANA Readiness results]({{ site.baseurl }}/security/img/image11.png)
 
-S/4HANA Readiness Ergebnis
+S/4HANA Readiness results
 {: .img-caption}
 
 The S/4HANA readiness checks should be activated for background checks and also for online checking as part of transport clearances while appropriate code is still being developed on ECC. With a system conversion to S/4HANA you can then switch off the checks.

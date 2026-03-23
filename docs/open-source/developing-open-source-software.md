@@ -21,7 +21,7 @@ In this use case, you decide to publish and further develop a ABAP-based compone
 This may not initially sound like a desirable model. Specifically, however, you do not use your proprietary implementation of your company's business model, but rather you select suitable components. The following are particularly suitable:
 
 - Reusable components ("Reuse Services") that solve recurring technical problems (e.g. logging, maintenance dialogs, unit testability, ...)
-- SDKs zur Anbindung Ihrer Kunden, beispielsweise zur Einbindung Ihrer bereitgestellten Webservices
+- SDKs for connecting your customers, for example to integrate your provided web services
 - Proof of concepts and technical demos
 
 Developing as an open source project gives you the following advantages:

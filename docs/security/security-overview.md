@@ -29,14 +29,14 @@ SAP has over time implemented various security APIs and security features into t
 - OS command limitation
 - RFC-Callback-Whitelisting
 - Unified Connectivity Protocol (UCON)
-- HTTP-Pfad-Whitelist
+- HTTP path whitelist
 - Output encoding and
 - Input validation utilities
 - Virus Scan Interface (VSI)
-- Zugangskontroll-API
+- access control API
 - Logging-APIs (a lot) and implicit logging
 
-### Vom funktionierenden Code zur sicheren Anwendung
+### From working code to secure applications
 
 As a ABAP developer, you know this: a new project is coming up, the requirements are clearly defined, and the time pressure is high. The priorities are quickly set -- the function must be implemented, the code should be maintainable and performant. But where is the security?
 
@@ -53,13 +53,13 @@ Your ABAP code is more than just program logic. It is the key to your company's 
 Insecure ABAP code can defeat almost all established security measures:
 
 - Role and profile permissions are bypassed
-- Mandantentrennungen verlieren ihre Wirkung
+- Client separations lose their effect
 - Operating system permissions are skipped
 - Firewall rules and network blocks are circumvented
 
 ### The vicious circle of downstream security
 
-Viele Entwicklungsprojekte folgen einem bekannten Muster:
+Many development projects follow a familiar pattern:
 
 1. **Implement function** -- The program must run first
 2. **Ensure maintainability** -- Code quality and documentation
@@ -74,16 +74,16 @@ This approach is problematic because retroactively implementing security is not 
 
 - **Cost factor**: Closing security gaps afterwards is 10-100x more expensive than secure programming from the start
 - **Risk minimization**: A single security incident can cause millions in damages
-- **Compliance**: Regulatorische Anforderungen (DSGVO, SOX, etc.) erfordern nachweisbar sichere Entwicklungsprozesse
+- **Compliance**: Regulatory requirements (GDPR, SOX, etc.) require demonstrably secure development processes
 - **Reputation**: Data breaches permanently damage the trust of customers and business partners
 
-### Technische Vorteile sicherer Programmierung:
+### Technical advantages of secure programming:
 
 - **Data economy**: Secure code only processes necessary data and conserves server resources
 - **Stability**: Security-aware programming leads to more robust code
 - **Maintainability**: Explicit security checks make code more understandable and comprehensible
 
-## Ihr Beitrag zur Unternehmenssicherheit
+## Your contribution to company security
 
 As a ABAP developer, you have a special responsibility. Your code runs at the heart of the company's IT and has access to the most valuable data. With the knowledge from this chapter you can:
 

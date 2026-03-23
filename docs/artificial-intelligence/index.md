@@ -50,7 +50,7 @@ Before AI can be used in the area of ​​​​development, important question
   - LLM Large Language Model
     - ML Machine Learning
     - Deep Learning
-    - Neuronale Netze
+    - Neural networks
     - Others, if so which ones?
 
 - Are third-party AI products used, yes which ones?
@@ -106,7 +106,7 @@ At SAP Joule for Developers, SAP distinguishes between three primary areas of AI
 You can find an overview of the current roadmap as of today (SAP TechEd 2025) on the following slide: 
 ![Roadmap]({{ site.baseurl }}/artificial-intelligence/img/joule_for_developers_road_map.png)
 
-Aktuelle Roadmap
+Current roadmap
 {: .img-caption}
 
 
@@ -171,7 +171,7 @@ Finally, it should be mentioned in the AI ​​chapter that there is also a lot
 Regardless of the implementation tools surrounding the established technologies, SAP with Joule Studio in the BTP brings the possibility of implementing Joule skills and bundling them into powerful tools within agents. These Joule skills in turn often use API's from the backend, which in turn can be implemented with ABAP. In this context too, ABAP will continue to accompany us, at least indirectly.  
 
 
-## Zusammenfassung (KI assistiert)
+## Summary (AI-assisted)
 AI will permanently change application development in the SAP world - it will not replace developers, but will specifically support their strengths and reduce routine work.
 Anyone who uses the opportunities and possibilities of generative AI responsibly gains efficiency and quality without losing their own competence. Sound specialist knowledge, good architecture, clean design and critical thinking remain the basis of every development - even and especially in the age of AI. What is crucial is that people retain control over the result and take responsibility for it.
 
