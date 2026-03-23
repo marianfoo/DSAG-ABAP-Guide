@@ -28,15 +28,15 @@ Clean Core has five areas of focus: S/4HANA software versions, business processe
 
 > “Extensibility features include many options to help customers and partners adapt standard business software to their business needs.”
 
-Quelle: SAP Help Portal
+Source: SAP Help Portal
 
-![Clean Core](./img/image-01.png)
+![Clean Core]({{ site.baseurl }}/clean-core/img/image-01.png)
 
 Clean Core
 {: .img-caption}
 
 The Clean Core concept with its various facets is clearly communicated by SAP in the [TechEd2023 - Clean Core: What It Is, Why to Do It, and How to Get There](https://www.youtube.com/watch?v=jlzdD55ahqY). However, the step-by-step instructions are unclear for established customers who use various "legacy" technologies in their SAP systems. 
-There are numerous existing customers and SAP partners who have created added value in their systems through in-house developments and system expansions. By definition, these added values ​​do not belong to the Clean Core - the extensions are almost always based on non-approved interfaces. There are different [Nachfolgetechnologie-Matrizen](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html) for the so-called RICEFW objects. Internally, the main questions are: "How can we represent the technology change to our customers? And why should I change well-functioning processes that are based, for example, on IDocs, messages, RFCs and ALV transactions now?"
+There are numerous existing customers and SAP partners who have created added value in their systems through in-house developments and system expansions. By definition, these added values ​​do not belong to the Clean Core - the extensions are almost always based on non-approved interfaces. There are different [successor technology matrices](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html) for the so-called RICEFW objects. Internally, the main questions are: "How can we represent the technology change to our customers? And why should I change well-functioning processes that are based, for example, on IDocs, messages, RFCs and ALV transactions now?"
 
 ## Clean Core Definition
 At its core, the Clean Core concept revolves around separating core business logic from non-core functionality within the SAP software suite. By isolating core business processes and data structures, SAP aims for a leaner and more agile foundation that can adapt to changing business needs. The new ways of customer expansion are called: ABAP Cloud and Side-by-Side Extensibility. 
@@ -64,7 +64,7 @@ The manufacturer's information indicates four areas of application and the facts
 * There should be no direct access to SAP standard tables.
 * SAP focuses on standard data products (e.g. customer order). Customer processes and data models outside of the SAP standard remain the responsibility of the SAP customer.
 
-#### Anwendungslogik
+#### Application logic
 * SAP standard coding should no longer be expanded in the classic way.
 * Extensions to the standard should be migrated to defined and released BADIs.
 * In-house developments must use Clean Core compliant development objects (keyword: release contracts).
@@ -122,7 +122,7 @@ If you would like to have your system operated in your own data center or by a s
 
 
 ### Applicability of Clean Core:
-- Relevante Szenarien:
+- Relevant scenarios:
   - SAP S/4HANA on-premise
   - SAP S/4HANA Cloud, private edition (RISE)
 - Public Cloud is Clean by default:

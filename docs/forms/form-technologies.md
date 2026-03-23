@@ -98,7 +98,7 @@ The “PDF Preview” tab allows you to preview the form layout.
 
 <br/>
 
-![preview](./img/image-01.png)
+![preview]({{ site.baseurl }}/forms/img/image-01.png)
 
 preview
 {: .img-caption}
@@ -110,7 +110,7 @@ preview
 
 The interface is a standalone object with a unique name. It can be used multiple times and represents the assignment of application data, e.g. from a printing program, to the form.
 
-![Structure](./img/image-02.png)
+![Structure]({{ site.baseurl }}/forms/img/image-02.png)
 
 Structure
 {: .img-caption}
@@ -185,17 +185,17 @@ This form technology is only possible together with the S/4HANA Output Control o
 {: .note }
 > In order to be able to find these Fiori apps, the catalog ID SAP_BASIS_TCR_T must be assigned to the logged in user via a role (transaction PFCG).
 
-![Transaction PFCG](./img/image-03.png)
+![Transaction PFCG]({{ site.baseurl }}/forms/img/image-03.png)
 
 Transaction PFCG
 {: .img-caption}
 
-![Catalog assignment](./img/image-04.png)
+![Catalog assignment]({{ site.baseurl }}/forms/img/image-04.png)
 
 Catalog assignment
 {: .img-caption}
 
-![User assignment](./img/image-05.png)
+![User assignment]({{ site.baseurl }}/forms/img/image-05.png)
 
 User assignment
 {: .img-caption}
@@ -217,19 +217,19 @@ Important fragments include:
 - SOMU_FORM_MASTER_A4
 - SOMU_FORM_MASTER_LETTER
 
-![Display in the SAP GUI](./img/image-06.png)
+![Display in the SAP GUI]({{ site.baseurl }}/forms/img/image-06.png)
 
 Display in the SAP GUI
 {: .img-caption}
 
 
-![Displayed in Fiori](./img/image-07.png)
+![Displayed in Fiori]({{ site.baseurl }}/forms/img/image-07.png)
 
 Displayed in Fiori
 {: .img-caption}
 
 
-![Fragments](./img/image-08.png)
+![Fragments]({{ site.baseurl }}/forms/img/image-08.png)
 
 Adobe Fragments can only be used in conjunction with Output Control
 {: .img-caption}

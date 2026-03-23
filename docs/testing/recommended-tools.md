@@ -26,7 +26,7 @@ The [SAP Solution Manager test suite](https://help.sap.com/docs/SUPPORT_CONTENT/
 
 Test plans are created and managed in test plan management. The heart of the matter is the selection of test cases, which are stored as such in the structure of the [Solution documentation](https://help.sap.com/docs/SAP_Solution_Manager/c3c5ec585ee248228ddb6c3f08073ea9/2cb3e75e134249a2bd091a40fe2f6d61.html?mt=de-DE) (Solution Documentation, “SolDoc” for short). These can then be divided into smaller units, the so-called test packages, and assigned to the corresponding testers or tester groups. In this way, tailor-made test plans can be created, for example for functional tests, integration tests, regression tests, unit tests or user acceptance tests.
 
-![Presentation: Test management in the SAP Solution Manager](./img/darstellung_solman_testmanagement_neu.png)
+![Presentation: Test management in the SAP Solution Manager]({{ site.baseurl }}/testing/img/darstellung_solman_testmanagement_neu.png)
 
 Schematic representation: Test plan with test packages and test cases from SolDoc (source: own representation)
 {: .img-caption}
@@ -44,9 +44,9 @@ From the Solution Manager Add-on ["Focused Build"](https://support.sap.com/en/al
 Focused Build ships another tester app called My Test Executions, which is optimized for test step designer test cases and is very easy to use. This app is limited to the functions that are absolutely necessary for the tester. It can also be used for purely document-based test cases or for test packages with mixed test cases and makes test case execution very pleasant.
 The “classic” app “My Tasks / Tester Worklist” is a little more powerful, but also more difficult to use. It can also be used for both test case types, although when you call up a test step designer test case you jump to "My test executions", which can be confusing at first.
 
-![Presentation: Possibilities of the SAP Solution Manager Test Suite and the addition from Focused Build](./img/solman_test_suite_focused_build.png)
+![Presentation: Possibilities of the SAP Solution Manager Test Suite and the addition from Focused Build]({{ site.baseurl }}/testing/img/solman_test_suite_focused_build.png)
 
-Possibilities of the SAP Solution Manager Test Suite (below) and the supplement from Focused Build (above) [(Quelle: SAP)](https://support.sap.com/content/dam/support/en_us/library/ssp/alm/sap-solution-manager/focused-solutions/Focused_Build/sp15/FB_TestManagement_L2.pdf)
+Possibilities of the SAP Solution Manager Test Suite (below) and the supplement from Focused Build (above) [(Source: SAP)](https://support.sap.com/content/dam/support/en_us/library/ssp/alm/sap-solution-manager/focused-solutions/Focused_Build/sp15/FB_TestManagement_L2.pdf)
 {: .img-caption}
 
 {: .note }
@@ -77,7 +77,7 @@ A test automation tool for S/4HANA Cloud Public Edition is integrated into SAP S
  
 For more extensive scenarios, third-party testing tools can be integrated via the APIs of [SAP Cloud ALM Test Automation API](https://api.sap.com/api/CALM_TEST_AUTOMATION/overview) provided by SAP. This allows flexibility in managing complex test environments.
 
-![Illustration: Testing with SAP Cloud ALM](./img/sap_test_automation_api.jpg)
+![Illustration: Testing with SAP Cloud ALM]({{ site.baseurl }}/testing/img/sap_test_automation_api.jpg)
 
 Testing with SAP Cloud ALM (Source: SAP)
 {: .img-caption}
@@ -95,11 +95,10 @@ There is also an integrated test automation solution for SAP Cloud ALM. "[Tricen
  
 SAP Cloud ALM offers an interface to third-party tools with the "[SAP Cloud ALM Test Automation API](https://api.sap.com/api/CALM_TEST_AUTOMATION/overview)". In addition to products from other providers, the comprehensive Tricentis test automation tool "SAP Test Automation by Tricentis" can be connected via this interface. This enables integrated testing with SAP applications and third-party applications. This product from Tricentis can also be purchased through SAP sales.
 
-![Illustration: Integration of the SAP ALM tools with the test automation tools from Tricentis](./img/tricentis_test_automation_uebersicht.jpg)
+![Illustration: Integration of the SAP ALM tools with the test automation tools from Tricentis]({{ site.baseurl }}/testing/img/tricentis_test_automation_uebersicht.jpg)
 
 Integration of the SAP ALM tools with the test automation tools from Tricentis (Source: SAP)
 
 {: .img-caption}
-
 
 

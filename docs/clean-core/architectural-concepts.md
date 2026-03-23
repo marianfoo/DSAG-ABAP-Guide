@@ -21,7 +21,7 @@ This section looks at the possible architectures in the Clean Core range, learni
 ## Szenarien
 Basically, you have the option of expanding your system via on-stack and/or side-by-side extensibility. Here you will find a schematic representation of the possibilities. 
 
-![Extensibility Szenarien](./img/image-08.png)
+![Extensibility Szenarien]({{ site.baseurl }}/clean-core/img/image-08.png)
 
 Extensibility Szenarien
 {: .img-caption}
@@ -69,7 +69,7 @@ There are some company factors to consider:
 The following detailed graphic shows the different scenarios.
 
 
-![Tools and strategy](./img/image-09.png)
+![Tools and strategy]({{ site.baseurl }}/clean-core/img/image-09.png)
 
 Tools and strategy
 {: .img-caption}

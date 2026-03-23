@@ -30,7 +30,7 @@ Clean ABAP represents the adaptation of the principles from Robert C. Martin's b
 
 Example rule with explanation ([Prefer inline to up-front declarations](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md#prefer-inline-to-up-front-declarations) in the Clean ABAP Guide):
 
-![Clean ABAP Example Rule: Prefer inline to up-front declarations](/img/clean_abap_prefer_inline_rule.png)
+![Clean ABAP Example Rule: Prefer inline to up-front declarations]({{ site.baseurl }}/abap/img/clean_abap_prefer_inline_rule.png)
 
 Clean ABAP Example Rule Prefer inline to up-front declarations
 {: .img-caption}

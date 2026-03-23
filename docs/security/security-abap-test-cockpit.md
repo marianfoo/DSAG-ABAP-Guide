@@ -30,7 +30,7 @@ The tests are rounded off with integration into the SAP CTS “correction and tr
 
 ## Zentrales ATC
 
-![Schema Central ATC](./img/image7.png)
+![Schema Central ATC]({{ site.baseurl }}/security/img/image7.png)
 
 Schema Central ATC
 {: .img-caption}
@@ -51,7 +51,7 @@ abapGIT is “simply” made available as a single ABAP report via the GIT repos
 
 The installation is described here: [Installation - abapGit Docs](https://docs.abapgit.org/user-guide/getting-started/install.html) There are also detailed installation instructions in the SAP base including documentation on how to install an update/new version.
 
-![abapGit GUI Client](./img/image8.png)
+![abapGit GUI Client]({{ site.baseurl }}/security/img/image8.png)
 
 abapGit GUI Client
 {: .img-caption}
@@ -63,7 +63,7 @@ SAP already delivers a large number of checks with the ATC, which are used direc
 
 SAP delivers the following subareas:
 
-![SCI test variant](./img/image9.png)
+![SCI test variant]({{ site.baseurl }}/security/img/image9.png)
 
 SCI test variant
 {: .img-caption}
@@ -76,7 +76,7 @@ Special checks that SAP delivers are the so-called “S/4HANA Readiness” check
 
 The following tests are delivered in detail:
 
-![S/4HANA Readiness test variant](./img/image10.png)
+![S/4HANA Readiness test variant]({{ site.baseurl }}/security/img/image10.png)
 
 S/4HANA Readiness test variant
 {: .img-caption}
@@ -85,7 +85,7 @@ Typically, as part of a Custom Code Livecycle project, the entire customer code 
 
 Example:
 
-![S/4HANA Readiness Ergebnis](./img/image11.png)
+![S/4HANA Readiness Ergebnis]({{ site.baseurl }}/security/img/image11.png)
 
 S/4HANA Readiness Ergebnis
 {: .img-caption}
@@ -114,7 +114,7 @@ A version of [Code Pal for ABAP Cloud](https://github.com/SAP/code-pal-for-abap-
 
 SAP delivers the following security checks as part of the standard delivery of Check:
 
-![CVA exams](./img/image14.png)
+![CVA exams]({{ site.baseurl }}/security/img/image14.png)
 
 CVA exams
 {: .img-caption}
@@ -127,7 +127,7 @@ The [CVA is a product of SAP](https://me.sap.com/notes/1855773) which you have t
 
 The CVA performs static analysis of the ABAP source code and reports possible security risks. You can find an excerpt of the tests in note [1921820](https://me.sap.com/notes/1921820). For security reasons, SAP has stored the CVA check in 2 test variants, so that you can “only” check CVA completely, i.e. individual checks cannot be switched off.
 
-![Complete exams](./img/image17.png)
+![Complete exams]({{ site.baseurl }}/security/img/image17.png)
 
 Complete exams
 {: .img-caption}

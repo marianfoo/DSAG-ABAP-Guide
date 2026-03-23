@@ -34,15 +34,15 @@ Accompanied by this separation is the stronger distinction between front and bac
 
 Even though it has now been archived, we would like to point out the (English-language) [DSAG UI5 Best Practice Guide](https://1dsag.github.io/UI5-Best-Practice/) at this point.  The following table compares the advantages and disadvantages of SAPUI5: 
 
-| Vorteile SAPUI5                      | Nachteile SAPUI5           |
+| SAPUI5 Advantages                    | SAPUI5 Disadvantages       |
 | ------------------------------------ | ------------------------- | 
 | Comprehensive collection of standard UI elements that greatly simplify implementation. | JavaScript required (ABAP only in the backend). Therefore skill building is necessary. |
-| Modernstes Aussehen | SAP Gateway required (additional cost if installed separately) |
+| Most modern look | SAP Gateway required (additional cost if installed separately) |
 | Theoretically, everything that HTML5 allows in conjunction with JavaScript is possible. | In special cases there may be missing features and poorer performance compared to SAP GUI / ALV. |
-| Use on tablets and smartphones. | Komplexe Apps erfordern mehr Aufwand (Stateless Apps) |
+| Use on tablets and smartphones. | Complex apps require more effort (stateless apps) |
 | Responsive UI (automatic adaptation to the respective device) |    |
 | Use of end device capabilities such as cameras |    |
-| Native SAP-Fiori-Launchpad-Integration |    |
+| Native SAP Fiori launchpad integration |    |
 | Relatively new, constantly evolving technology. Therefore optimal integration into current web browsers |    |
 
 ### Fiori Elements
@@ -61,29 +61,28 @@ SAPUI5 is also distributed under an open source license under the name [OpenUI5]
 
 
 ### Flexible Programming Model
-The [Flexible Programmiermodell (FPM)](https://ui5.sap.com/test-resources/sap/fe/core/fpmExplorer/index.html#/overview/introduction) offers a mix of generated Fiori Elements and manually developed SAPUI5 Freestyle interfaces. It is available from SAPUI5 v1.94 and only with OData V4. The FPM makes it possible to integrate freestyle elements into a Fiori Elements application via independent containers. On the other hand, Fiori Elements components can also be installed in a Freestyle app. To get an impression of the advantages of the FPM, [this CodeJam](https://github.com/SAP-samples/fiori-elements-fpm-exercises-codejam) or [Learning Journey](https://learning.sap.com/learning-journeys/developing-an-sap-fiori-elements-app-based-on-a-cap-odata-v4-service/getting-an-overview-of-the-flexible-programming-model_fc9ea1ee-20a8-4add-b3f9-c8c8e3701ae0) are ideal.
+The [Flexible Programming Model (FPM)](https://ui5.sap.com/test-resources/sap/fe/core/fpmExplorer/index.html#/overview/introduction) offers a mix of generated Fiori Elements and manually developed SAPUI5 Freestyle interfaces. It is available from SAPUI5 v1.94 and only with OData V4. The FPM makes it possible to integrate freestyle elements into a Fiori Elements application via independent containers. On the other hand, Fiori Elements components can also be installed in a Freestyle app. To get an impression of the advantages of the FPM, [this CodeJam](https://github.com/SAP-samples/fiori-elements-fpm-exercises-codejam) or [Learning Journey](https://learning.sap.com/learning-journeys/developing-an-sap-fiori-elements-app-based-on-a-cap-odata-v4-service/getting-an-overview-of-the-flexible-programming-model_fc9ea1ee-20a8-4add-b3f9-c8c8e3701ae0) are ideal.
   
 
-![Flexible Programming Model as a hybrid of Fiori Elements and Freestyle SAPUI5, © SAP](./img/FPM.png)
+![Flexible Programming Model as a hybrid of Fiori Elements and Freestyle SAPUI5, © SAP]({{ site.baseurl }}/user-interface/img/FPM.png)
   
 Flexible Programming Model as a hybrid of Fiori Elements and Freestyle SAPUI5, © SAP
 {: .img-caption}
 
 The flexibility enabled by FPM offers you the opportunity to enjoy more freedom in development, even in generated applications. The strict choice between SAPUI5-Freestyle or Fiori Elements is pushed into the background to some extent. Encapsulated, Fiori Elements sections can be embedded via building blocks. The [Flexible Programming Model Explorer](https://sapui5.hana.ondemand.com/test-resources/sap/fe/core/fpmExplorer/index.html) provides live testable examples of FPM implementation options via Extension Points and Building Blocks and allows sample files or entire projects to be downloaded for reference.
 
-## Legacy Technologien
+## Legacy Technologies
 This chapter is intended to provide a brief overview of previously unmentioned surface technologies. Since these become increasingly less relevant over time, individual technologies will not be discussed in more detail here.  
 
-| UI-Technologie                       | SAP-Roadmap               | Kommentar           | Recommendation for new developments           |
+| UI Technology                        | SAP Roadmap               | Comment             | Recommendation for new developments           |
 | ------------------------------------ | ------------------------- | ------------------- |  ---------------------------------------- |
-| Dynpro (klassisch) | nur noch Support | SAP advises against new developments. Lower development effort, especially for simple reports with a generated selection screen. Popular with power users. | Still useful for smaller developments in many cases, but not supported in S/4 Cloud. |
-| Business Server Pages (BSP) | nur noch Support | Superseded by Web Dynpro | Not useful |
-| Webclient UIF | nur noch Support | Developed and used in CRM based on BSP technology | Still relevant for classic CRM apps. SAP Hybris C4C relies on SAPUI5 / SAP Fiori |
-| Web Dynpro Java | nur noch Support | Should no longer be used | Not useful |
-| Web Dynpro ABAP inkl. Floorplan Manager | Kleinere Erweiterungen | In combination with Floorplan Manager, less complex than standalone. | Consider SAPUI5 instead. |
-| SAP Screen Personas | Kleinere Erweiterungen | Configuration and scripting (Java script) to make existing applications based on classic screens more attractive and easier to use. | Useful for UI revision of existing Dynpro programs. |
+| Dynpro (classic) | support only | SAP advises against new developments. Lower development effort, especially for simple reports with a generated selection screen. Popular with power users. | Still useful for smaller developments in many cases, but not supported in S/4 Cloud. |
+| Business Server Pages (BSP) | support only | Superseded by Web Dynpro | Not useful |
+| Webclient UIF | support only | Developed and used in CRM based on BSP technology | Still relevant for classic CRM apps. SAP Hybris C4C relies on SAPUI5 / SAP Fiori |
+| Web Dynpro Java | support only | Should no longer be used | Not useful |
+| Web Dynpro ABAP incl. Floorplan Manager | minor extensions | In combination with Floorplan Manager, less complex than standalone. | Consider SAPUI5 instead. |
+| SAP Screen Personas | minor extensions | Configuration and scripting (Java script) to make existing applications based on classic screens more attractive and easier to use. | Useful for UI revision of existing Dynpro programs. |
 | CRM Web UI | n/a | Surface technology known from SAP Change Request Management. | Consider SAPUI5 instead. |
-
 
 
 

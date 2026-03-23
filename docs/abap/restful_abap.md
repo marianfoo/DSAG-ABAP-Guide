@@ -29,7 +29,7 @@ RAP represents the complete E2E scenario from the database layer to the publishe
 ## Managed developments with RAP
 By definition, the RAP framework separates the individual development objects anyway and thus already specifies the software architecture and a clean separation. The actual application logic is strictly separated from the data storage. These strict requirements of the framework make it easier for developers to orientate and implement applications and relieve a lot of work in this regard. The picture below shows the rough interaction of the sub-elements in RAP programming.  
 
-![RAP Big Picture, © SAP](./img/RAP.png)
+![RAP Big Picture, © SAP]({{ site.baseurl }}/abap/img/RAP.png)
   
 RAP Big Picture, © SAP
 {: .img-caption}

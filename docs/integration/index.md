@@ -59,14 +59,14 @@ You can create the current integration with events. An event is generated at def
 
 Which technologies are actually still relevant when switching to Clean Core and which ones should you best avoid today? In this section, you will learn about the recommended technologies when building or migrating to Clean Core. You will find information about this in the SAP guide “[Supporting Business Transformation with a Cloud ERP Clean Core Strategy](https://www.sap.com/germany/index.html)”.
 
-![Clean Integration](./img/image-01.png)
+![Clean Integration]({{ site.baseurl }}/integration/img/image-01.png)
 
 Recommendation for Clean Core integration
 {: .img-caption}
 
 Here you will find an overview of the technologies mentioned above, divided into the areas to continue and to avoid. The distribution results from the recommendations in the guide.
 
-| Verwenden   | Vermeiden |
+| Use         | Avoid     |
 | ----------- | --------- |
 | OData       | RFC       |
 | SOAP        | IDoc      |

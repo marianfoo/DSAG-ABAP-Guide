@@ -19,7 +19,7 @@ In SAP S/4HANA, the developer should no longer access the databases directly, bu
 
 ## Construction of the VDM
 
-![CDS_Ueberblick](./img/cds-image-01.png)
+![CDS_Ueberblick]({{ site.baseurl }}/core-data-services/img/cds-image-01.png)
 
 Source: SAP Help representation of the VDM
 {: .img-caption} 
@@ -34,7 +34,7 @@ Here would be the following list of view types. All standard views also include 
 ```
 ## View types, naming conventions and possible uses  
 
-| View-Typ / Suffix  | Beschreibung | Annotation |
+| View Type / Suffix | Description | Annotation |
 |--------------------|-------------|------------|
 | **I_*** | Basic and composite interface views: These CDS views are used to read data and can be used for extensions. | `@VDM.viewType: #BASIC` `@VDM.viewType: #COMPOSITE` |
 | **C_*** | Consumption views: Restricted reuse views. | `@VDM.viewType: #CONSUMPTION` |
@@ -49,10 +49,10 @@ Here would be the following list of view types. All standard views also include 
 
 Furthermore, there is the identifier as a suffix depending on the area of ​​application of the CDS view.
 
-| Suffix            | View-Typ | Annotation |
+| Suffix            | View Type | Annotation |
 |------------------|--------------------------------|-----------------------------------------------------------|
-| **Query, Qry, Q** | Analytische Query-View | `@VDM.viewType: #CONSUMPTION`<br>`@Analytics.query: true` |
-| **Cube, C**      | Analytische Cube-View | `@Analytics.dataCategory: #CUBE` |
+| **Query, Qry, Q** | Analytical query view | `@VDM.viewType: #CONSUMPTION`<br>`@Analytics.query: true` |
+| **Cube, C**      | Analytical cube view | `@Analytics.dataCategory: #CUBE` |
 | **Text, Txt, T** | Language dependent text provider | `@ObjectModel.dataCategory: #TEXT` |
 | **TP**          | View for transactional processing | `@VDM.usage.type: [ #TRANSACTIONAL_PROCESSING_SERVICE ]` |
 | **VH, StdVH**   | (By default) View for value help | `@ObjectModel.dataCategory: #VALUE_HELP` |
@@ -373,7 +373,7 @@ To do this, two additional CDS views must be created and provided with the annot
 1. Composite CDS View (Entity) `@Analytics.dataCategory: #CUBE / '#FACT / #DIMENSION` 
 2. Consumption CDS View (Entity) `@Analytics.query: true` 
 
-![CDS_Ueberblick](./img/SAC_CDS_Model.png)
+![CDS_Ueberblick]({{ site.baseurl }}/core-data-services/img/SAC_CDS_Model.png)
 Musteraufbau: Direkter Zugriff vom SAC 
 {: .img-caption}
 

@@ -177,31 +177,31 @@ The following applications in addition to a SAP system are required to use the v
 
 This deployment scenario involves pushing the code on the development system into a Git repository with a Git version control system.
 
-![Illustration 3-system landscape](./img/dsagleitfaden-normal.drawio.png)
+![Illustration 3-system landscape]({{ site.baseurl }}/application-lifecycle-management/img/dsagleitfaden-normal.drawio.png)
 
 ### Software Supplier
 
 This deployment scenario is used to exchange source code from a software supplier to its customer via a Git repository.
-![Illustration software supplier](./img/dsagleitfaden-softwarelieferant.drawio.png)
+![Illustration software supplier]({{ site.baseurl }}/application-lifecycle-management/img/dsagleitfaden-softwarelieferant.drawio.png)
 
 ### Distribution in different system landscapes
 
 This is about exchanging source code between your different system landscapes. This makes it possible to use the same source code and continue working without cross-transports.  
-![Alt text](./img/dsagleitfaden-verteilung.drawio.png)
+![Alt text]({{ site.baseurl }}/application-lifecycle-management/img/dsagleitfaden-verteilung.drawio.png)
 
 ### Recovery
 
 This scenario describes the possibility that a previous state can be reclaimed from the Git repository.
 It is not necessary to retrieve each repository object individually, but rather an old version of an entire application.
-![Alt text](./img/dsagleitfaden-RECOVERY.drawio.png)
+![Alt text]({{ site.baseurl }}/application-lifecycle-management/img/dsagleitfaden-RECOVERY.drawio.png)
 
 ### Parallel Work
 
-![Alt text](./img/dsagleitfaden-parallel.drawio.png)
+![Alt text]({{ site.baseurl }}/application-lifecycle-management/img/dsagleitfaden-parallel.drawio.png)
 
 ### Custom Code Migration
 
-![Alt text](./img/dsagleitfaden-customcode.drawio.png)
+![Alt text]({{ site.baseurl }}/application-lifecycle-management/img/dsagleitfaden-customcode.drawio.png)
 
 ## Comparison of the development process with different version management
 
@@ -223,14 +223,14 @@ SAP versioning is the starting point for working with ABAP code outside of a SAP
 ### Azure Pipelines
 
 Azure DevOps streamlines the deployment process by providing pipelines that you can run.
-Quelle: 
+Source: 
 https://community.sap.com/t5/technology-blog-posts-by-members/sap-change-management-with-azure-devops-transforming-enterprise-operations/ba-p/14130760
 
 ### Apache Jenkins
 
 Jenkins is one of the standard tools for continuous integration. To easily apply Continuous Integration or Daily/Nightly Build components to a ABAP development system, the starting point can be version management.
 
-Quelle:
+Source:
 https://github.com/SAP/jenkins-library
 https://community.sap.com/t5/application-development-and-automation-blog-posts/continuous-integration-and-abap-jenkins-the-missing-link/ba-p/13489906
 

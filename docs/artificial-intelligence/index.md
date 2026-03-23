@@ -77,9 +77,9 @@ As already mentioned, the environment and the available features in the context 
 
 With *SAP Joule for Developers*, SAP provides a central offering for the entire SAP build portfolio. 
 
-![SAP Joule for Developers add-on](./img/joule_for_developers_addon.png)
+![SAP Joule for Developers add-on]({{ site.baseurl }}/artificial-intelligence/img/joule_for_developers_addon.png)
 
-Quelle SAP TechEd 2025 – AD104 – Boost your ABAP development with SAP Joule for Developers
+Source: SAP TechEd 2025 – AD104 – Boost your ABAP development with SAP Joule for Developers
 {: .img-caption}
 
 For ABAP, the corresponding component is officially called "SAP Joule for Developers, ABAP AI capabilities" and is natively integrated into Eclipse via ADT. From the authors' point of view, this is a fundamental advantage over alternative tools, as the context (e.g. a concrete RAP object) can be better integrated.
@@ -104,7 +104,7 @@ At SAP Joule for Developers, SAP distinguishes between three primary areas of AI
   - The Empower area is available on both SAP BTP ABAP Environment, SAP ERP Cloud (incl. private) and S/4HANA On-Premise via downport until release 2021 (for more information, see SAP Note 3513374).
 
 You can find an overview of the current roadmap as of today (SAP TechEd 2025) on the following slide: 
-![Roadmap](./img/joule_for_developers_road_map.png)
+![Roadmap]({{ site.baseurl }}/artificial-intelligence/img/joule_for_developers_road_map.png)
 
 Aktuelle Roadmap
 {: .img-caption}

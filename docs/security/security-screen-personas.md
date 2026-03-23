@@ -23,7 +23,7 @@ _SAP Screen Personas 3.0 supports the transformation of classic applications int
 
 Technically, SAP Screen Personas 3.0 (Personas) is based on a SICF service that starts a preconfigured service of the SAP GUI for HTML under the standard node /sap/bc/personas. The engine has its own services under the standard node host/sap/bc/se. This means that the security measures for the SAP GUI for HTML and ITS generally also apply to Screen Personas and its services.
 
-![SICF Service](./img/image21.png)
+![SICF Service]({{ site.baseurl }}/security/img/image21.png)
 
 SICF Service
 {: .img-caption}
@@ -36,7 +36,7 @@ SAP Screen Personas is a user interface technology that is implemented as an add
 
 The services used by Personas must be encrypted using SSL:
 
-![Encryption](./img/image22.png)
+![Encryption]({{ site.baseurl }}/security/img/image22.png)
 
 Encryption
 {: .img-caption}
@@ -45,7 +45,7 @@ Encryption
 
 To protect cross site requests, the parameter ~XSRFCHECK = 1 must be set in the services under GUI configuration. Details are described in note 1481392.
 
-![Parametereinstellung](./img/image23.png)
+![Parametereinstellung]({{ site.baseurl }}/security/img/image23.png)
 
 Parametereinstellung
 {: .img-caption}
@@ -59,7 +59,7 @@ To ensure that logging out of the HTML GUI works safely, the following things mu
 - Logoff service must be activated in ICF → Activate service tree /sap/public/bc/icf/logoff
 - The logoff service must be stored as a logout page in the HTML GUI service and in the personas services
 
-![Abmeldung Web-GUI](./img/image24.png)
+![Abmeldung Web-GUI]({{ site.baseurl }}/security/img/image24.png)
 
 Abmeldung Web-GUI
 {: .img-caption}
@@ -75,7 +75,7 @@ Domain relaxing allows client-side (e.g. on a browser) functions or applications
 
 If such browser behavior occurs, domain relaxing must be deactivated. To do this, the ~no_domain_relaxing parameter is added to the service's GUI configuration and set to 1 (one).
 
-![Domain Relaxing](./img/image25.png)
+![Domain Relaxing]({{ site.baseurl }}/security/img/image25.png)
 
 Domain Relaxing
 {: .img-caption}
@@ -97,17 +97,17 @@ Basically: Users must always have access to the transaction code, in addition to
 
 The following tables explain how Personas uses the various permission objects to create flavors and distributes them using the roles shipped by default:
 
-![Screen Personas Berechtigungen (Teil 1)](./img/image26.png)
+![Screen Personas Berechtigungen (Teil 1)]({{ site.baseurl }}/security/img/image26.png)
 
 Screen Personas Berechtigungen (Teil 1)
 {: .img-caption}
 
-![Screen Personas Berechtigungen (Teil 2)](./img/image27.png)
+![Screen Personas Berechtigungen (Teil 2)]({{ site.baseurl }}/security/img/image27.png)
 
 Screen Personas Berechtigungen (Teil 2)
 {: .img-caption}
 
-![Screen Personas Berechtigungen (Teil 3)](./img/image28.png)
+![Screen Personas Berechtigungen (Teil 3)]({{ site.baseurl }}/security/img/image28.png)
 
 Screen Personas Berechtigungen (Teil 3)
 {: .img-caption}

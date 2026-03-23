@@ -11,6 +11,12 @@ nav_order: 0
 1. TOC
 {:toc}
 
+{: .important }
+> **Machine-Translated Version**
+> This chapter is part of an unofficial machine-translated English version of the original German DSAG ABAP-Leitfaden.
+> The translation is published with the authors' allowance.
+> The original German source remains authoritative: [https://1dsag.github.io/ABAP-Leitfaden/](https://1dsag.github.io/ABAP-Leitfaden/).
+
 ## The new DSAG ABAP guide
 
 Welcome to the new “ABAP Guide” from DSAG. Before you is a comprehensive document on the topic of application development in SAP.

@@ -28,12 +28,12 @@ An evaluation of all messages generated can be created using transaction TAANA f
 
 You can find detailed instructions on how to use the TAANA transaction as a [YouTube](https://youtu.be/HsHHBt5znOE) video at the following link.
 
-![Maintenance of the table](./img/image-09.png)
+![Maintenance of the table]({{ site.baseurl }}/forms/img/image-09.png)
 
 Maintenance of the table
 {: .img-caption}
 
-![Care of the fields](./img/image-10.png)
+![Care of the fields]({{ site.baseurl }}/forms/img/image-10.png)
 
 Care of the fields
 {: .img-caption}
@@ -54,7 +54,7 @@ Application-specific Customizing determines the output of documents. This type o
 
 With SAP S/4HANA, SAP offers another output solution called “SAP S/4HANA Output Management”. This includes the reusable service “SAP S/4HANA Output Control”, which can be used for many complex output scenarios. At the level of organizational units, the identification of master form templates, logos and general header and footer texts can be customized. So-called “Adobe Fragments” can be used with this output solution. See the relevant section. In comparison to message control (NAST), with output control you have the restriction that no workflows and special functions can be stored.  
 
-![Output Szenarien](./img/image-11.png)
+![Output Szenarien]({{ site.baseurl }}/forms/img/image-11.png)
 
 Output Szenarien
 {: .img-caption}

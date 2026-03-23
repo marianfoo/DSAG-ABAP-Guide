@@ -43,7 +43,7 @@ Here you will find a few references and possible decision-making aids:
 
 ABAP Cloud is the new development model for all system landscapes, whether SAP BTP ABAP Environment, S/4HANA Cloud Public Edition and Private Edition or S/4HANA On-Premise, you can use the same model for the development of Clean Core and Use Cloud Ready applications. The use is described in more detail in [Extensibility Guide for S/4HANA](https://www.sap.com/documents/2022/10/52e0cd9b-497e-0010-bca6-c68f7e60039b.html). In the following sections you will get some details. ABAP Cloud is fundamental part if you want to achieve Clean Core.
 
-![ABAP Cloud](./img/image-07.png)
+![ABAP Cloud]({{ site.baseurl }}/clean-core/img/image-07.png)
 
 ABAP Cloud - Availability
 {: .img-caption}
@@ -60,7 +60,7 @@ The Clean Core Level Concept was delivered in August 2025 and replaces the previ
 * Level C - This level is described as "SAP Intern" and is "Conditional Clean Core". The APIs and objects are not explicitly released or prohibited, but SAP keeps the option open to change or delete the objects.
 * Level D - All objects marked here as "[No API](https://sap.github.io/abap-atc-cr-cv-s4hc/?version=objectClassifications_3TierModel.json&states=noAPI)" fall under the category no Clean Core. You should no longer use objects that have been classified via the Cloudification Repository in your development.
 
-![Level Concept](./img/image-10.png)
+![Level Concept]({{ site.baseurl }}/clean-core/img/image-10.png)
 
 Clean Core Level Concept
 {: .img-caption}
@@ -93,8 +93,8 @@ With the introduction of ABAP Cloud, various development concepts were revised a
 | Job               | SM36, SM37, Report | Application Job                     |
 | E-Mail            | CL_BCS             | CL_BCS_MAIL_MESSAGE                 |
 | E-Mail            | SOST               | Monitor Email Transmissions (F5442) |
-| Programmiermodell | BOPF               | RAP                                 |
-| Tabellenpflege    | SM30               | Business Configuration              |
+| Programming model | BOPF               | RAP                                 |
+| Table maintenance | SM30               | Business Configuration              |
 | translation       | SE63               | Maintain Translations (F4950)       |
 
 The full list can be found [here](https://software-heroes.com/abap-cloud-api).
