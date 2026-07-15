@@ -7,23 +7,23 @@ nav_order: 2
 ---
 
 {: .no_toc}
-# Output solutions
+# Output Solutions
 
 1. TOC
 {:toc}
 
-Below you will find an overview of the possible output solutions.
+The following provides an overview of the available output options.
 
 ## Message control (NAST)  
-With the message control, various output types such as printing, email, EDI, workflows, system integration (ALE) and special functions in the SAP are customized into various modules (e.g. SD and MM) per message. The productive output of forms and labels is controlled via the so-called condition technology. Behind a message lies the assignment of the print program and the form, which are triggered when a message is generated.  
+Message control configures output types such as printing, email, EDI, workflows, system integration (ALE), and special functions for messages in modules such as SD and MM. Production output for forms and labels is controlled using condition technique. Each message is assigned a print program and form, which are triggered when the message is generated.  
 
 The transaction NACE serves as a central entry point for maintaining message determination per application. The settings maintained there are saved in the database table TNAPR.  
-    
+  
 _Note:_  
 An evaluation of all messages generated can be created using transaction TAANA for the database table NAST. To do this, this transaction must be carried out in the productive system. In order to carry out the evaluation year by year, a new “virtual field” (ERYEAR) may have to be added beforehand. The list of results can be downloaded as an Excel table and converted into a pivot table for easier evaluation.
 
 {: .recommendation }
-> Such an evaluation is recommended in order to get an overview of which types of messages are actually and mainly used. In which languages 
+> Such an evaluation is recommended in order to get an overview of which types of messages are actually and mainly used. In which languages
 > Will my receipts (forms) be issued and how large is the respective volume? This helps with further planning of conversion and go-live scenarios.  
 
 You can find detailed instructions on how to use the TAANA transaction as a [YouTube](https://youtu.be/HsHHBt5znOE) video at the following link.
@@ -59,8 +59,8 @@ With SAP S/4HANA, SAP offers another output solution called “SAP S/4HANA Outpu
 Output scenarios
 {: .img-caption}
 
-{: .warning } 
-> In this context, BRFplus (or BRF+) is often mentioned as an output solution. This is wrong. BRFplus is _an optional option_ to configure for the 
+{: .warning }
+> In this context, BRFplus (or BRF+) is often mentioned as an output solution. This is wrong. BRFplus is _an optional option_ to configure for the
 > Document output to be stored (= a set of rules, similar to the condition technology NAST).  
 
 The settings in the S/4HANA Output Control are made in the GUI via the following path:  

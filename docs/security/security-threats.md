@@ -13,15 +13,15 @@ nav_order: 3
 1. TOC
 {:toc}  
 
-## SQL injection in ABAP: attack vectors and defenses
+## SQL Injection in ABAP: Attack Vectors and Countermeasures
 
-SQL injection is one of the most dangerous and often overlooked vulnerabilities in ABAP systems. While many developers believe that OpenSQL automatically protects against injection attacks, practice shows a different picture. Below you will find various examples from the area of ​​ABAP development, how you should not design the development and what helps as a countermeasure.
+SQL injection is one of the most dangerous and, at the same time, most frequently overlooked vulnerabilities in ABAP systems. While many developers believe that OpenSQL automatically protects against injection attacks, real-world experience tells a different story. Below you will find various examples from the field of ABAP development illustrating how you should not design your code and what countermeasures are effective.
 
 ### Attack vectors in ABAP
 
 **Native SQL – The Obvious Risk Factor:**
 ```abap
-" GEFÄHRLICH: Direkte Einbindung von Benutzereingaben
+" DANGEROUS: Direct inclusion of user input
 DATA: lv_where TYPE string.
 lv_where = |MANDT = '{ sy-mandt }' AND KUNNR = '{ p_kunnr }'|.
 EXEC SQL.
@@ -34,48 +34,48 @@ An attacker could fill `p_kunnr` with `' OR '1'='1` and gain access to all custo
 **OpenSQL – Supposedly safe, but treacherous:**
 Even OpenSQL is not automatically immune to injection attacks, especially with dynamic WHERE clauses:
 ```abap
-" GEFÄHRLICH: Dynamische WHERE-Klausel ohne Validierung
+" DANGEROUS: Dynamic WHERE clause without validation
 DATA: lv_where TYPE string.
 lv_where = |KUNNR = '{ p_kunnr }'|.
 SELECT * FROM kna1 WHERE (lv_where) INTO TABLE lt_customers.
 ```
 
-**RFC function blocks as a gateway:**
-SQL injections become particularly critical when they can be exploited via RFC interfaces. An insecure function block can become a springboard for attacks from the entire network. The RFC_READ_TABLE function block implements such dynamic programming.
+**RFC function modules as a gateway:**
+SQL injection vulnerabilities become particularly critical when they can be exploited through RFC interfaces. An insecure function module can become a springboard for attacks from across the network. The RFC_READ_TABLE function module is one example that uses dynamic programming.
 
 ### Effective defense measures
 
 **1. Use parameterized queries:**
 ```abap
-" SICHER: Verwendung von Platzhaltern
-SELECT * FROM kna1 
-  WHERE kunnr = @p_kunnr 
+" SECURE: Use host variables
+SELECT * FROM kna1
+  WHERE kunnr = @p_kunnr
   INTO TABLE @lt_customers.
 ```
 
 **2. Implement input validation:**
 ```abap
-" Validierung von Eingaben vor Datenbankzugriff
+" Validate input before database access
 IF p_kunnr CA ';''"`*%_'.
-  MESSAGE 'Ungültige Zeichen in Eingabe' TYPE 'E'.
+  MESSAGE 'Invalid characters in input' TYPE 'E'.
 ENDIF.
 ```
 
 **3. Use escaping functions:**
 For unavoidable dynamic constructs, SAP's own escaping functions should be used to neutralize dangerous characters.
 
-## Cross-Site Scripting (XSS) in SAP web applications
+## Cross-Site Scripting (XSS) in SAP Web Applications
 
-As SAP applications become more web-based through Fiori, UI5 and Web Dynpro, XSS attacks are becoming a critical risk factor. ABAP developers need to understand how their backend logic contributes to frontend security.
+With the growing adoption of web-based SAP applications such as Fiori, UI5 and Web Dynpro, XSS-attacks have become a significant security risk. ABAP developers must understand how backend logic contributes to the frontend security.
 
 ### XSS attack vectors in SAP
 
 **Stored XSS in master data:**
 ```abap
-" GEFÄHRLICH: Ungefilterter HTML-Code in Ausgabe
+" DANGEROUS: Unfiltered HTML code in output
 DATA: lv_name TYPE kna1-name1.
-lv_name = '<script>alert("XSS")</script>Kunde GmbH'.
-" Direkte Ausgabe ohne Encoding führt zu XSS
+lv_name = '<script>alert("XSS")</script>Example Corp'.
+" Direct output without encoding leads to XSS
 ```
 
 When this customer name is later displayed in a web application, the JavaScript code is executed. Particularly treacherous: The malicious code is stored persistently in the database and affects all users who view this data.
@@ -88,9 +88,9 @@ When integrating ABAP backend data into modern frontend frameworks, new attack v
 
 ### Protection measures against XSS
 
-**1. Output-Encoding implementieren:**
+**1. Implement output encoding:**
 ```abap
-" HTML-Encoding für Web-Ausgabe
+" HTML encoding for web output
 DATA: lv_encoded TYPE string.
 lv_encoded = cl_http_utility=>escape_html( lv_user_input ).
 ```
@@ -101,9 +101,9 @@ Configure CSP headers in your web applications to prevent inline JavaScript exec
 **3. Input validation in the backend:**
 Implement strict validation rules for all input that will later be presented in web applications.
 
-## Insecure direct access to objects and authorization bypass
+## Insecure Direct Object Access and Authorization Bypass
 
-This class of vulnerabilities arise when ABAP programs take object references directly from user input without checking whether the user is authorized to access these objects.
+This class of vulnerability arises when ABAP programs directly accept object references from user input without verifying whether the user is authorized to access those objects.
 
 ### Typical attack patterns
 
@@ -120,34 +120,34 @@ When internal object IDs or session identifiers are predictable, attackers can s
 
 **1. Explicit authorization check:**
 ```abap
-" Immer explizite Berechtigung prüfen
+" Always perform an explicit authorization check
 AUTHORITY-CHECK OBJECT 'F_KNA1_BEK'
   ID 'KUNNR' FIELD p_kunnr
   ID 'ACTVT' FIELD '03'.
 IF sy-subrc <> 0.
-  MESSAGE 'Keine Berechtigung' TYPE 'E'.
+  MESSAGE 'Not authorized' TYPE 'E'.
 ENDIF.
 ```
-The following applies to all objects with ABAP code: 
+The following applies to all objects with ABAP code:
 1) do the authorization check
 2) Don't forget SY-SUBRC evaluation
 3) Expand ranges accordingly with SIGN = 'E' and 'EQ'
 4) Make SELECT on the main table
 
-In many cases, departments have debugging authorization so that development can help quickly in the event of support. In such cases, a clerk could set a break point and download the entire table via the debugger before the authorization check.
+In many cases, business departments have debugging authorizations to that development teams can provide support more efficiently. In such cases, a user could set a breakpoint and download the entire table through the debugger before the authorization check is executed.
 
 **2. Contextual authorization:**
 Not only check the authorization for an object, but also the context of the request (organizational unit, time period, etc.). Don't be afraid to run a query multiple times.
 
-## Code injection and dynamic programming risks
+## Code Injection and Dynamic Programming Risks
 
-ABAP provides powerful dynamic programming features that can lead to serious security vulnerabilities if used improperly.
+ABAP provides powerful dynamic programming capabilities that can lead to serious security vulnerabilities if used improperly.
 
 ### Dangerous dynamic constructs
 
 **GENERATE SUBROUTINE POOL:**
 ```abap
-" EXTREM GEFÄHRLICH: Direkte Code-Generierung
+" EXTREMELY DANGEROUS: Direct code generation
 DATA: lv_code TYPE string.
 lv_code = |FORM test. WRITE '{ p_input }'. ENDFORM.|.
 GENERATE SUBROUTINE POOL lv_code NAME lv_prog.
@@ -157,7 +157,7 @@ If `p_input` contains malicious code, it will be executed at runtime.
 
 **Dynamic method calls:**
 ```abap
-" GEFÄHRLICH: Unkontrollierte Methodenaufrufe
+" DANGEROUS: Uncontrolled method calls
 CALL METHOD (p_class)=>(p_method).
 ```
 
@@ -169,12 +169,12 @@ An attacker could call critical system methods or manipulate data.
 Allow only defined values, methods and parameters and block all unknown options.
 
 ```abap
-" Nur erlaubte Werte zulassen
+" Allow only permitted values
 CASE p_method.
   WHEN 'GET_DATA' OR 'SAVE_DATA'.
     CALL METHOD (lv_class)=>(p_method).
   WHEN OTHERS.
-    MESSAGE 'Unerlaubter Methodenaufruf' TYPE 'E'.
+    MESSAGE 'Method call is not permitted' TYPE 'E'.
 ENDCASE.
 ```
 

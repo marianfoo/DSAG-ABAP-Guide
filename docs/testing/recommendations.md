@@ -13,48 +13,62 @@ nav_order: 99
 1. TOC
 {:toc}
 
-Below we would like to try to put together a recommendation from the wealth of information that will give you and your team a quick and sustainable start.
+Below, we would like to try to distill this wealth of information into a set of recommendations that will help you and your team get off to a quick and sustainable start.
 
 ## Consensus
 
-Unit tests and therefore code quality are not an end in themselves, but an important component for your productive software products. That's why, in our opinion, there is no excuse not to use unit tests. 
+Unit Tests and thus code quality—are not an end in themselves, but an essential component of your production-ready software products. That is why, in our view, there is no excuse for not using unit tests.
 
 There are two different perspectives that have to fit together:
 1. Developers must want to create unit tests
 2. Management must support the use of unit tests
 
-If developers are forced to create unit tests but refuse to do so for various reasons, then there will be no or useless unit tests.
-If management does not support the developers and does not provide backing (training, time, etc.), then there will be a few unit tests, but they will not be sufficient.
+If developers are required to write unit tests but refuse to do so for various reasons,
+there will be no unit tests—or they will be useless.
+If management does not support the developers and does not provide the necessary resources (training, time, etc.),
+there will be a few unit tests, but they will not be sufficient.
 
 ## Responsibilities
 
-In chapter [ABAP Unit](#abap_unit_advanced) we tried to make clear the necessity and advantages of unit tests. You have to work out in what form and to what extent you will use this in your company and in your team. For this reason, there should be a responsible person who sets the course and drives things forward in the development department as well as at management level.
+The [ABAP Unit chapters]({{ site.baseurl }}/testing/abap_unit_advanced/) explain the need for and benefits of unit tests. Each company and team must decide how and to what extent to use them. A designated owner should therefore set the direction and drive adoption within both development and management.
 
-## In the beginning there was the concept
+## It All Started with the Concept
 
-An important point in new developments is that a good technical concept is created. Unit tests should be taken into account in this concept. Test-driven design may be an option for developing the application. But it is also important for this that a sensitive concept is in place. Experienced people can already tell from a concept whether unit tests will be possible or not. 
+An important consideration in new development projects is the creation of a sound
+technical design. This design should incorporate unit tests. Test-driven design may
+be one approach to developing the application. However, even in this case, it is essential
+to have a sound design in place. Experienced professionals can often tell from the
+design alone whether unit tests will be feasible or not.
 
-## Start simple
+## Just Get Started
 
-When we encourage you to use unit testing, we recognize that this is easier said than done. If there is little experience with this technology, then this must be collected by the development team. Only if you know what prerequisites are necessary can you convince management to take the necessary measures.
+When we recommend that you use unit tests, we realize that this is easier said than
+done. If there is little experience with this technique, the development team will need
+to gain that experience. Only by understanding what is required can you convince
+management to take the necessary steps.
 
-But: you have to start! It's easiest with methods where you think: "It's so simple, I don't need a unit test for it!" But these are precisely the methods that make it easy to get started. Make sure that no data selections are made or user queries are made in the dialog. Maybe do the first unit test with colleagues and share your experiences.
+But: You have to start somewhere! The easiest place to begin is with methods where
+you think, “This is so simple—I don’t need a unit test for this!” Yet these are precisely
+the methods that make getting started easy. Make sure no data selections are made
+and no user queries are performed in dialog boxes. Consider conducting your first unit
+test together with colleagues and sharing your experiences.
 
-Automated tests with the help of ABAP Unit are a very broad field. There are countless methods, techniques and areas of application. That's why we don't want to give any further recommendations or a "roadmap" at this point as to how things should proceed after your first steps. If you deal with ABAP Unit, you will get to know the weak points and the potentials. You will find a way for yourself and your team. Don't be discouraged after initial failed attempts, just keep at it. In this guide we provide you with a document that you can use to find help in many areas of automated testing. However, there is never a one-size-fits-all solution. Experience is the surest way to improve the quality of your software.
+Automated testing with ABAP Unit is a broad field with countless methods, techniques, and use cases. We therefore do not provide a detailed roadmap for what to do after your first steps. As you work with ABAP Unit, you will come to understand its strengths and limitations and find an approach that works for your team. Do not let initial setbacks discourage you. This guide offers support across many areas of automated testing, but there is no one-size-fits-all solution. Experience is the surest way to improve the quality of your software.
 
 ## Management
 
-Creating and managing unit tests requires additional time. However, this is made up for by higher software quality and thus fewer user tests or even production downtimes. Developers need significantly more time to create the unit tests - especially in the early days. This must be wanted by management and must be supported. Define what you expect from management, but also what management will get in return. Find an area, application or team that is gaining experience with automated testing. Set goals for what you want to achieve within a certain period of time.
+Creating and managing unit tests requires additional time, but higher software quality reduces later testing effort and production outages. Developers need more time for unit tests, especially at the beginning, so management must commit to and support the practice. Define both what you expect from management and what management receives in return. Select a department, application, or team to gain experience with automated testing, and set goals for a specific timeframe.
 
-## Continuing education
+## Continuous Learning
 
-Especially with unit tests, it is important that you continue your education and gain more and more experience. The learning curve is very steep, but after that there are an incredible number of options, variations and techniques. Attend workshops, read books and, above all, exchange ideas as a team. 
+With unit testing, continuous learning and practical experience are especially important. The learning curve is steep, but proficiency opens up a wide range of techniques and possibilities. Attend workshops, read books, and, above all, share your insights with your team.
 
-## Code - Test - Repeat
+## Code – Test – Repeat
 
-Unit tests are an important part of software development. It is important to get to grips with it and get to know this technology. Most importantly, make unit tests an indispensable part of your work. Unit tests must be maintained, documented and further developed. Don't let unit tests be forgotten.
+Unit tests are an important part of software development. Learn the techniques and make unit testing an integral part of your work. Tests must be maintained, documented, and developed further; do not let them fall by the wayside.
 
 ## Conclusion
 
-As a conclusion to unit testing, we would like to close with the quote from Captain Kirk:
-"The prejudices you have against each other disappear when you get to know each other."
+To wrap up our discussion of unit tests, we would like to conclude with a quote from
+Captain Kirk: “The prejudices we hold against one another disappear once we get to
+know each other.”

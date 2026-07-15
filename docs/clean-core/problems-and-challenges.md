@@ -7,44 +7,44 @@ nav_order: 3
 ---
 
 {: .no_toc}
-# Problem areas and challenges
+# Key Issues and Challenges
 
 1. TOC
 {:toc}
 
 
-For established brownfield customers or SAP add-on manufacturers (partners) who are based on legacy technologies, the consistent implementation of a Clean Core concept is not possible without a redesign of the processes. 
+For established brownfield customers or SAP add-on vendors (partners) that rely on legacy technologies, the consistent implementation of a clean-core concept is not feasible without a redesign of the processes.
 
-## Custom code
+## Customer Code
 
-Most of the customer code that has grown over decades needs to be reworked. The reason for this is that existing developments are often based on unreleased APIs or development components from the SAP standard. The first step should be to analyze whether you want to make your system Cloud-Ready. You should also check which solutions may already use outdated technologies, such as BOPF, the complex variant configuration settings or the classic report.
+Most of the customer code that has accumulated over decades needs to be rewritten. The reason for this is that existing development is often based on non-released APIs or development components from the SAP standard. As a first step, you should analyze whether you want to make your system cloud-ready. In doing so, you should also check which solutions may already be using outdated technologies, such as BOPF, complex variant configuration settings, or the traditional classical reports.
 
-In addition to the customer extensions in the SAP standard, there is the issue of custom SAP applications in every SAP system, which are in-house developments that run parallel to the SAP standard. Replacing such applications requires major projects of its own and must continue to be supported by process experts. 
+In addition to customer-specific extensions to the standard SAP system, every SAP system involves custom SAP applications—in-house developments that run in parallel with the standard SAP system. Replacing such applications requires large-scale projects of their own and must continue to be managed by process experts.
  
-The dissonance between the SAP view of the Clean Core and the long-standing customer base is the application of the Clean Core principles/concepts. 
+The discrepancy between SAP’s view of the Clean Core and that of its long-standing customer base lies in the application of Clean Core principles and concepts.
 
-The standard transactions, standard BADIs and standard Fiori apps are often no longer sufficient to cover the business process requirements. The classic extensions / RICEFW objects have created added value that first has to be found in S/4HANA - the Clean Core. In order to use the new technologies, for example SAP Build, especially on the BTP, it requires investments in organization, technologies and processes.
+Standard transactions, standard BAdIs, and standard Fiori apps are often no longer sufficient to meet business process requirements. Traditional extensions and RICEFW objects have delivered value that must now be recreated in S/4HANA—the Clean Core. To leverage new technologies, such as SAP Build, particularly on the BTP, investments in organization, technology, and processes are required.
  
 ## Technologies
 
-From negotiating the licenses, setting up the infrastructure, training the SAP base and training the developers of the new technologies to purchasing consulting services, considering and evaluating alternatives, everything must be defined in the evaluation of the development landscape.
+From negotiating licenses, setting up the infrastructure, training SAP Basis staff and developers on new technologies, to purchasing consulting services and reviewing and evaluating alternatives, everything must be defined in the evaluation of the development landscape.
 
-Above all, alternative technologies that can be used with existing ABAP developers are needed, as existing customer extensions/RICEFW objects still need to be maintained.
+There is a particular need for alternative technologies that can be used with existing ABAP developers, as existing customer enhancements and RICEFW objects must continue to be maintained.
  
 ## Organization
 
 The classic consultant and developer develops through the new technologies into a full-time developer with broad development knowledge; massive change management is required here. You can find out more about this in [Organization chapter]({{ site.baseurl }}/organization/).
 
-Thanks to the no-code and low-code options, especially with SAP Build, but also key-user extensibility, non-developers can work in Fusion teams. This also requires a modern way of working, which should be agile in nature.
- 
-## (Business) processes
+Thanks to no-code and low-code options—particularly SAP Build, but also Key User Extensibility—non-developers can contribute to fusion teams. This approach benefits from agile practices.
+
+## (Business) Processes
  
-Organizational processes can be enormously streamlined, for example in reporting. If standard CDS views and standard APIs are taken, then the authorization checks in the CDS view. This means you can offer data products and your department colleagues can do reporting without IT. A possible problem: This brings the risk that un-performing CDS views (keyword: compatibility views) will have an enormous impact on the system load.
+Organizational processes can be significantly streamlined, for example in reporting. When standard CDS views and standard APIs are used, the authorization checks are handled within the CDS view. This allows you to offer data products, and business department colleagues can generate reports without involving IT. A potential issue: This carries the risk that underperforming CDS views (keyword: compatibility views) could significantly impact system load.
 
-Standard processes are supported by the SAP and standard Fiori apps can also be easily adapted in the UI by a non-developer. Customers with a long SAP history often have business process requirements that go far beyond the standard apps. The SAP SEGW project-based apps are also a possible topic: if the standard Fiori app is first built on the SAP SEGW projects and then, after a system upgrade, this app moves to the RAP model in the backend, the in-house development must first be recreated in the new RAP model.
+Standard processes are supported by SAP, and even non-developers can easily customize standard Fiori apps in the UI. Customers with a long history of using SAP often have business process requirements that go far beyond the standard apps. Another potential issue involves SAP SEGW project-based apps: Once the standard Fiori app is built on SAP SEGW projects and then migrated to the RAP model in the backend following a system upgrade, the custom development must first be recreated in the new RAP model.
 
-## Add-Ons
+## Add-ons
 
-Clean Core continues to impact add-ons that can be used in the ABAP system. So that a partner can support your customers' Clean Core strategy in the future, SAP has changed the conditions for obtaining certification of add-ons. It is therefore no longer possible to obtain certification of an add-on if the implementation of the extension does not comply with the specifications of Clean Core (created in ABAP Cloud or the BTP).
+Clean Core continues to affect add-ons that can be used in the ABAP system. To enable partners to support their customers’ Clean Core strategy in the future, SAP has changed the requirements for obtaining add-on certification. Consequently, it is no longer possible to obtain certification for an add-on if the implementation of the extension does not comply with Clean Core requirements (created in ABAP Cloud or the BTP).
 
-For add-ons without SAP certification in SAP S/4HANA (on premise) or SAP S/4HANA Cloud, private edition, we therefore recommend checking with the add-on partner in good time whether they have developed their product according to Clean Core, or that a compatible add-on is available in time for an upcoming upgrade be delivered.
+For add-ons without SAP certification in SAP S/4HANA (On-Premise) or SAP S/4HANA Cloud Private Edition, we therefore recommend that you check with the add-on partner well in advance to confirm whether they have developed their product in accordance with Clean Core, or that a compatible add-on will be delivered in time for an upcoming upgrade.

@@ -12,21 +12,21 @@ nav_order: 1
 1. TOC
 {:toc}
 
-Over the years, SAP has released various form technologies. There are now three different technologies available in S/4HANA. As a result, many companies sometimes have a large mix when it comes to the use of different form technologies. Accordingly, the responsible developers must have the appropriate know-how for the form technologies used.
+Over the years, SAP has released various form technologies. There are now three different technologies available in S/4HANA. As a result, many companies have a mix of these technologies in use. Accordingly, the developers responsible must possess the necessary expertise for the form technologies being used.
 
 {: .note }
-> In general, it should be noted that the end of the support period for the form technologies SAPscript and SmartForms is in 2040 (see also notes 2791338 and 2900377).
+> In general, it is important to note that support for the SAPscript and Smart Forms technologies will end in 2040 (see also notes 2791338 and 2900377).
 
 ## SAPscript (1992 R/3)  
 
 Many companies will continue to use SAPscript forms in 2025. These are often forms that have existed for years or sometimes decades. Therefore, ABAP developers must continue to be familiar with this technology in order to be able to make adjustments to the forms if necessary.
 
-The data is transferred from the print program to the form using global variables. The variables must be named exactly the same in the print program and in the form to ensure automatic data transfer.
+Data is transferred from the print program to the form via global variables. The variables must be named exactly the same in both the print program and the form to ensure automatic data transfer.
 
-If a form is required in other languages, the form with the same name but in the corresponding different language must be created/saved in transaction SE71 in order to be able to carry out the translation.
+If a form is needed in other languages, the form must be created/saved in transaction SE71 with the same name but in the corresponding language to enable translation.
 
-SAPscript forms can be debugged during runtime. To do this, the debugger must first be switched on in transaction SE71 in the menu under “Utilities”. The print program/transaction to process the form is then executed.  
-Debugging is relatively inconvenient and actually no longer up to date. Every text element is jumped to, which is sometimes time-consuming. Values ​​of variables can be displayed by entering the variable name without “&” in the debugger and confirming with ENTER.  
+SAPscript forms can be debugged during runtime. To do this, the debugger must first be enabled in transaction SE71 under the “Tools” menu. The print program or transaction for processing the form is then executed.  
+Debugging is cumbersome and outdated. Each text element is stepped through, which can be time-consuming. You can display variable values by entering the variable name without “&” in the debugger and confirming with ENTER.  
 
 The SAPscript form is called using the OPEN_FORM function module.
 
@@ -36,26 +36,28 @@ The SAPscript form is called using the OPEN_FORM function module.
 | SE72 | SAPscript Style |
 | SE78 | Form graphic management |
 | SO10 | (SAPscript) Standard texts |
-| TXBA | Where-used list text modules |
+| TXBA | Proof-of-Use Analysis for Text Blocks |
 
-## SmartForms (2001) 
+## SmartForms (2001)
 
 Compared to SAPscript, SmartForms has a more modern SAP GUI interface for designing forms. From this technology onwards, an interface was also used for data transfer between the print program and the form. However, this also means there is another possibility where coding for data acquisition or control may be hidden.  
 
-With this technology, the multilingualism of SAP was implemented better than in SAPscript. Translating can be done here using transaction SE63 and the entire form does not have to be created in a new language. Furthermore, a connection to the SAP transport system was integrated. Unfortunately, as with SAPscript, versioning of the form adjustments is missing in the standard. This makes it necessary to design a manual process that ensures that you can go back to an older form version at short notice. An example of this would be to copy the form to be adapted under a new name (possibly with a date in the name) in the development system into a local package before making the change and thus save the last version that works in the production system. 
+With this technology, SAP’s multilingual capabilities were implemented more effectively than in SAPscript. Here, translation can be performed using transaction SE63, and it is not necessary to create the entire form in a new language. Furthermore, an integration with the SAP transport system was implemented. Unfortunately, just as with SAPscript, versioning of form customizations is missing in the standard system. This makes it necessary to design a manual process to ensure that you can revert to an older form version at short notice. An example of this would be to copy the form to be customized under a new name (possibly with a date in the name) into a local package in the development system before making the change, thereby securing this last version that works in the production system.
 
 {: .recommendation }
-> Be sure to coordinate the procedure and naming convention with your development team!  
+> Be sure to coordinate with your development team regarding the process and naming conventions!  
 
-The name of the interface block is generated by the system and differs from SAP system to SAP system (development, quality assurance, production). It is therefore necessary to call the function block “SSF_FUNCTION_MODULE_NAME” in the print program in order to determine the actual name (importing parameter FM_NAME) of the generated function block at runtime in the respective SAP system.  
+The name of the interface module is generated by the system and varies from one SAP system to another (development, quality assurance, production). Therefore, it is necessary to call the function module “SSF_FUNCTION_MODULE_NAME” in the print program to determine the actual name (import parameter FM_NAME) of the generated function module at runtime in the respective SAP system.  
 
 If you want to debug a SmartForms form, it is best to set a breakpoint in the generated interface function module. The name of the function module can be displayed using the transaction SMARTFORMS in the “Environment” menu. Then display this function module using transaction SE37 or SE80, for example, and set a breakpoint at the appropriate point.
 
-The SAP standard delivers various test programs and test forms. These start with “SF_\*”.
+The SAP standard system provides various test programs and test forms. These begin with
+
+„SF_*“.
 
 | Transaction | Description |
 | --- | --- |
-| SMARTFORMS | SmartForms editor for forms and styles |
+| SMARTFORMS | Smart Forms Editor for Forms and Styles |
 
 ## Adobe Forms
 
@@ -65,35 +67,35 @@ The SAP standard delivers various test programs and test forms. These start with
 
 Don’t let the “Interactive” part of the name fool you – these are actually “print forms” and not just interactive forms.  
 
-The form layout is designed using LiveCycle Designer (LCD from Adobe) in transaction SFP. The LCD must be installed in the SAP GUI. The interface and context of the form are also created and edited in the SFP transaction.
+The form layout is designed using LiveCycle Designer (LCD from Adobe) in transaction SFP. The LCD must be installed in the SAP GUI for this purpose. The form’s interface and context are also created and edited in transaction SFP.
 
 The following functionalities are supported when designing forms with SAP Interactive Forms by Adobe compared to SAPscript and SmartForms:  
 
 - Graphics can be embedded directly  
 - Objects can be rotated  
-- different page orientations possible in one form  
-- Graphic elements (fold marks) possible  
+- Different page orientations are possible within a single form  
+- Graphic elements (fold marks) are supported  
 - Reuse of complex layout elements  
-- Use of TrueType fonts possible  
+- TrueType fonts can be used  
 - Barcodes can be printed on many printers (Postscript, PCL, PDF and Zebra)  
-- Accessibility possible  
-- Drag&Drop function for positioning objects
+- Accessibility support available  
+- Drag-and-drop functionality for positioning objects
 
-Adobe forms consist of various objects in terms of layout:
+In terms of layout, Adobe forms consist of various objects:
 
 - Master page:  
-    One or more master pages are possible per form and are the top level of a form to structure the form. Information that should be repeated on every output page is placed here, as well as the size and space of the content area.  
+    One or more master pages can be used per form; they serve as the top-level element of a form to structure it. This is where information that is to be repeated on every output page is placed; the size and position of the content area are also defined here.  
 
 - Content area:  
-    Area for outputting dynamic or static content.  
+    Area for displaying dynamic or static content.  
 
 - Content page:  
-    contains the content that is assigned to a content area of ​​a master page.
+    contains the content that is assigned to a content area of a master page.
 
-In order to maintain and edit these objects, you must switch between the “Design View” and “Master Pages” tabs in the layout area of ​​the SFP transaction.  
+To maintain and edit these objects, you must switch between the “Design View” and “Master Pages” tabs in the layout area of transaction SFP.  
 The “PDF Preview” tab allows you to preview the form layout.
 
-{: .note } 
+{: .note }
 > If an XFD.xml file with sample data (which was generated and downloaded from a test or production system, for example) is stored in Edit > Form Properties > Preview, this form content will then also be displayed in a development system under “PDF preview”. This is extremely helpful, for example, to test content-dependent formatting or similar.
 
 <br/>
@@ -104,11 +106,11 @@ preview
 {: .img-caption}
 
 
-{: .note } 
+{: .note }
 > The LCD allows adjustments in display mode. These CANNOT be saved!  
 > So before working on an Adobe form, make sure that you are in “change mode” of the SFP transaction.  
 
-The interface is a standalone object with a unique name. It can be used multiple times and represents the assignment of application data, e.g. from a printing program, to the form.
+The interface is a standalone object with a unique name. It can be used multiple times and represents the mapping of application data—for example, from a print program—to the form.
 
 ![Structure]({{ site.baseurl }}/forms/img/image-02.png)
 
@@ -118,43 +120,44 @@ Structure
 
 The following interface types are available:
 
-- ABAP Dictionary based interface
-- XML Schema based interface
+- ABAP Dictionary-based interface
+- XML Schema-based interface
 - Smart Forms compatible interface
 
-The most commonly used interface type is the “ABAP Dictionary based” interface.  
+The most commonly used interface type is the “ABAP Dictionary-based” interface.  
 The interface consists of three specific areas:
 
 - Form interface  
-    with the sub-areas: import, export, exceptions  
+      With the sub-areas: Import, Export, Exceptions  
 
 - Global definitions  
-    To define variables in order to be able to store other data in addition to data from the form interface.  
+      For defining variables to store data in addition to the data from the form interface.  
 
 - Initialization  
-    Possibility to read additional data in the form. The coding should be kept short and concise. The editor has some limitations at this point such as no forward navigation and no pretty printer.  
-    
+      Option to read additional data in the form. The code should be kept short and concise. The editor has some limitations here, such as no forward navigation and no pretty printer.  
+  
 {: .recommendation }
-> Outsource the business logic to a class, which is called here.  
+> Move the business logic into a class that is called here.  
 
 {: .note }
-> In order not to lose clarity and not to make the logic of form printing too complex, you should consider before each implementation whether the necessary coding is stored in the calling print program or in the form interface. Of course, the decision also depends on whether a SAP standard print program 
-> is used, or a customer-specific printing program.
+> To keep the form-printing logic clear and manageable, decide before each implementation whether the required code belongs in the calling print program or in the form interface. This decision also depends on whether you use an SAP standard print program or a custom print program.
 
-As with SmartForms, Adobe Forms forms require a function module generated by the SAP system to output the form. Since this function module name also varies from system to system, as with SmartForms, the function module FP_FUNCTION_MODULE_NAME must be used to determine the correct name of the function module at runtime.  
+As with Smart Forms, Adobe Forms also require a function module generated by the SAP system in order to output the form. Since the name of this function module varies from system to system—just as it does with Smart Forms—the function module FP_FUNCTION_MODULE_NAME must be used to determine the correct name of the function module at runtime.  
 Basically, the generated function module has the same import and export parameters as the form interface (SFP), and the context objects are also included.
 
-You can also start debugging an Adobe form using a breakpoint in the generated function module.  
+You can also enter the debugging of an Adobe form by setting a breakpoint in the generated function module.  
 
 Adobe Forms forms can be versioned using transaction SFP. This can be done manually or is done automatically as soon as a transport is created from the development system to another SAP system.
 
-The translation of an Adobe form can be carried out directly in transaction SFP (menu: Goto > Translation) or using transaction SE63 (menu: ABAP Objects > Other long texts > FS forms and styles > PDFB PDF-based forms).
+An Adobe form can be translated directly in transaction SFP (Menu: Goto > Translation) or using transaction SE63 (Menu: ABAP Objects > Other Long Texts > FS Forms and Styles > PDFB PDF-based Forms).
 
-The SAP standard delivers various test programs and test forms. These begin with “FP_TEST\*”.
+The SAP standard system provides various test programs and test forms. These begin with
+
+„FP_TEST\*“.
 
 | Transaction | Description |
 | --- | --- |
-| SFP | Adobe Form Builder for forms and form interfaces |
+| SFP | Adobe Form Builder for Forms and Form Interfaces |
 
 <br/>
 
@@ -163,21 +166,26 @@ The SAP standard delivers various test programs and test forms. These begin with
 
 The basis is Adobe forms with gateway interfaces, the data of which is obtained using gateway services (i.e. no classic printing programs). Maintenance is carried out with Fiori apps and therefore “SAP S/4HANA Forms” are public cloud-capable.
 
-The layout is also designed with the LiveCycle Designer, but as a standalone. It should be noted that the processed objects must be included in transport orders manually (using Fiori app ID F1589) and there is no automatic object lock.  
+The layout is also designed using LiveCycle Designer, but as a standalone application.
+It is important to note that the edited objects must be manually added to transport
+requests (using Fiori App ID F1589) and that there is no automatic object lock.  
 
-Just like the “SAP Interactive Forms by Adobe”, the SAP S/4HANA Forms require an Adobe Document Service (ADS -> SAP Forms Service by Adobe).
+Just like “SAP Interactive Forms by Adobe,” SAP S/4HANA Forms require an Adobe
+Document Service (ADS -> SAP Forms Service by Adobe).
 
-It should be mentioned at this point that customer-specific conditions can only be represented to a very limited extent.
+It should be noted here that customer-specific conditions can only be mapped to a
+limited extent.
 
-This form technology is only possible together with the S/4HANA Output Control output solution (see section XYZ).
+This form technology is only possible in conjunction with the S/4HANA Output Control
+output solution.
 
-{: .note }   
+{: .note }  
 > - local editing of the layout / form -> therefore the team must coordinate!  
 > - no automatic transport connection -> Remember that you have to manually search for all objects and include them in a transport.  
 
 | App ID | Description |
 | --- | --- |
-| F1434 | Manage form templates |
+| F1434 | Maintain form templates |
 | F2894 | Manage texts |
 | F2761 | Manage logos |
 | F1589 | Include objects in transports |
@@ -202,7 +210,8 @@ User assignment
 
 Adobe Fragments
 
-This involves reusing master form templates. This allows expenses to be composed of different parts. A distinction is made between the following two parts:
+This involves the reuse of master form templates. This allows outputs to be assembled
+from different parts. A distinction is made between the following two parts:
 
 - Master form  
     Head and foot area  
@@ -240,9 +249,13 @@ Adobe Fragments can only be used in conjunction with Output Control
 SAP generally recommends using SAP Interactive Forms by Adobe for new forms.
 This is future-proof because SAPscript and SmartForms are no longer being further developed by SAP itself.
 
-Companies that already use many Smart Forms forms are recommended to continue using them, but to implement new developments with SAP Interactive Forms by Adobe.
+Companies that already have many Smart Forms in use are advised to continue using
+them, but to implement new developments using SAP Interactive Forms by Adobe.
 
-The decision as to which technology is used to implement new developments in the area of ​​​​forms should not be made dependent on which technology is predominant in the existing forms. Above all, it is important to keep an eye on maintainability and future security and how your company would like to further strategically align itself in terms of system landscape and technology in the future.
+The decision regarding which technology to use for new form development should not
+be based on which technology is currently used for existing forms. Above all, it is im-
+portant to consider maintainability and future-proofing, as well as how your company
+plans to strategically align its system landscape and technology in the future.
 
 If you look at the existing system landscapes, the following recommendation emerges.
 

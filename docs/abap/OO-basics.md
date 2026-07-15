@@ -15,7 +15,7 @@ nav_order: 1
 
 Here you will find additional information on the topics of object orientation:
 
-## Basic principles of object orientation (SOLID) - addition
+## Basic Principles of Object-Oriented Programming (SOLID)
 
 <dl>
   <dt>Single Responsibility Principle</dt>
@@ -58,9 +58,9 @@ Here you will find additional information on the topics of object orientation:
 
 Here you will find additional explanations of the most important design patterns:
 
-### Singleton-Pattern
+### Singleton Pattern
 
-The singleton pattern aims to ensure that only a single object instance exists or can exist for a class at runtime. To do this, the first instance created by the constructor is written into a class variable (CLASS-DATA) and in subsequent calls to the class constructor to create a new object, this saved instance is read from the class variable and returned. This way you can control that only one instance of a class exists at any time.
+The singleton pattern aims to ensure that only a single object instance exists or can exist for a class at runtime. To do this, the first instance created by the constructor is written into a class variable (CLASS-DATA), and in subsequent calls to the class constructor to create a new object, this saved instance is read from the class variable and returned. This way you can control that only one instance of a class exists at any time.
 Here is an example of how this could be implemented:
 
 ```
@@ -88,18 +88,18 @@ CLASS zcl_singleton IMPLEMENTATION.
     instance = instance_ref.
   ENDMETHOD.
   METHOD do_something.
-    WRITE: / 'Singleton-Methode wurde aufgerufen'.
+    WRITE: / 'Singleton method was called'.
   ENDMETHOD.
 ENDCLASS.
 
-* Verwendung
+* Usage
 DATA(singleton) = zcl_singleton=>get_instance( ).
 singleton->do_something( ).
 ```
 
-### Factory-Pattern
+### Factory Pattern
 
-The factory pattern is a design pattern that encapsulates the creation of objects. In ABAP it is often used to centralize and simplify the instantiation of objects - especially for polymorphic objects or when creation is complex. The pattern offers several advantages: changes to the creation logic only have to be made in one place, the return of an interface or an abstract class (polymorphism) is possible and new types can be easily added.
+The factory pattern is a design pattern that encapsulates the creation of objects. In ABAP it is often used to centralize and simplify the instantiation of objects—especially for polymorphic objects or when creation is complex. The pattern offers several advantages: changes to the creation logic only have to be made in one place, the return of an interface or an abstract class (polymorphism) is possible, and new types can be easily added.
 This could be implemented as follows:
 
 ```
@@ -116,7 +116,7 @@ ENDCLASS.
 
 CLASS zcl_car IMPLEMENTATION.
   METHOD if_vehicle~drive.
-    WRITE: / 'Das Auto fährt los!'.
+    WRITE: / 'The car starts moving!'.
   ENDMETHOD.
 ENDCLASS.
 
@@ -127,11 +127,11 @@ ENDCLASS.
 
 CLASS zcl_bike IMPLEMENTATION.
   METHOD if_vehicle~drive.
-    WRITE: / 'Das Fahrrad fährt los!'.
+    WRITE: / 'The bicycle starts moving!'.
   ENDMETHOD.
 ENDCLASS.
 
-* Factory-Klasse
+* Factory class
 CLASS zcl_vehicle_factory DEFINITION.
   PUBLIC SECTION.
     CLASS-METHODS:
@@ -153,16 +153,16 @@ CLASS zcl_vehicle_factory IMPLEMENTATION.
   ENDMETHOD.
 ENDCLASS.
 
-* Verwendung
+* Usage
 DATA(vehicle) = zcl_vehicle_factory=>create_vehicle( type_name = 'CAR' ).
 IF vehicle IS BOUND.
   vehicle->drive( ).
 ENDIF.
 ```
 
-### Facade-Pattern
+### Facade Pattern
 
-The Facade pattern is used in ABAP to provide a simplified interface to a complex subsystem. It encapsulates the complexity of multiple classes or processes behind a single, easy-to-use class - the “facade”. This offers the following advantages: The caller does not have to deal with details of the subsystems, changes in the subsystems do not directly affect the calls and the facade can be reused in different contexts.
+The Facade pattern is used in ABAP to provide a simplified interface to a complex subsystem. It encapsulates the complexity of multiple classes or processes behind a single, easy-to-use class—the “facade”. This offers the following advantages: The caller does not have to deal with details of the subsystems, changes in the subsystems do not directly affect the calls, and the facade can be reused in different contexts.
 This could be implemented as follows:
 
 ```
@@ -174,7 +174,7 @@ ENDCLASS.
 
 CLASS zcl_order_processor IMPLEMENTATION.
   METHOD process_order.
-    WRITE: / 'Bestellung verarbeitet'.
+    WRITE: / 'Order processed'.
   ENDMETHOD.
 ENDCLASS.
 
@@ -185,7 +185,7 @@ ENDCLASS.
 
 CLASS zcl_invoice_generator IMPLEMENTATION.
   METHOD generate_invoice.
-    WRITE: / 'Rechnung erstellt'.
+    WRITE: / 'Invoice generated'.
   ENDMETHOD.
 ENDCLASS.
 
@@ -196,11 +196,11 @@ ENDCLASS.
 
 CLASS zcl_shipping_service IMPLEMENTATION.
   METHOD ship_order.
-    WRITE: / 'Versand durchgeführt'.
+    WRITE: / 'Order shipped'.
   ENDMETHOD.
 ENDCLASS.
 
-* Facade-Klasse
+* Facade class
 CLASS zcl_order_facade DEFINITION.
   PUBLIC SECTION.
     METHODS complete_order_process.
@@ -218,21 +218,21 @@ CLASS zcl_order_facade IMPLEMENTATION.
   ENDMETHOD.
 ENDCLASS.
 
-* Verwendung
+* Usage
 DATA(facade) = NEW zcl_order_facade( ).
 facade->complete_order_process( ).
 ```
 
-### MVC-Pattern
+### MVC Pattern
 
-The MVC pattern is used to divide the programming logic into three areas: Model (data model), View (presentation logic) and Controller (business logic).
-The Model-View-Controller (MVC) pattern is a proven architectural model that can also be used in ABAP - especially in the context of SAP. It separates the application into three main components: "Model" (business logic and data access), "View" (representation of data / UI) and "Controller" (intermediation between Model and View).
+The MVC pattern is used to divide the programming logic into three areas: Model (data model), View (presentation logic), and Controller (business logic).
+The Model-View-Controller (MVC) pattern is a proven architectural model that can also be used in ABAP—especially in the context of SAP. It separates the application into three main components: "Model" (business logic and data access), "View" (representation of data / UI), and "Controller" (intermediation between Model and View).
 The use of MVC offers the following advantages: Better maintainability and testability due to the separation of concerns, reusability of views and models, scalability for complex applications.
 
-The Restful Application Programming Model represents the MVC pattern, as the technical framework already specifies a strict separation of concerns in the form of Model = CDS, Control = Behavior Definition and View = Fiori.
+The RESTful Application Programming Model represents the MVC pattern, as the technical framework already specifies a strict separation of concerns in the form of Model = CDS, Control = Behavior Definition, and View = Fiori.
 
 ```
-* Model Klasse
+* Model class
 CLASS zcl_model DEFINITION.
   PUBLIC SECTION.
     METHODS:
@@ -249,7 +249,7 @@ CLASS zcl_model IMPLEMENTATION.
   ENDMETHOD.
 ENDCLASS.
 
-* View Klasse
+* View class
 CLASS zcl_view DEFINITION.
   PUBLIC SECTION.
     METHODS:
@@ -258,11 +258,11 @@ ENDCLASS.
 
 CLASS zcl_view IMPLEMENTATION.
   METHOD display_customer_name.
-    WRITE: / 'Kundenname:', customer_name.  "hier könnte auch eine ALV-Ausgabe o.ä. stehen
+    WRITE: / 'Customer name:', customer_name.  " An ALV output could also be used here
   ENDMETHOD.
 ENDCLASS.
 
-* Controller Klasse
+* Controller class
 CLASS zcl_controller DEFINITION.
   PUBLIC SECTION.
     METHODS:

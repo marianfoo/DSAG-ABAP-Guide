@@ -14,7 +14,9 @@ nav_order: 1
 
 ## Aspects of software licenses
 
-The license of a software determines how you can use it. Specifically in relation to open source, an open source license makes a software open source software. Open source licenses expressly grant rights to the licensee, but also give them obligations regarding how they should handle the software. If you find a software project that has published its source code publicly accessible, but no license can be found, then it is not open source, but simply _Source Available_. When introducing open source, you should find out whether or who in your company is dealing with the licensing issue. Especially in larger companies that use many different programming languages, there can be a central authority that takes care of license compatibility when using open source components.
+A software license determines how you can use the software. Specifically, in the context of open source, an open-source license is what makes a software program open-source software. Open-source licenses explicitly grant rights to the licensee, but also impose obligations on them regarding how they must handle the software. If you find a software project that has published its source code publicly but no license is available, then it is not open source, but merely Source Available. When introducing open source, you should find out within your company whether anyone is handling the licensing issue and, if so, who.
+
+Especially in larger companies that use many different programming languages, there may be a central authority responsible for ensuring license compatibility when using open-source components.
 
 ## Overview of open source licenses
 

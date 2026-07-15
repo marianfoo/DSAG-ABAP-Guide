@@ -14,17 +14,17 @@ This section describes the use case of participating in open source projects as 
 1. TOC
 {:toc}
 
-## Opportunities to participate in open source development
+## Opportunities of Participating in Open-Source Development
 
-When you participate in open source projects, you actively influence their development. This can be done by providing coding sections that extend the functionality of the application, but it can also be much more simply an issue with an error scenario or the addition of documentation or tests. The majority of the ABAP projects developed in open source are managed in their free time by their maintainers, who are generally happy about any kind of participation. The barrier to entry is therefore very low.
+By participating in open-source projects, you actively influence their development. This may be done by providing code segments that functionally extend the application, but it may also be something much simpler, such as creating an issue describing an error scenario or contributing documentation or tests. A large proportion of open-source ABAP projects are maintained in the contributors’ spare time, and maintainers are generally pleased about any kind of participation. The barrier to entry is therefore relatively low.
 
-Your participation also brings you some advantages: By participating in such external projects, you inevitably come into contact with other technological challenges, libraries and frameworks, which allows you to expand your skills. If you contribute coding, it will be subject to a code review, which allows you to receive and incorporate feedback. You can also participate in the open source project by testing and reviewing pull requests and thus increasingly familiarizing yourself with the codebase.
+Your participation also brings several advantages. By contributing to such external projects, you inevitably come into contact with other technological challenges, libraries, and frameworks, allowing you to further develop your own skills. If you contribute code, it will be subjected to a code review, through which you receive feedback that you can incorporate into your work. You can also participate in an open-source project by testing and reviewing pull requests, thereby gradually becoming familiar with the code base.
 
-## Possible organizational hurdles
+## Possible Organizational Challenges
 
-Participation in this form is regularly possible in the free time that many open source maintainers use for this purpose. Things look different during working hours. If your company wants to invest in the maintenance and expansion of open source projects that it may also use itself, then appropriate guidelines should be in place that the respective employees can follow. In addition to working hours, licensing and copyright issues also need to be clarified.
+Participation of this kind is generally possible in personal time, which is how many open-source maintainers contribute to their projects. The situation is different during working hours. If your company wants to invest in the maintenance and further development of open-source projects that it may also use itself, appropriate guidelines should be in place to provide orientation for the respective employee. In addition to questions regarding working time, licensing and copyright issues must also be clarified.
 
-## Types of participation
+## Types of Participation
 
 Participation can take place in many different ways.
 

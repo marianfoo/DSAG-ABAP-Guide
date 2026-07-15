@@ -5,20 +5,20 @@ permalink: /authors/
 nav_order: 15
 ---
 
-# Closing
+# Conclusion
 
 {: .no_toc}
 
 ## Contributors
 
-Here you will find all the guide's staff who took care of the structure, creation and review of the document.
+Here you will find all staff members who contributed to the guide’s structure, content, or review.
 
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: left">Name</th>
 <th style="text-align: left">Company</th>
-<th style="text-align: left">Role in the guideline</th>
+<th style="text-align: left">Role in the guide</th>
 </tr>
 </thead>.
 <tbody>
@@ -84,7 +84,7 @@ Here you will find all the guide's staff who took care of the structure, creatio
 </tr>
 <tr class="odd">
 <td><a href="https://www.linkedin.com/in/gregorwolf/">Gregor Wolf</a></td>
-<td>profes</td>
+<td>Profess</td>
 <td>Author</td>
 </tr>
 <tr class="header">
@@ -94,12 +94,12 @@ Here you will find all the guide's staff who took care of the structure, creatio
 </tr>
 <tr class="header">
 <td><a href="https://www.linkedin.com/in/jan-sauerland-1543b3a9/">Jan Sauerland</a></td>
-<td>ebm-papst St. Georgen GmbH & Co.KG</td>
+<td>ebm-papst St. Georgen GmbH & Co. KG</td>
 <td>Author, Reviewer</td>
 </tr>
 <tr class="odd">
 <td>Jens Knappik</td>
-<td>thyssenkrupp</td>
+<td>Thyssenkrupp</td>
 <td>Author, Reviewer</td>
 </tr>
 <tr class="header">
@@ -114,7 +114,7 @@ Here you will find all the guide's staff who took care of the structure, creatio
 </tr>
 <tr class="header">
 <td><a href="https://www.linkedin.com/in/julius-dacheneder/">Julius Dacheneder</a></td>
-<td>msg systems ag (ehemals)</td>
+<td>msg systems ag (formerly)</td>
 <td>Author</td>
 </tr>
 <tr class="header">
@@ -159,7 +159,7 @@ Here you will find all the guide's staff who took care of the structure, creatio
 </tr>
 <tr class="odd">
 <td><a href="https://timojohn.short.gy/">Timo John</a></td>
-<td>ADventas Gmbh</td>
+<td>ADventas GmbH</td>
 <td>Author, Reviewer</td>
 </tr>
 <tr class="header">
@@ -172,14 +172,14 @@ Here you will find all the guide's staff who took care of the structure, creatio
 
 ## Authors
 
-Here the authors introduce themselves which chapters they worked on, what they do in the real world and what motivated them to work on the guide.
+Here, the authors introduce themselves and explain which chapters they contributed to, what they do in their day jobs, and what motivated them to contribute to the guide.
 
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: left">Name</th>
-<th style="text-align: left">Contributed Chapters</th>
-<th style="text-align: left">Activity and motivation</th>
+<th style="text-align: left">Contributed chapters</th>
+<th style="text-align: left">Role and motivation</th>
 </tr>
 </thead>
 <tbody>
@@ -187,43 +187,43 @@ Here the authors introduce themselves which chapters they worked on, what they d
 <tr class="odd">
 <td>Björn Schulz</td>
 <td>Introduction, Clean Core, Integration, Security</td>
-<td>SAP developer (full stack, ABAP architect) at REWE digital and there for the topics Clean Core, ABAP architecture, development, guidelines, developer upskilling, etc. responsible. The modernization of the guide has been necessary for a long time because the current topics of ABAP development were not reflected there and the document still represents the reference for development for many companies.</td>
+<td>SAP Developer (Full Stack, ABAP Architect) at REWE digital, where I am responsible for areas such as Clean Core, ABAP architecture, development, guidelines, developer upskilling, and much more. The guide had been in need of an update for some time, as it did not reflect current trends in ABAP development and the document remains the go-to reference for development in many companies.</td>
 </tr>
 
 <tr class="odd">
 <td>Dominik Panzer</td>
 <td>Organization</td>
-<td>Even the most talented ABAP developers with the best know-how will not be successful if they do not find a positive, supportive environment in the company: from management to team colleagues, based on a clear strategy, consciously decided architecture and modern software development processes. That's why, in addition to "technical excellence", I'm also committed to topics in the areas of organization and software development processes/procedure models. Only the two together make people and therefore the companies they work for successful.</td>
+<td>Even the most talented ABAP developers with the best expertise will not succeed unless they find a positive and supportive environment within the company: from management right down to their team colleagues, underpinned by a clear strategy, a carefully considered architecture and modern software development processes. That is why, alongside 'technical excellence', I am also committed to issues relating to organization and software development processes and methodologies. Only both together make people – and thus the companies they work for – successful.</td>
 </tr>
 
 <tr class="odd">
 <td>Enno Wulff</td>
 <td>Testing</td>
-<td>ABAP-Dino (since 1994). I have been sharing my programming experiences in Tricksafe since 2003. At Inwerken since 2008 as a developer, programming companion, initiator of the Code Dojo, AppKnight product development, organizer of SAP Inside Tracks and ABAP Code Retreats in Hanover. By working on the DSAG guidelines, I have the opportunity to pass on knowledge and learn myself.</td>
+<td>ABAP veteran (since 1994). I have been sharing my programming experience on Tricktresor since 2003. I have been with Inwerken since 2008 as a developer, programming mentor, initiator of the Code Dojo, product developer for AppKnight, and organizer of SAP Inside Tracks and ABAP Code Retreats in Hanover. Through my involvement in the DSAG guide, I have the opportunity to pass on knowledge and learn myself.</td>
 </tr>
 
 <tr class="odd">
 <td>Fabian Lupa</td>
 <td>Open Source</td>
-<td>As a senior software engineer and trainer, I am primarily responsible for the training and further education of employees in the area of ​​​​ABAP development at adesso as well as developer enablement in customer projects. In this context, current guidelines and best practices are crucial – for both newcomers and experienced developers. It was therefore particularly important to me to bring the guide up to date and to include topics that were not previously covered.</td>
+<td>As a senior software engineer and trainer, I am primarily responsible for the training and further education of employees in the area of ABAP development at adesso as well as developer enablement in customer projects. In this context, current guidelines and best practices are crucial – for both newcomers and experienced developers. It was therefore particularly important to me to bring the guide up to date and to include topics that were not previously covered.</td>
 </tr>
 
 <tr class="odd">
 <td>Florian Henninger</td>
 <td>ABAP</td>
-<td>As a developer and problem solver, I have long been interested in what is happening around me. I like to think outside the box and am happy about insights and also the solutions that are available for all of us in our daily work. As a ADT user from the very beginning, I am always fascinated by how much added value there is when you pay attention to the little things around you and don't get lost in everyday life. That's exactly what motivates me to take part here (again). I'm sure you'll find something for yourself too.</td>
+<td>As a developer and problem-solver, I’ve long been interested in what’s going on around me. I like to think outside the box and take pleasure in the insights and solutions that arise for all of us in our day-to-day work. As an ADT user from the very beginning, I am constantly fascinated by how much added value there is when you pay attention to the little things around you and don’t get lost in the daily grind. That is precisely what motivates me to get involved here (again). I’m sure you’ll find something for yourself too.</td>
 </tr>
 
 <tr class="odd">
 <td>Harald Weidmann</td>
 <td>Testing / other test tools</td>
-<td>After over 20 years of experience with other programming languages ​​and development environments, I joined Würth IT in 2016 in the SAP and ABAP world. In 2018 I started setting up test management, am responsible for global test management in the SAP environment at Würth and try to advance testing at all levels. Unfortunately, testing is still neglected in many areas, so it is important to address the topic of testing in a guide for ABAP.</td>
+<td>After more than 20 years of experience with other programming languages and development environments, I entered the SAP and ABAP world at Würth IT in 2016. I began establishing test management in 2018 and am now responsible for global test management in Würth’s SAP environment, where I work to advance testing at every level. Testing is still neglected in many areas, which makes it essential for an ABAP guide to address the subject.</td>
 </tr>
 
 <tr class="odd">
 <td>Jan Sauerland</td>
 <td>Modern ABAP Development</td>
-<td>As the main contact for ABAP programming in the company, I had already drafted internal company ABAP guidelines based on the old ABAP guide from 2016. I am therefore very pleased to be able to contribute to the DSAG guidelines for ABAP and contribute the knowledge I have collected.</td>
+<td>As the main point of contact for ABAP programming within the company, I had already drafted internal ABAP guidelines based on the old ABAP guide from 2016. I am therefore delighted to now be able to contribute to the DSAG guide for ABAP myself and to share the knowledge I have accumulated.</td>
 </tr>
 
 <tr class="odd">
@@ -235,29 +235,27 @@ Here the authors introduce themselves which chapters they worked on, what they d
 <tr class="odd">
 <td>Marco Krapf</td>
 <td>ALM, testing / other test tools</td>
-<td>has been on the pitch as SAP Solution Manager Libero for ten years. Initially in a great team in Hamburg, then moved to the south according to position. Not a trained ABAP developer. Has the ALM toolbox in hand to support the team with application lifecycle management tools such as process management, test management, custom code management or monitoring. Sees SAP as a point-and-click adventure in which new tasks and puzzles have to be solved every day by clicking on the screen, using logical thinking and talking to the other characters in the game.</td>
+<td>Has been on the pitch as an SAP Solution Manager Libero for ten years. Started out in a great team in Hamburg, then moved south to play in his natural position. Not a qualified ABAP developer. Has the ALM toolbox at his disposal to support the team with Application Lifecycle Management tools such as process management, test management, custom code management and monitoring. Sees SAP as a point-and-click adventure in which new tasks and puzzles have to be solved every day by clicking on the screen, using logical thinking and talking to the other characters in the game.</td>
 </tr>
 
 <tr class="odd">
 <td>Peter Luz</td>
 <td>ABAP, Testing, AI</td>
-<td>Since 2006 at Robert Bosch GmbH in the SAP area and since 2010 ABAP developer in the area of ​​​​developing SAP logistics functions, since 2024 lead developer in an S/4 template development project in the logistics area.<br> 
-I always found ABAP very interesting because programming meets business processes and the commitment to good software quality was also visible in the practical use of the software.  
-Working on a guide requires a lot of time, especially private time that you invest. You bring in your knowledge and experience. But you also get a lot in return through the good conversations with people from the SAP community, through the lively exchange of experiences in the author team and you learn a lot.<br>  
-After working on the DSAG-ADT Guide 2023, I would like to contribute and pass on my experiences from many years of ABAP development here.  
-I hope that this version of the guide will help and motivate many ABAP developers to use modern ABAP development in everyday life and use it profitably.</td>
+<td>I have worked in the SAP field at Robert Bosch GmbH since 2006 and have developed SAP logistics functions in ABAP since 2010. Since 2024, I have been a lead developer in an S/4 template-development project for logistics.<br>
+I have always found ABAP fascinating because it brings programming and business processes together, while the value of good software quality becomes visible in daily use. Contributing to a guide requires a considerable investment of time, but the conversations with the SAP community, the lively exchange of experience among the authors, and the opportunity to learn make it worthwhile.<br>
+After contributing to the 2023 DSAG ADT Guide, I wanted to share the experience I have gained over many years of ABAP development. I hope this version of the guide helps and motivates many ABAP developers to use modern ABAP practices effectively in their daily work.</td>
 </tr>
 
 <tr class="odd">
 <td>Sebastian Freilinger-Huber</td>
-<td>KI and full review</td>
-<td>Head of the Center of Excellence for SAP application development at the msg group. In addition to coordinating activities, technologically at home, especially in the context of ABAP and SAP Fiori, and responsible for architectural decisions. Currently, the topic of “further training for classic ABAP developers towards ABAP Cloud” is particularly close to my heart. Together with Björn Schulz, spokesman for the DSAG development working group, from which the initiative for this guide was started. We hope to be able to create relevant added value for a hopefully large number of ABAP developers.</td>
+<td>AI and full review</td>
+<td>I am Head of the Center of Excellence for SAP Application Development at the msg group. In addition to my coordinating role, I focus on ABAP and SAP Fiori technologies and am responsible for architectural decisions. I am currently particularly interested in helping traditional ABAP developers upskill toward ABAP Cloud. Together with Björn Schulz, I serve as a spokesperson for the DSAG Development Working Group, which launched the initiative for this guide. We hope the guide will provide meaningful value to a large number of ABAP developers.</td>
 </tr>
 
 <tr class="odd">
 <td>Sven Treutler</td>
 <td>Version Management, Documentation</td>
-<td>ABAP passionate developer. Since 2010 I have been working on topics related to ABAP development at rku.it GmbH in Herne. There I take care of new technologies and quality assurance in the ABAP environment. I received my master's degree at the Westphalian University in Gelsenkirchen. In my private life I visit beautiful places with my wife, am a proud cat owner and a black and yellow football supporter.</td>
+<td>A passionate ABAP developer. Since 2010, I have been working on ABAP development projects at rku.it GmbH in Herne. There, I focus on new technologies and quality assurance within the ABAP environment. I completed my master’s degree at Westfälische Hochschule (Westphalian University of Applied Sciences) in Gelsenkirchen. In my spare time, I enjoy visiting beautiful places with my wife; I am a proud cat owner and a supporter of Dortmund’s black-and-yellow football team.</td>
 </tr>
 
 <tr class="odd">
@@ -269,14 +267,12 @@ I hope that this version of the guide will help and motivate many ABAP developer
 <tr class="odd">
 <td>Volodymyr Vashchenko</td>
 <td>Clean Core, Organization, Core Data Services, Integration</td>
-<td>As an Enterprise Architect, I like to look far into the future; And see a bright future for the ABAP development, which reaches new dimensions. As ABAP Lead Developer at Festo, I was the innovation tornado who was always at the forefront. For me, setting standards with the DSAG community is like a holy knighthood - only with less armor and more coffee kicks! Working with the renowned ABAP professionals was enriching. Have fun reading!</td>
+<td>As an Enterprise Architect, I like to look far into the future – and I see a bright future for ABAP development, which is reaching new heights. As an ABAP Lead Developer at Festo, I was the whirlwind of innovation always at the forefront. Setting standards with the DSAG community is like a sacred accolade for me – only with less armor and more coffee kicks! Working with the renowned ABAP professionals has been enriching. Enjoy the read!</td>
 </tr>
 
 </tbody>
 </table>
 
-## Acknowledgements
+## Acknowledgments
 
-
-As the spokesperson team for the Development Working Group (Sebastian and Björn), we would like to thank all authors and reviewers for accompanying us on the 1.5 year journey. Also for the valuable exchange and the numerous discussions about the guidelines and the ABAP development of the future. A big thank you also goes to the colleagues at DSAG who contributed to the revision and publication of the document.
-
+As the spokesperson team of the Development Working Group (Sebastian and Björn), we would like to thank all authors and reviewers for accompanying us throughout this 18-month journey. We are also grateful for the valuable exchange of ideas and the many discussions surrounding this guide and the future of ABAP development. A special thank-you also goes to our colleagues at the DSAG, who contributed to the review and publication of this document.

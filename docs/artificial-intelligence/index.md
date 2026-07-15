@@ -6,40 +6,40 @@ nav_order: 14
 ---
 
 {: .no_toc}
-# Generative artificial intelligence (genAI)
+# Generative Artificial Intelligence (genAI)
 
 1. TOC
 {:toc}
 
 ## AI in development - A topic of great importance and dynamics
 
-The topic of generative AI (hereinafter referred to as AI for short) is currently *the* central topic that can no longer be avoided in SAP development. Products/solutions such as ChatGPT, Microsoft Copilot, Google GEMINI and of course SAP itself with Joule are discussed everywhere and will (in the future) find their practical application in numerous solutions. These solutions are also used in software development; there are even corresponding AI support options in ABAP development. 
+Generative AI (hereinafter referred to simply as AI) is currently the dominant topic that can no longer be ignored in SAP development. Products and solutions such as ChatGPT, Microsoft Copilot, Google Gemini, and, of course, SAP’s own Joule are being discussed everywhere and are finding (or will soon find) practical applications in numerous solutions. These technologies are also being used in software development, and AI-assisted capabilities are now available even for ABAP development.
 
-Development in this area is happening rapidly and newer features and options are becoming available in short cycles - the results are getting better and better. It is very difficult to make a concrete forecast as to what will happen over the next (not years but) weeks. 
+The pace of innovation in this field is extremely rapid. New features and capabilities are becoming available in increasingly short cycles, and the quality of the results continues to improve. As a result, it is difficult to make reliable predictions about developments over the coming weeks—not just years.
 
-A prominent example of this is the recently announced integration option for MCP servers (including for the SAP documentation and ABAP context), the potential of which seems high, but is still rather difficult to grasp. Vibe Coding was also surprisingly well represented at SAP TechEd 2025 - another glimpse into a possible future (also for ABAP?).
+A prominent example is the recently announced integration capability for MCP servers (including support for SAP documentation and ABAP contexts). While the potential appears significant, its practical implications are still somewhat difficult to assess. Vibe Coding was also surprisingly well represented at SAP TechEd 2025 - another glimpse into a possible future (also for ABAP?).
 
-Despite all the uncertainties, in this chapter we want to try to give you (as of today, SAP TechEd 2025) assistance in making decisions regarding the use/application of AI in software development with SAP. We therefore deliberately do not present all available software solutions or go into detail. As a guide, we want to show you general information and possible application scenarios.  
+Despite the uncertainties, this chapter aims to provide guidance for evaluating the use and application of AI in SAP software development, based on the current state of technology as of SAP TechEd 2025. For this reason, we do not attempt to cover every available software solution, nor do we go into exhaustive detail. Instead, this chapter serves as a practical guide, offering general recommendations and highlighting potential use cases and application scenarios.  
 
-AI provides tools that help develop better software faster. Even though AI is developing rapidly, AI will not be able to replace human developers. As a basis for good development, good knowledge of modern software development is essential, even with AI. AI can support development in the various phases of software development. We will give you a few examples in which the use of AI brings efficiency gains.
+AI provides tools that help developers create better software more quickly. Although AI is evolving at a rapid pace, it is unlikely to replace human developers. A solid understanding of modern software development remains essential, even when AI tools are used. AI can support developers throughout the various phases of the software development lifecycle. The following examples illustrate areas in which the use of AI can improve efficiency and productivity.
 
 
-## Full responsibility for the AI ​​result, but also the area of ​​application for the developer
+## Full responsibility for the AI result, but also the area of application for the developer
 
-First of all, there are a few fundamental aspects that are very important to us as authors and that we would like to point out. 
+Before discussing specific use cases, there are several fundamental aspects that we, as the authors, would like to emphasize.
 
-Based on current knowledge, we as authors are firmly convinced that AI will not replace human developers. As a basis for good development, in-depth knowledge of modern software development is essential, even with AI. AI can *assist* in development in the various phases of software development. To this end, in later chapters we will show concrete application scenarios with examples in which the use of AI can bring about efficiency gains.
+Based on the current state of knowledge, we are firmly convinced that AI will not replace human developers. A solid foundation in modern software development remains essential, even when AI tools are available. AI can support developers throughout various phases of the software development lifecycle. In later chapters, we will present concrete examples and scenarios that demonstrate how AI can improve efficiency in specific development tasks.
 
-Another very important aspect lies in the specific use of potential AI support for the developer. The craft of programming and software development is complex. Even with years (decades) of experience, hardly a day goes by without us learning something new. Regardless of whether you see your focus as development, architecture or design - the approach and implementation with individual tools to solve a problem is very individual. In other words: Every (ABAP) developer has their own preferences and develops/analyses in a personal way based on their own experience. 
+Another important aspect concerns the practical use of AI assistance by developers. Programming and software development are complex disciplines. Even after years—or decades—of experience, there is hardly a day when there is nothing new to learn. Whether a developer’s primary focus is implementation, architecture, or design, the approach and choice of tools used to solve a problem are highly individual. In other words, every (ABAP) developer has personal preferences and applies their own methods and experience when developing and analyzing software.
 
-Why is this important? It will not work to roll out AI support with the motivation that everyone in the company *must* use it in order to achieve an increase in efficiency of xy% (and in the worst case, to plan for it). The majority of developers will not allow this to be dictated to them (and rightly so, in our opinion). So what can work? It is important to create awareness among colleagues about the new possibilities - to point out useful use cases that can potentially help the developer. AI will only become truly relevant in a developer's everyday work if the developer is convinced of its benefits and personally recognizes the added value.  
+Why is this important? AI adoption is unlikely to succeed if it is introduced with the expectation that every developer must use it in order to achieve a predefined efficiency gain of xy % (or, even worse, if such gains are assumed in project planning). Most developers will understandably resist being forced into a specific way of working. A more effective approach is to raise awareness of the new possibilities, demonstrate meaningful use cases, and show how AI can support developers in their daily work. AI will only become truly relevant in a developer’s day-to-day activities if the developer is personally convinced of its benefits and recognizes its value.  
 
-Closely related to this point is the last aspect that we would like to point out in advance: responsibility. If the developer uses AI to generate something (e.g. code, unit tests, RAP objects, etc.), responsibility for the generated artifact remains with the developer. Potential errors, underperforming requests, security gaps, etc. ultimately fall back on the developer - "that was (AI) generated" doesn't absolve anyone of guilt. From this perspective alone, we would like to point out again that, in our view, every colleague should (be allowed to) decide individually whether and to what extent AI support should be used for their individual task.   
+Closely related to this point is a final aspect that deserves special attention: responsibility. When a developer uses AI to generate something like code, unit tests, RAP objects, etc., the responsibility for the generated output remains entirely with the developer. Potential defects, inefficient queries, security vulnerabilities, or other shortcomings ultimately remain the developer’s responsibility. The statement “it was generated by AI” does not absolve anyone of accountability. For this reason alone, we believe that every developer should remain free to decide individually whether, and to what extent, AI assistance should be used for a particular task.  
 
 
 ## Support for decision-making on the use of AI and AI tools
 
-Before AI can be used in the area of ​​​​development, important questions must be illuminated, clarified and used for decision-making. This point varies greatly from company to company - below you will find a few potentially important questions: 
+Before AI can be used in the area of development, important questions must be illuminated, clarified and used for decision-making. This will vary from company to company. The following list contains some potentially important questions:
 
 - What security requirements are placed on the AI?
   - Private Space vs. Public Space
@@ -57,34 +57,34 @@ Before AI can be used in the area of ​​​​development, important question
 - Which database was/is used for training?
 - Is your own company data used to train the models and how is it ensured that the data “remains with the company”?
 - Does the solution meet applicable regulations/legal requirements (e.g. EU AI Act, DSGVO/GDPR, ...)  
-- How is the AI ​​solution classified according to the [EU criticality levels](https://www.trail-ml.com/blog/eu-ai-act-how-risk-is-classified) (Minimal/No Risk, Limited, High, Unacceptable)?
+- How is the AI solution classified according to the [EU criticality levels](https://www.trail-ml.com/blog/eu-ai-act-how-risk-is-classified) (Minimal/No Risk, Limited, High, Unacceptable)?
 - Is it ensured that the solution does not use copyrighted data or content? How is this ensured?
 - Can prompt storage be disabled? Where are the prompts stored?
-- Does the company that developed/sells the solution have an “AI ethics foundation”, for example the SAP called “[KI Ethik Handbuch](https://www.sap.com/germany/products/artificial-intelligence/ai-ethics.html)”
+- Does the company that develops or sells the solution have an AI ethics framework, such as SAP’s “[AI Ethics Handbook](https://www.sap.com/germany/products/artificial-intelligence/ai-ethics.html)”?
 - What is the content? How does this fit with your own corporate culture or even with your own AI ethics foundation?
 
-In addition to these questions, the use of AI also raises issues and problem areas such as how to deal with ethical concerns about the “bias” of AI models adopted from the training data (keyword here is the so-called BIAS) or how to counter/counter them.  
+In addition to these questions, the use of AI also introduces topics and challenges related to how organizations deal with ethical concerns arising from biases inherited from training data. A key term in this context is BIAS in AI models.  
 
-An important aspect when using AI is the issue of checking results. Results produced by AI may contain algorithmic biases (“hallucinations”) and/or be incorrect. It is important that such results are verified by knowledgeable and experienced developers. This is not trivial - e.g. the result of a [Study by Purdue University, West Lafayette, USA](https://dl.acm.org/doi/pdf/10.1145/3613904.3642596) as part of the CHI 2024 conference shows that 39% of the errors in the results of an AI remained undetected because the questions were answered “politely”. We therefore recommend checking and validating the results objectively and prudently.
+Another important aspect of AI usage is the validation of results. Outputs generated by AI may contain algorithmic distortions (“hallucinations”) and/or factual errors. It is therefore essential that such results be reviewed by knowledgeable and experienced developers. This is not trivial - e.g. the result of a [Study by Purdue University, West Lafayette, USA](https://dl.acm.org/doi/pdf/10.1145/3613904.3642596) as part of the CHI 2024 conference shows that 39% of the errors in the results of an AI remained undetected because the questions were answered “politely”. We therefore recommend checking and validating the results objectively and prudently.
 
 ## SAP AI roadmaps and tools for development
 
 {: .note }
-As already mentioned, the environment and the available features in the context of AI are developing rapidly. For this reason, we would like to recommend Joule for Developers [the SAP roadmap](https://roadmaps.sap.com/board?PRODUCT=73554900100800006341&range=CURRENT-LAST) to check recent and future developments.  
+As already mentioned, AI capabilities are evolving rapidly. We therefore recommend consulting the [SAP roadmap for Joule for Developers](https://roadmaps.sap.com/board?PRODUCT=73554900100800006341&range=CURRENT-LAST) for current and planned developments.  
 
 
-### Current status (SAP TechEd 2025) AI support in the SAP environment
+### Current Status of AI Support in the SAP Environment (SAP TechEd 2025)
 
-With *SAP Joule for Developers*, SAP provides a central offering for the entire SAP build portfolio. 
+SAP provides SAP Joule for Developers as a central offering across the entire SAP Build Portfolio.
 
 ![SAP Joule for Developers add-on]({{ site.baseurl }}/artificial-intelligence/img/joule_for_developers_addon.png)
 
 Source: SAP TechEd 2025 – AD104 – Boost your ABAP development with SAP Joule for Developers
 {: .img-caption}
 
-For ABAP, the corresponding component is officially called "SAP Joule for Developers, ABAP AI capabilities" and is natively integrated into Eclipse via ADT. From the authors' point of view, this is a fundamental advantage over alternative tools, as the context (e.g. a concrete RAP object) can be better integrated.
+For ABAP, the corresponding component is officially referred to as “SAP Joule for Developers, ABAP AI capabilities” and is natively integrated into Eclipse through ADT. From the authors’ perspective, this is a fundamental advantage over alternative tools, as the development context (for example, a specific RAP object) can be integrated more effectively.
 
-At SAP Joule for Developers, SAP distinguishes between three primary areas of AI support in the ABAP development environment. Below you will find a definition and explanation of the features as well as information about their availability. Please note that the issue of licensing also needs to be clarified. Check material 8019124 for customers and 8019541 for partners.
+SAP distinguishes between three primary areas of AI support within the ABAP development environment as part of SAP Joule for Developers. In the following sections, you will find a description of these features, including their scope and intended use, as well as information regarding their availability. Please note that licensing requirements must also be clarified. Customers should refer to material 8019124, while partners should refer to 8019541.
 
 - **Accelerate**
   - The target group for this area is the ABAP developer and increasing their efficiency during their daily work. SAP supports the developer, for example, by:
@@ -93,36 +93,36 @@ At SAP Joule for Developers, SAP distinguishes between three primary areas of AI
     - Generation of unit tests for ABAP classes and Core data services
     - Explanation of existing (legacy) code
     - Help with code snippets, code analysis, documentation, existing help content and code predictions (“predective code completion”)
-  - Features in the Accelerate context are available on SAP BTP ABAP Environment, SAP Cloud ERP and SAP Cloud ERP private 2025 (formerly SAP S/4HANA, private Cloud). Previous releases of SAP Cloud ERP private [can consume the features side-by-side](https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/abap-ai-chapter-2/ba-p/14210568). According to the current status, the features are not available on-premise and this is not planned by SAP.   
+  - Features in the Accelerate context are available on SAP BTP ABAP Environment, SAP Cloud ERP and SAP Cloud ERP private 2025 (formerly SAP S/4HANA, private Cloud). Previous releases of SAP Cloud ERP private [can consume the features side-by-side](https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/abap-ai-chapter-2/ba-p/14210568). According to the current status, the features are not available on-premise and this is not planned by SAP.  
 
 - **Transform**
-  - The ABAP developer should be supported in migrating customer-owned code to ABAP Cloud and a Clean Core. Both existing code and messages from the ATC check are explained. In addition, the AI ​​offers suggestions for adapting/transferring existing coding. 
-  - According to current knowledge regarding SAP Cloud ERP private, the availability of the Transform use case is analogous to the Accelerate features. 
+  - The ABAP developer should be supported in migrating customer-owned code to ABAP Cloud and a Clean Core. Both existing code and messages from the ATC check are explained. In addition, the AI offers suggestions for adapting/transferring existing coding.
+  - According to current knowledge regarding SAP Cloud ERP private, the availability of the Transform use case is analogous to the Accelerate features.
 
 - **Empower**
-  - This main area deals with the integration of AI into applications. This means that the target group for AI is the end user. The ABAP developer has the task of implementing this into the application. SAP provides the ABAP AI SDK using “ISLM” (Intelligent scenario lifecycle management). It enables standardized access to the generative AI hub within the SAP AI Core on the SAP BTP.  
+  - This area covers the integration of AI into applications for end users. ABAP developers are responsible for implementing these capabilities. SAP provides the ABAP AI SDK through ISLM (Intelligent Scenario Lifecycle Management), enabling standardized access to the generative AI hub in SAP AI Core on SAP BTP.  
   - The Empower area is available on both SAP BTP ABAP Environment, SAP ERP Cloud (incl. private) and S/4HANA On-Premise via downport until release 2021 (for more information, see SAP Note 3513374).
 
-You can find an overview of the current roadmap as of today (SAP TechEd 2025) on the following slide: 
+An overview of the current roadmap as of SAP TechEd 2025 is shown in the following slide:
 ![Roadmap]({{ site.baseurl }}/artificial-intelligence/img/joule_for_developers_road_map.png)
 
 Current roadmap
 {: .img-caption}
 
 
-## Support with ABAP development through alternative AI tools
+## Support for ABAP Development Through Alternative AI Tools
 
-The use of official SAP tools such as "Joule for Developers" requires, as indicated in the previous chapter, the use of Cloud systems such as BTP or at least system operation in the private Cloud in conjunction with appropriate contracts. If you are on a different SAP system, there are potential alternatives. 
+The use of official SAP tools such as “Joule for Developers” requires, as mentioned in the previous chapter, the use of cloud systems such as SAP BTP or at least operation in a private cloud environment in combination with the corresponding contracts. If you are working on a different SAP landscape, potential alternatives are available.
 
 ### Using GitHub Copilot
 
 For example, in March 2025 it was announced that GitHub Copilot is available in Eclipse and therefore ABAP also supports [Introducing ABAP Support in GitHub Copilot for Eclipse](https://devblogs.microsoft.com/java/introducing-abap-support-in-github-copilot-for-eclipse/).  
 You can find a good overview of this in the SAP community [Getting Started with ABAP Support in GitHub Copilot](https://community.sap.com/t5/technology-blog-posts-by-members/getting-started-with-abap-support-in-github-copilot-for-eclipse-ide/ba-p/14086717).  
 
-However, compared to Joule's native SAP integration, the full SAP context is currently not automatically available to the AI. The context must be explicitly defined here via the Copilot chat window in ADT and is therefore particularly suitable for analyzing one or more classes of an application. The GitHub Copilot offers the following options:  
+Compared to the native SAP integration provided by Joule, the AI does not currently have automatic access to the full SAP context. Instead, the context must be explicitly provided through the Copilot chat window in ADT. This makes it particularly suitable for analyzing one or more classes within an application. GitHub Copilot offers the following capabilities:  
 
 - **Code Completion**.
-As of the end of 2025, this feature can be used particularly helpfully for creating comments or as a somewhat smarter code completion. In any case, the proposed code fragments must be checked intensively for meaningfulness and correctness. Here, the quality of the results depends heavily on the use of Clean code. The more understandable and readable the code is and the more explanatory line comments are, the more likely the AI ​​​​is to understand the context and the more useful the suggestions can be generated. Therefore, this function primarily increases the efficiency of very experienced developers who can immediately recognize the usefulness of suggestions and whose code has the necessary quality properties.
+As of the end of 2025, this feature can be used particularly helpfully for creating comments or as a somewhat smarter code completion. In any case, the proposed code fragments must be checked intensively for meaningfulness and correctness. Here, the quality of the results depends heavily on the use of Clean code. The more understandable and readable the code is and the more explanatory line comments are, the more likely the AI is to understand the context and the more useful the suggestions can be generated. Therefore, this function primarily increases the efficiency of very experienced developers who can immediately recognize the usefulness of suggestions and whose code has the necessary quality properties.
 
 - **Code Explanation / Code Review**
 Code artifacts listed in context can be explained by Copilot to gain a better understanding of the function. As an extension, Copilot can carry out a review of one or more code artifacts and thus take on a quality assurance task, which in turn relieves the developer's workload. The success factors here lie in good “prompt engineering” by the user. The knowledge gained can be used to identify deficits and weak points in the code, to determine its quality level and finally to derive measures for training and further education of the developers.
@@ -136,19 +136,19 @@ In addition to the points mentioned, Copilot offers further support in creating 
 - **Custom Instructions**
 An important function is the custom instructions. A prompt can be stored here in the Copilot settings, which contains basic definitions and instructions that are part of every prompt transmitted in the chat window. In this way, specifications for reviews, analyzes etc. can be simplified because generally applicable specifications are defined in the “Custom instruction prompt”.
 
-Although GitHub Copilot does not have the deep integration of Joule, it is a potentially useful tool to make good developers faster and better and, most importantly, to enable quality assurance people such as lead developers to gain better insight into applications in less time. Based on this, targeted measures such as code corrections or training in the development team can be derived.
+Although GitHub Copilot does not offer the same level of deep integration as Joule, it can nevertheless be a valuable tool for helping skilled developers work faster and more effectively. It can also support quality assurance roles, such as lead developers, by enabling them to gain a deeper understanding of applications in less time. Based on these insights, targeted actions such as code corrections or developer training initiatives can be derived.
 
 ### More alternatives
 
 We would like to mention at this point that GitHub Copilot represents *a" possible alternative to SAP Joule for Developers - other options exist and are continually being created, including Amazon Q Developer. We as authors make no claim to completeness at this point and have selected Github Copilot to show you another option in more detail.  
 
 {: .important }
-As with “Joule for Developers”, all AI results must be validated by the developer. The responsibility for accuracy lies with the user of the AI ​​tool. Therefore, on the one hand, it must be ensured that employees have been appropriately trained and sensitized. In addition, potential processes can be established to ensure that AI-generated results cannot be used unchecked (keyword “human-in-command” or “human-in-the-loop”).
+As with “Joule for Developers”, all AI results must be validated by the developer. The responsibility for accuracy lies with the user of the AI tool. Therefore, on the one hand, it must be ensured that employees have been appropriately trained and sensitized. In addition, potential processes can be established to ensure that AI-generated results cannot be used unchecked (keyword “human-in-command” or “human-in-the-loop”).
 
 
-## Further use cases for generative AI in software development
+## Additional Use Cases for Generative AI in Software Development
 
-In addition to the described options for increasing efficiency during the implementation phase, AI can also be used in further phases of software development. Using a few examples, we would like to explain to you in which areas generative AI can already be used to support today and what benefits you can gain from it. Since there are a wide variety of tools and the above-mentioned questions in companies can lead to different solutions and providers, we do not name any specific tools here, but would like to describe the use case and give you inspiration to also use chat-based tools in development.
+In addition to the opportunities described for increasing efficiency during the implementation phase, AI can also be applied in other phases of the software development lifecycle. Using several examples, we would like to illustrate areas in which generative AI can already provide support today and the benefits that can be achieved. Because a wide variety of tools exist and the questions discussed earlier may lead different organizations to choose different solutions and vendors, we intentionally avoid naming specific tools. Instead, we focus on describing use cases and providing inspiration for integrating chat-based AI tools into development activities.
 
 ### AI for creating, checking and preparing customer requirements
 
@@ -156,24 +156,24 @@ AI is particularly suitable for text creation, checking and preparation. Good ap
 
 ### AI as a tool for documentation creation
 
-One application scenario is the supporting creation of documentation for in-house developments. Currently available chat-based tools can be used by the developer or the employee responsible for development to create the technical documentation of the application. To do this, the generative AI must be told the task (i.e. the desired result: create technical documentation), the context and purpose of the application. For the technical details, the code of the most important classes, which contains the business logic and additional information, is transferred to the chat tool. The concerns of data protection and, if necessary, an examination of the confidentiality of the application must be taken into account.
+One practical use case is the assisted creation of documentation for custom developments. Currently available chat-based tools can be used by developers or responsible team members to create technical documentation for an application. To do this, the generative AI must be provided with the task (for example, “Create technical documentation”), the application context, and the purpose of the application. For the technical details, the code of the key classes containing the business logic, along with supplementary information, is transferred to the chat-based tool. Data protection requirements and potential confidentiality considerations must be taken into account.
 
-If explanatory information is already included in the development as a comment or, in the best case, as a ABAP Doc, this can be used by the generative AI for the documentation. This automated documentation creation produces better results if the Clean code principles were used when developing the application. Clean, readable and human-understandable code can also be better analyzed by artificial intelligence.
+If explanatory comments or, ideally, ABAP Doc documentation are already present within the codebase, the generative AI can use this information when creating documentation. Better results are generally achieved when Clean Code principles have been applied during development, since clean, readable, and human-understandable code can also be analyzed more effectively by AI systems.
 
-The result of the described procedure is a description of the AI-based evaluation of the information from the code. Here it quickly becomes obvious to what extent the code implements the desired logic in an explainable manner and where manual corrections and additions are necessary. 
-With good prompt engineering and "iterative prompting" or fine-tuning of the created documentation, you get a good basis on which you can finally complete the documentation through manual revision. The result can then be checked by the AI, which in turn allows you to draw further conclusions about the quality of the documentation.  
-The goal is not primarily to receive documentation fully automatically. Rather, this process helps to create a draft version or revise or finalize the documentation, which increases the quality and saves extensive typing. The success and efficiency factors here are the code base and its structure, experience in prompt engineering and an understanding of the application to be documented.
+The result of this approach is a description generated from the AI-based analysis of the available code information. This often makes it immediately apparent whether the code implements the intended logic in an understandable way and where manual corrections or additions may be required.
+With effective prompt engineering and iterative prompting (or fine-tuning of the generated documentation), a strong foundation can be created that can then be finalized through manual editing. The resulting documentation can subsequently be reviewed by the AI, providing further insights into its quality.  
+The primary goal is not to obtain fully automated documentation. Rather, the process helps create, revise, and finalize draft documentation, thereby improving quality while reducing the amount of manual writing required. Key success and efficiency factors include the quality and structure of the code base, experience with prompt engineering, and a solid understanding of the application being documented.
 
 ## AI development on the SAP BTP beyond ABAP
 
-Finally, it should be mentioned in the AI ​​chapter that there is also a lot of movement in terms of AI development in the SAP ecosystem beyond ABAP. For example, in the context of SAP Fiori (SAPUI5) or the CAP model, SAP enables numerous functions to be seamlessly integrated using VSCode. With the official availability of ABAP in VSCode in the second half of 2026, we expect equally exciting developments in the context of AI integration for ABAP. 
+Significant progress is also being made in AI development beyond ABAP. For example, SAP already enables numerous AI-powered capabilities to be integrated through VS Code for SAP Fiori (SAPUI5) and the Cloud Application Programming Model (CAP). With official ABAP support in VS Code planned for the second half of 2026, further developments in AI integration for ABAP are also expected.
 
-Regardless of the implementation tools surrounding the established technologies, SAP with Joule Studio in the BTP brings the possibility of implementing Joule skills and bundling them into powerful tools within agents. These Joule skills in turn often use API's from the backend, which in turn can be implemented with ABAP. In this context too, ABAP will continue to accompany us, at least indirectly.  
+Regardless of the implementation tools used with established technologies, SAP provides Joule Studio on SAP BTP, enabling the development of Joule Skills and their combination into powerful agent-based solutions. These Joule Skills frequently consume APIs from backend systems, many of which are implemented using ABAP. In this context, ABAP will therefore continue to accompany us—at least indirectly—for the foreseeable future.  
 
 
 ## Summary (AI-assisted)
-AI will permanently change application development in the SAP world - it will not replace developers, but will specifically support their strengths and reduce routine work.
-Anyone who uses the opportunities and possibilities of generative AI responsibly gains efficiency and quality without losing their own competence. Sound specialist knowledge, good architecture, clean design and critical thinking remain the basis of every development - even and especially in the age of AI. What is crucial is that people retain control over the result and take responsibility for it.
+AI will fundamentally transform application development in the SAP ecosystem. It will not replace developers; rather, it will support their strengths and reduce routine tasks.
+Those who make responsible use of the opportunities and capabilities offered by generative AI can achieve gains in efficiency and quality without diminishing their own expertise. Sound technical knowledge, good architecture, clean design, and critical thinking remain the foundation of all software development—both now and in the age of AI. The decisive factor is that humans retain control over the outcome and remain responsible for it.
 
 {: .note }
-> This summary was created with the support of a generative AI - of course carefully checked, revised, finalized by the author and linguistically rounded off by the AI.
+> This summary was created with the support of generative AI. It was, of course, carefully reviewed, revised, finalized by the author, and linguistically refined with the assistance of AI.

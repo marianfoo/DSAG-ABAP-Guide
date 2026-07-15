@@ -18,38 +18,40 @@ nav_order: 7
 
 The ABAP Test Cockpit (ATC) is a tool for performing static and dynamic quality checks on ABAP source code and associated repository objects.
 
-The SAP recommendation is a central ATC system, this system should be kept quite “narrow”, i.e. only a ABAP Netweaver system with a corresponding database and the software component SAP_BASIS. SAP speaks of “All you have to do is install and configure a central ATC testing system: the pure SAP basic system (SAP_BASIS >=7.51) within your SAP system landscape”. It follows that you actually only need an AS ABAP system with the software component SAP_BASIS
+SAP recommends a central ATC system; this system should be kept fairly “lean,” meaning only an ABAP NetWeaver system with the corresponding database and the SAP_BASIS software component. SAP states: “You only need to install and configure a central ATC test system: the pure SAP Basis system (SAP_BASIS >=7.51) within your SAP system landscape.” It follows that: You only need an AS-ABAP system with the SAP_BASIS software component
 
-But: The central ATC system should be the latest software system in the entire system landscape. This has the advantage that the latest checks are available there and the remote checks are carried out more easily. If you have problems keeping your ATC test system up to date, you should look at the SAP BTP ABAP Environment as an option.
+However: The central ATC system should be the most up-to-date system in the entire system landscape in terms of software, which has the advantage that the latest checks are available there and remote checks run more smoothly. Therefore, if you are having trouble keeping your ATC test system up to date, you should consider the SAP BTP ABAP Environment as an option.
 
-SAP delivers all checks via the SAP_BASIS component, so it is recommended to use the latest version so that you can work/check with the most current checks. Another advantage with the “narrow” system is that the ATC system can be updated quite “easily” (support package update) if necessary. In principle, you should update the ATC system (the “application” and the database) 1-2 times a year.
+SAP delivers all checks via the SAP_BASIS component; therefore, it is recommended to use the latest version so that you are working with and testing using the most current checks. Another advantage of the “lightweight” system is that the ATC system can be updated quite “easily” as needed (Support Package Update). In general, you should update the ATC system once or twice a year (the “application” and the database).
 
-The checks/tests are once integrated into the “Code Inspector”, which is a function within the SAP development environment and the SAP ADT (ABAP Development Tools – Eclipse extension). The checks are triggered using the “Check => ABAP Test Cockpit” function. It is also possible to run all RFC-enabled checks (mostly all checks are RFC-enabled) as a periodic job in the background and check the entire code and create a “directory” of the findings.
+Once the checks are integrated into the “Code Inspector”—a feature within the SAP development environment and SAP ADT (ABAP Development Tools—Eclipse extension)—they can be triggered via the “Check => ABAP Test Cockpit” function. It is also possible to run all RFC-capable checks (almost all checks are RFC-capable) as a periodic background job to verify the entire code and generate a “list” of findings.
 
-The tests are rounded off with integration into the SAP CTS “correction and transport system” for system changes/developments. Here you can set the system so that every transport release is checked against the ATC checks. If findings are found, it can be set so that they prevent release for transport. This ensures that only flawless code is transported into the SAP systems. This function can also be expanded with a “liberation workflow”.
+The checks are complemented by integration into the SAP CTS “Correction and Transport System” for system changes and developments. Here, you can configure the system so that it checks against the ATC checks every time a transport is released. If issues are detected, you can configure the system to prevent the transport from being released. This ensures that only flawless code is transported into the SAP systems. This function can also be extended with an “exemption workflow”.
 
-## Centralized ATC
+## Central ATC
 
 ![Schema Central ATC]({{ site.baseurl }}/security/img/image7.png)
 
 Schema Central ATC
 {: .img-caption}
 
-The central ATC system can be seen on the left. As standard, this consists of the components ATC (ABAP Test Cockpit) and the ACI (ABAP Code Inspector). The CVA (SAP Custom Code Vulnerability Analyzer) can be activated and used with a separate license. The CVA checks its own created code against SAP recommendations for “safe programming”. Details about the CVA and the tests will be explained in more detail later.
+On the left is the central ATC system. In its standard configuration, it consists of the ATC (ABAP Test Cockpit) and the ACI (ABAP Code Inspector) components. With a separate license, the CVA (SAP Custom Code Vulnerability Analyzer) can be activated and used. The CVA checks the code you have written against SAP recommendations for “secure programming.” Details about the CVA and the checks will be explained in more detail later.
 
-Note: The ATC system can be expanded with the open source component abapGit (not to be confused with gCTS of the SAP) (see the recommendations in the chapter “Open Source”). Individual components are explained below
+ Note:
+
+ The ATC system can be extended using the open-source component abapGIT (not to be confused with SAP’s gCTS) (see the recommendations in the “Open Source” chapter). The individual components are explained below.
 
 ## abapGit
 
-[abapGit](https://abapgit.org/) is an open source GIT client for ABAP. This is developed in ABAP and requires at least a SAP BASE version 702 or higher.
+[abapGit](https://abapgit.org/) is an open-source Git client developed in ABAP. It requires SAP_BASIS release 7.02 or higher.
 
-abapGit is a tool for importing and exporting code between ABAP systems. If a developer has a developer key for the system, they can already perform these actions. abapGit allows the developer to perform bulk exports/modifications/imports, but no more than is already possible manually.
+abapGit is a tool for importing and exporting code between ABAP systems. If a developer has a developer key for the system, they can already perform these actions. abapGit enables the developer to perform bulk exports, changes, and imports, but no more than what is already possible manually.
 
-With abapGit it is possible to deploy objects across system boundaries quite easily using your own GIT ABAP. In the past, this option was a great help and made work easier for the ABAP developers, especially in a double maintenance phase. In addition, abapGit is required as a basis for the [abapOpenChecks](https://docs.google.com/document/d/1--6biTn5OvRM4r8CO_19FLBKCQ3_bf1cIttiBDJJeRg/edit#heading=h.2xcytpi). Therefore this function should be implemented again.
+abapGit makes it relatively easy to transport objects across system boundaries using Git. This is particularly helpful during dual-maintenance phases. abapGit is also a prerequisite for [abapOpenChecks](https://docs.google.com/document/d/1--6biTn5OvRM4r8CO_19FLBKCQ3_bf1cIttiBDJJeRg/edit#heading=h.2xcytpi), so it should be installed in the relevant systems.
 
-abapGit is “simply” made available as a single ABAP report via the GIT repository. This ABAP report is then implemented into the ATC system and also into the connected development systems.
+abapGIT is made available “simply” as a single ABAP report via the Git repository. This ABAP report is then implemented in the ATC system and also in the connected development systems.
 
-The installation is described here: [Installation - abapGit Docs](https://docs.abapgit.org/user-guide/getting-started/install.html) There are also detailed installation instructions in the SAP base including documentation on how to install an update/new version.
+The process is described in the [abapGit installation documentation](https://docs.abapgit.org/user-guide/getting-started/install.html), which also explains how to install updates and new versions in an ABAP system.
 
 ![abapGit GUI Client]({{ site.baseurl }}/security/img/image8.png)
 
@@ -59,7 +61,7 @@ abapGit GUI Client
 
 ## Checks - ABAP Checks
 
-SAP already delivers a large number of checks with the ATC, which are used directly by the Code Inspector and the ATC.
+SAP already provides a large number of checks through the ATC, which are used directly by the Code Inspector and the ATC.
 
 SAP delivers the following subareas:
 
@@ -68,11 +70,11 @@ SAP delivers the following subareas:
 SCI test variant
 {: .img-caption}
 
-The ABAP checks should be coordinated between ABAP development and the security team (which checks make sense), then those deemed “useful” should be activated for background checks and also for online checking as part of the transport releases
+The ABAP checks should be coordinated between the ABAP development team and the security team (which checks are appropriate?); then, those deemed “appropriate” should be enabled for background checks as well as for online checks as part of the transport release process.
 
 ### S/4 Readiness-Checks
 
-Special checks that SAP delivers are the so-called “S/4HANA Readiness” checks. These are tests with which the customer's own code can be checked for S/4HANA suitability.
+The “S/4HANA Readiness” checks are special checks provided by SAP. These checks are used to verify that the customer’s own code is compatible with S/4HANA.
 
 The following tests are delivered in detail:
 
@@ -81,7 +83,7 @@ The following tests are delivered in detail:
 S/4HANA Readiness test variant
 {: .img-caption}
 
-Typically, as part of a Custom Code Livecycle project, the entire customer code is checked in the background for S/4HANA suitability and the findings are then converted or converted to S/4HANA using appropriate tools, often automated.
+Typically, as part of a Custom Code Lifecycle project, all of the customer’s code is checked in the background for S/4HANA compatibility; the results are then migrated or converted to S/4HANA using appropriate tools, often in an automated process.
 
 Example:
 
@@ -90,40 +92,40 @@ Example:
 S/4HANA Readiness results
 {: .img-caption}
 
-The S/4HANA readiness checks should be activated for background checks and also for online checking as part of transport clearances while appropriate code is still being developed on ECC. With a system conversion to S/4HANA you can then switch off the checks.
+The S/4HANA readiness checks should be enabled for background checks and also for the online check as part of transport approvals as long as you are still developing code for ECC. Once the system has been converted to S/4HANA, you can then disable the checks.
 
 ### abapOpenChecks
 
-[abapOpenChecks](https://docs.abapopenchecks.org/) are checks from the SAP Community for the ATC and the Code Inspector. The installation is done via abapGIT ([see previous chapters](https://docs.google.com/document/d/1--6biTn5OvRM4r8CO_19FLBKCQ3_bf1cIttiBDJJeRg/edit#heading=h.1ci93xb)). In the current version, abapOpenChecks delivers over 100 additional checks for the ATC and expands the checks delivered by SAP. A current list of exams can be viewed here: [abapOpenChecks - Checks](https://docs.abapopenchecks.org/checks/). The abapOpenChecks should be activated for background checks and also for online checks as part of transport releases.
+[abapOpenChecks](https://docs.abapopenchecks.org/) provides SAP Community checks for ATC and Code Inspector and is installed using abapGit. It adds more than 100 checks to those delivered by SAP; the current set is listed in the [abapOpenChecks documentation](https://docs.abapopenchecks.org/checks/). Enable these checks for background runs and online checks during transport release.
 
 ### Code Pal for ABAP
 
-This tool provides a range of checks to help with [Clean ABAP-Styleguides](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md) compliance. Although not all recommendations in the guide can be verified by static code analysis, and strict adherence to the guide may not be recommended in certain situations, this provides robust automated support for at least a subset of recommendations. SAP delivers the code PAL checks via GitHub, the installation is also carried out via abapGIT. The installation is described here: [SAP/code-pal-for-abap](https://github.com/SAP/code-pal-for-abap/blob/master/pages/how-to-install.md). The current list can be found here: [SAP/code-pal-for-abap](https://github.com/SAP/code-pal-for-abap/blob/master/docs/check_documentation.md)
+This tool provides checks that support compliance with the [Clean ABAP Style Guide](https://github.com/SAP/styleguides/blob/main/clean-abap/CleanABAP.md). Static analysis cannot verify every recommendation, and strict adherence may not be appropriate in every situation, but the tool provides robust automated support for a useful subset. SAP publishes Code Pal for ABAP on GitHub, and it is installed using abapGit. See the [installation instructions](https://github.com/SAP/code-pal-for-abap/blob/master/pages/how-to-install.md) and [current check documentation](https://github.com/SAP/code-pal-for-abap/blob/master/docs/check_documentation.md).
 
-The Code Pal checks should be coordinated with the developers (which checks make sense), then those deemed “useful” should be activated for background checks and also for online checking as part of the transport releases.
+The Code Pal checks should be reviewed with the development team to determine which checks are meaningful and relevant. The selected checks should then be activated for both background checks and online checks during transport release procedures.
 
-A useful addition to the Code Pal Checks is the ABAP Cleaner, an extension to Eclipse. Here you can check whether Clean ABAP adheres to the concept when creating the code (when entering the code).
+A useful complement to Code Pal Checks is ABAP Cleaner, an Eclipse extension. It enables developers to verify compliance with Clean ABAP principles during code creation, i.e., while entering code.
 
 ### Code Pal for ABAP Cloud
 
 A version of [Code Pal for ABAP Cloud](https://github.com/SAP/code-pal-for-abap-cloud/) (BTP) environments has been available since mid-September 2023. Basically (according to the documentation) "code pal for cloud checks" seems to work the same as the "normal" "code pal". SAP delivers new checks via the GitHub, which can be imported with "abapgit". The checks are stored in their own name area /CC4A/CODE_PAL. Details are described by SAP in the following blog: "[Clean code checks for ABAP – Cloud Edition](https://blogs.sap.com/2023/09/11/clean-code-checks-for-abap-cloud-edition/)". The checks are also available in the Eclipse development platform, so that Clean code can be checked during the development process if you develop Cloud with ABAP.
 
-## Exams - Security
+## Checks – Security
 
 ### Standard security checks
 
-SAP delivers the following security checks as part of the standard delivery of Check:
+As part of the standard delivery, SAP provides the following security checks:
 
 ![CVA exams]({{ site.baseurl }}/security/img/image14.png)
 
 CVA exams
 {: .img-caption}
 
-The SAP standard security checks should be activated for background checks and also for online verification as part of transport clearances. You may also be able to work with the developers to define critical instructions that you can/should check for
+The SAP standard security checks should be activated for both background checks and online checks during transport release procedures. In coordination with the development team, it may also be beneficial to define additional critical statements or commands that should be checked.
 
 ### CVA - Code Vulnerability Analyzer
 
-The [CVA is a product of SAP](https://me.sap.com/notes/1855773) which you have to license additionally. As part of the framework contract extension (July 2022), this product was purchased at a very reasonable price. The product significantly expands the SAP security checks, the CVA checks are the same checks with which the SAP checks its own code (the code that is supplied with the SAP ABAP systems). These checks are expanded with every Netweaver ABAP update.
+The [Code Vulnerability Analyzer (CVA) is an SAP product](https://me.sap.com/notes/1855773) that requires an additional license. It significantly expands the available security checks and uses the same checks that SAP applies to the ABAP code delivered in its systems. The checks are extended with each SAP NetWeaver AS ABAP update.
 
 The CVA performs static analysis of the ABAP source code and reports possible security risks. You can find an excerpt of the tests in note [1921820](https://me.sap.com/notes/1921820). For security reasons, SAP has stored the CVA check in 2 test variants, so that you can “only” check CVA completely, i.e. individual checks cannot be switched off.
 
@@ -132,8 +134,8 @@ The CVA performs static analysis of the ABAP source code and reports possible se
 Complete exams
 {: .img-caption}
 
-BSP are checks for Business Server Pages, these are separate for technical reasons. The CVA checks should be activated for background checks and also for online checking as part of transport clearances.
+BSP checks are provided separately for technical reasons and apply to Business Server Pages. The CVA checks should be activated for both background checks and online checks during transport release procedures.
 
-### CVA - Code Vulnerability Analyzer (Cloud)
+### CVA – Code Vulnerability Analyzer (Cloud)
 
-In addition to the paid version for on-premise systems, you can also get the Cloud version via the ABAP Environment. All you have to do is provision and connect the system and you can use the tests directly. In this scenario, there are no additional costs for licensing the CVA exams.
+In addition to the licensed on-premise version, a cloud-based variant is available through the ABAP Environment. To use it, you only need to provision and connect the system, after which the checks can be used directly. In this scenario, no additional licensing costs are incurred for the CVA checks.
